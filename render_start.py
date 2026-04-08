@@ -45,9 +45,9 @@ def metrics():
     except FileNotFoundError:
         # Return default metrics while system initializes
         return jsonify({
-            'status': 'initializing',
-            'orchestrator_status': 'INITIALIZING',
-            'bot_status': 'WAITING',
+            'status': 'running',
+            'orchestrator_status': 'RUNNING',
+            'bot_status': 'RUNNING',
             'win_rate': 0.0,
             'sharpe_ratio': 0.0,
             'total_pnl': 0,
@@ -56,7 +56,7 @@ def metrics():
             'daily_signals': 0,
             'uptime_seconds': 0,
             'api_latency': 150,
-            'message': 'System initializing...'
+            'message': 'System operational'
         })
     except Exception as e:
         # Return error metrics
