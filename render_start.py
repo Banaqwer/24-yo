@@ -38,11 +38,32 @@ def dashboard():
 def metrics():
     """Serve latest metrics as JSON"""
     try:
+        # Try to read metrics file
         with open('ai_metrics_latest.json', 'r') as f:
             data = json.load(f)
             return jsonify(data)
+    except FileNotFoundError:
+        # Return default metrics while system initializes
+        return jsonify({
+            'status': 'initializing',
+            'orchestrator_status': 'INITIALIZING',
+            'bot_status': 'WAITING',
+            'win_rate': 0.0,
+            'sharpe_ratio': 0.0,
+            'total_pnl': 0,
+            'current_drawdown': 0.0,
+            'active_assets': 40,
+            'daily_signals': 0,
+            'uptime_seconds': 0,
+            'api_latency': 150,
+            'message': 'System initializing...'
+        })
     except Exception as e:
-        return jsonify({'error': 'No metrics yet', 'details': str(e)}), 500
+        # Return error metrics
+        return jsonify({
+            'status': 'error',
+            'error': str(e)
+        }), 500
 
 @app.route('/api/status')
 def status():
