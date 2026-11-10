@@ -126,6 +126,12 @@ The system is built to be run with agents, not just scripts:
   `agent_prompts/daily_narrative.md`.
 - **Weekly pattern-refresh agent**: `agent_prompts/weekly_patterns.md` — re-reads the last week's
   reports and outcomes, updates the repeating-patterns list, flags calibration drift.
+- **Research lab (design, not yet implemented)**: `research/LAB_DESIGN.md` — the looped,
+  multi-agent process for diagnosing why graded nights lose and refining Grade A on sealed and
+  forward data, with a measurable stopping rule. Its forensic basis is `research/lab/forensics_v0.md`
+  (every losing graded NQ night classified by cause, Grade-A anatomy and fragility). The forensics
+  and the critic in that document also record two data defects to fix before any further research:
+  contract splices in the hourly files and the overlap between the `stopped` and target-first labels.
 
 ## Caveats
 
