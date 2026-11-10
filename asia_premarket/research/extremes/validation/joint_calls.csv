@@ -1,0 +1,9 @@
+sym,version,joint_call,n_nights,n_called,share_called,n_exact,share_exact,exact_ci_lo,exact_ci_hi,n_extended_but_other_broke,n_neither_broke,n_only_other_broke,base_exact
+NQ,cal,"BREAK_HI@0.70 & HOLD_LO@0.10: extends up, low holds",434,60,0.138249,54,0.9,0.81808,0.947403,0,4,2,0.329493
+NQ,cal,"BREAK_LO@0.70 & HOLD_HI@0.10: extends down, high holds",434,40,0.0921659,32,0.8,0.678535,0.883453,0,8,0,0.267281
+NQ,raw,"BREAK_HI@0.70 & HOLD_LO@0.10: extends up, low holds",434,56,0.129032,52,0.928571,0.85011,0.96753,0,2,2,0.329493
+NQ,raw,"BREAK_LO@0.70 & HOLD_HI@0.10: extends down, high holds",434,31,0.0714286,28,0.903226,0.781059,0.960658,0,2,1,0.267281
+ES,cal,"BREAK_HI@0.70 & HOLD_LO@0.10: extends up, low holds",433,51,0.117783,43,0.843137,0.742415,0.909287,1,6,1,0.284065
+ES,cal,"BREAK_LO@0.70 & HOLD_HI@0.10: extends down, high holds",433,32,0.073903,29,0.90625,0.787251,0.961909,0,3,0,0.247113
+ES,raw,"BREAK_HI@0.70 & HOLD_LO@0.10: extends up, low holds",433,48,0.110855,43,0.895833,0.801056,0.948369,1,4,0,0.284065
+ES,raw,"BREAK_LO@0.70 & HOLD_HI@0.10: extends down, high holds",433,22,0.0508083,22,1,0.890488,1,0,0,0,0.247113

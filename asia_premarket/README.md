@@ -51,9 +51,9 @@ agent (see "Agents" below).
 | `run_daily.py` | Entry point (refresh data, build reports). |
 | `research_catalogue.py` | Loads the agent-built catalogue/narratives into the report. |
 | `asia_extremes.py` | Builds the Asia high/low research tables: one row per night (when and where the high and the low printed, vs the 17:00 close, the RTH range and the prior Asia range; whether Europe took them out) and one row per (night, hourly bar) with everything known at that bar's close plus the "extreme already in" labels. Also the live row builders for a night that has not finished. |
-| `research/extremes/` | The Asia high/low detectors (`detector_preasia.py`, `detector_intrasession.py`), their tables, out-of-sample prediction files, the regression test `test_live.py`, and `scripts/` (the lens, refuter, verifier and critic scripts behind the report). |
+| `research/extremes/` | The Asia high/low detectors (`detector_preasia.py`, `detector_intrasession.py`), their tables, out-of-sample prediction files, the regression test `test_live.py`, the signal-level validation `signal_backtest.py` with its outputs in `validation/`, and `scripts/` (the lens, refuter, verifier and critic scripts behind the report). |
 | `data/` | Hourly NQ/ES/BTC, 15-minute NQ/ES (60 days), daily cross-asset closes (3 years). Snapshot; refreshed by `--refresh`. |
-| `research/` | Agent outputs: `event_calendar.csv` (826 verified events 2024-06 → 2027-01), four quarterly `catalogue_*.csv` (why each big Asia night moved, tagged, with sources), four `narrative_*.md` (regime narratives, testable repeating patterns, live context), `backtest_report.md`, `asia_extremes_report.md` (what characterises the Asia high and low, and the detector's out-of-sample record), `LAB_DESIGN.md`. |
+| `research/` | Agent outputs: `event_calendar.csv` (826 verified events 2024-06 → 2027-01), four quarterly `catalogue_*.csv` (why each big Asia night moved, tagged, with sources), four `narrative_*.md` (regime narratives, testable repeating patterns, live context), `backtest_report.md`, `asia_extremes_report.md` (what characterises the Asia high and low, and the detector's out-of-sample record), `asia_extremes_validation.md` (the detectors' flags measured as trading signals: hit rate after each flag, first firing per night, failures, stability, trade translation), `LAB_DESIGN.md`. |
 | `reports/` | Daily reports and agent briefs. |
 
 ## Method
@@ -125,6 +125,19 @@ sample and reproduced by independent verifiers):
   (AUC 0.75-0.79), the overnight-low flag at p >= 0.90 87-92% precise, and the overnight-high
   model almost never reaching 0.90 because a running Asia high rarely survives Europe. Three
   quarters of the skill is the distance to the running extreme and how long it has held.
+- **Validated as signals** (`research/asia_extremes_validation.md`, written by
+  `signal_backtest.py` from the stored out-of-sample predictions, 439 / 438 sessions Dec 2024 to
+  Nov 2026, independently recomputed): the first p >= 0.90 "high is in" / "low is in" flag of a
+  night is right 0.89-0.93 of the time (n = 200-267 per symbol, 90% CI lower bounds >= 0.85)
+  against bar-matched base rates of 0.58-0.66, and 0.90-0.95 in the last 12 months; the 17:xx
+  "RTH level holds" calls are right 0.94-0.98 against 0.70-0.77; the 17:xx "Asia breaks the RTH
+  level" calls are right 0.79-0.91 but rest on 34-66 nights and are a prior, not a call; the
+  overnight-low flag is right 0.85-0.87 on 38-40 firings. A flagged Asia high survives Europe
+  only about half the time, a flagged low about two thirds. A mechanical trade off the first
+  flag (stop at the running extreme, target at the opposite one) reaches its target first in
+  0.69-0.82 and is stopped first in 0.05-0.08 of entries by 02:00, but its mean P&L at exit is
+  -1 to +3 bp before costs with CIs that include zero in 7 of 8 cells: the flags locate the
+  extreme, they do not by themselves make a trade.
 - **What the extremes share**: a U-shaped hour of extreme (the 18:00 bar holds the low 31% of
   nights and the high 23%; the 02:00 bar 20% / 25%), the Sunday reopen's early low (by the Tokyo
   open 63% vs 44%), Monday nights rarely putting the low in the first bar (18% vs 34%), FOMC eves
@@ -139,6 +152,7 @@ cd asia_premarket/research/extremes
 python detector_preasia.py --now NQ          # tonight's map at 17:xx (NQ or ES)
 python detector_intrasession.py --now NQ     # at each bar close: is the high / low already in?
 python test_live.py                          # regression test of the live paths
+OMP_NUM_THREADS=1 python signal_backtest.py  # signal-level walk-forward validation, writes validation/
 ```
 
 ## Findings from the year (research layer + data)
@@ -173,7 +187,9 @@ The system is built to be run with agents, not just scripts:
   five characterisation lenses (timing, 18:00 context, events, narrative, 15-minute anatomy), three
   adversarial refuters per lens (statistics, knowability, regime), two detector builders with
   independent verifiers, a synthesis and a completeness critic whose review is section 8 of the
-  report. The scripts are kept in `research/extremes/scripts/`.
+  report. The scripts are kept in `research/extremes/scripts/`. A second pass (builder,
+  statistical and definition refuters, a desk review, a fix stage and re-verification) measured
+  the detectors' flags as trading signals: `research/asia_extremes_validation.md`.
 - **Research lab (design, not yet implemented)**: `research/LAB_DESIGN.md` — the looped,
   multi-agent process for diagnosing why graded nights lose and refining Grade A on sealed and
   forward data, with a measurable stopping rule. Its forensic basis is `research/lab/forensics_v0.md`
