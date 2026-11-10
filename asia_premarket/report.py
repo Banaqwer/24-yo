@@ -7,7 +7,8 @@ Produces a markdown report for RTH date D (decision time 18:00 ET) answering:
   3. WHY (attribution) - which factors push toward target vs stop, and the
                        historical record of each active rule
   4. WHERE THIS HAPPENED BEFORE - nearest analog nights + research narrative
-  5. EXPECTED RANGE  - stop sizing and timing
+  5. EXPECTED RANGE  - stop sizing and timing, and where tonight's Asia high / low are likely
+                       to form (the pre-Asia extremes forecaster in research/extremes)
   6. WHAT TO WATCH   - tonight's/tomorrow's scheduled events, live context
   7. HONESTY BOX     - out-of-sample model quality and today's calibration bucket
 """
@@ -55,6 +56,95 @@ FEATURE_LABELS = {
     "boj_tonight": "BoJ tonight", "opex_today": "opex today", "witching_today": "witching today", "sunday_open": "Sunday reopen",
     "pre_holiday": "US holiday tomorrow", "month_end": "month end",
 }
+
+
+def _extremes_section(eng: Engine, asof: pd.Timestamp) -> list[str]:
+    """Where tonight's Asia high and low are likely to form, from the pre-Asia extremes forecaster
+    (research/extremes/detector_preasia.py, walk-forward, out of sample).
+
+    Every probability is printed beside its base rate and its OOS Brier skill.  The hour-of-extreme
+    map and the timing probabilities carried no OOS skill in the research, so they are printed as
+    priors.  The research layer must never break the daily report: any failure returns one line.
+    """
+    import sys
+    ext = os.path.join(HERE, "research", "extremes")
+    if ext not in sys.path:
+        sys.path.insert(0, ext)
+    try:
+        import detector_preasia as dp
+        t = dp.predict_tonight(eng.sym, asof)
+    except Exception as e:  # noqa: BLE001
+        return [f"- Asia high/low forecaster unavailable tonight ({type(e).__name__}: {e}).", ""]
+    try:
+        f = eng.f.loc[asof]
+        ref, rh, rl = float(t["ref_close_17h"]), float(t["rth_high"]), float(t["rth_low"])
+        feats = t.get("features") or {}
+
+        def _sd(v):
+            return "n/a" if v is None or pd.isna(v) else f"{max(float(np.exp(v)) - 0.05, 0.0):.2f}"
+
+        pr = t["probabilities"]
+
+        def _p(key):
+            d = pr[key]
+            sk = d.get("oos_skill_model")
+            tail = f"; OOS Brier skill {sk:+.2f}" if sk is not None else ""
+            return f"**{d['p_cal']*100:.0f}%** (base {d['base_rate']*100:.0f}%{tail})"
+
+        qb, qp = t["quantiles_bp"], t["quantiles_price"]
+        hi, lo, rng = qp.get("hi", {}), qp.get("lo", {}), qb["rng_bp"]
+        hours = ["18h", "19h", "20h", "21h", "22h", "23h", "00h", "01h", "02h"]
+
+        def _map(key):
+            return ", ".join(f"{h} {p*100:.0f}%" for h, p in zip(hours, t["map"][key]["p_by_bar"]))
+
+        L = []
+        L.append("**Where tonight's Asia high and low are likely to form** "
+                 "(`research/extremes/detector_preasia.py`, walk-forward, out of sample; details in `research/asia_extremes_report.md`)")
+        L.append("")
+        L.append(f"- 17:00 close {_num(ref)} sits {(rh/ref-1)*1e4:+.0f} bp from the RTH high {_num(rh)} ({_sd(feats.get('lsd_high'))} median Asia ranges) "
+                 f"and {(rl/ref-1)*1e4:+.0f} bp from the RTH low {_num(rl)} ({_sd(feats.get('lsd_low'))} median ranges). "
+                 "That scaled distance is the one variable with real level skill: within 0.10 of a median range the level was taken on ~95% of nights, beyond 1.5 ranges on ~1%.")
+        L.append(f"- P(Asia high > RTH high) = {_p('high_above_rth_high')} · P(Asia low < RTH low) = {_p('low_below_rth_low')} · "
+                 "both on 0.4% (NQ) / 1.3% (ES) of nights historically.")
+        L.append(f"- Asia high P20/P50/P80: {_num(hi.get('P20'))} / {_num(hi.get('P50'))} / **{_num(hi.get('P80'))}** "
+                 f"({qb['hi_bp']['P20']:+.0f}/{qb['hi_bp']['P50']:+.0f}/{qb['hi_bp']['P80']:+.0f} bp) · "
+                 f"Asia low P20/P50/P80: **{_num(lo.get('P20'))}** / {_num(lo.get('P50'))} / {_num(lo.get('P80'))} "
+                 f"({qb['lo_bp']['P20']:+.0f}/{qb['lo_bp']['P50']:+.0f}/{qb['lo_bp']['P80']:+.0f} bp) · "
+                 f"range P20/P50/P80 {rng['P20']:.0f}/{rng['P50']:.0f}/{rng['P80']:.0f} bp "
+                 f"({ref*rng['P50']/1e4:.0f} / {ref*rng['P80']/1e4:.0f} pts at P50 / P80). "
+                 "Only the range quantiles and the high's P80 carried OOS skill; the other quantiles are vol-scaled priors.")
+        L.append(f"- Hour-of-high prior: {_map('hi_k')}")
+        L.append(f"- Hour-of-low prior: {_map('lo_k')}")
+        tp, lb0, hb8 = pr["low_by_tokyo_open"], pr["low_in_first_bar"], pr["high_in_last_bar"]
+        L.append(f"- Timing priors (no 18:00 feature set beat the base rate out of sample; these are weekday-shifted base rates): "
+                 f"P(low by the Tokyo open) {tp['p_dow_prior']*100:.0f}% (base {tp['base_rate']*100:.0f}%), "
+                 f"P(low in the 18:00 bar) {lb0['p_dow_prior']*100:.0f}% (base {lb0['base_rate']*100:.0f}%), "
+                 f"P(high in the 02:00 bar) {hb8['p_dow_prior']*100:.0f}% (base {hb8['base_rate']*100:.0f}%).")
+        notes = []
+        if asof.dayofweek == 4:
+            notes.append("Sunday reopen: the low came by the Tokyo open on 63% of nights vs 44% (the high is unaffected); the edge was +30 pts in 2024-25 and +10 pts in 2026.")
+        if asof.dayofweek == 0:
+            notes.append("Monday night: the low printed in the 18:00 bar half as often as usual (18% vs 34%), in both halves and both symbols.")
+        if float(f.get("fomc_tomorrow", 0) or 0) > 0:
+            notes.append("FOMC eve: the low came before the high on 17 of 18 nights and the close was above the 17:00 reference on 17 of 18 (anecdote, n = 18).")
+        if float(f.get("megacap_earnings_tonight", 0) or 0) > 0 or abs(float(f.get("post_ret", 0) or 0)) >= 0.0025:
+            notes.append("After-hours print: the range runs ~1.4x and the first bar ~1.8x normal, the extremes print no earlier or later; the sign of the 16:00-17:00 bar says which RTH level is more likely to be taken.")
+        w = t.get("short_session_warning")
+        if w:
+            notes.append(str(w))
+        for n in notes:
+            L.append(f"- {n}")
+        L.append(f"- During the session: `python research/extremes/detector_intrasession.py --now {eng.sym}` at each bar close gives P(Asia high already in) / "
+                 "P(Asia low already in), the same for the overnight (18:00-09:00) extremes, and the room left. Rules of thumb (ex-post hold rates): "
+                 "a close in the top 20% of the 18:00 bar's range put the low in that bar 58% and the high 4% (bottom 20%: 45% / 8%); an extreme set two or more "
+                 "bars earlier with the close in the far third of the running range and the range already at its 20-session median held to 03:00 97% (high) / 96% (low), "
+                 "but only 75% / 82% through the Europe open, and a 02:00-bar extreme is exceeded in Europe 80-85% of the time.")
+        L.append("- No direction: the session's direction was a coin flip under every 18:00 condition tested.")
+        L.append("")
+        return L
+    except Exception as e:  # noqa: BLE001
+        return [f"- Asia high/low forecaster output could not be formatted ({type(e).__name__}: {e}).", ""]
 
 
 def build_report(eng: Engine, asof=None, catalogue: pd.DataFrame | None = None) -> str:
@@ -300,6 +390,7 @@ def build_report(eng: Engine, asof=None, catalogue: pd.DataFrame | None = None) 
     L.append("- Typical rhythm: 18:00–20:00 reopen impulse & US after-hours news → 19:00/20:00 Tokyo cash open (Nikkei/SoftBank/Advantest), "
              "21:00–22:00 China/HK open and China data, 20:30–23:30 BoJ decisions, 01:00–03:00 pre-London positioning.")
     L.append("")
+    L.extend(_extremes_section(eng, asof))
 
     # ---------------- 6. WHAT TO WATCH ----------------
     L.append("## 6. WHAT TO WATCH TONIGHT")
