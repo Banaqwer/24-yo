@@ -110,18 +110,21 @@ sample and reproduced by independent verifiers):
 - **Pre-Asia forecaster** (`detector_preasia.py`, `predict_tonight(sym, date)`): P(Asia high >
   RTH high), P(Asia low < RTH low), P20/P50/P80 of the high, the low and the range, and an hourly
   map of the night. The level probabilities carry real skill (Brier skill vs the base rate about
-  +0.44 / +0.32 on NQ and +0.32 / +0.29 on ES, AUC 0.83-0.88), and so do the range quantiles
-  (+0.16 to +0.27). Every timing output (which hour, which side first) is at or below its base
+  +0.43 / +0.32 on NQ and +0.33 / +0.29 on ES, AUC 0.80-0.88), and so do the range quantiles
+  (+0.18 to +0.28). Every timing output (which hour, which side first) is at or below its base
   rate and is printed as a prior. Almost all of the level skill is one variable: the 17:00 close's
   distance to the RTH level in units of the 20-session median Asia range (within 0.10 of a range
   the level was taken on ~95% of nights, beyond 1.5 ranges on ~1%).
-- **Intra-session detector** (`detector_intrasession.py`, `predict_now(sym, date, k)`): at the
-  close of each hourly bar, P(the Asia high is already in), P(the Asia low is already in), the
-  same for the overnight 18:00-09:00 extremes, and the room left. OOS Brier about 0.15 against
-  0.22 for a bar-index-only baseline (AUC 0.85); a flag at p >= 0.90 was ~94% precise for "in by
-  03:00", but a 02:00-bar extreme is exceeded in the Europe session 80-85% of the time, so the
-  overnight outputs are the ones that answer the trading question. Three quarters of the skill is
-  the distance to the running extreme and how long it has held.
+- **Intra-session detector** (`detector_intrasession.py`, `predict_now(sym, date)`; k defaults
+  to the latest complete bar and an in-progress bar is dropped): at the close of each hourly bar,
+  P(the Asia high is already in), P(the Asia low is already in), the same for the overnight
+  18:00-09:00 extremes, and the room left. OOS Brier about 0.15 against 0.22 for a
+  bar-index-only baseline (AUC 0.85); a flag at p >= 0.90 was ~94% precise for "in by 03:00",
+  but a 02:00-bar extreme is exceeded in the Europe session 80-85% of the time, so the overnight
+  outputs are the ones that answer the trading question: Brier 0.17-0.18 against 0.20-0.23
+  (AUC 0.75-0.79), the overnight-low flag at p >= 0.90 87-92% precise, and the overnight-high
+  model almost never reaching 0.90 because a running Asia high rarely survives Europe. Three
+  quarters of the skill is the distance to the running extreme and how long it has held.
 - **What the extremes share**: a U-shaped hour of extreme (the 18:00 bar holds the low 31% of
   nights and the high 23%; the 02:00 bar 20% / 25%), the Sunday reopen's early low (by the Tokyo
   open 63% vs 44%), Monday nights rarely putting the low in the first bar (18% vs 34%), FOMC eves

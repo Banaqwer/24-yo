@@ -1,5 +1,5 @@
 # NQ PRE-ASIA REPORT — RTH Mon 2026-11-09 → Asia session Tue 2026-11-10 (18:00–03:00 ET)
-_Generated 2026-11-10 01:22 UTC · decision point 18:00 ET · training window 2024-06-18 → 2026-11-08 (walk-forward, no look-ahead)_
+_Generated 2026-11-10 20:47 UTC · decision point 18:00 ET · training window 2024-06-18 → 2026-11-08 (walk-forward, no look-ahead)_
 
 ## 1. THE CALL
 
@@ -165,6 +165,18 @@ Analog summary: reverted 75% · avg rev-ret +4 bp · VWAP first 42% · stopped 3
 - Hour the VWAP target was first reached (history): 18h 70%, 19h 6%, 20h 8%, 21h 5%, 22h 3%, 23h 2%, 00h 1%, 01h 2%, 02h 3%
 - Hour the stop was hit (history): 18h 45%, 19h 10%, 20h 11%, 21h 10%, 22h 5%, 23h 6%, 00h 1%, 01h 6%, 02h 6%
 - Typical rhythm: 18:00–20:00 reopen impulse & US after-hours news → 19:00/20:00 Tokyo cash open (Nikkei/SoftBank/Advantest), 21:00–22:00 China/HK open and China data, 20:30–23:30 BoJ decisions, 01:00–03:00 pre-London positioning.
+
+**Where tonight's Asia high and low are likely to form** (`research/extremes/detector_preasia.py`, walk-forward, out of sample; details in `research/asia_extremes_report.md`)
+
+- 17:00 close 28,073.25 sits +20 bp from the RTH high 28,129.25 (0.20 median Asia ranges) and -278 bp from the RTH low 27,291.75 (2.75 median ranges). That scaled distance is the one variable with real level skill: within 0.10 of a median range the level was taken on ~95% of nights, beyond 1.5 ranges on ~1%.
+- P(Asia high > RTH high) = **78%** (base 32%; OOS Brier skill +0.43) · P(Asia low < RTH low) = **2%** (base 26%; OOS Brier skill +0.32) · both on 0.4% (NQ) / 1.3% (ES) of nights historically.
+- Asia high P20/P50/P80: 28,107.75 / 28,232.73 / **28,333.96** (+12/+57/+93 bp) · Asia low P20/P50/P80: **27,816.79** / 27,920.36 / 28,043.80 (-91/-54/-10 bp) · range P20/P50/P80 81/111/151 bp (312 / 424 pts at P50 / P80). Only the range quantiles and the high's P80 carried OOS skill; the other quantiles are vol-scaled priors.
+- Hour-of-high prior: 18h 25%, 19h 9%, 20h 11%, 21h 9%, 22h 5%, 23h 5%, 00h 6%, 01h 8%, 02h 22%
+- Hour-of-low prior: 18h 30%, 19h 8%, 20h 12%, 21h 8%, 22h 6%, 23h 4%, 00h 5%, 01h 9%, 02h 20%
+- Timing priors (no 18:00 feature set beat the base rate out of sample; these are weekday-shifted base rates): P(low by the Tokyo open) 33% (base 47%), P(low in the 18:00 bar) 19% (base 31%), P(high in the 02:00 bar) 19% (base 25%).
+- Monday night: the low printed in the 18:00 bar half as often as usual (18% vs 34%), in both halves and both symbols.
+- During the session: `python research/extremes/detector_intrasession.py --now NQ` at each bar close gives P(Asia high already in) / P(Asia low already in), the same for the overnight (18:00-09:00) extremes, and the room left. Rules of thumb (ex-post hold rates): a close in the top 20% of the 18:00 bar's range put the low in that bar 58% and the high 4% (bottom 20%: 45% / 8%); an extreme set two or more bars earlier with the close in the far third of the running range and the range already at its 20-session median held to 03:00 97% (high) / 96% (low), but only 75% / 82% through the Europe open, and a 02:00-bar extreme is exceeded in Europe 80-85% of the time.
+- No direction: the session's direction was a coin flip under every 18:00 condition tested.
 
 ## 6. WHAT TO WATCH TONIGHT
 

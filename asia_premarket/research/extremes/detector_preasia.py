@@ -33,10 +33,18 @@ Public API
   train_walk_forward(sym)      -> OOS predictions DataFrame (one row per session, all targets);
                                    oos.attrs["metrics"] holds the metric tables
   evaluate(oos, sym)           -> dict of metric tables recomputed from an OOS DataFrame
-  predict_tonight(sym, date)   -> dict of probabilities, quantile levels (bp and price), the
-                                   map of the night, and the top logistic contributions
+  predict_tonight(sym, date, h=None)
+                               -> dict of probabilities, quantile levels (bp and price), the
+                                   map of the night, and the top logistic contributions; when the
+                                   date is not in the extremes table yet (night started, < 6 bars)
+                                   or an hourly frame `h` is passed by the caller, the 18:00 row is
+                                   built live from the hourly data (live=True); a contract-splice
+                                   session raises ValueError
   __main__                     -> writes research/extremes/oos_preasia_<SYM>.csv and prints the
                                    metric tables for NQ and ES
+  __main__ --now SYM [--date]  -> compact summary of predict_tonight for one night
+
+Splice sessions come from asia_extremes.SPLICE_SESSIONS (shared with the intra-session detector).
 """
 from __future__ import annotations
 
@@ -57,18 +65,33 @@ from sklearn.preprocessing import StandardScaler
 warnings.filterwarnings("ignore")
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def _package_root() -> str:
+    """The asia_premarket package root (two levels above this file), added to sys.path on import."""
+    root = os.path.abspath(os.path.join(HERE, os.pardir, os.pardir))
+    if root not in sys.path:
+        sys.path.insert(0, root)
+    return root
+
+
+_package_root()
+try:
+    # sessions whose hourly bars carry a contract-splice artefact (RTH date D of the affected night):
+    # the single list shared with the intra-session detector
+    from asia_extremes import SPLICE_SESSIONS
+except Exception:                                   # literal fallback only if the package import fails
+    SPLICE_SESSIONS = {
+        "NQ": ["2024-06-21", "2024-12-20", "2025-03-21", "2025-09-16", "2025-09-17", "2025-12-16", "2025-12-17"],
+        "ES": ["2025-09-16", "2025-09-17", "2025-12-16", "2025-12-17"],
+    }
+
 SEED = 0
 MIN_TRAIN = 120          # first sessions that are training-only
 MIN_CAL = 80             # prior OOS rows required before isotonic calibration is switched on
 H1_END = pd.Timestamp("2025-09-01")   # OOS half split
 N_BARS_FULL = 9
 N_BOOT = 1000
-
-# sessions whose hourly bars carry a contract-splice artefact (RTH date D of the affected night)
-SPLICE_SESSIONS = {
-    "NQ": ["2024-06-21", "2024-12-20", "2025-03-21", "2025-09-16"],
-    "ES": ["2025-12-16", "2025-12-17"],
-}
 
 BINARY_TARGETS = [
     "high_in_first_bar", "low_in_first_bar", "high_in_last_bar", "low_in_last_bar",
@@ -549,14 +572,25 @@ def _contrib(pipe, Xrow: pd.DataFrame, cols: list[str], top: int = 5) -> list[tu
     return [(k, round(float(v), 3)) for k, v in c.items()]
 
 
-def predict_tonight(sym: str, date) -> dict:
+def predict_tonight(sym: str, date, h: pd.DataFrame | None = None) -> dict:
     """Forecast for the Asia session that follows RTH date `date`, trained on every session strictly
-    before it; calibration and shrinkage come from OOS predictions strictly before it."""
-    date = pd.Timestamp(date)
+    before it; calibration and shrinkage come from OOS predictions strictly before it.
+
+    When `date` is not in <SYM>_extremes.csv yet (the night has fewer than 6 bars, or has not started),
+    or when the caller passes an hourly frame `h` (the data it wants used - a truncated frame, a
+    replay), the 18:00 row is built from the hourly data with asia_extremes.live_extremes_row; the
+    result then carries live=True.  With h=None and the date in the table the stored row is used
+    (live=False); both rows agree on every column make_features() reads.  A contract-splice session
+    (asia_extremes.SPLICE_SESSIONS) raises ValueError.
+    """
+    import asia_extremes as ae
+    date = pd.Timestamp(date).normalize()
+    if date in pd.to_datetime(SPLICE_SESSIONS.get(sym, [])):
+        raise ValueError(f"{sym} {date.date()}: contract-splice session (asia_extremes.SPLICE_SESSIONS); "
+                         f"its bars toggle between two contracts, so no forecast is served")
     x_all = load_extremes(sym, full_only=False)
-    if date not in x_all.index:
-        raise KeyError(f"{date.date()} is not an RTH date in {sym}_extremes.csv")
-    row = x_all.loc[[date]]
+    live = h is not None or date not in x_all.index
+    row = ae.live_extremes_row(sym, date, h=h) if live else x_all.loc[[date]]
     xtr = load_extremes(sym)
     xtr = xtr[xtr.index < date]
     if len(xtr) < MIN_TRAIN:
@@ -566,6 +600,7 @@ def predict_tonight(sym: str, date) -> dict:
     oos = oos[oos.index < date]
     ref = float(row["ref_close"].iloc[0])
     out = {"sym": sym, "date": str(date.date()), "ref_close_17h": ref, "n_train": int(len(xtr)),
+           "live": bool(live), "short_session_warning": ae.short_session_warning(sym, date),
            "rth_high": float(row["lvl_rth_high"].iloc[0]), "rth_low": float(row["lvl_rth_low"].iloc[0]),
            "is_dst": int(row["is_dst"].iloc[0]), "tokyo_open_k": int(row["tokyo_open_k"].iloc[0]),
            "features": {k: (None if pd.isna(v) else round(float(v), 4)) for k, v in Fx.iloc[0].items()},
@@ -638,12 +673,58 @@ def predict_tonight(sym: str, date) -> dict:
     return out
 
 
-# ---------------------------------------------------------------------------------------------
-if __name__ == "__main__":
-    syms = sys.argv[1:] or ["NQ", "ES"]
-    for sym in syms:
+def format_tonight(r: dict) -> str:
+    """Compact human-readable summary of a predict_tonight() result."""
+    L = [f"=== {r['sym']} pre-Asia forecast for the night after {r['date']}  (17:00 ref {r['ref_close_17h']:.2f}, "
+         f"RTH high {r['rth_high']:.2f} / low {r['rth_low']:.2f}, {'EDT' if r['is_dst'] else 'EST'}, Tokyo open bar k={r['tokyo_open_k']}) ===",
+         f"    live={'yes (row built from the hourly data)' if r['live'] else 'no (stored extremes row)'} | train sessions {r['n_train']}"]
+    if r.get("short_session_warning"):
+        L.append(f"    SHORT-SESSION WARNING: {r['short_session_warning']}")
+    L.append("  probabilities (p_cal; base rate; weekday prior; OOS Brier skill of the model / of the weekday prior):")
+    for t, pr in r["probabilities"].items():
+        sk = pr["oos_skill_model"]; skp = pr["oos_skill_dow_prior"]
+        L.append(f"    {t:22s} {pr['p_cal']:.3f}  base {pr['base_rate']:.3f}  dow {pr['p_dow_prior']:.3f}   "
+                 f"skill {sk if sk is None else f'{sk:+.3f}'} / {skp if skp is None else f'{skp:+.3f}'}"
+                 + ("   <- carried OOS skill" if t in LEVEL_TARGETS else ""))
+    L.append("  quantiles (bp vs the 17:00 close; unconditional in brackets):")
+    for t, q in r["quantiles_bp"].items():
+        u = q["uncond"]; sk = q["oos_skill"]
+        L.append(f"    {t:7s} P20 {q['P20']:7.1f} [{u['P20']:7.1f}]  P50 {q['P50']:7.1f} [{u['P50']:7.1f}]  P80 {q['P80']:7.1f} [{u['P80']:7.1f}]"
+                 f"   skill " + "/".join("n/a" if sk[k] is None else f"{sk[k]:+.3f}" for k in ("P20", "P50", "P80")))
+    qp = r["quantiles_price"]
+    L.append(f"  levels: high P20/P50/P80 {qp['hi']['P20']:.2f} / {qp['hi']['P50']:.2f} / {qp['hi']['P80']:.2f}; "
+             f"low P20/P50/P80 {qp['lo']['P20']:.2f} / {qp['lo']['P50']:.2f} / {qp['lo']['P80']:.2f}; "
+             f"range P50 {qp['range_points_P50']:.2f} points")
+    for t, mp in r["map"].items():
+        L.append(f"  map {t}: " + " ".join(f"k{i}:{v:.2f}" for i, v in enumerate(mp["p_by_bar"])) +
+                 f"   (hist mix {mp['mix_w_on_hist']:.2f}, OOS log-loss skill {mp['oos_logloss_skill_vs_hist']})")
+    for t in LEVEL_TARGETS:
+        L.append(f"  top contributions {t}: " + ", ".join(f"{n} {v:+.2f}" for n, v in r["contributions"][t]))
+    L.append("  " + r["reading_guide"])
+    return "\n".join(L)
+
+
+def _cli(argv: list[str]):
+    import argparse
+    ap = argparse.ArgumentParser(description="Pre-Asia high/low forecaster")
+    ap.add_argument("syms", nargs="*", help="symbols for the full walk-forward re-run (default NQ ES)")
+    ap.add_argument("--now", metavar="SYM", help="tonight's forecast for SYM instead of the walk-forward")
+    ap.add_argument("--date", help="RTH date YYYY-MM-DD (default: the latest RTH date in the hourly data)")
+    a = ap.parse_args(argv)
+    if a.now:
+        import asia_extremes as ae
+        sym = a.now.upper()
+        date = pd.Timestamp(a.date) if a.date else ae.latest_rth_date(sym)
+        print(format_tonight(predict_tonight(sym, date)))
+        return
+    for sym in [s.upper() for s in a.syms] or ["NQ", "ES"]:
         oos = train_walk_forward(sym)
         path = os.path.join(HERE, f"oos_preasia_{sym}.csv")
         oos.to_csv(path)
         print(f"\nwrote {path}  ({oos.shape[0]} OOS sessions x {oos.shape[1]} columns)")
         print(format_metrics(oos.attrs["metrics"]))
+
+
+# ---------------------------------------------------------------------------------------------
+if __name__ == "__main__":
+    _cli(sys.argv[1:])
