@@ -1,0 +1,334 @@
+// This Pine Script® code is subject to the terms of the Mozilla Public License 2.0
+// https://mozilla.org/MPL/2.0/
+//
+// ICT Optimal Trade Entry (OTE) - "How To Properly Use OTE" replica
+// ---------------------------------------------------------------------------
+// Implements the checklist shown in the video:
+//   1. Confirm your HTF bias            -> htfBias (structure-based, from a higher timeframe)
+//   2. Mark out a proper OTE zone        -> an impulsive leg (>= minLegAtr ATRs) that breaks
+//                                           the previous pivot (BOS/MSS); fib anchored wick to wick
+//   3. Wait patiently for the tap        -> zone is ARMED until price trades into 0.62-0.79
+//   4. Wait for consolidation            -> N bars without a new extreme (or a reclaim close)
+//   5. Target expansions or scalps       -> 0.0 (scalp), -0.27 / -0.62 / -1.0 (expansions)
+//
+// Python twin: ote_indicator.py (same rules, same defaults).
+//@version=5
+indicator("ICT OTE - Optimal Trade Entry (checklist edition)", "OTE", overlay = true, max_boxes_count = 100, max_lines_count = 300, max_labels_count = 100)
+
+// ---------------------------------------------------------------- inputs
+grpLeg      = "Leg / swing detection"
+swingLen    = input.int(5, "Pivot strength (bars each side)", minval = 1, group = grpLeg)
+minLegAtr   = input.float(1.5, "Min leg size (ATRs)", minval = 0, step = 0.1, group = grpLeg)
+atrLen      = input.int(14, "ATR length", minval = 1, group = grpLeg)
+requireBOS  = input.bool(true, "Require structure break (leg must take out previous pivot)", group = grpLeg)
+requireSweep= input.bool(false, "Require liquidity sweep at the leg origin", group = grpLeg)
+maxWait     = input.int(80, "Expire armed zone after N bars", minval = 1, group = grpLeg)
+
+grpFib      = "OTE levels"
+zoneNear    = input.float(0.62, "Zone start", step = 0.005, group = grpFib)
+sweetSpot   = input.float(0.705, "Sweet spot", step = 0.005, group = grpFib)
+zoneFar     = input.float(0.79, "Zone end", step = 0.005, group = grpFib)
+slBufAtr    = input.float(0.10, "Stop buffer beyond origin (ATRs)", step = 0.05, group = grpFib)
+tp1R        = input.float(0.0, "TP1 ratio (0 = range extreme / scalp)", step = 0.01, group = grpFib)
+tp2R        = input.float(-0.27, "TP2 ratio", step = 0.01, group = grpFib)
+tp3R        = input.float(-0.62, "TP3 ratio", step = 0.01, group = grpFib)
+tp4R        = input.float(-1.0, "TP4 ratio (symmetrical swing)", step = 0.01, group = grpFib)
+
+grpEntry    = "Entry confirmation"
+confirmMode = input.string("consolidation", "Confirmation", options = ["consolidation", "reclaim", "touch"], group = grpEntry)
+confirmBars = input.int(2, "Consolidation bars (no new extreme)", minval = 1, group = grpEntry)
+
+grpBias     = "HTF bias"
+useBias     = input.bool(true, "Filter by higher-timeframe bias", group = grpBias)
+htfTf       = input.timeframe("60", "Higher timeframe", group = grpBias)
+htfSwing    = input.int(3, "HTF pivot strength", minval = 1, group = grpBias)
+
+grpViz      = "Display"
+showArmed   = input.bool(true, "Show armed (untapped) zones", group = grpViz)
+showLevels  = input.bool(true, "Show SL / TP lines on entry", group = grpViz)
+bullCol     = input.color(color.new(#1565c0, 70), "Long zone", group = grpViz)
+bearCol     = input.color(color.new(#ad1457, 70), "Short zone", group = grpViz)
+
+// ---------------------------------------------------------------- HTF bias
+// Structure bias: +1 after a close above the last confirmed pivot high, -1 after a close
+// below the last confirmed pivot low. Evaluated on completed HTF bars only.
+f_structureBias(len) =>
+    var int   bias   = 0
+    var float lastPH = na
+    var float lastPL = na
+    ph = ta.pivothigh(high, len, len)
+    pl = ta.pivotlow(low, len, len)
+    if not na(ph)
+        lastPH := ph
+    if not na(pl)
+        lastPL := pl
+    if not na(lastPH) and close > lastPH
+        bias   := 1
+        lastPH := na
+    else if not na(lastPL) and close < lastPL
+        bias   := -1
+        lastPL := na
+    bias
+
+htfBias = useBias ? request.security(syminfo.tickerid, htfTf, f_structureBias(htfSwing)[1], lookahead = barmerge.lookahead_on) : 0
+
+// ---------------------------------------------------------------- pivots
+atrV = ta.atr(atrLen)
+phV  = ta.pivothigh(high, swingLen, swingLen)   // value at bar_index - swingLen when confirmed
+plV  = ta.pivotlow(low, swingLen, swingLen)
+
+var int   prevPHBar = na
+var float prevPH    = na
+var int   prevPLBar = na
+var float prevPL    = na
+var int   olderPLBar = na   // pivot low before prevPL (for sweep check on long legs)
+var float olderPL    = na
+var int   olderPHBar = na
+var float olderPH    = na
+
+// ---------------------------------------------------------------- setup state (one long, one short)
+// state: 0 none, 1 armed, 2 tapped, 3 entered
+var int   lState = 0,  sState = 0
+var float lOrigin = na, lExtreme = na, lSL = na, lEntry = na, lExtSinceTap = na
+var float sOrigin = na, sExtreme = na, sSL = na, sEntry = na, sExtSinceTap = na
+var int   lConfBar = na, lHold = 0, lOriginBar = na, lExtremeBar = na
+var int   sConfBar = na, sHold = 0, sOriginBar = na, sExtremeBar = na
+var box   lBox = na, sBox = na
+var line  lSweet = na, sSweet = na
+
+f_level(origin, extreme, r) => extreme - (extreme - origin) * r
+
+f_closeBox(b, ln) =>
+    if not na(b)
+        box.set_right(b, bar_index)
+    if not na(ln)
+        line.set_x2(ln, bar_index)
+
+f_drawEntry(dir, entry, sl, origin, extreme) =>
+    if showLevels
+        line.new(bar_index, sl, bar_index + 20, sl, color = color.red, width = 1)
+        line.new(bar_index, f_level(origin, extreme, tp1R), bar_index + 20, f_level(origin, extreme, tp1R), color = color.teal, style = line.style_dotted)
+        line.new(bar_index, f_level(origin, extreme, tp2R), bar_index + 20, f_level(origin, extreme, tp2R), color = color.teal)
+        line.new(bar_index, f_level(origin, extreme, tp3R), bar_index + 20, f_level(origin, extreme, tp3R), color = color.teal)
+        line.new(bar_index, f_level(origin, extreme, tp4R), bar_index + 20, f_level(origin, extreme, tp4R), color = color.teal, style = line.style_dashed)
+    label.new(bar_index, entry, dir > 0 ? "OTE LONG" : "OTE SHORT", style = dir > 0 ? label.style_label_up : label.style_label_down, color = dir > 0 ? color.green : color.red, textcolor = color.white, size = size.small)
+
+bool longEntryNow  = false
+bool shortEntryNow = false
+bool longArmedNow  = false
+bool shortArmedNow = false
+bool longTapNow    = false
+bool shortTapNow   = false
+
+// ---------------------------------------------------------------- advance LONG setup
+if lState == 1
+    if high > lExtreme or bar_index - lConfBar > maxWait
+        lState := 0
+        f_closeBox(lBox, lSweet)
+    else if low <= f_level(lOrigin, lExtreme, zoneNear)
+        lState := 2
+        lExtSinceTap := low
+        lHold := 0
+        longTapNow := true
+        box.set_bgcolor(lBox, color.new(color.from_gradient(0, 0, 1, bullCol, bullCol), 50))
+        if low <= lSL
+            lState := 0
+            f_closeBox(lBox, lSweet)
+        else if confirmMode == "touch"
+            lEntry := low <= f_level(lOrigin, lExtreme, sweetSpot) ? f_level(lOrigin, lExtreme, sweetSpot) : f_level(lOrigin, lExtreme, zoneNear)
+            lState := 3
+            longEntryNow := true
+else if lState == 2
+    if low <= lSL or high > lExtreme
+        lState := 0
+        f_closeBox(lBox, lSweet)
+    else
+        entered = false
+        if confirmMode == "touch"
+            if low <= f_level(lOrigin, lExtreme, sweetSpot)
+                lEntry := f_level(lOrigin, lExtreme, sweetSpot)
+                entered := true
+        else if confirmMode == "reclaim"
+            if close > f_level(lOrigin, lExtreme, zoneNear) and close > open
+                lEntry := close
+                entered := true
+        else
+            if low < lExtSinceTap
+                lExtSinceTap := low
+                lHold := 0
+            else
+                lHold += 1
+            if lHold >= confirmBars
+                lEntry := close
+                entered := true
+        if entered
+            lState := 3
+            longEntryNow := true
+else if lState == 3
+    if low <= lSL or high >= f_level(lOrigin, lExtreme, tp2R)
+        lState := 0
+        f_closeBox(lBox, lSweet)
+
+// ---------------------------------------------------------------- advance SHORT setup
+if sState == 1
+    if low < sExtreme or bar_index - sConfBar > maxWait
+        sState := 0
+        f_closeBox(sBox, sSweet)
+    else if high >= f_level(sOrigin, sExtreme, zoneNear)
+        sState := 2
+        sExtSinceTap := high
+        sHold := 0
+        shortTapNow := true
+        box.set_bgcolor(sBox, color.new(bearCol, 50))
+        if high >= sSL
+            sState := 0
+            f_closeBox(sBox, sSweet)
+        else if confirmMode == "touch"
+            sEntry := high >= f_level(sOrigin, sExtreme, sweetSpot) ? f_level(sOrigin, sExtreme, sweetSpot) : f_level(sOrigin, sExtreme, zoneNear)
+            sState := 3
+            shortEntryNow := true
+else if sState == 2
+    if high >= sSL or low < sExtreme
+        sState := 0
+        f_closeBox(sBox, sSweet)
+    else
+        entered = false
+        if confirmMode == "touch"
+            if high >= f_level(sOrigin, sExtreme, sweetSpot)
+                sEntry := f_level(sOrigin, sExtreme, sweetSpot)
+                entered := true
+        else if confirmMode == "reclaim"
+            if close < f_level(sOrigin, sExtreme, zoneNear) and close < open
+                sEntry := close
+                entered := true
+        else
+            if high > sExtSinceTap
+                sExtSinceTap := high
+                sHold := 0
+            else
+                sHold += 1
+            if sHold >= confirmBars
+                sEntry := close
+                entered := true
+        if entered
+            sState := 3
+            shortEntryNow := true
+else if sState == 3
+    if high >= sSL or low <= f_level(sOrigin, sExtreme, tp2R)
+        sState := 0
+        f_closeBox(sBox, sSweet)
+
+// ---------------------------------------------------------------- new LONG leg on a confirmed pivot high
+if not na(phV)
+    pivBar = bar_index - swingLen
+    if not na(prevPHBar)
+        // origin = lowest low between the previous pivot high and this one
+        span = pivBar - prevPHBar
+        float oLow = na
+        int   oBar = na
+        for k = 0 to span
+            off = swingLen + span - k          // offset back from current bar to prevPHBar + k
+            if na(oLow) or low[off] < oLow
+                oLow := low[off]
+                oBar := bar_index - off
+        // did a close inside the leg exceed the previous pivot high? (BOS / MSS)
+        float maxClose = na
+        for k = 0 to (pivBar - oBar)
+            off = swingLen + (pivBar - oBar) - k
+            maxClose := na(maxClose) or close[off] > maxClose ? close[off] : maxClose
+        broke = maxClose > prevPH
+        swept = not na(prevPL) and prevPLBar < oBar and oLow < prevPL
+        legOK = (phV - oLow) >= minLegAtr * atrV and oBar != pivBar and (not requireBOS or broke) and (not requireSweep or swept)
+        biasOK = not useBias or htfBias == 1
+        notGone = high <= phV
+        if legOK and biasOK and notGone and (lState == 0 or lState == 1)
+            if lState == 1
+                f_closeBox(lBox, lSweet)
+            lState := 1
+            lOrigin := oLow
+            lOriginBar := oBar
+            lExtreme := phV
+            lExtremeBar := pivBar
+            lConfBar := bar_index
+            lSL := oLow - slBufAtr * atrV
+            lBox := box.new(bar_index, f_level(oLow, phV, zoneNear), bar_index + 1, f_level(oLow, phV, zoneFar), border_color = color.new(bullCol, 0), bgcolor = showArmed ? bullCol : color.new(bullCol, 100), extend = extend.none)
+            lSweet := line.new(bar_index, f_level(oLow, phV, sweetSpot), bar_index + 1, f_level(oLow, phV, sweetSpot), color = color.new(bullCol, 0), style = line.style_dashed)
+            longArmedNow := true
+    olderPHBar := prevPHBar
+    olderPH := prevPH
+    prevPHBar := pivBar
+    prevPH := phV
+
+// ---------------------------------------------------------------- new SHORT leg on a confirmed pivot low
+if not na(plV)
+    pivBar = bar_index - swingLen
+    if not na(prevPLBar)
+        span = pivBar - prevPLBar
+        float oHigh = na
+        int   oBar = na
+        for k = 0 to span
+            off = swingLen + span - k
+            if na(oHigh) or high[off] > oHigh
+                oHigh := high[off]
+                oBar := bar_index - off
+        float minClose = na
+        for k = 0 to (pivBar - oBar)
+            off = swingLen + (pivBar - oBar) - k
+            minClose := na(minClose) or close[off] < minClose ? close[off] : minClose
+        broke = minClose < prevPL
+        swept = not na(prevPH) and prevPHBar < oBar and oHigh > prevPH
+        legOK = (oHigh - plV) >= minLegAtr * atrV and oBar != pivBar and (not requireBOS or broke) and (not requireSweep or swept)
+        biasOK = not useBias or htfBias == -1
+        notGone = low >= plV
+        if legOK and biasOK and notGone and (sState == 0 or sState == 1)
+            if sState == 1
+                f_closeBox(sBox, sSweet)
+            sState := 1
+            sOrigin := oHigh
+            sOriginBar := oBar
+            sExtreme := plV
+            sExtremeBar := pivBar
+            sConfBar := bar_index
+            sSL := oHigh + slBufAtr * atrV
+            sBox := box.new(bar_index, f_level(oHigh, plV, zoneFar), bar_index + 1, f_level(oHigh, plV, zoneNear), border_color = color.new(bearCol, 0), bgcolor = showArmed ? bearCol : color.new(bearCol, 100), extend = extend.none)
+            sSweet := line.new(bar_index, f_level(oHigh, plV, sweetSpot), bar_index + 1, f_level(oHigh, plV, sweetSpot), color = color.new(bearCol, 0), style = line.style_dashed)
+            shortArmedNow := true
+    olderPLBar := prevPLBar
+    olderPL := prevPL
+    prevPLBar := pivBar
+    prevPL := plV
+
+// ---------------------------------------------------------------- keep active drawings growing
+if lState > 0
+    f_closeBox(lBox, lSweet)
+if sState > 0
+    f_closeBox(sBox, sSweet)
+
+if longEntryNow
+    f_drawEntry(1, lEntry, lSL, lOrigin, lExtreme)
+if shortEntryNow
+    f_drawEntry(-1, sEntry, sSL, sOrigin, sExtreme)
+
+// ---------------------------------------------------------------- plots / table / alerts
+plotshape(longArmedNow, "Long zone armed", shape.circle, location.belowbar, color.new(#1565c0, 0), size = size.tiny)
+plotshape(shortArmedNow, "Short zone armed", shape.circle, location.abovebar, color.new(#ad1457, 0), size = size.tiny)
+plotshape(longTapNow, "Long zone tapped", shape.diamond, location.belowbar, color.new(#1565c0, 0), size = size.tiny)
+plotshape(shortTapNow, "Short zone tapped", shape.diamond, location.abovebar, color.new(#ad1457, 0), size = size.tiny)
+plotshape(longEntryNow, "Long entry", shape.triangleup, location.belowbar, color.green, size = size.small)
+plotshape(shortEntryNow, "Short entry", shape.triangledown, location.abovebar, color.red, size = size.small)
+
+var table t = table.new(position.top_right, 2, 4, border_width = 1)
+if barstate.islast
+    table.cell(t, 0, 0, "HTF bias", text_size = size.small)
+    table.cell(t, 1, 0, htfBias == 1 ? "BULLISH" : htfBias == -1 ? "BEARISH" : "n/a", text_color = htfBias == 1 ? color.green : htfBias == -1 ? color.red : color.gray, text_size = size.small)
+    table.cell(t, 0, 1, "Long zone", text_size = size.small)
+    table.cell(t, 1, 1, lState == 0 ? "-" : lState == 1 ? "armed " + str.tostring(f_level(lOrigin, lExtreme, zoneNear), format.mintick) + " / " + str.tostring(f_level(lOrigin, lExtreme, zoneFar), format.mintick) : lState == 2 ? "tapped - wait for consolidation" : "in trade", text_size = size.small)
+    table.cell(t, 0, 2, "Short zone", text_size = size.small)
+    table.cell(t, 1, 2, sState == 0 ? "-" : sState == 1 ? "armed " + str.tostring(f_level(sOrigin, sExtreme, zoneNear), format.mintick) + " / " + str.tostring(f_level(sOrigin, sExtreme, zoneFar), format.mintick) : sState == 2 ? "tapped - wait for consolidation" : "in trade", text_size = size.small)
+    table.cell(t, 0, 3, "Checklist", text_size = size.small)
+    table.cell(t, 1, 3, "bias > proper leg > wait for tap > consolidation > target", text_size = size.small)
+
+alertcondition(longArmedNow or shortArmedNow, "OTE zone armed", "OTE: new zone marked out on {{ticker}} {{interval}}")
+alertcondition(longTapNow or shortTapNow, "OTE zone tapped", "OTE: price entered the 0.62-0.79 zone on {{ticker}} {{interval}} - wait for consolidation")
+alertcondition(longEntryNow, "OTE long entry", "OTE LONG confirmed on {{ticker}} {{interval}}")
+alertcondition(shortEntryNow, "OTE short entry", "OTE SHORT confirmed on {{ticker}} {{interval}}")
