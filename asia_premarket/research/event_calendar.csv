@@ -1,0 +1,827 @@
+date,event,category,time_et,notes
+2024-06-03,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2024-06-02; dates from release history (S&P calendar blocked)
+2024-06-03,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2024-06-04,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2024-06-05,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2024-06-04; dates from release history
+2024-06-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2024-06-06,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2024-06-07,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2024-06-06; dates from release history (no official GAC calendar found)
+2024-06-07,NFP,us_data_tier1,08:30,BLS Employment Situation
+2024-06-12,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2024-06-11 (prior US evening)
+2024-06-12,EARN_AVGO,earnings,16:05,AVGO results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-06-12,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; with SEP/dot plot
+2024-06-12,CPI,us_data_tier1,08:30,BLS CPI
+2024-06-13,ES_NQ_ROLL,roll,,CME equity-index roll date (Thursday 8 days before 3rd-Friday expiry); volume migrates to next contract
+2024-06-13,PPI,us_data_tier2,08:30,BLS PPI
+2024-06-14,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET
+2024-06-17,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2024-06-16
+2024-06-18,RBA,rba,00:30,Australia date; decision 14:30 Sydney = 00:30 ET on 2024-06-18
+2024-06-18,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2024-06-19,JUNETEENTH,holiday,,"NYSE closed (Wed). Globex ES/NQ: halt 13:00 ET, reopen 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2024-06-20,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2024-06-21,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2024-06-20 (prior US evening); release history (3rd-party calendar)
+2024-06-21,TRIPLE_WITCHING,witching,09:30,Quarterly expiry: ES/NQ futures + index options + stock options; AM settlement
+2024-06-28,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2024-06-30,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2024-06-29 (prior US evening)
+2024-07-01,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2024-06-30; dates from release history (S&P calendar blocked)
+2024-07-01,TANKAN,jp_data,19:50,Japan date; 08:50 JST = 19:50 ET on 2024-06-30 (prior US evening)
+2024-07-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2024-07-02,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2024-07-03,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2024-07-02; dates from release history
+2024-07-03,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2024-07-03,EARLY_CLOSE,holiday,,"NYSE 13:00 close. Globex ES/NQ early halt 13:15 ET, reopen 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2024-07-03,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2024-07-04,INDEPENDENCE_DAY,holiday,,"NYSE closed (Thu). Globex ES/NQ: halt 13:00 ET, reopen 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2024-07-05,NFP,us_data_tier1,08:30,BLS Employment Situation
+2024-07-10,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2024-07-09 (prior US evening)
+2024-07-11,CPI,us_data_tier1,08:30,BLS CPI
+2024-07-12,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2024-07-11; dates from release history (no official GAC calendar found)
+2024-07-12,PPI,us_data_tier2,08:30,BLS PPI
+2024-07-15,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2024-07-14; includes quarterly GDP
+2024-07-15,CN_THIRD_PLENUM,cn_policy,,20th CC Third Plenum Jul 15-18 2024 (Wikipedia); China date; readouts hit during Asia session
+2024-07-16,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2024-07-18,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2024-07-19,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2024-07-18 (prior US evening); release history (3rd-party calendar)
+2024-07-19,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2024-07-23,EARN_GOOGL,earnings,16:05,GOOGL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-07-23,EARN_TSLA,earnings,16:05,TSLA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-07-25,GDP_ADV,us_data_tier2,08:30,GDP advance Q2-2024
+2024-07-26,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2024-07-30,EARN_MSFT,earnings,16:05,MSFT results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-07-30,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2024-07-31,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET; Outlook Report
+2024-07-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2024-07-30 (prior US evening)
+2024-07-31,EARN_META,earnings,16:05,META results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-07-31,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30
+2024-07-31,REFUNDING,us_treasury,08:30,Treasury quarterly refunding statement (auction sizes)
+2024-08-01,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2024-08-01,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2024-07-31; dates from release history (S&P calendar blocked)
+2024-08-01,EARN_AAPL,earnings,16:05,AAPL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-08-01,EARN_AMZN,earnings,16:05,AMZN results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-08-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2024-08-02,NFP,us_data_tier1,08:30,BLS Employment Situation
+2024-08-05,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2024-08-04; dates from release history
+2024-08-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2024-08-06,RBA,rba,00:30,Australia date; decision 14:30 Sydney = 00:30 ET on 2024-08-06
+2024-08-07,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2024-08-06; dates from release history (no official GAC calendar found)
+2024-08-09,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2024-08-08 (prior US evening)
+2024-08-13,PPI,us_data_tier2,08:30,BLS PPI
+2024-08-14,CPI,us_data_tier1,08:30,BLS CPI
+2024-08-15,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2024-08-14
+2024-08-15,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2024-08-16,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2024-08-21,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2024-08-23,JACKSON_HOLE,fed_jh,10:00,Symposium Aug 22-24 2024; Powell speech Fri 10:00 ET
+2024-08-23,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2024-08-22 (prior US evening); release history (3rd-party calendar)
+2024-08-28,EARN_NVDA,earnings,16:05,NVDA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-08-30,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2024-08-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2024-08-30 (prior US evening)
+2024-09-02,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2024-09-01; dates from release history (S&P calendar blocked)
+2024-09-02,LABOR_DAY,holiday,,"NYSE closed. Globex ES/NQ: open Sun 18:00 ET, halt 13:00 ET, reopen 18:00 ET (Asia session that evening OPEN); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2024-09-03,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2024-09-04,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2024-09-03; dates from release history
+2024-09-04,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2024-09-05,EARN_AVGO,earnings,16:05,AVGO results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-09-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2024-09-06,NFP,us_data_tier1,08:30,BLS Employment Situation
+2024-09-09,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2024-09-08 (prior US evening)
+2024-09-10,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2024-09-09; dates from release history (no official GAC calendar found)
+2024-09-11,CPI,us_data_tier1,08:30,BLS CPI
+2024-09-12,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2024-09-12,ES_NQ_ROLL,roll,,CME equity-index roll date (Thursday 8 days before 3rd-Friday expiry); volume migrates to next contract
+2024-09-12,PPI,us_data_tier2,08:30,BLS PPI
+2024-09-14,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2024-09-13
+2024-09-17,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2024-09-18,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; with SEP/dot plot
+2024-09-19,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2024-09-20,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET
+2024-09-20,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2024-09-19 (prior US evening); release history (3rd-party calendar)
+2024-09-20,TRIPLE_WITCHING,witching,09:30,Quarterly expiry: ES/NQ futures + index options + stock options; AM settlement
+2024-09-24,RBA,rba,00:30,Australia date; decision 14:30 Sydney = 00:30 ET on 2024-09-24
+2024-09-27,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2024-09-30,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2024-09-29; dates from release history (S&P calendar blocked)
+2024-09-30,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2024-09-29; dates from release history
+2024-09-30,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2024-09-29 (prior US evening)
+2024-09-30,FUNDING_DEADLINE,politics,,"FY2025 funding deadline; CR enacted (to Dec 20 2024) - from general knowledge, not re-verified"
+2024-10-01,TANKAN,jp_data,19:50,Japan date; 08:50 JST = 19:50 ET on 2024-09-30 (prior US evening)
+2024-10-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2024-10-01,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2024-10-03,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2024-10-04,NFP,us_data_tier1,08:30,BLS Employment Situation
+2024-10-09,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2024-10-10,CPI,us_data_tier1,08:30,BLS CPI
+2024-10-11,PPI,us_data_tier2,08:30,BLS PPI
+2024-10-13,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2024-10-12 (prior US evening)
+2024-10-14,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2024-10-13; dates from release history (no official GAC calendar found)
+2024-10-17,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2024-10-17,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2024-10-18,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2024-10-17; includes quarterly GDP
+2024-10-18,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2024-10-17 (prior US evening); release history (3rd-party calendar)
+2024-10-18,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2024-10-23,EARN_TSLA,earnings,16:05,TSLA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-10-29,EARN_GOOGL,earnings,16:05,GOOGL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-10-29,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2024-10-30,EARN_META,earnings,16:05,META results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-10-30,EARN_MSFT,earnings,16:05,MSFT results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-10-30,GDP_ADV,us_data_tier2,08:30,GDP advance Q3-2024
+2024-10-30,REFUNDING,us_treasury,08:30,Treasury quarterly refunding statement (auction sizes)
+2024-10-31,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET; Outlook Report
+2024-10-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2024-10-30 (prior US evening)
+2024-10-31,EARN_AAPL,earnings,16:05,AAPL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-10-31,EARN_AMZN,earnings,16:05,AMZN results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-10-31,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2024-11-01,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2024-10-31; dates from release history (S&P calendar blocked)
+2024-11-01,NFP,us_data_tier1,08:30,BLS Employment Situation
+2024-11-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2024-11-05,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2024-11-04; dates from release history
+2024-11-05,US_ELECTION,politics,,US presidential election; results overnight into Nov 6 Asia session
+2024-11-05,RBA,rba,22:30,Australia date; decision 14:30 Sydney = 22:30 ET on 2024-11-04
+2024-11-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2024-11-07,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2024-11-07,CN_TRADE,cn_data,22:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~22:00 ET on 2024-11-06; dates from release history (no official GAC calendar found)
+2024-11-07,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30
+2024-11-09,CN_CPI,cn_data,20:30,China date; NBS CPI+PPI 09:30 CST = 20:30 ET on 2024-11-08 (prior US evening)
+2024-11-13,CPI,us_data_tier1,08:30,BLS CPI
+2024-11-14,PPI,us_data_tier2,08:30,BLS PPI
+2024-11-15,CN_ACTIVITY,cn_data,21:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 21:00 ET on 2024-11-14
+2024-11-15,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2024-11-15,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2024-11-20,EARN_NVDA,earnings,16:05,NVDA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-11-22,JP_CPI,jp_data,18:30,Japan date; 08:30 JST = 18:30 ET on 2024-11-21 (prior US evening); release history (3rd-party calendar)
+2024-11-26,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2024-11-27,PCE,us_data_tier1,10:00,BEA Personal Income & Outlays (PCE price index)
+2024-11-28,THANKSGIVING,holiday,,NYSE closed. Globex ES/NQ: overnight session Wed->Thu open; halt 13:00 ET Thu; reopen 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2024-11-29,EARLY_CLOSE,holiday,,NYSE 13:00 close. Globex ES/NQ early halt 13:15 ET; Asia session Fri evening closed (weekend); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2024-11-30,CN_PMI_NBS,cn_data,20:30,China date; NBS official PMI 09:30 CST = 20:30 ET on 2024-11-29 (prior US evening)
+2024-12-02,CN_PMI_CAIXIN,cn_data,20:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 20:45 ET on 2024-12-01; dates from release history (S&P calendar blocked)
+2024-12-02,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2024-12-03,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2024-12-04,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2024-12-03; dates from release history
+2024-12-04,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2024-12-06,NFP,us_data_tier1,08:30,BLS Employment Situation
+2024-12-09,CN_CPI,cn_data,20:30,China date; NBS CPI+PPI 09:30 CST = 20:30 ET on 2024-12-08 (prior US evening)
+2024-12-10,CN_TRADE,cn_data,22:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~22:00 ET on 2024-12-09; dates from release history (no official GAC calendar found)
+2024-12-10,RBA,rba,22:30,Australia date; decision 14:30 Sydney = 22:30 ET on 2024-12-09
+2024-12-11,CPI,us_data_tier1,08:30,BLS CPI
+2024-12-12,EARN_AVGO,earnings,16:05,AVGO results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2024-12-12,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2024-12-12,ES_NQ_ROLL,roll,,CME equity-index roll date (Thursday 8 days before 3rd-Friday expiry); volume migrates to next contract
+2024-12-12,PPI,us_data_tier2,08:30,BLS PPI
+2024-12-13,TANKAN,jp_data,18:50,Japan date; 08:50 JST = 18:50 ET on 2024-12-12 (prior US evening)
+2024-12-16,CN_ACTIVITY,cn_data,21:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 21:00 ET on 2024-12-15
+2024-12-17,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2024-12-18,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; with SEP/dot plot
+2024-12-19,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2024-12-19,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET
+2024-12-20,JP_CPI,jp_data,18:30,Japan date; 08:30 JST = 18:30 ET on 2024-12-19 (prior US evening); release history (3rd-party calendar)
+2024-12-20,FUNDING_DEADLINE,politics,,"CR expiry; replacement CR to Mar 14 2025 enacted Dec 21 - from general knowledge, not re-verified"
+2024-12-20,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2024-12-20,TRIPLE_WITCHING,witching,09:30,Quarterly expiry: ES/NQ futures + index options + stock options; AM settlement
+2024-12-24,EARLY_CLOSE,holiday,,NYSE 13:00 close. Globex ES/NQ early halt 13:15 ET; NO overnight session into Dec 25; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2024-12-25,CHRISTMAS,holiday,,NYSE closed. Globex ES/NQ: CLOSED (no overnight session into this date); reopens 18:00 ET this evening; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2024-12-31,CN_PMI_NBS,cn_data,20:30,China date; NBS official PMI 09:30 CST = 20:30 ET on 2024-12-30 (prior US evening)
+2024-12-31,NYE,holiday,,NYSE normal full day. Globex ES/NQ: NO overnight session into Jan 1; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2025-01-01,NEW_YEARS,holiday,,NYSE closed. Globex ES/NQ: CLOSED (no overnight session into this date); reopens 18:00 ET this evening; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2025-01-01,DEBT_LIMIT,politics,,Debt-limit suspension expired; limit reinstated Jan 2 2025; extraordinary measures - general knowledge
+2025-01-02,CN_PMI_CAIXIN,cn_data,20:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 20:45 ET on 2025-01-01; dates from release history (S&P calendar blocked)
+2025-01-03,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-01-06,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2025-01-05; dates from release history
+2025-01-07,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2025-01-07,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2025-01-08,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2025-01-09,CN_CPI,cn_data,20:30,China date; NBS CPI+PPI 09:30 CST = 20:30 ET on 2025-01-08 (prior US evening)
+2025-01-09,DAY_OF_MOURNING,holiday,,"NYSE/Nasdaq closed (Carter). Globex ES/NQ: overnight session open, closed 09:30 ET, reopened 18:00 ET (CME notice); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2025-01-10,NFP,us_data_tier1,08:30,BLS Employment Situation
+2025-01-13,CN_TRADE,cn_data,22:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~22:00 ET on 2025-01-12; dates from release history (no official GAC calendar found)
+2025-01-14,PPI,us_data_tier2,08:30,BLS PPI
+2025-01-15,CPI,us_data_tier1,08:30,BLS CPI
+2025-01-16,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2025-01-17,CN_ACTIVITY,cn_data,21:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 21:00 ET on 2025-01-16; includes quarterly GDP
+2025-01-17,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2025-01-20,MLK_DAY,holiday,,"NYSE closed. Globex ES/NQ: open Sun 18:00 ET, halt 13:00 ET, reopen 18:00 ET (Asia session that evening OPEN); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2025-01-20,INAUGURATION,politics,12:00,Presidential inauguration; tariff/exec-order headlines overnight
+2025-01-24,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET; Outlook Report
+2025-01-24,JP_CPI,jp_data,18:30,Japan date; 08:30 JST = 18:30 ET on 2025-01-23 (prior US evening); release history (3rd-party calendar)
+2025-01-27,CN_PMI_NBS,cn_data,20:30,China date; NBS official PMI 09:30 CST = 20:30 ET on 2025-01-26 (prior US evening)
+2025-01-29,EARN_META,earnings,16:05,META results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-01-29,EARN_MSFT,earnings,16:05,MSFT results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-01-29,EARN_TSLA,earnings,16:05,TSLA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-01-29,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30
+2025-01-30,EARN_AAPL,earnings,16:05,AAPL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-01-30,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2025-01-30,GDP_ADV,us_data_tier2,08:30,GDP advance Q4-2024
+2025-01-31,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2025-02-03,CN_PMI_CAIXIN,cn_data,20:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 20:45 ET on 2025-02-02; dates from release history (S&P calendar blocked)
+2025-02-03,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-02-04,EARN_GOOGL,earnings,16:05,GOOGL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-02-04,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2025-02-05,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2025-02-04; dates from release history
+2025-02-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2025-02-05,REFUNDING,us_treasury,08:30,Treasury quarterly refunding statement (auction sizes)
+2025-02-06,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2025-02-06,EARN_AMZN,earnings,16:05,AMZN results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-02-07,NFP,us_data_tier1,08:30,BLS Employment Situation
+2025-02-09,CN_CPI,cn_data,20:30,China date; NBS CPI+PPI 09:30 CST = 20:30 ET on 2025-02-08 (prior US evening)
+2025-02-12,CPI,us_data_tier1,08:30,BLS CPI
+2025-02-13,PPI,us_data_tier2,08:30,BLS PPI
+2025-02-14,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2025-02-17,PRESIDENTS_DAY,holiday,,"NYSE closed. Globex ES/NQ: open Sun 18:00 ET, halt 13:00 ET, reopen 18:00 ET (Asia session that evening OPEN); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2025-02-18,RBA,rba,22:30,Australia date; decision 14:30 Sydney = 22:30 ET on 2025-02-17
+2025-02-19,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2025-02-21,JP_CPI,jp_data,18:30,Japan date; 08:30 JST = 18:30 ET on 2025-02-20 (prior US evening); release history (3rd-party calendar)
+2025-02-21,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2025-02-26,EARN_NVDA,earnings,16:05,NVDA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-02-28,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2025-03-01,CN_PMI_NBS,cn_data,20:30,China date; NBS official PMI 09:30 CST = 20:30 ET on 2025-02-28 (prior US evening)
+2025-03-03,CN_PMI_CAIXIN,cn_data,20:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 20:45 ET on 2025-03-02; dates from release history (S&P calendar blocked)
+2025-03-03,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-03-05,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2025-03-04; dates from release history
+2025-03-05,CN_NPC,cn_policy,,NPC annual session opens Mar 5 (statutory date); 2025 session Mar 5-11 - general knowledge; China date; readouts hit during Asia session
+2025-03-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2025-03-06,EARN_AVGO,earnings,16:05,AVGO results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-03-06,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2025-03-07,CN_TRADE,cn_data,22:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~22:00 ET on 2025-03-06; dates from release history (no official GAC calendar found)
+2025-03-07,NFP,us_data_tier1,08:30,BLS Employment Situation
+2025-03-09,CN_CPI,cn_data,20:30,China date; NBS CPI+PPI 09:30 CST = 20:30 ET on 2025-03-08 (prior US evening)
+2025-03-11,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2025-03-12,CPI,us_data_tier1,08:30,BLS CPI
+2025-03-13,ES_NQ_ROLL,roll,,CME equity-index roll date (Thursday 8 days before 3rd-Friday expiry); volume migrates to next contract
+2025-03-13,PPI,us_data_tier2,08:30,BLS PPI
+2025-03-14,FUNDING_DEADLINE,politics,,CR expiry; full-year CR signed Mar 15 2025 - general knowledge
+2025-03-17,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2025-03-16
+2025-03-17,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2025-03-19,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET
+2025-03-19,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; with SEP/dot plot
+2025-03-20,BOE,boe,08:00,BoE MPC decision 12:00 London = 08:00 ET (bankofengland.co.uk MPC dates)
+2025-03-21,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2025-03-20 (prior US evening); release history (3rd-party calendar)
+2025-03-21,TRIPLE_WITCHING,witching,09:30,Quarterly expiry: ES/NQ futures + index options + stock options; AM settlement
+2025-03-28,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2025-03-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2025-03-30 (prior US evening)
+2025-04-01,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2025-03-31; dates from release history (S&P calendar blocked)
+2025-04-01,TANKAN,jp_data,19:50,Japan date; 08:50 JST = 19:50 ET on 2025-03-31 (prior US evening)
+2025-04-01,RBA,rba,23:30,Australia date; decision 14:30 Sydney = 23:30 ET on 2025-03-31
+2025-04-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-04-01,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2025-04-02,TARIFF_LIBERATION_DAY,politics,16:00,Reciprocal tariffs announced after close; 10% baseline effective Apr 5
+2025-04-03,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2025-04-02; dates from release history
+2025-04-03,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2025-04-04,NFP,us_data_tier1,08:30,BLS Employment Situation
+2025-04-09,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2025-04-09,TARIFF_PAUSE,politics,,"Country-specific reciprocal tariffs paused 90 days (ex-China, raised to 145%)"
+2025-04-10,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2025-04-09 (prior US evening)
+2025-04-10,CPI,us_data_tier1,08:30,BLS CPI
+2025-04-11,PPI,us_data_tier2,08:30,BLS PPI
+2025-04-14,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2025-04-13; dates from release history (no official GAC calendar found)
+2025-04-16,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2025-04-15; includes quarterly GDP
+2025-04-16,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2025-04-17,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2025-04-18,GOOD_FRIDAY,holiday,,NYSE closed. Globex ES/NQ: CLOSED all day (no Thu-night session); reopens Sun 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2025-04-18,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2025-04-17 (prior US evening); release history (3rd-party calendar)
+2025-04-18,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2025-04-22,EARN_TSLA,earnings,16:05,TSLA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-04-24,EARN_GOOGL,earnings,16:05,GOOGL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-04-29,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2025-04-30,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2025-04-29; dates from release history (S&P calendar blocked)
+2025-04-30,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2025-04-29 (prior US evening)
+2025-04-30,EARN_META,earnings,16:05,META results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-04-30,EARN_MSFT,earnings,16:05,MSFT results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-04-30,PCE,us_data_tier1,10:00,BEA Personal Income & Outlays (PCE price index)
+2025-04-30,GDP_ADV,us_data_tier2,08:30,GDP advance Q1-2025
+2025-04-30,REFUNDING,us_treasury,08:30,Treasury quarterly refunding statement (auction sizes)
+2025-05-01,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET; Outlook Report
+2025-05-01,EARN_AAPL,earnings,16:05,AAPL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-05-01,EARN_AMZN,earnings,16:05,AMZN results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-05-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-05-02,NFP,us_data_tier1,08:30,BLS Employment Situation
+2025-05-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2025-05-06,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2025-05-05; dates from release history
+2025-05-07,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30
+2025-05-08,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2025-05-09,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2025-05-08; dates from release history (no official GAC calendar found)
+2025-05-10,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2025-05-09 (prior US evening)
+2025-05-13,CPI,us_data_tier1,08:30,BLS CPI
+2025-05-15,PPI,us_data_tier2,08:30,BLS PPI
+2025-05-15,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2025-05-16,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2025-05-19,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2025-05-18
+2025-05-20,RBA,rba,00:30,Australia date; decision 14:30 Sydney = 00:30 ET on 2025-05-20
+2025-05-23,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2025-05-22 (prior US evening); release history (3rd-party calendar)
+2025-05-26,MEMORIAL_DAY,holiday,,"NYSE closed. Globex ES/NQ: open Sun 18:00 ET, halt 13:00 ET, reopen 18:00 ET (Asia session that evening OPEN); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2025-05-28,EARN_NVDA,earnings,16:05,NVDA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-05-28,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2025-05-30,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2025-05-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2025-05-30 (prior US evening)
+2025-06-02,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-06-03,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2025-06-02; dates from release history (S&P calendar blocked)
+2025-06-03,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2025-06-04,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2025-06-05,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2025-06-04; dates from release history
+2025-06-05,EARN_AVGO,earnings,16:05,AVGO results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-06-05,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2025-06-06,NFP,us_data_tier1,08:30,BLS Employment Situation
+2025-06-09,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2025-06-08 (prior US evening)
+2025-06-09,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2025-06-08; dates from release history (no official GAC calendar found)
+2025-06-11,CPI,us_data_tier1,08:30,BLS CPI
+2025-06-12,ES_NQ_ROLL,roll,,CME equity-index roll date (Thursday 8 days before 3rd-Friday expiry); volume migrates to next contract
+2025-06-12,PPI,us_data_tier2,08:30,BLS PPI
+2025-06-16,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2025-06-15
+2025-06-17,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET
+2025-06-17,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2025-06-18,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; with SEP/dot plot
+2025-06-19,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2025-06-19,JUNETEENTH,holiday,,"NYSE closed (Thu). Globex ES/NQ: halt 13:00 ET, reopen 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2025-06-20,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2025-06-19 (prior US evening); release history (3rd-party calendar)
+2025-06-20,TRIPLE_WITCHING,witching,09:30,Quarterly expiry: ES/NQ futures + index options + stock options; AM settlement
+2025-06-27,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2025-06-30,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2025-06-29 (prior US evening)
+2025-07-01,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2025-06-30; dates from release history (S&P calendar blocked)
+2025-07-01,TANKAN,jp_data,19:50,Japan date; 08:50 JST = 19:50 ET on 2025-06-30 (prior US evening)
+2025-07-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-07-01,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2025-07-03,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2025-07-02; dates from release history
+2025-07-03,EARLY_CLOSE,holiday,,"NYSE 13:00 close. Globex ES/NQ early halt 13:15 ET, reopen 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2025-07-03,NFP,us_data_tier1,08:30,BLS Employment Situation
+2025-07-03,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2025-07-04,INDEPENDENCE_DAY,holiday,,NYSE closed (Fri). Globex ES/NQ: halt 13:00 ET; weekend; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2025-07-04,DEBT_LIMIT,politics,,"OBBBA signed; debt limit raised by $5T - general knowledge, not re-verified"
+2025-07-08,RBA,rba,00:30,Australia date; decision 14:30 Sydney = 00:30 ET on 2025-07-08
+2025-07-09,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2025-07-08 (prior US evening)
+2025-07-09,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2025-07-09,TARIFF_DEADLINE,politics,,Original expiry of 90-day reciprocal pause; extended to Aug 1 (effective Aug 7) - partly verified
+2025-07-14,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2025-07-13; dates from release history (no official GAC calendar found)
+2025-07-15,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2025-07-14; includes quarterly GDP
+2025-07-15,CPI,us_data_tier1,08:30,BLS CPI
+2025-07-16,PPI,us_data_tier2,08:30,BLS PPI
+2025-07-17,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2025-07-18,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2025-07-17 (prior US evening); release history (3rd-party calendar)
+2025-07-18,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2025-07-23,EARN_GOOGL,earnings,16:05,GOOGL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-07-23,EARN_TSLA,earnings,16:05,TSLA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-07-24,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2025-07-29,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2025-07-30,EARN_META,earnings,16:05,META results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-07-30,EARN_MSFT,earnings,16:05,MSFT results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-07-30,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30
+2025-07-30,GDP_ADV,us_data_tier2,08:30,GDP advance Q2-2025
+2025-07-30,REFUNDING,us_treasury,08:30,Treasury quarterly refunding statement (auction sizes)
+2025-07-31,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET; Outlook Report
+2025-07-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2025-07-30 (prior US evening)
+2025-07-31,EARN_AAPL,earnings,16:05,AAPL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-07-31,EARN_AMZN,earnings,16:05,AMZN results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-07-31,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2025-08-01,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2025-07-31; dates from release history (S&P calendar blocked)
+2025-08-01,TARIFF_DEADLINE,politics,,Announced reciprocal-tariff deadline; rates took effect Aug 7 2025
+2025-08-01,NFP,us_data_tier1,08:30,BLS Employment Situation
+2025-08-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-08-05,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2025-08-04; dates from release history
+2025-08-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2025-08-07,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2025-08-07,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2025-08-06; dates from release history (no official GAC calendar found)
+2025-08-07,TARIFF_EFFECTIVE,politics,00:01,Country-specific reciprocal tariffs took effect
+2025-08-09,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2025-08-08 (prior US evening)
+2025-08-12,TARIFF_DEADLINE,politics,,US-China 90-day truce expiry; extended 90 days to Nov 10 2025 - general knowledge
+2025-08-12,RBA,rba,00:30,Australia date; decision 14:30 Sydney = 00:30 ET on 2025-08-12
+2025-08-12,CPI,us_data_tier1,08:30,BLS CPI
+2025-08-14,PPI,us_data_tier2,08:30,BLS PPI
+2025-08-15,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2025-08-14
+2025-08-15,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2025-08-15,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2025-08-20,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2025-08-22,JACKSON_HOLE,fed_jh,10:00,Symposium Aug 21-23 2025; Powell speech Fri 10:00 ET
+2025-08-22,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2025-08-21 (prior US evening); release history (3rd-party calendar)
+2025-08-27,EARN_NVDA,earnings,16:05,NVDA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-08-29,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2025-08-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2025-08-30 (prior US evening)
+2025-09-01,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2025-08-31; dates from release history (S&P calendar blocked)
+2025-09-01,LABOR_DAY,holiday,,"NYSE closed. Globex ES/NQ: open Sun 18:00 ET, halt 13:00 ET, reopen 18:00 ET (Asia session that evening OPEN); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2025-09-02,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-09-03,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2025-09-02; dates from release history
+2025-09-03,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2025-09-04,EARN_AVGO,earnings,16:05,AVGO results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-09-04,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2025-09-05,NFP,us_data_tier1,08:30,BLS Employment Situation
+2025-09-08,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2025-09-07; dates from release history (no official GAC calendar found)
+2025-09-10,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2025-09-09 (prior US evening)
+2025-09-10,PPI,us_data_tier2,08:30,BLS PPI
+2025-09-11,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2025-09-11,ES_NQ_ROLL,roll,,CME equity-index roll date (Thursday 8 days before 3rd-Friday expiry); volume migrates to next contract
+2025-09-11,CPI,us_data_tier1,08:30,BLS CPI
+2025-09-15,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2025-09-14
+2025-09-16,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2025-09-17,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; with SEP/dot plot
+2025-09-18,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2025-09-19,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET
+2025-09-19,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2025-09-18 (prior US evening); release history (3rd-party calendar)
+2025-09-19,TRIPLE_WITCHING,witching,09:30,Quarterly expiry: ES/NQ futures + index options + stock options; AM settlement
+2025-09-26,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2025-09-30,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2025-09-29; dates from release history (S&P calendar blocked)
+2025-09-30,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2025-09-29; dates from release history
+2025-09-30,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2025-09-29 (prior US evening)
+2025-09-30,FUNDING_DEADLINE,politics,,FY2026 deadline missed; shutdown Oct 1 - Nov 12 2025 (43 days; BLS/BEA releases delayed)
+2025-09-30,RBA,rba,00:30,Australia date; decision 14:30 Sydney = 00:30 ET on 2025-09-30
+2025-09-30,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2025-10-01,TANKAN,jp_data,19:50,Japan date; 08:50 JST = 19:50 ET on 2025-09-30 (prior US evening)
+2025-10-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-10-03,ISM_SVC,us_data_tier2,10:00,"ISM Services PMI (one calendar lists Oct 5 2025, a Sunday; Oct 3 used)"
+2025-10-08,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2025-10-13,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2025-10-12; dates from release history (no official GAC calendar found)
+2025-10-15,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2025-10-14 (prior US evening)
+2025-10-17,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2025-10-20,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2025-10-19; includes quarterly GDP
+2025-10-20,CN_FOURTH_PLENUM,cn_policy,,20th CC Fourth Plenum Oct 20-23 2025; 15th Five-Year Plan (Wikipedia); China date; readouts hit during Asia session
+2025-10-22,EARN_TSLA,earnings,16:05,TSLA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-10-24,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2025-10-23 (prior US evening); release history (3rd-party calendar)
+2025-10-24,CPI,us_data_tier1,08:30,"BLS CPI (Sep-2025 data, delayed by shutdown; Oct-2025 CPI was never published)"
+2025-10-29,EARN_GOOGL,earnings,16:05,GOOGL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-10-29,EARN_META,earnings,16:05,META results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-10-29,EARN_MSFT,earnings,16:05,MSFT results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-10-29,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30
+2025-10-30,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET; Outlook Report
+2025-10-30,EARN_AAPL,earnings,16:05,AAPL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-10-30,EARN_AMZN,earnings,16:05,AMZN results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-10-30,ECB,ecb,09:15,ECB decision 14:15 CET = 09:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2025-10-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2025-10-30 (prior US evening)
+2025-11-03,CN_PMI_CAIXIN,cn_data,20:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 20:45 ET on 2025-11-02; dates from release history (S&P calendar blocked)
+2025-11-03,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-11-04,RBA,rba,22:30,Australia date; decision 14:30 Sydney = 22:30 ET on 2025-11-03
+2025-11-05,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2025-11-04; dates from release history
+2025-11-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2025-11-05,REFUNDING,us_treasury,08:30,Treasury quarterly refunding statement (auction sizes)
+2025-11-06,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2025-11-07,CN_TRADE,cn_data,22:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~22:00 ET on 2025-11-06; dates from release history (no official GAC calendar found)
+2025-11-09,CN_CPI,cn_data,20:30,China date; NBS CPI+PPI 09:30 CST = 20:30 ET on 2025-11-08 (prior US evening)
+2025-11-10,TARIFF_DEADLINE,politics,,US-China truce expiry; replaced by 1-year truce to 12:01 ET Nov 10 2026 (Federal Register)
+2025-11-12,SHUTDOWN_END,politics,,House cleared funding bill ending 43-day shutdown; CR to Jan 30 2026
+2025-11-14,CN_ACTIVITY,cn_data,21:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 21:00 ET on 2025-11-13
+2025-11-19,EARN_NVDA,earnings,16:05,NVDA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-11-19,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2025-11-20,NFP,us_data_tier1,08:30,"BLS Employment Situation (Sep-2025 data, delayed by shutdown)"
+2025-11-21,JP_CPI,jp_data,18:30,Japan date; 08:30 JST = 18:30 ET on 2025-11-20 (prior US evening); release history (3rd-party calendar)
+2025-11-21,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2025-11-25,PPI,us_data_tier2,08:30,"BLS PPI (Sep-2025 data, delayed by shutdown)"
+2025-11-25,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales (post-shutdown catch-up schedule)
+2025-11-27,THANKSGIVING,holiday,,NYSE closed. Globex ES/NQ: overnight session Wed->Thu open; halt 13:00 ET Thu; reopen 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2025-11-28,EARLY_CLOSE,holiday,,NYSE 13:00 close. Globex ES/NQ early halt 13:15 ET; weekend; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2025-11-30,CN_PMI_NBS,cn_data,20:30,China date; NBS official PMI 09:30 CST = 20:30 ET on 2025-11-29 (prior US evening)
+2025-12-01,CN_PMI_CAIXIN,cn_data,20:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 20:45 ET on 2025-11-30; dates from release history (S&P calendar blocked)
+2025-12-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2025-12-03,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2025-12-02; dates from release history
+2025-12-03,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2025-12-05,PCE,us_data_tier1,10:00,BEA PCE (Sep-2025 data; delayed by shutdown)
+2025-12-08,CN_TRADE,cn_data,22:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~22:00 ET on 2025-12-07; dates from release history (no official GAC calendar found)
+2025-12-09,RBA,rba,22:30,Australia date; decision 14:30 Sydney = 22:30 ET on 2025-12-08
+2025-12-09,JOLTS,us_data_tier2,10:00,BLS JOLTS (Oct-2025 data; Sep-2025 JOLTS skipped after shutdown)
+2025-12-10,CN_CPI,cn_data,20:30,China date; NBS CPI+PPI 09:30 CST = 20:30 ET on 2025-12-09 (prior US evening)
+2025-12-10,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; with SEP/dot plot
+2025-12-11,EARN_AVGO,earnings,16:05,AVGO results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2025-12-11,ES_NQ_ROLL,roll,,CME equity-index roll date (Thursday 8 days before 3rd-Friday expiry); volume migrates to next contract
+2025-12-15,CN_ACTIVITY,cn_data,21:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 21:00 ET on 2025-12-14
+2025-12-15,TANKAN,jp_data,18:50,Japan date; 08:50 JST = 18:50 ET on 2025-12-14 (prior US evening)
+2025-12-16,NFP,us_data_tier1,08:30,BLS Employment Situation (Nov-2025 data; Oct household data not published)
+2025-12-16,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales (post-shutdown catch-up schedule)
+2025-12-18,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2025-12-18,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2025-12-18,CPI,us_data_tier1,08:30,BLS CPI (Nov-2025 data; post-shutdown schedule)
+2025-12-19,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET
+2025-12-19,JP_CPI,jp_data,18:30,Japan date; 08:30 JST = 18:30 ET on 2025-12-18 (prior US evening); release history (3rd-party calendar)
+2025-12-19,TRIPLE_WITCHING,witching,09:30,Quarterly expiry: ES/NQ futures + index options + stock options; AM settlement
+2025-12-23,GDP_ADV,us_data_tier2,08:30,GDP Q3-2025 initial estimate (advance cancelled Oct 30 2025 due to shutdown)
+2025-12-24,EARLY_CLOSE,holiday,,NYSE 13:00 close. Globex ES/NQ early halt 13:15 ET; NO overnight session into Dec 25; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2025-12-25,CHRISTMAS,holiday,,NYSE closed. Globex ES/NQ: CLOSED (no overnight session into this date); reopens 18:00 ET this evening; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2025-12-30,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2025-12-31,CN_PMI_CAIXIN,cn_data,20:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 20:45 ET on 2025-12-30; dates from release history (S&P calendar blocked)
+2025-12-31,CN_PMI_NBS,cn_data,20:30,China date; NBS official PMI 09:30 CST = 20:30 ET on 2025-12-30 (prior US evening)
+2025-12-31,NYE,holiday,,NYSE normal full day. Globex ES/NQ: NO overnight session into Jan 1; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2026-01-01,NEW_YEARS,holiday,,NYSE closed. Globex ES/NQ: CLOSED (no overnight session into this date); reopens 18:00 ET this evening; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2026-01-05,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2026-01-04; dates from release history
+2026-01-05,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-01-07,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2026-01-07,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-01-09,CN_CPI,cn_data,20:30,China date; NBS CPI+PPI 09:30 CST = 20:30 ET on 2026-01-08 (prior US evening)
+2026-01-09,NFP,us_data_tier1,08:30,BLS Employment Situation
+2026-01-13,CPI,us_data_tier1,08:30,BLS CPI
+2026-01-14,CN_TRADE,cn_data,22:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~22:00 ET on 2026-01-13; dates from release history (no official GAC calendar found)
+2026-01-14,PPI,us_data_tier2,08:30,BLS PPI (Nov-2025 data; catch-up release)
+2026-01-14,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales (post-shutdown catch-up schedule)
+2026-01-16,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2026-01-19,CN_ACTIVITY,cn_data,21:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 21:00 ET on 2026-01-18; includes quarterly GDP
+2026-01-19,MLK_DAY,holiday,,"NYSE closed. Globex ES/NQ: open Sun 18:00 ET, halt 13:00 ET, reopen 18:00 ET (Asia session that evening OPEN); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2026-01-22,PCE,us_data_tier1,10:00,BEA PCE (Oct+Nov-2025 data combined; delayed by shutdown)
+2026-01-23,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET; Outlook Report
+2026-01-23,JP_CPI,jp_data,18:30,Japan date; 08:30 JST = 18:30 ET on 2026-01-22 (prior US evening); official stat.go.jp schedule
+2026-01-28,EARN_META,earnings,16:05,META results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-01-28,EARN_MSFT,earnings,16:05,MSFT results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-01-28,EARN_TSLA,earnings,16:05,TSLA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-01-28,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30
+2026-01-29,EARN_AAPL,earnings,16:05,AAPL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-01-30,FUNDING_DEADLINE,politics,,CR expiry; Senate passed package Jan 30; brief lapse Jan 31 - Feb 3 2026
+2026-01-30,PPI,us_data_tier2,08:30,BLS PPI (Dec-2025 data; catch-up release)
+2026-01-31,CN_PMI_NBS,cn_data,20:30,China date; NBS official PMI 09:30 CST = 20:30 ET on 2026-01-30 (prior US evening)
+2026-02-02,CN_PMI_CAIXIN,cn_data,20:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 20:45 ET on 2026-02-01; dates from release history (S&P calendar blocked)
+2026-02-02,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-02-03,RBA,rba,22:30,Australia date; decision 14:30 Sydney = 22:30 ET on 2026-02-02
+2026-02-04,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2026-02-03; dates from release history
+2026-02-04,EARN_GOOGL,earnings,16:05,GOOGL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-02-04,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2026-02-04,REFUNDING,us_treasury,08:30,Treasury quarterly refunding statement (auction sizes)
+2026-02-05,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2026-02-05,EARN_AMZN,earnings,16:05,AMZN results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-02-05,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2026-02-05,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-02-10,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales (post-shutdown catch-up schedule)
+2026-02-11,CN_CPI,cn_data,20:30,China date; NBS CPI+PPI 09:30 CST = 20:30 ET on 2026-02-10 (prior US evening)
+2026-02-11,NFP,us_data_tier1,08:30,BLS Employment Situation
+2026-02-13,CPI,us_data_tier1,08:30,BLS CPI
+2026-02-14,DHS_SHUTDOWN_START,politics,,DHS appropriations lapse 00:01 ET; lasted to Apr 30 2026 (76 days)
+2026-02-16,PRESIDENTS_DAY,holiday,,"NYSE closed. Globex ES/NQ: open Sun 18:00 ET, halt 13:00 ET, reopen 18:00 ET (Asia session that evening OPEN); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2026-02-18,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2026-02-20,JP_CPI,jp_data,18:30,Japan date; 08:30 JST = 18:30 ET on 2026-02-19 (prior US evening); official stat.go.jp schedule
+2026-02-20,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2026-02-20,SCOTUS_IEEPA_RULING,politics,,Supreme Court 6-3: IEEPA does not authorize tariffs; Section 122 surcharge announced
+2026-02-20,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-02-20,GDP_ADV,us_data_tier2,08:30,GDP advance Q4-2025 (delayed by shutdown)
+2026-02-24,TARIFF_SEC122_START,politics,,Section 122 global import surcharge effective (150-day limit)
+2026-02-25,EARN_NVDA,earnings,16:05,NVDA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-02-27,PPI,us_data_tier2,08:30,BLS PPI (Jan-2026 data; catch-up release)
+2026-03-02,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-03-04,CN_PMI_CAIXIN,cn_data,20:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 20:45 ET on 2026-03-03; dates from release history (S&P calendar blocked)
+2026-03-04,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2026-03-03; dates from release history
+2026-03-04,CN_PMI_NBS,cn_data,20:30,China date; NBS official PMI 09:30 CST = 20:30 ET on 2026-03-03 (prior US evening); Feb-2026 PMI date parsed from NBS calendar as Mar 4 - UNCERTAIN
+2026-03-04,EARN_AVGO,earnings,16:05,AVGO results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-03-04,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2026-03-05,CN_NPC,cn_policy,,NPC 4th session of 14th NPC Mar 5-12 2026; growth target 4.5-5% (Xinhua/China Daily); China date; readouts hit during Asia session
+2026-03-06,NFP,us_data_tier1,08:30,BLS Employment Situation
+2026-03-06,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales (post-shutdown catch-up schedule)
+2026-03-09,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2026-03-08 (prior US evening)
+2026-03-10,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2026-03-09; dates from release history (no official GAC calendar found)
+2026-03-11,CPI,us_data_tier1,08:30,BLS CPI
+2026-03-12,ES_NQ_ROLL,roll,,CME equity-index roll date (Thursday 8 days before 3rd-Friday expiry); volume migrates to next contract
+2026-03-13,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-03-13,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-03-16,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2026-03-15
+2026-03-17,RBA,rba,23:30,Australia date; decision 14:30 Sydney = 23:30 ET on 2026-03-16
+2026-03-18,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; with SEP/dot plot
+2026-03-18,PPI,us_data_tier2,08:30,BLS PPI
+2026-03-19,BOE,boe,08:00,BoE MPC decision 12:00 London = 08:00 ET (bankofengland.co.uk MPC dates)
+2026-03-19,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET
+2026-03-19,ECB,ecb,09:15,ECB decision 14:15 CET = 09:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2026-03-20,TRIPLE_WITCHING,witching,09:30,Quarterly expiry: ES/NQ futures + index options + stock options; AM settlement
+2026-03-24,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2026-03-23 (prior US evening); official stat.go.jp schedule
+2026-03-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2026-03-30 (prior US evening)
+2026-03-31,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-04-01,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2026-03-31; dates from release history (S&P calendar blocked)
+2026-04-01,TANKAN,jp_data,19:50,Japan date; 08:50 JST = 19:50 ET on 2026-03-31 (prior US evening)
+2026-04-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-04-01,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales (post-shutdown catch-up schedule)
+2026-04-03,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2026-04-02; dates from release history
+2026-04-03,GOOD_FRIDAY,holiday,,NYSE closed. NFP released 08:30; CME clearing advisory: equity index ABBREVIATED session Apr 3 (overnight Thu->Fri open); exact close hour unverified; reopens Sun 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2026-04-03,NFP,us_data_tier1,08:30,BLS Employment Situation on Good Friday; CME equity index ran abbreviated session
+2026-04-03,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2026-04-08,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2026-04-09,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-04-10,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2026-04-09 (prior US evening)
+2026-04-10,CPI,us_data_tier1,08:30,BLS CPI
+2026-04-14,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2026-04-13; dates from release history (no official GAC calendar found)
+2026-04-14,PPI,us_data_tier2,08:30,BLS PPI
+2026-04-16,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2026-04-15; includes quarterly GDP
+2026-04-17,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2026-04-21,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2026-04-22,EARN_TSLA,earnings,16:05,TSLA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-04-24,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2026-04-23 (prior US evening); official stat.go.jp schedule
+2026-04-28,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET; Outlook Report
+2026-04-29,EARN_AMZN,earnings,16:05,AMZN results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-04-29,EARN_GOOGL,earnings,16:05,GOOGL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-04-29,EARN_META,earnings,16:05,META results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-04-29,EARN_MSFT,earnings,16:05,MSFT results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-04-29,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30
+2026-04-30,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2026-04-30,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2026-04-29; dates from release history (S&P calendar blocked)
+2026-04-30,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2026-04-29 (prior US evening)
+2026-04-30,EARN_AAPL,earnings,16:05,AAPL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-04-30,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2026-04-30,DHS_SHUTDOWN_END,politics,,"DHS funding bill signed, ending 76-day lapse"
+2026-04-30,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-04-30,GDP_ADV,us_data_tier2,08:30,GDP advance Q1-2026
+2026-05-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-05-05,RBA,rba,00:30,Australia date; decision 14:30 Sydney = 00:30 ET on 2026-05-05
+2026-05-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2026-05-05,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-05-06,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2026-05-05; dates from release history
+2026-05-06,REFUNDING,us_treasury,08:30,Treasury quarterly refunding statement (auction sizes)
+2026-05-08,NFP,us_data_tier1,08:30,BLS Employment Situation
+2026-05-09,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2026-05-08; dates from release history (no official GAC calendar found)
+2026-05-11,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2026-05-10 (prior US evening)
+2026-05-12,CPI,us_data_tier1,08:30,BLS CPI
+2026-05-13,PPI,us_data_tier2,08:30,BLS PPI
+2026-05-14,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2026-05-15,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2026-05-18,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2026-05-17
+2026-05-20,EARN_NVDA,earnings,16:05,NVDA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-05-20,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2026-05-22,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2026-05-21 (prior US evening); official stat.go.jp schedule
+2026-05-25,MEMORIAL_DAY,holiday,,"NYSE closed. Globex ES/NQ: open Sun 18:00 ET, halt 13:00 ET, reopen 18:00 ET (Asia session that evening OPEN); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2026-05-28,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-05-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2026-05-30 (prior US evening)
+2026-06-01,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2026-05-31; dates from release history (S&P calendar blocked)
+2026-06-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-06-02,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-06-03,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2026-06-02; dates from release history
+2026-06-03,EARN_AVGO,earnings,16:05,AVGO results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-06-03,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2026-06-05,NFP,us_data_tier1,08:30,BLS Employment Situation
+2026-06-09,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2026-06-08; dates from release history (no official GAC calendar found)
+2026-06-10,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2026-06-09 (prior US evening)
+2026-06-10,CPI,us_data_tier1,08:30,BLS CPI
+2026-06-11,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2026-06-11,ES_NQ_ROLL,roll,,CME equity-index roll date (Thursday 8 days before 3rd-Friday expiry); volume migrates to next contract
+2026-06-11,PPI,us_data_tier2,08:30,BLS PPI
+2026-06-16,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET
+2026-06-16,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2026-06-15
+2026-06-16,RBA,rba,00:30,Australia date; decision 14:30 Sydney = 00:30 ET on 2026-06-16
+2026-06-17,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; with SEP/dot plot
+2026-06-17,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2026-06-18,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2026-06-19,JUNETEENTH,holiday,,NYSE closed (Fri). Globex ES/NQ: halt 13:00 ET; weekend; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2026-06-19,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2026-06-18 (prior US evening); official stat.go.jp schedule
+2026-06-19,TRIPLE_WITCHING,witching,09:30,Quarterly expiry: ES/NQ futures + index options + stock options; AM settlement
+2026-06-25,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-06-30,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2026-06-29 (prior US evening)
+2026-06-30,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-07-01,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2026-06-30; dates from release history (S&P calendar blocked)
+2026-07-01,TANKAN,jp_data,19:50,Japan date; 08:50 JST = 19:50 ET on 2026-06-30 (prior US evening)
+2026-07-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-07-02,NFP,us_data_tier1,08:30,BLS Employment Situation
+2026-07-03,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2026-07-02; dates from release history
+2026-07-03,INDEPENDENCE_DAY_OBS,holiday,,"NYSE closed (Fri, observed). Globex ES/NQ: halt 13:00 ET; weekend; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2026-07-06,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2026-07-08,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2026-07-09,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2026-07-08 (prior US evening)
+2026-07-14,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2026-07-13; dates from release history (no official GAC calendar found)
+2026-07-14,CPI,us_data_tier1,08:30,BLS CPI
+2026-07-15,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2026-07-14; includes quarterly GDP
+2026-07-15,PPI,us_data_tier2,08:30,BLS PPI
+2026-07-16,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2026-07-17,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2026-07-22,EARN_GOOGL,earnings,16:05,GOOGL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-07-22,EARN_TSLA,earnings,16:05,TSLA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-07-23,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2026-07-24,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2026-07-23 (prior US evening); official stat.go.jp schedule
+2026-07-24,TARIFF_SEC122_EXPIRY,politics,00:01,"Section 122 surcharge 150-day expiry; Section 301 tariffs (10%/12.5%, ~60 partners) took effect same day (Wikipedia)"
+2026-07-29,EARN_META,earnings,16:05,META results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-07-29,EARN_MSFT,earnings,16:05,MSFT results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-07-29,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30
+2026-07-30,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2026-07-30,CN_POLITBURO,cn_policy,,Politburo H2 economic meeting Jul 30 2026 (Sinocism); China date; readouts hit during Asia session
+2026-07-30,EARN_AAPL,earnings,16:05,AAPL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-07-30,EARN_AMZN,earnings,16:05,AMZN results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-07-30,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-07-30,GDP_ADV,us_data_tier2,08:30,GDP advance Q2-2026
+2026-07-31,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET; Outlook Report
+2026-07-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2026-07-30 (prior US evening)
+2026-08-03,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2026-08-02; dates from release history (S&P calendar blocked)
+2026-08-03,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-08-04,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-08-05,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2026-08-04; dates from release history
+2026-08-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2026-08-05,REFUNDING,us_treasury,08:30,Treasury quarterly refunding statement (auction sizes)
+2026-08-07,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2026-08-06; dates from release history (no official GAC calendar found)
+2026-08-07,NFP,us_data_tier1,08:30,BLS Employment Situation
+2026-08-09,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2026-08-08 (prior US evening)
+2026-08-11,RBA,rba,00:30,Australia date; decision 14:30 Sydney = 00:30 ET on 2026-08-11
+2026-08-12,CPI,us_data_tier1,08:30,BLS CPI
+2026-08-13,PPI,us_data_tier2,08:30,BLS PPI
+2026-08-14,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2026-08-17,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2026-08-16
+2026-08-19,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2026-08-21,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2026-08-20 (prior US evening); official stat.go.jp schedule
+2026-08-21,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2026-08-22,TARIFF_EFFECTIVE,politics,,Section 338 50% tariffs on certain Canadian imports effective (Wikipedia; single source)
+2026-08-26,EARN_NVDA,earnings,16:05,NVDA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-08-26,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-08-28,JACKSON_HOLE,fed_jh,10:00,Symposium Aug 27-29 2026 (KC Fed); Chair speech Fri 10:00 ET
+2026-08-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2026-08-30 (prior US evening)
+2026-09-01,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2026-08-31; dates from release history (S&P calendar blocked)
+2026-09-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-09-01,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-09-02,EARN_AVGO,earnings,16:05,AVGO results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-09-03,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2026-09-02; dates from release history
+2026-09-03,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2026-09-04,NFP,us_data_tier1,08:30,BLS Employment Situation
+2026-09-07,LABOR_DAY,holiday,,"NYSE closed. Globex ES/NQ: open Sun 18:00 ET, halt 13:00 ET, reopen 18:00 ET (Asia session that evening OPEN); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2026-09-08,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2026-09-07; dates from release history (no official GAC calendar found)
+2026-09-09,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2026-09-08 (prior US evening)
+2026-09-10,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2026-09-10,ES_NQ_ROLL,roll,,CME equity-index roll date (Thursday 8 days before 3rd-Friday expiry); volume migrates to next contract
+2026-09-10,PPI,us_data_tier2,08:30,BLS PPI
+2026-09-11,CPI,us_data_tier1,08:30,BLS CPI
+2026-09-15,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2026-09-14
+2026-09-16,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; with SEP/dot plot
+2026-09-16,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2026-09-17,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2026-09-18,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET
+2026-09-18,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2026-09-17 (prior US evening); official stat.go.jp schedule
+2026-09-18,TRIPLE_WITCHING,witching,09:30,Quarterly expiry: ES/NQ futures + index options + stock options; AM settlement
+2026-09-29,RBA,rba,00:30,Australia date; decision 14:30 Sydney = 00:30 ET on 2026-09-29
+2026-09-29,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-09-30,CN_PMI_CAIXIN,cn_data,21:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 21:45 ET on 2026-09-29; dates from release history (S&P calendar blocked)
+2026-09-30,CN_PMI_CAIXIN_SVC,cn_data,21:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 21:45 ET on 2026-09-29; dates from release history
+2026-09-30,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2026-09-29 (prior US evening)
+2026-09-30,FUNDING_DEADLINE,politics,,FY2027 deadline; CR signed Sep 2 2026 funds government through Dec 11 2026
+2026-09-30,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-10-01,TANKAN,jp_data,19:50,Japan date; 08:50 JST = 19:50 ET on 2026-09-30 (prior US evening)
+2026-10-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-10-02,NFP,us_data_tier1,08:30,BLS Employment Situation
+2026-10-05,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2026-10-07,FOMC_MINUTES,fed_minutes,14:00,Minutes of prior FOMC meeting (verified on Fed calendar)
+2026-10-14,CN_CPI,cn_data,21:30,China date; NBS CPI+PPI 09:30 CST = 21:30 ET on 2026-10-13 (prior US evening)
+2026-10-14,CN_TRADE,cn_data,23:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~23:00 ET on 2026-10-13; dates from release history (no official GAC calendar found)
+2026-10-14,CPI,us_data_tier1,08:30,BLS CPI
+2026-10-15,PPI,us_data_tier2,08:30,BLS PPI
+2026-10-15,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2026-10-16,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2026-10-19,CN_ACTIVITY,cn_data,22:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 22:00 ET on 2026-10-18; includes quarterly GDP
+2026-10-21,EARN_META,earnings,16:05,META results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-10-21,EARN_TSLA,earnings,16:05,TSLA results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-10-23,JP_CPI,jp_data,19:30,Japan date; 08:30 JST = 19:30 ET on 2026-10-22 (prior US evening); official stat.go.jp schedule
+2026-10-26,CN_FIFTH_PLENUM,cn_policy,,20th CC Fifth Plenum Oct 26-29 2026 (Wikipedia); China date; readouts hit during Asia session
+2026-10-28,EARN_GOOGL,earnings,16:05,GOOGL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-10-28,EARN_MSFT,earnings,16:05,MSFT results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-10-28,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30
+2026-10-29,EARN_AMZN,earnings,16:05,AMZN results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-10-29,ECB,ecb,09:15,ECB decision 14:15 CET = 09:15 ET; presser 14:45 CET; ECB press/3rd-party calendars (official page lists only upcoming)
+2026-10-29,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-10-29,GDP_ADV,us_data_tier2,08:30,GDP advance Q3-2026
+2026-10-30,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET; Outlook Report
+2026-10-31,CN_PMI_NBS,cn_data,21:30,China date; NBS official PMI 09:30 CST = 21:30 ET on 2026-10-30 (prior US evening)
+2026-11-02,CN_PMI_CAIXIN,cn_data,20:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 20:45 ET on 2026-11-01; dates from release history (S&P calendar blocked)
+2026-11-02,EARN_AAPL,earnings,16:05,AAPL results after close (SEC 8-K Item 2.02 filing date); drives next Asia session
+2026-11-02,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-11-03,US_MIDTERMS,politics,,US midterm elections; results overnight into Nov 4 Asia session
+2026-11-03,RBA,rba,22:30,Australia date; decision 14:30 Sydney = 22:30 ET on 2026-11-02
+2026-11-03,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-11-04,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2026-11-03; dates from release history
+2026-11-04,ISM_SVC,us_data_tier2,10:00,ISM Services PMI (dates from release history; ISM calendar paywalled)
+2026-11-04,REFUNDING,us_treasury,08:30,Treasury quarterly refunding statement (auction sizes)
+2026-11-05,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2026-11-06,NFP,us_data_tier1,08:30,BLS Employment Situation
+2026-11-09,CN_CPI,cn_data,20:30,China date; NBS CPI+PPI 09:30 CST = 20:30 ET on 2026-11-08 (prior US evening)
+2026-11-10,CN_TRADE,cn_data,22:00,China date; GAC trade data ~10:00-11:00 CST (often late) = ~22:00 ET on 2026-11-09; dates from release history (no official GAC calendar found); tentative
+2026-11-10,TARIFF_DEADLINE,politics,00:01,"Original US-China truce expiry; reported extended to Jan 10 2027 (Supply Chain Dive, Sep 24 2026; single source, said not yet formally documented)"
+2026-11-10,CPI,us_data_tier1,08:30,BLS CPI
+2026-11-13,PPI,us_data_tier2,08:30,BLS PPI
+2026-11-16,CN_ACTIVITY,cn_data,21:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 21:00 ET on 2026-11-15
+2026-11-17,EARN_NVDA,earnings,16:20,NVDA FQ3-2027 results; CONFIRMED by company (call 17:00 ET)
+2026-11-17,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2026-11-18,FOMC_MINUTES,fed_minutes,14:00,UNVERIFIED: minutes of Oct 27-28 meeting not yet posted on Fed calendar; date per 3-week convention
+2026-11-20,JP_CPI,jp_data,18:30,Japan date; 08:30 JST = 18:30 ET on 2026-11-19 (prior US evening); official stat.go.jp schedule
+2026-11-20,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2026-11-25,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-11-26,THANKSGIVING,holiday,,NYSE closed. Globex ES/NQ: overnight session Wed->Thu open; halt 13:00 ET Thu; reopen 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2026-11-27,EARLY_CLOSE,holiday,,NYSE 13:00 close. Globex ES/NQ early halt 13:15 ET; weekend; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2026-11-30,CN_PMI_NBS,cn_data,20:30,China date; NBS official PMI 09:30 CST = 20:30 ET on 2026-11-29 (prior US evening)
+2026-12-01,CN_PMI_CAIXIN,cn_data,20:45,China date; S&P Global/Caixin-series mfg PMI 09:45 CST = 20:45 ET on 2026-11-30; dates from release history (S&P calendar blocked); next scheduled
+2026-12-01,ISM_MFG,us_data_tier2,10:00,ISM Manufacturing PMI (dates from release history; ISM calendar paywalled)
+2026-12-01,JOLTS,us_data_tier2,10:00,BLS JOLTS
+2026-12-03,CN_PMI_CAIXIN_SVC,cn_data,20:45,China date; S&P Global/Caixin-series services PMI 09:45 CST = 20:45 ET on 2026-12-02; dates from release history; next scheduled
+2026-12-03,ISM_SVC,us_data_tier2,10:00,ESTIMATED per ISM third-business-day rule; not confirmed
+2026-12-04,NFP,us_data_tier1,08:30,BLS Employment Situation
+2026-12-08,RBA,rba,22:30,Australia date; decision 14:30 Sydney = 22:30 ET on 2026-12-07
+2026-12-09,CN_CPI,cn_data,20:30,China date; NBS CPI+PPI 09:30 CST = 20:30 ET on 2026-12-08 (prior US evening)
+2026-12-09,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; with SEP/dot plot
+2026-12-10,EARN_AVGO,earnings,16:05,AVGO FQ4-2026 results after close; 3rd-party calendars mark confirmed; verify on IR site
+2026-12-10,ES_NQ_ROLL,roll,,CME equity-index roll date (Thursday 8 days before 3rd-Friday expiry); volume migrates to next contract
+2026-12-10,CPI,us_data_tier1,08:30,BLS CPI
+2026-12-11,FUNDING_DEADLINE,politics,,CR expiry; FY2027 full-year appropriations unfinished as of late Sep 2026
+2026-12-14,TANKAN,jp_data,18:50,Japan date; 08:50 JST = 18:50 ET on 2026-12-13 (prior US evening); ESTIMATED from 3rd-party calendar (BoJ schedule page not yet showing it)
+2026-12-15,CN_ACTIVITY,cn_data,21:00,China date; NBS activity data (IP/retail/FAI) 10:00 CST = 21:00 ET on 2026-12-14
+2026-12-15,PPI,us_data_tier2,08:30,BLS PPI
+2026-12-16,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2026-12-17,BOE,boe,07:00,BoE MPC decision 12:00 London = 07:00 ET (bankofengland.co.uk MPC dates)
+2026-12-17,ECB,ecb,08:15,ECB decision 14:15 CET = 08:15 ET; presser 14:45 CET; ECB official calendar
+2026-12-18,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET
+2026-12-18,JP_CPI,jp_data,18:30,Japan date; 08:30 JST = 18:30 ET on 2026-12-17 (prior US evening); official stat.go.jp schedule
+2026-12-18,TRIPLE_WITCHING,witching,09:30,Quarterly expiry: ES/NQ futures + index options + stock options; AM settlement
+2026-12-23,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2026-12-24,EARLY_CLOSE,holiday,,NYSE 13:00 close. Globex ES/NQ early halt 13:15 ET; NO overnight session into Dec 25; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2026-12-25,CHRISTMAS,holiday,,NYSE closed (Fri). Globex ES/NQ: CLOSED; reopens Sun 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2026-12-30,FOMC_MINUTES,fed_minutes,14:00,UNVERIFIED: minutes of Dec 8-9 meeting not yet posted on Fed calendar; date per 3-week convention
+2026-12-31,CN_PMI_NBS,cn_data,20:30,China date; NBS official PMI 09:30 CST = 20:30 ET on 2026-12-30 (prior US evening)
+2026-12-31,NYE,holiday,,NYSE normal full day. Globex ES/NQ: NO overnight session into Jan 1; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2027-01-01,NEW_YEARS,holiday,,NYSE closed (Fri). Globex ES/NQ: CLOSED; reopens Sun 18:00 ET; Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited
+2027-01-04,ISM_MFG,us_data_tier2,10:00,ESTIMATED per ISM first-business-day rule; not confirmed
+2027-01-06,ISM_SVC,us_data_tier2,10:00,ESTIMATED per ISM third-business-day rule; not confirmed
+2027-01-08,NFP,us_data_tier1,08:30,BLS Employment Situation
+2027-01-10,TARIFF_DEADLINE,politics,00:01,Reported new US-China truce expiry (extension from Nov 10 2026); single source - verify
+2027-01-13,CPI,us_data_tier1,08:30,BLS CPI
+2027-01-14,PPI,us_data_tier2,08:30,BLS PPI
+2027-01-15,OPEX,opex,16:00,Monthly options expiration (3rd Friday)
+2027-01-15,RETAIL_SALES,us_data_tier2,08:30,Census advance retail sales
+2027-01-18,MLK_DAY,holiday,,"NYSE closed. Globex ES/NQ: open Sun 18:00 ET, halt 13:00 ET, reopen 18:00 ET (Asia session that evening OPEN); Globex hours per standard CME equity-index holiday pattern unless a CME notice is cited"
+2027-01-22,BOJ,boj,,Japan date; decision ~22:00-23:30 ET prior night (no fixed time); Governor presser ~15:30 JST = 01:30/02:30 ET; Outlook Report
+2027-01-22,JP_CPI,jp_data,18:30,Japan date; 08:30 JST = 18:30 ET on 2027-01-21 (prior US evening); official stat.go.jp schedule
+2027-01-27,EARN_MSFT,earnings,16:05,ESTIMATED (unconfirmed) FQ2-2027
+2027-01-27,EARN_TSLA,earnings,16:05,ESTIMATED (unconfirmed) Q4-2026
+2027-01-27,FOMC,fed,14:00,FOMC statement 14:00 ET; presser 14:30; 2027 schedule published (tentative until confirmed at preceding meeting)
+2027-01-28,EARN_AAPL,earnings,16:05,ESTIMATED (unconfirmed) FQ1-2027
+2027-01-28,PCE,us_data_tier1,08:30,BEA Personal Income & Outlays (PCE price index)
+2027-01-28,GDP_ADV,us_data_tier2,08:30,GDP advance Q4-2026
