@@ -80,6 +80,7 @@ class OTEConfig:
     max_wait_bars: int = 80            # armed zone expires if never tapped within N bars
     max_hold_bars: int = 200           # evaluation only: force-close open trades after N bars
     eval_tp_index: int = 1             # which tp level is used to score wins (0 => range extreme)
+    ambiguous_bar: str = "sl_first"    # evaluation only: bar touching both SL and TP -> "sl_first" | "tp_first"
 
     # --- HTF bias -----------------------------------------------------------
     htf: Optional[str] = "1h"          # pandas resample rule ("1h", "4h", "1D") or None
@@ -474,8 +475,11 @@ def compute_ote(data: pd.DataFrame, cfg: Optional[OTEConfig] = None) -> OTEResul
             hit_tp = h[t] >= tp if d > 0 else l[t] <= tp
             risk = abs(s.entry_price - s.sl)
             if hit_sl and hit_tp:
-                # ambiguous bar: assume the stop was hit first (conservative)
-                hit_tp = False
+                # ambiguous bar: default assumes the stop was hit first (conservative)
+                if cfg.ambiguous_bar == "tp_first":
+                    hit_sl = False
+                else:
+                    hit_tp = False
             if hit_sl:
                 s.state, s.exit_idx, s.exit_price = "loss", t, s.sl
                 s.r_multiple = -1.0

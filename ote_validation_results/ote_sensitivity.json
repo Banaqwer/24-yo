@@ -1,0 +1,644 @@
+{
+  "fill": [
+    {
+      "market": "NQ=F hourly",
+      "trades": 118,
+      "sl_first_R": -18.8,
+      "tp_first_R": -18.8,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "ES=F hourly",
+      "trades": 123,
+      "sl_first_R": -18.7,
+      "tp_first_R": -18.7,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "GC=F hourly",
+      "trades": 133,
+      "sl_first_R": -5.7,
+      "tp_first_R": -5.7,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "CL=F hourly",
+      "trades": 152,
+      "sl_first_R": -42.5,
+      "tp_first_R": -42.5,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "EURUSD=X hourly",
+      "trades": 173,
+      "sl_first_R": -5.7,
+      "tp_first_R": -5.7,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "GBPUSD=X hourly",
+      "trades": 180,
+      "sl_first_R": -25.0,
+      "tp_first_R": -25.0,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "USDJPY=X hourly",
+      "trades": 165,
+      "sl_first_R": -18.4,
+      "tp_first_R": -15.1,
+      "ambiguous_bars": 1
+    },
+    {
+      "market": "BTC-USD hourly",
+      "trades": 199,
+      "sl_first_R": 10.0,
+      "tp_first_R": 10.0,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "ETH-USD hourly",
+      "trades": 186,
+      "sl_first_R": -38.5,
+      "tp_first_R": -38.5,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "SPY daily",
+      "trades": 41,
+      "sl_first_R": 8.9,
+      "tp_first_R": 8.9,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "QQQ daily",
+      "trades": 42,
+      "sl_first_R": 2.6,
+      "tp_first_R": 2.6,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "GLD daily",
+      "trades": 48,
+      "sl_first_R": -10.2,
+      "tp_first_R": -10.2,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "TLT daily",
+      "trades": 45,
+      "sl_first_R": -2.8,
+      "tp_first_R": -2.8,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "NVDA daily",
+      "trades": 41,
+      "sl_first_R": -1.9,
+      "tp_first_R": -1.9,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "AAPL daily",
+      "trades": 38,
+      "sl_first_R": -8.0,
+      "tp_first_R": -8.0,
+      "ambiguous_bars": 0
+    },
+    {
+      "market": "BTC-USD daily",
+      "trades": 33,
+      "sl_first_R": 1.5,
+      "tp_first_R": 1.5,
+      "ambiguous_bars": 0
+    }
+  ],
+  "grid": [
+    {
+      "market": "NQ=F hourly",
+      "sets": 144,
+      "positive_pct": 11.0,
+      "median_R": -11.5,
+      "best_R": 6.2,
+      "best_trades": 36,
+      "best_win": 39.0,
+      "best_params": {
+        "swing_len": 4,
+        "confirm_mode": "consolidation",
+        "eval_tp_index": 1,
+        "min_leg_atr": 1.5,
+        "require_sweep": true
+      },
+      "worst_R": -42.3
+    },
+    {
+      "market": "ES=F hourly",
+      "sets": 144,
+      "positive_pct": 0.0,
+      "median_R": -14.9,
+      "best_R": -1.9,
+      "best_trades": 51,
+      "best_win": 22.0,
+      "best_params": {
+        "swing_len": 5,
+        "confirm_mode": "touch",
+        "eval_tp_index": 2,
+        "min_leg_atr": 1.5,
+        "require_sweep": true
+      },
+      "worst_R": -36.3
+    },
+    {
+      "market": "GC=F hourly",
+      "sets": 144,
+      "positive_pct": 46.0,
+      "median_R": -0.7,
+      "best_R": 28.0,
+      "best_trades": 154,
+      "best_win": 28.0,
+      "best_params": {
+        "swing_len": 4,
+        "confirm_mode": "touch",
+        "eval_tp_index": 2,
+        "min_leg_atr": 1.5,
+        "require_sweep": false
+      },
+      "worst_R": -31.8
+    },
+    {
+      "market": "CL=F hourly",
+      "sets": 144,
+      "positive_pct": 1.0,
+      "median_R": -18.7,
+      "best_R": 0.7,
+      "best_trades": 143,
+      "best_win": 30.0,
+      "best_params": {
+        "swing_len": 4,
+        "confirm_mode": "consolidation",
+        "eval_tp_index": 2,
+        "min_leg_atr": 1.5,
+        "require_sweep": false
+      },
+      "worst_R": -45.0
+    },
+    {
+      "market": "EURUSD=X hourly",
+      "sets": 144,
+      "positive_pct": 17.0,
+      "median_R": -8.3,
+      "best_R": 26.3,
+      "best_trades": 136,
+      "best_win": 29.0,
+      "best_params": {
+        "swing_len": 10,
+        "confirm_mode": "touch",
+        "eval_tp_index": 2,
+        "min_leg_atr": 1.5,
+        "require_sweep": false
+      },
+      "worst_R": -19.7
+    },
+    {
+      "market": "GBPUSD=X hourly",
+      "sets": 144,
+      "positive_pct": 3.0,
+      "median_R": -12.7,
+      "best_R": 3.3,
+      "best_trades": 127,
+      "best_win": 34.0,
+      "best_params": {
+        "swing_len": 10,
+        "confirm_mode": "reclaim",
+        "eval_tp_index": 2,
+        "min_leg_atr": 1.5,
+        "require_sweep": false
+      },
+      "worst_R": -36.6
+    },
+    {
+      "market": "USDJPY=X hourly",
+      "sets": 144,
+      "positive_pct": 38.0,
+      "median_R": -3.3,
+      "best_R": 21.7,
+      "best_trades": 171,
+      "best_win": 27.0,
+      "best_params": {
+        "swing_len": 5,
+        "confirm_mode": "touch",
+        "eval_tp_index": 2,
+        "min_leg_atr": 1.5,
+        "require_sweep": false
+      },
+      "worst_R": -27.5
+    },
+    {
+      "market": "BTC-USD hourly",
+      "sets": 144,
+      "positive_pct": 35.0,
+      "median_R": -4.6,
+      "best_R": 18.2,
+      "best_trades": 179,
+      "best_win": 32.0,
+      "best_params": {
+        "swing_len": 5,
+        "confirm_mode": "consolidation",
+        "eval_tp_index": 2,
+        "min_leg_atr": 2.5,
+        "require_sweep": false
+      },
+      "worst_R": -60.5
+    },
+    {
+      "market": "ETH-USD hourly",
+      "sets": 144,
+      "positive_pct": 22.0,
+      "median_R": -13.8,
+      "best_R": 13.0,
+      "best_trades": 39,
+      "best_win": 36.0,
+      "best_params": {
+        "swing_len": 10,
+        "confirm_mode": "touch",
+        "eval_tp_index": 2,
+        "min_leg_atr": 1.5,
+        "require_sweep": true
+      },
+      "worst_R": -57.9
+    },
+    {
+      "market": "SPY daily",
+      "sets": 108,
+      "positive_pct": 93.0,
+      "median_R": 6.2,
+      "best_R": 24.2,
+      "best_trades": 45,
+      "best_win": 42.0,
+      "best_params": {
+        "swing_len": 4,
+        "confirm_mode": "touch",
+        "eval_tp_index": 1,
+        "min_leg_atr": 1.5,
+        "require_sweep": false
+      },
+      "worst_R": -2.3
+    },
+    {
+      "market": "QQQ daily",
+      "sets": 128,
+      "positive_pct": 42.0,
+      "median_R": -0.8,
+      "best_R": 17.2,
+      "best_trades": 53,
+      "best_win": 38.0,
+      "best_params": {
+        "swing_len": 4,
+        "confirm_mode": "touch",
+        "eval_tp_index": 1,
+        "min_leg_atr": 1.5,
+        "require_sweep": false
+      },
+      "worst_R": -10.1
+    },
+    {
+      "market": "GLD daily",
+      "sets": 102,
+      "positive_pct": 40.0,
+      "median_R": -1.6,
+      "best_R": 13.5,
+      "best_trades": 40,
+      "best_win": 32.0,
+      "best_params": {
+        "swing_len": 7,
+        "confirm_mode": "touch",
+        "eval_tp_index": 2,
+        "min_leg_atr": 1.5,
+        "require_sweep": false
+      },
+      "worst_R": -19.7
+    },
+    {
+      "market": "TLT daily",
+      "sets": 108,
+      "positive_pct": 52.0,
+      "median_R": 0.4,
+      "best_R": 22.5,
+      "best_trades": 50,
+      "best_win": 34.0,
+      "best_params": {
+        "swing_len": 4,
+        "confirm_mode": "touch",
+        "eval_tp_index": 2,
+        "min_leg_atr": 2.5,
+        "require_sweep": false
+      },
+      "worst_R": -8.9
+    },
+    {
+      "market": "NVDA daily",
+      "sets": 122,
+      "positive_pct": 34.0,
+      "median_R": -2.0,
+      "best_R": 14.7,
+      "best_trades": 45,
+      "best_win": 29.0,
+      "best_params": {
+        "swing_len": 5,
+        "confirm_mode": "touch",
+        "eval_tp_index": 2,
+        "min_leg_atr": 1.5,
+        "require_sweep": false
+      },
+      "worst_R": -9.3
+    },
+    {
+      "market": "AAPL daily",
+      "sets": 90,
+      "positive_pct": 0.0,
+      "median_R": -7.5,
+      "best_R": -0.4,
+      "best_trades": 11,
+      "best_win": 36.0,
+      "best_params": {
+        "swing_len": 5,
+        "confirm_mode": "touch",
+        "eval_tp_index": 0,
+        "min_leg_atr": 1.5,
+        "require_sweep": true
+      },
+      "worst_R": -17.0
+    },
+    {
+      "market": "BTC-USD daily",
+      "sets": 90,
+      "positive_pct": 38.0,
+      "median_R": -2.1,
+      "best_R": 6.1,
+      "best_trades": 45,
+      "best_win": 24.0,
+      "best_params": {
+        "swing_len": 4,
+        "confirm_mode": "touch",
+        "eval_tp_index": 2,
+        "min_leg_atr": 1.5,
+        "require_sweep": false
+      },
+      "worst_R": -11.4
+    }
+  ],
+  "ablation": [
+    {
+      "market": "NQ=F hourly",
+      "default": "-18.8 (118)",
+      "no HTF bias": "-25.0 (167)",
+      "no structure break": "-26.2 (161)",
+      "no consolidation (touch 0.705)": "-27.1 (142)",
+      "reclaim close instead": "-15.8 (110)",
+      "require sweep": "-11.0 (26)",
+      "scalp to range extreme (tp0)": "-32.4 (123)",
+      "target -0.62 (tp2)": "-19.3 (111)",
+      "symmetrical -1.0 (tp3)": "-9.8 (108)",
+      "range bias (discount/premium)": "-11.6 (45)"
+    },
+    {
+      "market": "ES=F hourly",
+      "default": "-18.7 (123)",
+      "no HTF bias": "-17.6 (164)",
+      "no structure break": "-26.8 (162)",
+      "no consolidation (touch 0.705)": "-26.9 (140)",
+      "reclaim close instead": "-21.4 (114)",
+      "require sweep": "-5.4 (43)",
+      "scalp to range extreme (tp0)": "-28.9 (135)",
+      "target -0.62 (tp2)": "-26.5 (113)",
+      "symmetrical -1.0 (tp3)": "-21.8 (105)",
+      "range bias (discount/premium)": "-2.2 (33)"
+    },
+    {
+      "market": "GC=F hourly",
+      "default": "-5.7 (133)",
+      "no HTF bias": "-2.3 (194)",
+      "no structure break": "-2.8 (196)",
+      "no consolidation (touch 0.705)": "+5.9 (143)",
+      "reclaim close instead": "-3.2 (124)",
+      "require sweep": "-2.3 (33)",
+      "scalp to range extreme (tp0)": "-6.1 (147)",
+      "target -0.62 (tp2)": "-1.3 (124)",
+      "symmetrical -1.0 (tp3)": "+10.9 (111)",
+      "range bias (discount/premium)": "+12.2 (42)"
+    },
+    {
+      "market": "CL=F hourly",
+      "default": "-42.5 (152)",
+      "no HTF bias": "-59.3 (199)",
+      "no structure break": "-35.4 (195)",
+      "no consolidation (touch 0.705)": "-30.0 (161)",
+      "reclaim close instead": "-21.8 (134)",
+      "require sweep": "-15.8 (46)",
+      "scalp to range extreme (tp0)": "-41.2 (162)",
+      "target -0.62 (tp2)": "-28.1 (140)",
+      "symmetrical -1.0 (tp3)": "-22.1 (131)",
+      "range bias (discount/premium)": "-8.5 (42)"
+    },
+    {
+      "market": "EURUSD=X hourly",
+      "default": "-5.7 (173)",
+      "no HTF bias": "-10.1 (245)",
+      "no structure break": "-16.1 (230)",
+      "no consolidation (touch 0.705)": "-2.7 (189)",
+      "reclaim close instead": "-13.5 (162)",
+      "require sweep": "-15.3 (57)",
+      "scalp to range extreme (tp0)": "-6.0 (182)",
+      "target -0.62 (tp2)": "-2.9 (158)",
+      "symmetrical -1.0 (tp3)": "+14.6 (149)",
+      "range bias (discount/premium)": "-1.3 (61)"
+    },
+    {
+      "market": "GBPUSD=X hourly",
+      "default": "-25.0 (180)",
+      "no HTF bias": "-18.8 (255)",
+      "no structure break": "-15.6 (244)",
+      "no consolidation (touch 0.705)": "-9.0 (204)",
+      "reclaim close instead": "-10.3 (164)",
+      "require sweep": "-17.9 (62)",
+      "scalp to range extreme (tp0)": "-35.3 (189)",
+      "target -0.62 (tp2)": "-30.2 (167)",
+      "symmetrical -1.0 (tp3)": "-13.0 (160)",
+      "range bias (discount/premium)": "-16.5 (67)"
+    },
+    {
+      "market": "USDJPY=X hourly",
+      "default": "-18.4 (165)",
+      "no HTF bias": "-27.8 (250)",
+      "no structure break": "-47.9 (249)",
+      "no consolidation (touch 0.705)": "+6.7 (182)",
+      "reclaim close instead": "-13.1 (156)",
+      "require sweep": "-3.9 (52)",
+      "scalp to range extreme (tp0)": "-24.9 (184)",
+      "target -0.62 (tp2)": "-2.9 (153)",
+      "symmetrical -1.0 (tp3)": "-14.2 (142)",
+      "range bias (discount/premium)": "-26.3 (68)"
+    },
+    {
+      "market": "BTC-USD hourly",
+      "default": "+10.0 (199)",
+      "no HTF bias": "-1.6 (285)",
+      "no structure break": "-32.9 (261)",
+      "no consolidation (touch 0.705)": "-9.0 (220)",
+      "reclaim close instead": "-0.7 (178)",
+      "require sweep": "-11.1 (65)",
+      "scalp to range extreme (tp0)": "-19.4 (215)",
+      "target -0.62 (tp2)": "+16.6 (183)",
+      "symmetrical -1.0 (tp3)": "+34.6 (172)",
+      "range bias (discount/premium)": "+11.4 (76)"
+    },
+    {
+      "market": "ETH-USD hourly",
+      "default": "-38.5 (186)",
+      "no HTF bias": "-20.9 (261)",
+      "no structure break": "-41.3 (273)",
+      "no consolidation (touch 0.705)": "-51.2 (209)",
+      "reclaim close instead": "-32.0 (167)",
+      "require sweep": "-4.1 (60)",
+      "scalp to range extreme (tp0)": "-53.6 (198)",
+      "target -0.62 (tp2)": "-31.1 (177)",
+      "symmetrical -1.0 (tp3)": "-25.4 (167)",
+      "range bias (discount/premium)": "+0.1 (71)"
+    },
+    {
+      "market": "SPY daily",
+      "default": "+8.9 (41)",
+      "no HTF bias": "-3.9 (61)",
+      "no structure break": "+3.4 (48)",
+      "no consolidation (touch 0.705)": "+20.5 (42)",
+      "reclaim close instead": "+7.4 (38)",
+      "require sweep": "+4.6 (15)",
+      "scalp to range extreme (tp0)": "-1.7 (42)",
+      "target -0.62 (tp2)": "+18.3 (38)",
+      "symmetrical -1.0 (tp3)": "+24.4 (35)",
+      "range bias (discount/premium)": "-9.8 (17)"
+    },
+    {
+      "market": "QQQ daily",
+      "default": "+2.6 (42)",
+      "no HTF bias": "+0.1 (63)",
+      "no structure break": "-0.1 (51)",
+      "no consolidation (touch 0.705)": "+13.0 (48)",
+      "reclaim close instead": "+2.6 (41)",
+      "require sweep": "+4.8 (10)",
+      "scalp to range extreme (tp0)": "-3.3 (43)",
+      "target -0.62 (tp2)": "-4.0 (39)",
+      "symmetrical -1.0 (tp3)": "-5.6 (35)",
+      "range bias (discount/premium)": "+6.5 (18)"
+    },
+    {
+      "market": "GLD daily",
+      "default": "-10.2 (48)",
+      "no HTF bias": "-7.8 (68)",
+      "no structure break": "-5.9 (64)",
+      "no consolidation (touch 0.705)": "-12.8 (53)",
+      "reclaim close instead": "-7.1 (42)",
+      "require sweep": "-1.9 (11)",
+      "scalp to range extreme (tp0)": "-8.1 (52)",
+      "target -0.62 (tp2)": "-3.0 (45)",
+      "symmetrical -1.0 (tp3)": "+1.8 (45)",
+      "range bias (discount/premium)": "+1.7 (20)"
+    },
+    {
+      "market": "TLT daily",
+      "default": "-2.8 (45)",
+      "no HTF bias": "-5.2 (67)",
+      "no structure break": "+1.1 (60)",
+      "no consolidation (touch 0.705)": "+0.2 (49)",
+      "reclaim close instead": "-3.5 (44)",
+      "require sweep": "+1.0 (11)",
+      "scalp to range extreme (tp0)": "-7.0 (47)",
+      "target -0.62 (tp2)": "+2.2 (42)",
+      "symmetrical -1.0 (tp3)": "+3.5 (36)",
+      "range bias (discount/premium)": "-4.7 (20)"
+    },
+    {
+      "market": "NVDA daily",
+      "default": "-1.9 (41)",
+      "no HTF bias": "-9.9 (60)",
+      "no structure break": "+5.9 (53)",
+      "no consolidation (touch 0.705)": "+8.0 (47)",
+      "reclaim close instead": "+2.5 (43)",
+      "require sweep": "-5.4 (14)",
+      "scalp to range extreme (tp0)": "-4.8 (44)",
+      "target -0.62 (tp2)": "+2.7 (40)",
+      "symmetrical -1.0 (tp3)": "-7.4 (34)",
+      "range bias (discount/premium)": "-4.4 (9)"
+    },
+    {
+      "market": "AAPL daily",
+      "default": "-8.0 (38)",
+      "no HTF bias": "-15.8 (64)",
+      "no structure break": "-6.8 (49)",
+      "no consolidation (touch 0.705)": "-15.8 (45)",
+      "reclaim close instead": "-7.5 (36)",
+      "require sweep": "-3.2 (10)",
+      "scalp to range extreme (tp0)": "-11.1 (40)",
+      "target -0.62 (tp2)": "-7.6 (36)",
+      "symmetrical -1.0 (tp3)": "-3.8 (35)",
+      "range bias (discount/premium)": "-9.6 (21)"
+    },
+    {
+      "market": "BTC-USD daily",
+      "default": "+1.5 (33)",
+      "no HTF bias": "+4.8 (57)",
+      "no structure break": "-14.9 (66)",
+      "no consolidation (touch 0.705)": "-6.8 (38)",
+      "reclaim close instead": "+3.4 (30)",
+      "require sweep": "-1.5 (4)",
+      "scalp to range extreme (tp0)": "-0.2 (35)",
+      "target -0.62 (tp2)": "+3.7 (33)",
+      "symmetrical -1.0 (tp3)": "+10.7 (31)",
+      "range bias (discount/premium)": "+2.7 (23)"
+    }
+  ],
+  "session": [
+    {
+      "market": "NQ=F hourly",
+      "session_ET": "08:00-11:00",
+      "trades": 72,
+      "total_R": -7.0,
+      "win_pct": 33.3
+    },
+    {
+      "market": "NQ=F hourly",
+      "session_ET": "09:00-12:00",
+      "trades": 61,
+      "total_R": 6.5,
+      "win_pct": 37.7
+    },
+    {
+      "market": "NQ=F hourly",
+      "session_ET": "13:00-16:00",
+      "trades": 74,
+      "total_R": 2.5,
+      "win_pct": 36.5
+    },
+    {
+      "market": "ES=F hourly",
+      "session_ET": "08:00-11:00",
+      "trades": 77,
+      "total_R": -9.2,
+      "win_pct": 36.4
+    },
+    {
+      "market": "ES=F hourly",
+      "session_ET": "09:00-12:00",
+      "trades": 65,
+      "total_R": -10.7,
+      "win_pct": 36.9
+    },
+    {
+      "market": "ES=F hourly",
+      "session_ET": "13:00-16:00",
+      "trades": 70,
+      "total_R": -6.4,
+      "win_pct": 31.4
+    }
+  ]
+}

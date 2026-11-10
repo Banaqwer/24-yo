@@ -174,23 +174,55 @@ shows the current HTF bias and the state of each zone.
 
 ---
 
-## 4. Sample run (10 Nov 2026, default settings, target = -0.27 expansion)
+## 4. Validation result (10 Nov 2026)
 
-These are a sanity check that the rules fire sensibly on real data. They are one month of
-bars with no costs or slippage, and the stop is assumed to be hit first on any bar that
-touches both stop and target. They are **not** a validation of the method.
+The indicator was run through the same four pillars as the Hurst system
+(`ote_validation_pipeline.py`, mirroring `hurst_validation_pipeline.py`): backtest with
+costs and 1% risk per trade, buy-and-hold benchmark, 1000-path bootstrap Monte Carlo, and
+two walk-forward tests (default rules on 4 sequential out-of-sample periods, plus a real
+walk-forward optimisation over 144 parameter sets). 16 market/timeframe combinations:
+9 hourly (2 years, 4h bias: NQ, ES, GC, CL, EURUSD, GBPUSD, USDJPY, BTC, ETH) and 7 daily
+(15 years, weekly bias: SPY, QQQ, GLD, TLT, NVDA, AAPL, BTC).
 
-| Market | Bars | Legs found | Tapped | Invalidated (trap) | Entries | Win rate | Total R |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| NQ=F 15m, 1h bias | 2217 | 50 | 31 | 6 | 23 | 43% | +2.5 R |
-| EURUSD 1h, 4h bias | 1412 | 31 | 18 | 3 | 15 | 50% | +4.9 R |
-| BTC-USD 1h, 4h bias | 1425 | 32 | 22 | 5 | 17 | 40% | +1.5 R |
+**Verdict: the OTE rules as taught do not have a demonstrable edge. 0 of 16 markets pass.**
 
-Points worth noticing in the numbers: about one leg in five is invalidated or missed after
-the tap, which is exactly the "trap" the consolidation rule is there to avoid, and the
-wins are larger than 1 R because the stop sits just beyond the origin while the target is an
-expansion. Whether that edge holds up needs the same walk-forward and Monte Carlo treatment
-the Hurst system in this repo went through; see `hurst_validation_pipeline.py`.
+| | Default rules, all markets |
+| --- | --- |
+| Trades | 1717 |
+| Trade-weighted average net R | -0.10 R |
+| Total net R | -173 R |
+| Markets with positive expectancy | 4 of 16 (BTC 1h, SPY, QQQ, BTC daily, all small) |
+| Win rate | 33% to 46%, median 36% |
+| Monte Carlo: markets ≥ 70% profitable paths | 1 of 16 (SPY daily, 75%) |
+| Walk-forward: markets with ≥ 2 of 4 OOS periods positive | 5 of 16 |
+| Walk-forward optimisation: OOS positive in both windows | 3 of 16 |
+
+The sensitivity study (`ote_sensitivity.py`) checks that this is not a modelling artefact:
+
+- **Fill assumption**: only 1 of 1717 trades hit stop and target on the same bar, so the
+  conservative stop-first rule changes nothing.
+- **Parameter grid, in-sample**: across 144 settings the median parameter set loses on 14 of
+  16 markets. The best in-sample set per market is positive, as always, but the walk-forward
+  optimisation shows those picks do not carry forward.
+- **Rule ablation**: removing the HTF bias or the structure-break requirement makes results
+  *worse* (-221 R and -262 R versus -173 R), so those two checklist items do filter bad
+  trades. Requiring a liquidity sweep at the origin cuts trades by two thirds and halves the
+  loss (-88 R) but does not make it positive. The least bad target is the -1.0 symmetrical
+  expansion (-23 R in total, positive on 8 of 16 markets); scalping to the range extreme is
+  the worst (-284 R).
+- **Session filter** (index futures, New York morning): NQ turns slightly positive in the
+  09:00-12:00 ET window (+6.5 R on 61 trades), ES does not. Too few trades to mean anything.
+
+Reports: `ote_validation_results/OTE_VALIDATION_REPORT.md` (per-market detail) and
+`ote_validation_results/OTE_SENSITIVITY.md`.
+
+What this means in practice: use the indicator as what it is, a structured way to mark the
+0.62-0.79 retracement of a displacement leg and to wait for the tap and the consolidation.
+As a standalone signal generator it has not earned capital. If you want to keep working on
+it, the two directions the data points at are (a) requiring the liquidity sweep plus the
+HTF bias and taking the -1.0 symmetrical target, and (b) adding confluence the indicator
+does not yet see (fair value gaps, order blocks, session timing), then re-running the
+pipeline.
 
 ---
 

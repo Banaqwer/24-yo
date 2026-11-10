@@ -1,0 +1,2392 @@
+[
+  {
+    "ticker": "NQ=F",
+    "sector": "INDEX_FUT",
+    "timeframe": "hourly",
+    "bars": 13683,
+    "years": 2.39,
+    "range": "2024-06-20 \u2192 2026-11-10",
+    "passed": false,
+    "grade": "F",
+    "score": "3/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -18.15,
+      "final_capital": 81853.48,
+      "n_trades": 118,
+      "trades_per_year": 49.4,
+      "win_rate": 33.9,
+      "profit_factor": 0.759,
+      "expectancy": -159.72,
+      "avg_r_multiple": -0.16,
+      "avg_r_gross": -0.146,
+      "avg_cost_r": 0.013,
+      "total_r": -18.85,
+      "sharpe": -0.792,
+      "sortino": -16.748,
+      "max_drawdown": -29.44,
+      "max_consec_loss": 8,
+      "avg_bars_held": 27.8,
+      "long_share": 48.3,
+      "legs_marked": 354,
+      "legs_tapped": 181,
+      "traps_invalidated": 55
+    },
+    "benchmark": {
+      "bh_return": 39.71,
+      "bh_max_dd": -25.87
+    },
+    "monte_carlo": {
+      "profitable_pct": 10.1,
+      "median_return": -18.45,
+      "worst_5pct": -35.22,
+      "best_5pct": 5.31,
+      "median_max_dd": -24.29,
+      "worst_dd_5pct": -37.55,
+      "p_value_mean_r_le_0": 0.874,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2024-06-20 \u2192 2025-01-28",
+          "n_trades": 26,
+          "return": -8.98,
+          "total_r": -9.28,
+          "win_rate": 34.62,
+          "positive": false,
+          "bh_return": 6.54
+        },
+        {
+          "period": "2025-01-28 \u2192 2025-08-29",
+          "n_trades": 28,
+          "return": -14.28,
+          "total_r": -15.22,
+          "win_rate": 17.86,
+          "positive": false,
+          "bh_return": 10.98
+        },
+        {
+          "period": "2025-08-29 \u2192 2026-04-09",
+          "n_trades": 27,
+          "return": -5.42,
+          "total_r": -5.29,
+          "win_rate": 29.63,
+          "positive": false,
+          "bh_return": 5.84
+        },
+        {
+          "period": "2026-04-09 \u2192 2026-11-10",
+          "n_trades": 36,
+          "return": 9.81,
+          "total_r": 9.93,
+          "win_rate": 47.22,
+          "positive": true,
+          "bh_return": 12.02
+        }
+      ],
+      "positive_periods": 1,
+      "total_periods": 4,
+      "avg_oos_r": -4.96,
+      "consistency": 0.25
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2024-06-20 \u2192 2025-08-29",
+          "test": "2025-08-29 \u2192 2026-04-09",
+          "best_params": {
+            "swing_len": 4,
+            "confirm_mode": "reclaim",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": true
+          },
+          "train_r": 3.72,
+          "train_trades": 18,
+          "oos_r": 1.68,
+          "oos_trades": 9,
+          "oos_win_rate": 33.3,
+          "default_oos_r": -5.29,
+          "positive": true,
+          "grid_positive_train_pct": 8.3
+        },
+        {
+          "train": "2025-01-28 \u2192 2026-04-09",
+          "test": "2026-04-09 \u2192 2026-11-10",
+          "best_params": {
+            "swing_len": 4,
+            "confirm_mode": "consolidation",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": true
+          },
+          "train_r": -2.26,
+          "train_trades": 19,
+          "oos_r": -2.0,
+          "oos_trades": 8,
+          "oos_win_rate": 25.0,
+          "default_oos_r": 9.93,
+          "positive": false,
+          "grid_positive_train_pct": 0.0
+        }
+      ],
+      "positive_windows": 1,
+      "total_windows": 2,
+      "sum_oos_r": -0.32,
+      "sum_default_oos_r": 4.64,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -0.79 < 0.6",
+      "Sortino -16.75 < 0.8",
+      "WinRate 33.9% < 42.0%",
+      "PF 0.76 < 1.4",
+      "Expectancy -0.16R <= 0",
+      "DD not reduced: -29.4% vs B&H -25.9%",
+      "MC profitable 10.1% < 70.0%",
+      "WF: 1/4 OOS periods positive"
+    ],
+    "seconds": 5.8
+  },
+  {
+    "ticker": "ES=F",
+    "sector": "INDEX_FUT",
+    "timeframe": "hourly",
+    "bars": 13683,
+    "years": 2.39,
+    "range": "2024-06-20 \u2192 2026-11-10",
+    "passed": false,
+    "grade": "F",
+    "score": "2/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -17.96,
+      "final_capital": 82043.08,
+      "n_trades": 123,
+      "trades_per_year": 51.5,
+      "win_rate": 33.33,
+      "profit_factor": 0.774,
+      "expectancy": -151.64,
+      "avg_r_multiple": -0.152,
+      "avg_r_gross": -0.128,
+      "avg_cost_r": 0.024,
+      "total_r": -18.65,
+      "sharpe": -0.8,
+      "sortino": -8.158,
+      "max_drawdown": -19.92,
+      "max_consec_loss": 7,
+      "avg_bars_held": 32.4,
+      "long_share": 48.8,
+      "legs_marked": 357,
+      "legs_tapped": 184,
+      "traps_invalidated": 50
+    },
+    "benchmark": {
+      "bh_return": 37.78,
+      "bh_max_dd": -21.12
+    },
+    "monte_carlo": {
+      "profitable_pct": 9.8,
+      "median_return": -17.44,
+      "worst_5pct": -35.4,
+      "best_5pct": 6.93,
+      "median_max_dd": -23.81,
+      "worst_dd_5pct": -37.63,
+      "p_value_mean_r_le_0": 0.887,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2024-06-20 \u2192 2025-01-28",
+          "n_trades": 23,
+          "return": -5.5,
+          "total_r": -5.5,
+          "win_rate": 34.78,
+          "positive": false,
+          "bh_return": 9.91
+        },
+        {
+          "period": "2025-01-28 \u2192 2025-08-28",
+          "n_trades": 37,
+          "return": -5.85,
+          "total_r": -5.63,
+          "win_rate": 32.43,
+          "positive": false,
+          "bh_return": 7.37
+        },
+        {
+          "period": "2025-08-29 \u2192 2026-04-09",
+          "n_trades": 30,
+          "return": 1.32,
+          "total_r": 1.64,
+          "win_rate": 40.0,
+          "positive": true,
+          "bh_return": 4.44
+        },
+        {
+          "period": "2026-04-09 \u2192 2026-11-10",
+          "n_trades": 33,
+          "return": -7.91,
+          "total_r": -7.97,
+          "win_rate": 30.3,
+          "positive": false,
+          "bh_return": 11.61
+        }
+      ],
+      "positive_periods": 1,
+      "total_periods": 4,
+      "avg_oos_r": -4.36,
+      "consistency": 0.25
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2024-06-20 \u2192 2025-08-28",
+          "test": "2025-08-29 \u2192 2026-04-09",
+          "best_params": {
+            "swing_len": 10,
+            "confirm_mode": "consolidation",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 5.86,
+          "train_trades": 50,
+          "oos_r": -4.32,
+          "oos_trades": 24,
+          "oos_win_rate": 29.2,
+          "default_oos_r": 1.64,
+          "positive": false,
+          "grid_positive_train_pct": 8.3
+        },
+        {
+          "train": "2025-01-28 \u2192 2026-04-09",
+          "test": "2026-04-09 \u2192 2026-11-10",
+          "best_params": {
+            "swing_len": 4,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 2.5,
+            "require_sweep": true
+          },
+          "train_r": 10.31,
+          "train_trades": 28,
+          "oos_r": -11.37,
+          "oos_trades": 20,
+          "oos_win_rate": 10.0,
+          "default_oos_r": -7.97,
+          "positive": false,
+          "grid_positive_train_pct": 16.0
+        }
+      ],
+      "positive_windows": 0,
+      "total_windows": 2,
+      "sum_oos_r": -15.69,
+      "sum_default_oos_r": -6.33,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -0.80 < 0.6",
+      "Sortino -8.16 < 0.8",
+      "WinRate 33.3% < 42.0%",
+      "PF 0.77 < 1.4",
+      "Expectancy -0.15R <= 0",
+      "DD not reduced: -19.9% vs B&H -21.1%",
+      "MC profitable 9.8% < 70.0%",
+      "WF: 1/4 OOS periods positive",
+      "WFO: 0/2 optimised OOS windows positive"
+    ],
+    "seconds": 5.8
+  },
+  {
+    "ticker": "GC=F",
+    "sector": "METALS",
+    "timeframe": "hourly",
+    "bars": 13718,
+    "years": 2.39,
+    "range": "2024-06-20 \u2192 2026-11-10",
+    "passed": false,
+    "grade": "F",
+    "score": "3/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -6.56,
+      "final_capital": 93441.78,
+      "n_trades": 133,
+      "trades_per_year": 55.6,
+      "win_rate": 40.6,
+      "profit_factor": 0.93,
+      "expectancy": -42.56,
+      "avg_r_multiple": -0.043,
+      "avg_r_gross": -0.017,
+      "avg_cost_r": 0.026,
+      "total_r": -5.66,
+      "sharpe": -0.244,
+      "sortino": -12.389,
+      "max_drawdown": -13.74,
+      "max_consec_loss": 7,
+      "avg_bars_held": 28.7,
+      "long_share": 59.4,
+      "legs_marked": 343,
+      "legs_tapped": 180,
+      "traps_invalidated": 40
+    },
+    "benchmark": {
+      "bh_return": 75.36,
+      "bh_max_dd": -30.43
+    },
+    "monte_carlo": {
+      "profitable_pct": 33.1,
+      "median_return": -6.53,
+      "worst_5pct": -26.78,
+      "best_5pct": 19.08,
+      "median_max_dd": -17.26,
+      "worst_dd_5pct": -31.19,
+      "p_value_mean_r_le_0": 0.641,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2024-06-20 \u2192 2025-01-27",
+          "n_trades": 31,
+          "return": -1.02,
+          "total_r": -0.8,
+          "win_rate": 45.16,
+          "positive": false,
+          "bh_return": 16.2
+        },
+        {
+          "period": "2025-01-27 \u2192 2025-08-28",
+          "n_trades": 36,
+          "return": -0.94,
+          "total_r": -0.54,
+          "win_rate": 36.11,
+          "positive": false,
+          "bh_return": 26.01
+        },
+        {
+          "period": "2025-08-28 \u2192 2026-04-08",
+          "n_trades": 33,
+          "return": 0.6,
+          "total_r": 0.82,
+          "win_rate": 48.48,
+          "positive": true,
+          "bh_return": 37.08
+        },
+        {
+          "period": "2026-04-08 \u2192 2026-11-10",
+          "n_trades": 30,
+          "return": -6.7,
+          "total_r": -6.69,
+          "win_rate": 30.0,
+          "positive": false,
+          "bh_return": -13.11
+        }
+      ],
+      "positive_periods": 1,
+      "total_periods": 4,
+      "avg_oos_r": -1.8,
+      "consistency": 0.25
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2024-06-20 \u2192 2025-08-28",
+          "test": "2025-08-28 \u2192 2026-04-08",
+          "best_params": {
+            "swing_len": 4,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 2.5,
+            "require_sweep": false
+          },
+          "train_r": 17.45,
+          "train_trades": 75,
+          "oos_r": 8.28,
+          "oos_trades": 33,
+          "oos_win_rate": 30.3,
+          "default_oos_r": 0.82,
+          "positive": true,
+          "grid_positive_train_pct": 32.6
+        },
+        {
+          "train": "2025-01-27 \u2192 2026-04-08",
+          "test": "2026-04-08 \u2192 2026-11-10",
+          "best_params": {
+            "swing_len": 4,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 19.69,
+          "train_trades": 85,
+          "oos_r": 1.92,
+          "oos_trades": 37,
+          "oos_win_rate": 24.3,
+          "default_oos_r": -6.69,
+          "positive": true,
+          "grid_positive_train_pct": 38.9
+        }
+      ],
+      "positive_windows": 2,
+      "total_windows": 2,
+      "sum_oos_r": 10.2,
+      "sum_default_oos_r": -5.87,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -0.24 < 0.6",
+      "Sortino -12.39 < 0.8",
+      "WinRate 40.6% < 42.0%",
+      "PF 0.93 < 1.4",
+      "Expectancy -0.04R <= 0",
+      "DD not reduced: -13.7% vs B&H -30.4%",
+      "MC profitable 33.1% < 70.0%",
+      "WF: 1/4 OOS periods positive"
+    ],
+    "seconds": 5.4
+  },
+  {
+    "ticker": "CL=F",
+    "sector": "ENERGY",
+    "timeframe": "hourly",
+    "bars": 13542,
+    "years": 2.39,
+    "range": "2024-06-20 \u2192 2026-11-10",
+    "passed": false,
+    "grade": "F",
+    "score": "2/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -35.31,
+      "final_capital": 64689.11,
+      "n_trades": 152,
+      "trades_per_year": 63.6,
+      "win_rate": 32.89,
+      "profit_factor": 0.596,
+      "expectancy": -279.65,
+      "avg_r_multiple": -0.28,
+      "avg_r_gross": -0.25,
+      "avg_cost_r": 0.029,
+      "total_r": -42.51,
+      "sharpe": -1.949,
+      "sortino": -75.024,
+      "max_drawdown": -38.2,
+      "max_consec_loss": 15,
+      "avg_bars_held": 27.2,
+      "long_share": 52.6,
+      "legs_marked": 355,
+      "legs_tapped": 200,
+      "traps_invalidated": 41
+    },
+    "benchmark": {
+      "bh_return": 4.83,
+      "bh_max_dd": -42.3
+    },
+    "monte_carlo": {
+      "profitable_pct": 0.0,
+      "median_return": -35.27,
+      "worst_5pct": -48.87,
+      "best_5pct": -19.69,
+      "median_max_dd": -37.74,
+      "worst_dd_5pct": -49.92,
+      "p_value_mean_r_le_0": 0.999,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2024-06-20 \u2192 2025-01-29",
+          "n_trades": 38,
+          "return": -7.63,
+          "total_r": -7.61,
+          "win_rate": 34.21,
+          "positive": false,
+          "bh_return": -10.41
+        },
+        {
+          "period": "2025-01-29 \u2192 2025-09-03",
+          "n_trades": 35,
+          "return": -17.11,
+          "total_r": -18.56,
+          "win_rate": 22.86,
+          "positive": false,
+          "bh_return": -12.6
+        },
+        {
+          "period": "2025-09-03 \u2192 2026-04-10",
+          "n_trades": 43,
+          "return": -15.14,
+          "total_r": -16.16,
+          "win_rate": 30.23,
+          "positive": false,
+          "bh_return": 54.87
+        },
+        {
+          "period": "2026-04-10 \u2192 2026-11-10",
+          "n_trades": 32,
+          "return": -0.55,
+          "total_r": -0.33,
+          "win_rate": 43.75,
+          "positive": false,
+          "bh_return": -13.99
+        }
+      ],
+      "positive_periods": 0,
+      "total_periods": 4,
+      "avg_oos_r": -10.66,
+      "consistency": 0.0
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2024-06-20 \u2192 2025-09-03",
+          "test": "2025-09-03 \u2192 2026-04-10",
+          "best_params": {
+            "swing_len": 7,
+            "confirm_mode": "consolidation",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": true
+          },
+          "train_r": -5.14,
+          "train_trades": 15,
+          "oos_r": -3.6,
+          "oos_trades": 8,
+          "oos_win_rate": 25.0,
+          "default_oos_r": -16.16,
+          "positive": false,
+          "grid_positive_train_pct": 0.0
+        },
+        {
+          "train": "2025-01-29 \u2192 2026-04-10",
+          "test": "2026-04-10 \u2192 2026-11-10",
+          "best_params": {
+            "swing_len": 10,
+            "confirm_mode": "touch",
+            "eval_tp_index": 0,
+            "min_leg_atr": 1.5,
+            "require_sweep": true
+          },
+          "train_r": -2.22,
+          "train_trades": 16,
+          "oos_r": 2.77,
+          "oos_trades": 5,
+          "oos_win_rate": 60.0,
+          "default_oos_r": -0.33,
+          "positive": true,
+          "grid_positive_train_pct": 0.0
+        }
+      ],
+      "positive_windows": 1,
+      "total_windows": 2,
+      "sum_oos_r": -0.83,
+      "sum_default_oos_r": -16.49,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -1.95 < 0.6",
+      "Sortino -75.02 < 0.8",
+      "WinRate 32.9% < 42.0%",
+      "PF 0.60 < 1.4",
+      "MaxDD -38.2% worse than -35.0%",
+      "Expectancy -0.28R <= 0",
+      "DD not reduced: -38.2% vs B&H -42.3%",
+      "MC profitable 0.0% < 70.0%",
+      "WF: 0/4 OOS periods positive"
+    ],
+    "seconds": 6.7
+  },
+  {
+    "ticker": "EURUSD=X",
+    "sector": "FX",
+    "timeframe": "hourly",
+    "bars": 17252,
+    "years": 2.8,
+    "range": "2024-01-24 \u2192 2026-11-10",
+    "passed": false,
+    "grade": "D",
+    "score": "4/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -7.29,
+      "final_capital": 92712.33,
+      "n_trades": 173,
+      "trades_per_year": 61.9,
+      "win_rate": 37.57,
+      "profit_factor": 0.949,
+      "expectancy": -33.1,
+      "avg_r_multiple": -0.033,
+      "avg_r_gross": 0.014,
+      "avg_cost_r": 0.047,
+      "total_r": -5.73,
+      "sharpe": -0.178,
+      "sortino": -8.226,
+      "max_drawdown": -18.77,
+      "max_consec_loss": 7,
+      "avg_bars_held": 31.6,
+      "long_share": 47.4,
+      "legs_marked": 429,
+      "legs_tapped": 236,
+      "traps_invalidated": 50
+    },
+    "benchmark": {
+      "bh_return": 3.55,
+      "bh_max_dd": -9.03
+    },
+    "monte_carlo": {
+      "profitable_pct": 34.9,
+      "median_return": -8.02,
+      "worst_5pct": -31.64,
+      "best_5pct": 26.16,
+      "median_max_dd": -21.22,
+      "worst_dd_5pct": -36.95,
+      "p_value_mean_r_le_0": 0.618,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2024-01-24 \u2192 2024-10-03",
+          "n_trades": 37,
+          "return": -18.5,
+          "total_r": -20.22,
+          "win_rate": 21.62,
+          "positive": false,
+          "bh_return": 1.59
+        },
+        {
+          "period": "2024-10-03 \u2192 2025-06-16",
+          "n_trades": 40,
+          "return": -2.23,
+          "total_r": -1.83,
+          "win_rate": 37.5,
+          "positive": false,
+          "bh_return": 4.74
+        },
+        {
+          "period": "2025-06-16 \u2192 2026-02-27",
+          "n_trades": 42,
+          "return": 5.67,
+          "total_r": 5.94,
+          "win_rate": 45.24,
+          "positive": true,
+          "bh_return": 2.17
+        },
+        {
+          "period": "2026-02-27 \u2192 2026-11-10",
+          "n_trades": 44,
+          "return": -4.15,
+          "total_r": -3.79,
+          "win_rate": 36.36,
+          "positive": false,
+          "bh_return": -4.9
+        }
+      ],
+      "positive_periods": 1,
+      "total_periods": 4,
+      "avg_oos_r": -4.97,
+      "consistency": 0.25
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2024-01-24 \u2192 2025-06-16",
+          "test": "2025-06-16 \u2192 2026-02-27",
+          "best_params": {
+            "swing_len": 7,
+            "confirm_mode": "touch",
+            "eval_tp_index": 1,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": -0.63,
+          "train_trades": 84,
+          "oos_r": 8.73,
+          "oos_trades": 39,
+          "oos_win_rate": 33.3,
+          "default_oos_r": 5.94,
+          "positive": true,
+          "grid_positive_train_pct": 0.0
+        },
+        {
+          "train": "2024-10-03 \u2192 2026-02-27",
+          "test": "2026-02-27 \u2192 2026-11-10",
+          "best_params": {
+            "swing_len": 10,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 37.58,
+          "train_trades": 66,
+          "oos_r": 0.47,
+          "oos_trades": 30,
+          "oos_win_rate": 33.3,
+          "default_oos_r": -3.79,
+          "positive": true,
+          "grid_positive_train_pct": 69.4
+        }
+      ],
+      "positive_windows": 2,
+      "total_windows": 2,
+      "sum_oos_r": 9.2,
+      "sum_default_oos_r": 2.15,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -0.18 < 0.6",
+      "Sortino -8.23 < 0.8",
+      "WinRate 37.6% < 42.0%",
+      "PF 0.95 < 1.4",
+      "Expectancy -0.03R <= 0",
+      "MC profitable 34.9% < 70.0%",
+      "WF: 1/4 OOS periods positive"
+    ],
+    "seconds": 7.5
+  },
+  {
+    "ticker": "GBPUSD=X",
+    "sector": "FX",
+    "timeframe": "hourly",
+    "bars": 17255,
+    "years": 2.8,
+    "range": "2024-01-24 \u2192 2026-11-10",
+    "passed": false,
+    "grade": "F",
+    "score": "3/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -23.41,
+      "final_capital": 76594.73,
+      "n_trades": 180,
+      "trades_per_year": 64.4,
+      "win_rate": 34.44,
+      "profit_factor": 0.798,
+      "expectancy": -138.94,
+      "avg_r_multiple": -0.139,
+      "avg_r_gross": -0.095,
+      "avg_cost_r": 0.044,
+      "total_r": -25.01,
+      "sharpe": -0.823,
+      "sortino": -32.644,
+      "max_drawdown": -28.71,
+      "max_consec_loss": 9,
+      "avg_bars_held": 26.2,
+      "long_share": 49.4,
+      "legs_marked": 448,
+      "legs_tapped": 251,
+      "traps_invalidated": 54
+    },
+    "benchmark": {
+      "bh_return": 5.99,
+      "bh_max_dd": -9.85
+    },
+    "monte_carlo": {
+      "profitable_pct": 6.3,
+      "median_return": -23.67,
+      "worst_5pct": -42.66,
+      "best_5pct": 2.57,
+      "median_max_dd": -29.94,
+      "worst_dd_5pct": -45.58,
+      "p_value_mean_r_le_0": 0.918,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2024-01-24 \u2192 2024-10-03",
+          "n_trades": 49,
+          "return": -0.5,
+          "total_r": -0.05,
+          "win_rate": 40.82,
+          "positive": false,
+          "bh_return": 3.85
+        },
+        {
+          "period": "2024-10-03 \u2192 2025-06-16",
+          "n_trades": 50,
+          "return": -13.5,
+          "total_r": -14.04,
+          "win_rate": 28.0,
+          "positive": false,
+          "bh_return": 3.07
+        },
+        {
+          "period": "2025-06-17 \u2192 2026-02-27",
+          "n_trades": 39,
+          "return": -16.11,
+          "total_r": -17.3,
+          "win_rate": 25.64,
+          "positive": false,
+          "bh_return": -0.9
+        },
+        {
+          "period": "2026-02-27 \u2192 2026-11-10",
+          "n_trades": 40,
+          "return": -3.06,
+          "total_r": -2.7,
+          "win_rate": 35.0,
+          "positive": false,
+          "bh_return": -0.01
+        }
+      ],
+      "positive_periods": 0,
+      "total_periods": 4,
+      "avg_oos_r": -8.52,
+      "consistency": 0.0
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2024-01-24 \u2192 2025-06-16",
+          "test": "2025-06-17 \u2192 2026-02-27",
+          "best_params": {
+            "swing_len": 7,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 14.27,
+          "train_trades": 84,
+          "oos_r": -17.07,
+          "oos_trades": 37,
+          "oos_win_rate": 13.5,
+          "default_oos_r": -17.3,
+          "positive": false,
+          "grid_positive_train_pct": 8.3
+        },
+        {
+          "train": "2024-10-03 \u2192 2026-02-27",
+          "test": "2026-02-27 \u2192 2026-11-10",
+          "best_params": {
+            "swing_len": 10,
+            "confirm_mode": "consolidation",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": true
+          },
+          "train_r": -4.83,
+          "train_trades": 16,
+          "oos_r": -1.99,
+          "oos_trades": 9,
+          "oos_win_rate": 22.2,
+          "default_oos_r": -2.7,
+          "positive": false,
+          "grid_positive_train_pct": 0.0
+        }
+      ],
+      "positive_windows": 0,
+      "total_windows": 2,
+      "sum_oos_r": -19.06,
+      "sum_default_oos_r": -20.0,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -0.82 < 0.6",
+      "Sortino -32.64 < 0.8",
+      "WinRate 34.4% < 42.0%",
+      "PF 0.80 < 1.4",
+      "Expectancy -0.14R <= 0",
+      "MC profitable 6.3% < 70.0%",
+      "WF: 0/4 OOS periods positive",
+      "WFO: 0/2 optimised OOS windows positive"
+    ],
+    "seconds": 9.8
+  },
+  {
+    "ticker": "USDJPY=X",
+    "sector": "FX",
+    "timeframe": "hourly",
+    "bars": 17157,
+    "years": 2.8,
+    "range": "2024-01-24 \u2192 2026-11-10",
+    "passed": false,
+    "grade": "F",
+    "score": "3/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -18.0,
+      "final_capital": 81997.41,
+      "n_trades": 165,
+      "trades_per_year": 59.0,
+      "win_rate": 38.79,
+      "profit_factor": 0.825,
+      "expectancy": -111.64,
+      "avg_r_multiple": -0.112,
+      "avg_r_gross": -0.076,
+      "avg_cost_r": 0.036,
+      "total_r": -18.42,
+      "sharpe": -0.651,
+      "sortino": -14.676,
+      "max_drawdown": -24.03,
+      "max_consec_loss": 7,
+      "avg_bars_held": 30.8,
+      "long_share": 57.0,
+      "legs_marked": 417,
+      "legs_tapped": 229,
+      "traps_invalidated": 53
+    },
+    "benchmark": {
+      "bh_return": 6.66,
+      "bh_max_dd": -13.64
+    },
+    "monte_carlo": {
+      "profitable_pct": 11.4,
+      "median_return": -18.32,
+      "worst_5pct": -38.12,
+      "best_5pct": 8.79,
+      "median_max_dd": -25.6,
+      "worst_dd_5pct": -40.99,
+      "p_value_mean_r_le_0": 0.862,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2024-01-24 \u2192 2024-10-03",
+          "n_trades": 42,
+          "return": -7.47,
+          "total_r": -7.5,
+          "win_rate": 40.48,
+          "positive": false,
+          "bh_return": -1.05
+        },
+        {
+          "period": "2024-10-03 \u2192 2025-06-16",
+          "n_trades": 40,
+          "return": 12.13,
+          "total_r": 12.06,
+          "win_rate": 45.0,
+          "positive": true,
+          "bh_return": -1.45
+        },
+        {
+          "period": "2025-06-16 \u2192 2026-02-27",
+          "n_trades": 44,
+          "return": -10.43,
+          "total_r": -10.7,
+          "win_rate": 34.09,
+          "positive": false,
+          "bh_return": 7.73
+        },
+        {
+          "period": "2026-02-27 \u2192 2026-11-10",
+          "n_trades": 40,
+          "return": -12.65,
+          "total_r": -13.29,
+          "win_rate": 35.0,
+          "positive": false,
+          "bh_return": 1.24
+        }
+      ],
+      "positive_periods": 1,
+      "total_periods": 4,
+      "avg_oos_r": -4.86,
+      "consistency": 0.25
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2024-01-24 \u2192 2025-06-16",
+          "test": "2025-06-16 \u2192 2026-02-27",
+          "best_params": {
+            "swing_len": 5,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 2.5,
+            "require_sweep": false
+          },
+          "train_r": 25.42,
+          "train_trades": 85,
+          "oos_r": -12.12,
+          "oos_trades": 43,
+          "oos_win_rate": 16.3,
+          "default_oos_r": -10.7,
+          "positive": false,
+          "grid_positive_train_pct": 55.6
+        },
+        {
+          "train": "2024-10-03 \u2192 2026-02-27",
+          "test": "2026-02-27 \u2192 2026-11-10",
+          "best_params": {
+            "swing_len": 4,
+            "confirm_mode": "consolidation",
+            "eval_tp_index": 2,
+            "min_leg_atr": 2.5,
+            "require_sweep": false
+          },
+          "train_r": 6.65,
+          "train_trades": 86,
+          "oos_r": -18.58,
+          "oos_trades": 33,
+          "oos_win_rate": 21.2,
+          "default_oos_r": -13.29,
+          "positive": false,
+          "grid_positive_train_pct": 16.0
+        }
+      ],
+      "positive_windows": 0,
+      "total_windows": 2,
+      "sum_oos_r": -30.7,
+      "sum_default_oos_r": -23.99,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -0.65 < 0.6",
+      "Sortino -14.68 < 0.8",
+      "WinRate 38.8% < 42.0%",
+      "PF 0.82 < 1.4",
+      "Expectancy -0.11R <= 0",
+      "MC profitable 11.4% < 70.0%",
+      "WF: 1/4 OOS periods positive",
+      "WFO: 0/2 optimised OOS windows positive"
+    ],
+    "seconds": 9.1
+  },
+  {
+    "ticker": "BTC-USD",
+    "sector": "CRYPTO",
+    "timeframe": "hourly",
+    "bars": 17472,
+    "years": 2.0,
+    "range": "2024-11-11 \u2192 2026-11-10",
+    "passed": false,
+    "grade": "C",
+    "score": "6/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": 5.4,
+      "final_capital": 105397.65,
+      "n_trades": 199,
+      "trades_per_year": 99.7,
+      "win_rate": 39.7,
+      "profit_factor": 1.069,
+      "expectancy": 50.08,
+      "avg_r_multiple": 0.05,
+      "avg_r_gross": 0.258,
+      "avg_cost_r": 0.208,
+      "total_r": 9.97,
+      "sharpe": 0.222,
+      "sortino": 2.641,
+      "max_drawdown": -21.34,
+      "max_consec_loss": 6,
+      "avg_bars_held": 29.7,
+      "long_share": 46.7,
+      "legs_marked": 449,
+      "legs_tapped": 265,
+      "traps_invalidated": 53
+    },
+    "benchmark": {
+      "bh_return": -7.33,
+      "bh_max_dd": -53.99
+    },
+    "monte_carlo": {
+      "profitable_pct": 53.4,
+      "median_return": 2.75,
+      "worst_5pct": -35.37,
+      "best_5pct": 75.79,
+      "median_max_dd": -24.62,
+      "worst_dd_5pct": -43.39,
+      "p_value_mean_r_le_0": 0.42,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2024-11-11 \u2192 2025-05-12",
+          "n_trades": 46,
+          "return": -11.36,
+          "total_r": -11.65,
+          "win_rate": 34.78,
+          "positive": false,
+          "bh_return": 29.92
+        },
+        {
+          "period": "2025-05-12 \u2192 2025-11-10",
+          "n_trades": 49,
+          "return": -0.18,
+          "total_r": 0.82,
+          "win_rate": 40.82,
+          "positive": true,
+          "bh_return": 2.08
+        },
+        {
+          "period": "2025-11-10 \u2192 2026-05-12",
+          "n_trades": 53,
+          "return": 26.87,
+          "total_r": 26.6,
+          "win_rate": 41.51,
+          "positive": true,
+          "bh_return": -23.71
+        },
+        {
+          "period": "2026-05-12 \u2192 2026-11-10",
+          "n_trades": 47,
+          "return": -8.08,
+          "total_r": -7.99,
+          "win_rate": 40.43,
+          "positive": false,
+          "bh_return": -7.67
+        }
+      ],
+      "positive_periods": 2,
+      "total_periods": 4,
+      "avg_oos_r": 1.95,
+      "consistency": 0.5
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2024-11-11 \u2192 2025-11-10",
+          "test": "2025-11-10 \u2192 2026-05-12",
+          "best_params": {
+            "swing_len": 7,
+            "confirm_mode": "reclaim",
+            "eval_tp_index": 1,
+            "min_leg_atr": 1.5,
+            "require_sweep": true
+          },
+          "train_r": 7.04,
+          "train_trades": 23,
+          "oos_r": 1.63,
+          "oos_trades": 8,
+          "oos_win_rate": 62.5,
+          "default_oos_r": 26.6,
+          "positive": true,
+          "grid_positive_train_pct": 22.9
+        },
+        {
+          "train": "2025-05-12 \u2192 2026-05-12",
+          "test": "2026-05-12 \u2192 2026-11-10",
+          "best_params": {
+            "swing_len": 5,
+            "confirm_mode": "consolidation",
+            "eval_tp_index": 2,
+            "min_leg_atr": 2.5,
+            "require_sweep": false
+          },
+          "train_r": 49.88,
+          "train_trades": 94,
+          "oos_r": -17.78,
+          "oos_trades": 40,
+          "oos_win_rate": 27.5,
+          "default_oos_r": -7.99,
+          "positive": false,
+          "grid_positive_train_pct": 58.3
+        }
+      ],
+      "positive_windows": 1,
+      "total_windows": 2,
+      "sum_oos_r": -16.15,
+      "sum_default_oos_r": 18.61,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe 0.22 < 0.6",
+      "WinRate 39.7% < 42.0%",
+      "PF 1.07 < 1.4",
+      "DD not reduced: -21.3% vs B&H -54.0%",
+      "MC profitable 53.4% < 70.0%"
+    ],
+    "seconds": 8.4
+  },
+  {
+    "ticker": "ETH-USD",
+    "sector": "CRYPTO",
+    "timeframe": "hourly",
+    "bars": 17469,
+    "years": 2.0,
+    "range": "2024-11-11 \u2192 2026-11-10",
+    "passed": false,
+    "grade": "F",
+    "score": "2/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -33.33,
+      "final_capital": 66668.76,
+      "n_trades": 186,
+      "trades_per_year": 93.1,
+      "win_rate": 33.33,
+      "profit_factor": 0.727,
+      "expectancy": -207.23,
+      "avg_r_multiple": -0.207,
+      "avg_r_gross": -0.077,
+      "avg_cost_r": 0.13,
+      "total_r": -38.55,
+      "sharpe": -1.372,
+      "sortino": -23.342,
+      "max_drawdown": -36.58,
+      "max_consec_loss": 11,
+      "avg_bars_held": 31.8,
+      "long_share": 53.8,
+      "legs_marked": 423,
+      "legs_tapped": 244,
+      "traps_invalidated": 49
+    },
+    "benchmark": {
+      "bh_return": -33.87,
+      "bh_max_dd": -69.16
+    },
+    "monte_carlo": {
+      "profitable_pct": 1.3,
+      "median_return": -33.64,
+      "worst_5pct": -51.9,
+      "best_5pct": -10.18,
+      "median_max_dd": -38.14,
+      "worst_dd_5pct": -54.28,
+      "p_value_mean_r_le_0": 0.981,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2024-11-11 \u2192 2025-05-11",
+          "n_trades": 50,
+          "return": -8.01,
+          "total_r": -7.8,
+          "win_rate": 34.0,
+          "positive": false,
+          "bh_return": -21.33
+        },
+        {
+          "period": "2025-05-12 \u2192 2025-11-10",
+          "n_trades": 44,
+          "return": -6.7,
+          "total_r": -6.5,
+          "win_rate": 38.64,
+          "positive": false,
+          "bh_return": 41.86
+        },
+        {
+          "period": "2025-11-10 \u2192 2026-05-12",
+          "n_trades": 43,
+          "return": -11.76,
+          "total_r": -12.03,
+          "win_rate": 30.23,
+          "positive": false,
+          "bh_return": -36.76
+        },
+        {
+          "period": "2026-05-12 \u2192 2026-11-10",
+          "n_trades": 44,
+          "return": -14.57,
+          "total_r": -15.28,
+          "win_rate": 27.27,
+          "positive": false,
+          "bh_return": -7.93
+        }
+      ],
+      "positive_periods": 0,
+      "total_periods": 4,
+      "avg_oos_r": -10.4,
+      "consistency": 0.0
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2024-11-11 \u2192 2025-11-10",
+          "test": "2025-11-10 \u2192 2026-05-12",
+          "best_params": {
+            "swing_len": 10,
+            "confirm_mode": "reclaim",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": true
+          },
+          "train_r": 6.22,
+          "train_trades": 15,
+          "oos_r": 6.53,
+          "oos_trades": 7,
+          "oos_win_rate": 71.4,
+          "default_oos_r": -12.03,
+          "positive": true,
+          "grid_positive_train_pct": 16.7
+        },
+        {
+          "train": "2025-05-12 \u2192 2026-05-12",
+          "test": "2026-05-12 \u2192 2026-11-10",
+          "best_params": {
+            "swing_len": 7,
+            "confirm_mode": "reclaim",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": true
+          },
+          "train_r": 7.63,
+          "train_trades": 17,
+          "oos_r": 2.94,
+          "oos_trades": 13,
+          "oos_win_rate": 38.5,
+          "default_oos_r": -15.28,
+          "positive": true,
+          "grid_positive_train_pct": 31.2
+        }
+      ],
+      "positive_windows": 2,
+      "total_windows": 2,
+      "sum_oos_r": 9.47,
+      "sum_default_oos_r": -27.31,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -1.37 < 0.6",
+      "Sortino -23.34 < 0.8",
+      "WinRate 33.3% < 42.0%",
+      "PF 0.73 < 1.4",
+      "MaxDD -36.6% worse than -35.0%",
+      "Expectancy -0.21R <= 0",
+      "DD not reduced: -36.6% vs B&H -69.2%",
+      "MC profitable 1.3% < 70.0%",
+      "WF: 0/4 OOS periods positive"
+    ],
+    "seconds": 8.0
+  },
+  {
+    "ticker": "SPY",
+    "sector": "ETF",
+    "timeframe": "daily",
+    "bars": 3770,
+    "years": 15.0,
+    "range": "2011-11-10 \u2192 2026-11-09",
+    "passed": false,
+    "grade": "C",
+    "score": "7/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": 8.64,
+      "final_capital": 108637.54,
+      "n_trades": 41,
+      "trades_per_year": 2.7,
+      "win_rate": 46.34,
+      "profit_factor": 1.387,
+      "expectancy": 217.06,
+      "avg_r_multiple": 0.217,
+      "avg_r_gross": 0.261,
+      "avg_cost_r": 0.044,
+      "total_r": 8.9,
+      "sharpe": 0.206,
+      "sortino": 10.116,
+      "max_drawdown": -5.51,
+      "max_consec_loss": 4,
+      "avg_bars_held": 18.5,
+      "long_share": 65.9,
+      "legs_marked": 109,
+      "legs_tapped": 54,
+      "traps_invalidated": 11
+    },
+    "benchmark": {
+      "bh_return": 505.45,
+      "bh_max_dd": -34.1
+    },
+    "monte_carlo": {
+      "profitable_pct": 75.0,
+      "median_return": 7.81,
+      "worst_5pct": -9.75,
+      "best_5pct": 30.24,
+      "median_max_dd": -7.02,
+      "worst_dd_5pct": -14.09,
+      "p_value_mean_r_le_0": 0.239,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2011-11-10 \u2192 2015-08-11",
+          "n_trades": 11,
+          "return": -0.62,
+          "total_r": -0.54,
+          "win_rate": 45.45,
+          "positive": false,
+          "bh_return": 67.85
+        },
+        {
+          "period": "2015-08-12 \u2192 2019-05-10",
+          "n_trades": 9,
+          "return": 8.37,
+          "total_r": 8.33,
+          "win_rate": 66.67,
+          "positive": true,
+          "bh_return": 37.9
+        },
+        {
+          "period": "2019-05-13 \u2192 2023-02-06",
+          "n_trades": 11,
+          "return": -0.23,
+          "total_r": -0.16,
+          "win_rate": 45.45,
+          "positive": false,
+          "bh_return": 45.92
+        },
+        {
+          "period": "2023-02-07 \u2192 2026-11-09",
+          "n_trades": 4,
+          "return": -4.09,
+          "total_r": -4.15,
+          "win_rate": 0.0,
+          "positive": false,
+          "bh_return": 81.29
+        }
+      ],
+      "positive_periods": 1,
+      "total_periods": 4,
+      "avg_oos_r": 0.87,
+      "consistency": 0.25
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2011-11-10 \u2192 2019-05-10",
+          "test": "2019-05-13 \u2192 2023-02-06",
+          "best_params": {
+            "swing_len": 4,
+            "confirm_mode": "touch",
+            "eval_tp_index": 1,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 23.4,
+          "train_trades": 24,
+          "oos_r": 1.26,
+          "oos_trades": 10,
+          "oos_win_rate": 30.0,
+          "default_oos_r": -0.16,
+          "positive": true,
+          "grid_positive_train_pct": 81.9
+        },
+        {
+          "train": "2015-08-12 \u2192 2023-02-06",
+          "test": "2023-02-07 \u2192 2026-11-06",
+          "best_params": {
+            "swing_len": 5,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 19.05,
+          "train_trades": 20,
+          "oos_r": -3.37,
+          "oos_trades": 8,
+          "oos_win_rate": 12.5,
+          "default_oos_r": -4.15,
+          "positive": false,
+          "grid_positive_train_pct": 79.2
+        }
+      ],
+      "positive_windows": 1,
+      "total_windows": 2,
+      "sum_oos_r": -2.11,
+      "sum_default_oos_r": -4.31,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe 0.21 < 0.6",
+      "PF 1.39 < 1.4",
+      "DD not reduced: -5.5% vs B&H -34.1%",
+      "WF: 1/4 OOS periods positive"
+    ],
+    "seconds": 1.7
+  },
+  {
+    "ticker": "QQQ",
+    "sector": "ETF",
+    "timeframe": "daily",
+    "bars": 3770,
+    "years": 15.0,
+    "range": "2011-11-10 \u2192 2026-11-09",
+    "passed": false,
+    "grade": "C",
+    "score": "6/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": 2.21,
+      "final_capital": 102214.05,
+      "n_trades": 42,
+      "trades_per_year": 2.8,
+      "win_rate": 45.24,
+      "profit_factor": 1.109,
+      "expectancy": 61.65,
+      "avg_r_multiple": 0.062,
+      "avg_r_gross": 0.096,
+      "avg_cost_r": 0.034,
+      "total_r": 2.59,
+      "sharpe": 0.074,
+      "sortino": 3.458,
+      "max_drawdown": -10.78,
+      "max_consec_loss": 4,
+      "avg_bars_held": 13.7,
+      "long_share": 66.7,
+      "legs_marked": 112,
+      "legs_tapped": 59,
+      "traps_invalidated": 13
+    },
+    "benchmark": {
+      "bh_return": 1096.46,
+      "bh_max_dd": -35.62
+    },
+    "monte_carlo": {
+      "profitable_pct": 60.2,
+      "median_return": 2.31,
+      "worst_5pct": -11.12,
+      "best_5pct": 19.0,
+      "median_max_dd": -7.63,
+      "worst_dd_5pct": -14.37,
+      "p_value_mean_r_le_0": 0.386,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2011-11-10 \u2192 2015-08-11",
+          "n_trades": 5,
+          "return": 3.64,
+          "total_r": 3.65,
+          "win_rate": 60.0,
+          "positive": true,
+          "bh_return": 93.98
+        },
+        {
+          "period": "2015-08-12 \u2192 2019-05-10",
+          "n_trades": 12,
+          "return": 11.68,
+          "total_r": 11.25,
+          "win_rate": 75.0,
+          "positive": true,
+          "bh_return": 67.39
+        },
+        {
+          "period": "2019-05-13 \u2192 2023-02-06",
+          "n_trades": 8,
+          "return": -6.42,
+          "total_r": -6.6,
+          "win_rate": 12.5,
+          "positive": false,
+          "bh_return": 70.0
+        },
+        {
+          "period": "2023-02-07 \u2192 2026-11-09",
+          "n_trades": 9,
+          "return": -3.84,
+          "total_r": -3.87,
+          "win_rate": 33.33,
+          "positive": false,
+          "bh_return": 119.23
+        }
+      ],
+      "positive_periods": 2,
+      "total_periods": 4,
+      "avg_oos_r": 1.11,
+      "consistency": 0.5
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2011-11-10 \u2192 2019-05-10",
+          "test": "2019-05-13 \u2192 2023-02-06",
+          "best_params": {
+            "swing_len": 4,
+            "confirm_mode": "touch",
+            "eval_tp_index": 1,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 20.09,
+          "train_trades": 24,
+          "oos_r": -5.26,
+          "oos_trades": 12,
+          "oos_win_rate": 16.7,
+          "default_oos_r": -6.6,
+          "positive": false,
+          "grid_positive_train_pct": 80.6
+        },
+        {
+          "train": "2015-08-12 \u2192 2023-02-06",
+          "test": "2023-02-07 \u2192 2026-11-06",
+          "best_params": {
+            "swing_len": 5,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 12.05,
+          "train_trades": 25,
+          "oos_r": -2.24,
+          "oos_trades": 11,
+          "oos_win_rate": 18.2,
+          "default_oos_r": -3.87,
+          "positive": false,
+          "grid_positive_train_pct": 86.8
+        }
+      ],
+      "positive_windows": 0,
+      "total_windows": 2,
+      "sum_oos_r": -7.5,
+      "sum_default_oos_r": -10.47,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe 0.07 < 0.6",
+      "PF 1.11 < 1.4",
+      "DD not reduced: -10.8% vs B&H -35.6%",
+      "MC profitable 60.2% < 70.0%",
+      "WFO: 0/2 optimised OOS windows positive"
+    ],
+    "seconds": 2.9
+  },
+  {
+    "ticker": "GLD",
+    "sector": "ETF",
+    "timeframe": "daily",
+    "bars": 3770,
+    "years": 15.0,
+    "range": "2011-11-10 \u2192 2026-11-09",
+    "passed": false,
+    "grade": "F",
+    "score": "3/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -10.08,
+      "final_capital": 89924.9,
+      "n_trades": 48,
+      "trades_per_year": 3.2,
+      "win_rate": 35.42,
+      "profit_factor": 0.683,
+      "expectancy": -213.33,
+      "avg_r_multiple": -0.213,
+      "avg_r_gross": -0.173,
+      "avg_cost_r": 0.04,
+      "total_r": -10.24,
+      "sharpe": -0.307,
+      "sortino": -14.717,
+      "max_drawdown": -16.53,
+      "max_consec_loss": 7,
+      "avg_bars_held": 24.9,
+      "long_share": 50.0,
+      "legs_marked": 107,
+      "legs_tapped": 65,
+      "traps_invalidated": 13
+    },
+    "benchmark": {
+      "bh_return": 121.77,
+      "bh_max_dd": -42.23
+    },
+    "monte_carlo": {
+      "profitable_pct": 9.8,
+      "median_return": -10.19,
+      "worst_5pct": -20.82,
+      "best_5pct": 3.12,
+      "median_max_dd": -13.96,
+      "worst_dd_5pct": -22.58,
+      "p_value_mean_r_le_0": 0.887,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2011-11-10 \u2192 2015-08-11",
+          "n_trades": 12,
+          "return": -3.52,
+          "total_r": -3.49,
+          "win_rate": 33.33,
+          "positive": false,
+          "bh_return": -37.91
+        },
+        {
+          "period": "2015-08-12 \u2192 2019-05-10",
+          "n_trades": 13,
+          "return": -6.11,
+          "total_r": -6.22,
+          "win_rate": 23.08,
+          "positive": false,
+          "bh_return": 12.7
+        },
+        {
+          "period": "2019-05-13 \u2192 2023-02-06",
+          "n_trades": 13,
+          "return": -5.33,
+          "total_r": -5.41,
+          "win_rate": 30.77,
+          "positive": false,
+          "bh_return": 41.7
+        },
+        {
+          "period": "2023-02-07 \u2192 2026-11-09",
+          "n_trades": 5,
+          "return": 8.97,
+          "total_r": 8.77,
+          "win_rate": 80.0,
+          "positive": true,
+          "bh_return": 118.15
+        }
+      ],
+      "positive_periods": 1,
+      "total_periods": 4,
+      "avg_oos_r": -1.59,
+      "consistency": 0.25
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2011-11-10 \u2192 2019-05-10",
+          "test": "2019-05-13 \u2192 2023-02-06",
+          "best_params": {
+            "swing_len": 7,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 3.9,
+          "train_trades": 20,
+          "oos_r": -4.27,
+          "oos_trades": 9,
+          "oos_win_rate": 11.1,
+          "default_oos_r": -5.41,
+          "positive": false,
+          "grid_positive_train_pct": 23.6
+        },
+        {
+          "train": "2015-08-12 \u2192 2023-02-06",
+          "test": "2023-02-07 \u2192 2026-11-06",
+          "best_params": {
+            "swing_len": 10,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 10.92,
+          "train_trades": 16,
+          "oos_r": 7.27,
+          "oos_trades": 3,
+          "oos_win_rate": 66.7,
+          "default_oos_r": 8.77,
+          "positive": true,
+          "grid_positive_train_pct": 23.6
+        }
+      ],
+      "positive_windows": 1,
+      "total_windows": 2,
+      "sum_oos_r": 3.0,
+      "sum_default_oos_r": 3.36,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -0.31 < 0.6",
+      "Sortino -14.72 < 0.8",
+      "WinRate 35.4% < 42.0%",
+      "PF 0.68 < 1.4",
+      "Expectancy -0.21R <= 0",
+      "DD not reduced: -16.5% vs B&H -42.2%",
+      "MC profitable 9.8% < 70.0%",
+      "WF: 1/4 OOS periods positive"
+    ],
+    "seconds": 3.0
+  },
+  {
+    "ticker": "TLT",
+    "sector": "ETF",
+    "timeframe": "daily",
+    "bars": 3770,
+    "years": 15.0,
+    "range": "2011-11-10 \u2192 2026-11-09",
+    "passed": false,
+    "grade": "F",
+    "score": "3/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -3.14,
+      "final_capital": 96862.49,
+      "n_trades": 45,
+      "trades_per_year": 3.0,
+      "win_rate": 37.78,
+      "profit_factor": 0.906,
+      "expectancy": -61.39,
+      "avg_r_multiple": -0.061,
+      "avg_r_gross": -0.018,
+      "avg_cost_r": 0.044,
+      "total_r": -2.76,
+      "sharpe": -0.077,
+      "sortino": -3.918,
+      "max_drawdown": -5.91,
+      "max_consec_loss": 4,
+      "avg_bars_held": 24.0,
+      "long_share": 37.8,
+      "legs_marked": 97,
+      "legs_tapped": 59,
+      "traps_invalidated": 12
+    },
+    "benchmark": {
+      "bh_return": -29.56,
+      "bh_max_dd": -55.06
+    },
+    "monte_carlo": {
+      "profitable_pct": 34.1,
+      "median_return": -3.82,
+      "worst_5pct": -16.93,
+      "best_5pct": 13.75,
+      "median_max_dd": -10.42,
+      "worst_dd_5pct": -18.9,
+      "p_value_mean_r_le_0": 0.646,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2011-11-10 \u2192 2015-08-11",
+          "n_trades": 10,
+          "return": -2.09,
+          "total_r": -2.02,
+          "win_rate": 30.0,
+          "positive": false,
+          "bh_return": 7.21
+        },
+        {
+          "period": "2015-08-12 \u2192 2019-05-10",
+          "n_trades": 9,
+          "return": 0.04,
+          "total_r": 0.1,
+          "win_rate": 44.44,
+          "positive": true,
+          "bh_return": 0.55
+        },
+        {
+          "period": "2019-05-13 \u2192 2023-02-06",
+          "n_trades": 12,
+          "return": -0.93,
+          "total_r": -0.85,
+          "win_rate": 41.67,
+          "positive": false,
+          "bh_return": -15.76
+        },
+        {
+          "period": "2023-02-07 \u2192 2026-11-09",
+          "n_trades": 10,
+          "return": -1.94,
+          "total_r": -1.89,
+          "win_rate": 40.0,
+          "positive": false,
+          "bh_return": -21.99
+        }
+      ],
+      "positive_periods": 1,
+      "total_periods": 4,
+      "avg_oos_r": -1.17,
+      "consistency": 0.25
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2011-11-10 \u2192 2019-05-10",
+          "test": "2019-05-13 \u2192 2023-02-06",
+          "best_params": {
+            "swing_len": 4,
+            "confirm_mode": "reclaim",
+            "eval_tp_index": 0,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 3.29,
+          "train_trades": 22,
+          "oos_r": -3.79,
+          "oos_trades": 14,
+          "oos_win_rate": 42.9,
+          "default_oos_r": -0.85,
+          "positive": false,
+          "grid_positive_train_pct": 42.4
+        },
+        {
+          "train": "2015-08-12 \u2192 2023-02-06",
+          "test": "2023-02-07 \u2192 2026-11-06",
+          "best_params": {
+            "swing_len": 4,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 2.5,
+            "require_sweep": false
+          },
+          "train_r": 14.21,
+          "train_trades": 22,
+          "oos_r": 4.64,
+          "oos_trades": 14,
+          "oos_win_rate": 28.6,
+          "default_oos_r": -1.89,
+          "positive": true,
+          "grid_positive_train_pct": 38.9
+        }
+      ],
+      "positive_windows": 1,
+      "total_windows": 2,
+      "sum_oos_r": 0.85,
+      "sum_default_oos_r": -2.74,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -0.08 < 0.6",
+      "Sortino -3.92 < 0.8",
+      "WinRate 37.8% < 42.0%",
+      "PF 0.91 < 1.4",
+      "Expectancy -0.06R <= 0",
+      "DD not reduced: -5.9% vs B&H -55.1%",
+      "MC profitable 34.1% < 70.0%",
+      "WF: 1/4 OOS periods positive"
+    ],
+    "seconds": 3.0
+  },
+  {
+    "ticker": "NVDA",
+    "sector": "STOCK",
+    "timeframe": "daily",
+    "bars": 3770,
+    "years": 15.0,
+    "range": "2011-11-10 \u2192 2026-11-09",
+    "passed": false,
+    "grade": "D",
+    "score": "4/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -2.24,
+      "final_capital": 97759.18,
+      "n_trades": 41,
+      "trades_per_year": 2.7,
+      "win_rate": 36.59,
+      "profit_factor": 0.928,
+      "expectancy": -46.12,
+      "avg_r_multiple": -0.046,
+      "avg_r_gross": -0.032,
+      "avg_cost_r": 0.014,
+      "total_r": -1.89,
+      "sharpe": -0.056,
+      "sortino": -9.507,
+      "max_drawdown": -9.09,
+      "max_consec_loss": 7,
+      "avg_bars_held": 23.0,
+      "long_share": 70.7,
+      "legs_marked": 104,
+      "legs_tapped": 54,
+      "traps_invalidated": 8
+    },
+    "benchmark": {
+      "bh_return": 49290.46,
+      "bh_max_dd": -66.36
+    },
+    "monte_carlo": {
+      "profitable_pct": 38.2,
+      "median_return": -2.9,
+      "worst_5pct": -15.22,
+      "best_5pct": 13.56,
+      "median_max_dd": -9.17,
+      "worst_dd_5pct": -17.8,
+      "p_value_mean_r_le_0": 0.599,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2011-11-10 \u2192 2015-08-11",
+          "n_trades": 10,
+          "return": -7.89,
+          "total_r": -8.17,
+          "win_rate": 10.0,
+          "positive": false,
+          "bh_return": 63.51
+        },
+        {
+          "period": "2015-08-12 \u2192 2019-05-10",
+          "n_trades": 9,
+          "return": 2.14,
+          "total_r": 2.18,
+          "win_rate": 55.56,
+          "positive": true,
+          "bh_return": 611.72
+        },
+        {
+          "period": "2019-05-13 \u2192 2023-02-06",
+          "n_trades": 11,
+          "return": 4.97,
+          "total_r": 4.97,
+          "win_rate": 54.55,
+          "positive": true,
+          "bh_return": 432.38
+        },
+        {
+          "period": "2023-02-07 \u2192 2026-11-09",
+          "n_trades": 9,
+          "return": -1.52,
+          "total_r": -1.41,
+          "win_rate": 22.22,
+          "positive": false,
+          "bh_return": 705.8
+        }
+      ],
+      "positive_periods": 2,
+      "total_periods": 4,
+      "avg_oos_r": -0.61,
+      "consistency": 0.5
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2011-11-10 \u2192 2019-05-10",
+          "test": "2019-05-13 \u2192 2023-02-06",
+          "best_params": {
+            "swing_len": 5,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 7.54,
+          "train_trades": 21,
+          "oos_r": 9.33,
+          "oos_trades": 12,
+          "oos_win_rate": 41.7,
+          "default_oos_r": 4.97,
+          "positive": true,
+          "grid_positive_train_pct": 36.1
+        },
+        {
+          "train": "2015-08-12 \u2192 2023-02-06",
+          "test": "2023-02-07 \u2192 2026-11-06",
+          "best_params": {
+            "swing_len": 5,
+            "confirm_mode": "touch",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 14.71,
+          "train_trades": 20,
+          "oos_r": -0.93,
+          "oos_trades": 10,
+          "oos_win_rate": 20.0,
+          "default_oos_r": -1.41,
+          "positive": false,
+          "grid_positive_train_pct": 48.6
+        }
+      ],
+      "positive_windows": 1,
+      "total_windows": 2,
+      "sum_oos_r": 8.4,
+      "sum_default_oos_r": 3.56,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -0.06 < 0.6",
+      "Sortino -9.51 < 0.8",
+      "WinRate 36.6% < 42.0%",
+      "PF 0.93 < 1.4",
+      "Expectancy -0.05R <= 0",
+      "DD not reduced: -9.1% vs B&H -66.4%",
+      "MC profitable 38.2% < 70.0%"
+    ],
+    "seconds": 3.1
+  },
+  {
+    "ticker": "AAPL",
+    "sector": "STOCK",
+    "timeframe": "daily",
+    "bars": 3770,
+    "years": 15.0,
+    "range": "2011-11-10 \u2192 2026-11-09",
+    "passed": false,
+    "grade": "F",
+    "score": "2/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": -7.93,
+      "final_capital": 92074.34,
+      "n_trades": 38,
+      "trades_per_year": 2.5,
+      "win_rate": 34.21,
+      "profit_factor": 0.686,
+      "expectancy": -210.02,
+      "avg_r_multiple": -0.21,
+      "avg_r_gross": -0.192,
+      "avg_cost_r": 0.018,
+      "total_r": -7.98,
+      "sharpe": -0.281,
+      "sortino": -39.383,
+      "max_drawdown": -11.66,
+      "max_consec_loss": 7,
+      "avg_bars_held": 20.4,
+      "long_share": 60.5,
+      "legs_marked": 97,
+      "legs_tapped": 52,
+      "traps_invalidated": 14
+    },
+    "benchmark": {
+      "bh_return": 2449.02,
+      "bh_max_dd": -44.38
+    },
+    "monte_carlo": {
+      "profitable_pct": 15.3,
+      "median_return": -7.68,
+      "worst_5pct": -17.71,
+      "best_5pct": 5.85,
+      "median_max_dd": -11.06,
+      "worst_dd_5pct": -19.46,
+      "p_value_mean_r_le_0": 0.841,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2011-11-10 \u2192 2015-08-11",
+          "n_trades": 7,
+          "return": 1.45,
+          "total_r": 1.49,
+          "win_rate": 57.14,
+          "positive": true,
+          "bh_return": 106.23
+        },
+        {
+          "period": "2015-08-12 \u2192 2019-05-10",
+          "n_trades": 12,
+          "return": -3.77,
+          "total_r": -3.74,
+          "win_rate": 25.0,
+          "positive": false,
+          "bh_return": 71.1
+        },
+        {
+          "period": "2019-05-13 \u2192 2023-02-06",
+          "n_trades": 8,
+          "return": -0.42,
+          "total_r": -0.36,
+          "win_rate": 37.5,
+          "positive": false,
+          "bh_return": 226.79
+        },
+        {
+          "period": "2023-02-07 \u2192 2026-11-09",
+          "n_trades": 7,
+          "return": -5.34,
+          "total_r": -5.45,
+          "win_rate": 14.29,
+          "positive": false,
+          "bh_return": 126.76
+        }
+      ],
+      "positive_periods": 1,
+      "total_periods": 4,
+      "avg_oos_r": -2.02,
+      "consistency": 0.25
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2011-11-10 \u2192 2019-05-10",
+          "test": "2019-05-13 \u2192 2023-02-06",
+          "best_params": {
+            "swing_len": 7,
+            "confirm_mode": "touch",
+            "eval_tp_index": 1,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 4.16,
+          "train_trades": 15,
+          "oos_r": -1.95,
+          "oos_trades": 8,
+          "oos_win_rate": 25.0,
+          "default_oos_r": -0.36,
+          "positive": false,
+          "grid_positive_train_pct": 30.6
+        },
+        {
+          "train": "2015-08-12 \u2192 2023-02-06",
+          "test": "2023-02-07 \u2192 2026-11-06",
+          "best_params": {
+            "swing_len": 7,
+            "confirm_mode": "consolidation",
+            "eval_tp_index": 1,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 0.18,
+          "train_trades": 16,
+          "oos_r": -6.79,
+          "oos_trades": 8,
+          "oos_win_rate": 12.5,
+          "default_oos_r": -5.45,
+          "positive": false,
+          "grid_positive_train_pct": 2.8
+        }
+      ],
+      "positive_windows": 0,
+      "total_windows": 2,
+      "sum_oos_r": -8.74,
+      "sum_default_oos_r": -5.81,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe -0.28 < 0.6",
+      "Sortino -39.38 < 0.8",
+      "WinRate 34.2% < 42.0%",
+      "PF 0.69 < 1.4",
+      "Expectancy -0.21R <= 0",
+      "DD not reduced: -11.7% vs B&H -44.4%",
+      "MC profitable 15.3% < 70.0%",
+      "WF: 1/4 OOS periods positive",
+      "WFO: 0/2 optimised OOS windows positive"
+    ],
+    "seconds": 3.1
+  },
+  {
+    "ticker": "BTC-USD",
+    "sector": "CRYPTO",
+    "timeframe": "daily",
+    "bars": 4438,
+    "years": 12.15,
+    "range": "2014-09-17 \u2192 2026-11-10",
+    "passed": false,
+    "grade": "D",
+    "score": "5/11",
+    "status": "FAIL",
+    "metrics": {
+      "total_return": 1.06,
+      "final_capital": 101062.33,
+      "n_trades": 33,
+      "trades_per_year": 2.7,
+      "win_rate": 36.36,
+      "profit_factor": 1.071,
+      "expectancy": 46.34,
+      "avg_r_multiple": 0.046,
+      "avg_r_gross": 0.072,
+      "avg_cost_r": 0.025,
+      "total_r": 1.53,
+      "sharpe": 0.045,
+      "sortino": 4.236,
+      "max_drawdown": -8.36,
+      "max_consec_loss": 6,
+      "avg_bars_held": 33.1,
+      "long_share": 78.8,
+      "legs_marked": 93,
+      "legs_tapped": 46,
+      "traps_invalidated": 12
+    },
+    "benchmark": {
+      "bh_return": 16204.39,
+      "bh_max_dd": -83.4
+    },
+    "monte_carlo": {
+      "profitable_pct": 52.1,
+      "median_return": 0.35,
+      "worst_5pct": -13.31,
+      "best_5pct": 20.1,
+      "median_max_dd": -8.13,
+      "worst_dd_5pct": -15.78,
+      "p_value_mean_r_le_0": 0.466,
+      "n_simulations": 1000
+    },
+    "walk_forward": {
+      "splits": [
+        {
+          "period": "2014-09-17 \u2192 2017-09-29",
+          "n_trades": 7,
+          "return": 8.96,
+          "total_r": 8.86,
+          "win_rate": 57.14,
+          "positive": true,
+          "bh_return": 810.29
+        },
+        {
+          "period": "2017-09-30 \u2192 2020-10-13",
+          "n_trades": 8,
+          "return": -3.41,
+          "total_r": -3.42,
+          "win_rate": 25.0,
+          "positive": false,
+          "bh_return": 163.35
+        },
+        {
+          "period": "2020-10-14 \u2192 2023-10-27",
+          "n_trades": 6,
+          "return": 2.51,
+          "total_r": 2.54,
+          "win_rate": 50.0,
+          "positive": true,
+          "bh_return": 196.69
+        },
+        {
+          "period": "2023-10-28 \u2192 2026-11-10",
+          "n_trades": 10,
+          "return": -5.88,
+          "total_r": -6.0,
+          "win_rate": 20.0,
+          "positive": false,
+          "bh_return": 118.73
+        }
+      ],
+      "positive_periods": 2,
+      "total_periods": 4,
+      "avg_oos_r": 0.49,
+      "consistency": 0.5
+    },
+    "walk_forward_opt": {
+      "windows": [
+        {
+          "train": "2014-09-17 \u2192 2020-10-13",
+          "test": "2020-10-14 \u2192 2023-10-27",
+          "best_params": {
+            "swing_len": 5,
+            "confirm_mode": "consolidation",
+            "eval_tp_index": 2,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 10.29,
+          "train_trades": 17,
+          "oos_r": -1.71,
+          "oos_trades": 6,
+          "oos_win_rate": 16.7,
+          "default_oos_r": 2.54,
+          "positive": false,
+          "grid_positive_train_pct": 33.3
+        },
+        {
+          "train": "2017-09-30 \u2192 2023-10-27",
+          "test": "2023-10-28 \u2192 2026-11-09",
+          "best_params": {
+            "swing_len": 4,
+            "confirm_mode": "reclaim",
+            "eval_tp_index": 1,
+            "min_leg_atr": 1.5,
+            "require_sweep": false
+          },
+          "train_r": 2.11,
+          "train_trades": 17,
+          "oos_r": -7.77,
+          "oos_trades": 10,
+          "oos_win_rate": 10.0,
+          "default_oos_r": -6.0,
+          "positive": false,
+          "grid_positive_train_pct": 19.4
+        }
+      ],
+      "positive_windows": 0,
+      "total_windows": 2,
+      "sum_oos_r": -9.48,
+      "sum_default_oos_r": -3.46,
+      "n_combos": 144
+    },
+    "failures": [
+      "Sharpe 0.04 < 0.6",
+      "WinRate 36.4% < 42.0%",
+      "PF 1.07 < 1.4",
+      "DD not reduced: -8.4% vs B&H -83.4%",
+      "MC profitable 52.1% < 70.0%",
+      "WFO: 0/2 optimised OOS windows positive"
+    ],
+    "seconds": 2.9
+  }
+]
