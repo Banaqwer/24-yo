@@ -10,13 +10,16 @@ This is a research framework, not investment advice. Backtested edge is not live
 |---|---|
 | `register/signal_register.csv` | The living Signal Register, one row per signal, updated every phase. The CSV is the source of truth. |
 | `register/signal_register.md` | Readable view of the same register plus the phase log. |
+| `API_KEYS.md` | What accounts and keys you need to create, by tier, with the environment variable name each one will be read from. Updated every phase. |
 | `docs/phase0_report.md` | Phase 0: inputs, the five resolved ambiguities, the tool check, the gate. |
-| `docs/phase1_report.md` | Phase 1: idea generation across four lenses, vetting results, rejected ideas. |
 | `docs/phase0_capability_matrix.md` | 319 data sources probed from the research container with real requests, with status, unlock steps and terms flags. |
 | `docs/phase0_working_sources.md` | The subset of sources that return data or need only a key. |
-| `API_KEYS.md` | What accounts and keys you need to create, by tier, with the environment variable name each one will be read from. |
-| `data/probe/` | Raw probe output (JSON) and the matrix as CSV. |
-| `tools/` | Scripts used to condense and build the matrices and registers. |
+| `docs/phase1_report.md` | Phase 1: method, counts, strongest kept ideas, rejected ideas by reason, critic findings, red team, gate. |
+| `docs/phase1_tables.md` | Phase 1: every kept and rejected idea with scores and reasons, seed verdicts, the completeness critic's full text. |
+| `docs/phase1_signal_details.md` | Phase 1: the full write-up of every signal (mechanism, hypothesis, sources, vendors, literature, red team, changes made). |
+| `data/probe/` | Phase 0 raw probe output (JSON) and the matrix as CSV. |
+| `data/phase1/` | Phase 1 raw workflow output (JSON): every idea, verdict and critic finding. |
+| `tools/` | Scripts used to condense and build the matrices and registers, and the multi-agent workflow scripts. |
 
 ## Standing rules (from the master prompt)
 
@@ -29,9 +32,9 @@ This is a research framework, not investment advice. Backtested edge is not live
 
 ## Phase status
 
-| Phase | Status |
-|---|---|
-| 0 Setup | Done, approved |
-| 1 Idea generation | Done, awaiting approval |
-| 2 Triage and scoring | Next |
-| 3 to 10 | Pending |
+| Phase | Status | Register |
+|---|---|---|
+| 0 Setup | Done, approved | Empty register, 319 sources probed |
+| 1 Idea generation | Done, awaiting approval | 110 rows: 59 IDEA, 51 REJECTED |
+| 2 Triage and scoring | Next | Top 10 plus parked list |
+| 3 to 10 | Pending | |
