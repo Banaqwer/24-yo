@@ -141,6 +141,8 @@ The split is in time, not interleaved, because the monthly expanding-window retr
 
 Pre-registered alarm for H0a+H0b+H0c+H0d+costs jointly: Grade-A discovery avg falls from +27.0 [DISC] to +12..+22; if it falls below +5 the baseline is declared reset and the first objective becomes recovering honest edge.
 
+Executed 2026-11-11 (`research/lab/grade_a/honest_baseline.py`, report `research/grade_a_improvement.md`): the honest Grade-A discovery average is +3.5, below the +5 alarm, so the published baseline is reset; the full-window honest Grade A is 84 nights at +6.7 (from +21.3), and H0a alone takes it to -0.05. The first lab iteration (sections 7-8 of the report) found two free vetoes that meet the 7.3 no-harm criterion and nothing that passes the 12.3 vault rule; Vault-H has been read 41 times and is spent (12.3).
+
 ### 2.4 Knowability
 
 - `features.KNOWN_AT_1800`: a table mapping every column to its timestamp source (RTH bar, 16:00 post bar, daily close with exchange close time, calendar). The harness asserts every entry of any `feature_cols` is in it. `dchg()` (features.py L119-126) forward-fills daily closes, so KOSPI/N225/HSI closes are the *prior* session's, correctly; USDJPY and DXY close timing is audited explicitly.

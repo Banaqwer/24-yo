@@ -191,7 +191,8 @@
    "candidates_open_fill_reproduced": 2038,
    "candidates_e20_fill_reproduced": 1706,
    "nights_checked": 331,
-   "move_18_20_reproduced": 315
+   "move_18_20_reproduced": 315,
+   "bars_18_19_present_vs_expost_bars_contiguous_disagreements_graded": 0
   },
   "hypotheses": {
    "H4": {
@@ -7861,7 +7862,7 @@
    ],
    "all_night_n": 327
   },
-  "runtime_s": 5.674278259277344,
+  "runtime_s": 4.287723779678345,
   "A_counts": {
    "discovery": 62,
    "vault": 22,
@@ -7887,7 +7888,8 @@
    "candidates_open_fill_reproduced": 1892,
    "candidates_e20_fill_reproduced": 1658,
    "nights_checked": 301,
-   "move_18_20_reproduced": 288
+   "move_18_20_reproduced": 288,
+   "bars_18_19_present_vs_expost_bars_contiguous_disagreements_graded": 0
   },
   "hypotheses": {
    "H4": {
@@ -15520,7 +15522,7 @@
    ],
    "all_night_n": 298
   },
-  "runtime_s": 5.4687159061431885,
+  "runtime_s": 4.269957542419434,
   "A_counts": {
    "discovery": 45,
    "vault": 13,
@@ -15843,5 +15845,5 @@
    }
   }
  },
- "runtime_s": 11.15198278427124
+ "runtime_s": 8.565741062164307
 }

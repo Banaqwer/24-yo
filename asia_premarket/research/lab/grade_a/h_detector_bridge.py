@@ -33,6 +33,9 @@ Hypotheses (decision-time honest; parameters pre-registered in the task text / L
        CONTINUATION candidate, re-graded by the engine's own thresholds; no such candidate -> NO EDGE as in D1).
   D3   Detector A checkpoint at the closes of bars k=1 and k=2 (20:00 and 21:00 ET prints): for an open trade, if
        P(adverse extreme already in) <= 0.50 AND the position is adverse at that close -> exit at the close; >= 0.90 -> hold.
+       The 0.90 hold threshold is the validated 'extreme already in' threshold (pre-registered); the 0.50 exit threshold
+       is the tester's choice (it appears neither in LAB_DESIGN section 8 nor in the task text) and D3 is therefore
+       registered as partly pre-registered; no grid was run on it.
        Comparators: (a) the price-only checkpoint (exit if adverse by > 0.25 x stop_dist at the same closes, no detector) and
        (b) a random-detector placebo (the (k1, k2) adverse probabilities shuffled across nights, default_rng(0)).
        Exploratory: D3_hold (the price-only checkpoint overridden by a >= 0.90 hold), D3_k1 / D3_k2 (one bar only).
@@ -111,7 +114,8 @@ REGISTRY = {
     "D2_switch_keep": ("(exploratory) the switch where a guard-passing continuation exists, otherwise the fade is KEPT (no veto); CONT half as D1",
                        "ALL", "0.70 / 0.10", "17:xx ET", +1, False),
     "D3": ("Detector A checkpoint at the closes of bars k=1 and k=2: exit at the close if adverse and P(adverse extreme in) <= 0.50; hold if >= 0.90",
-           "ALL", "0.50 exit / 0.90 hold at k=1,2 (single, pre-registered)", "close of bar k=1 (20:00 ET print) and k=2 (21:00 ET print)", +1, True),
+           "ALL", "0.90 hold at k=1,2 (the validated 'extreme already in' threshold, pre-registered); 0.50 exit = the tester's choice, "
+           "not in LAB_DESIGN section 8 or the task text (exploratory parameter, no grid run)", "close of bar k=1 (20:00 ET print) and k=2 (21:00 ET print)", +1, False),
     "D3_price": ("comparator (a): price-only checkpoint, exit at the k=1 / k=2 close if adverse by > 0.25 x stop_dist, no detector", "ALL",
                  "0.25 x stop_dist", "close of bar k=1 and k=2", +1, True),
     "D3_placebo": ("comparator (b): D3 with the (k1, k2) adverse probabilities shuffled across nights (default_rng(0))", "ALL",
@@ -134,7 +138,8 @@ REGISTRY = {
     "D5_rev": ("(exploratory) wide-stop fade with pB_dir < 0.30 -> the same night's TIGHT candidate with the same target (re-walked)", MR,
                "< 0.30", "17:xx ET", +1, False),
 }
-PREREG_IDS = ["D1", "D3", "D4"]
+PREREG_IDS = ["D1", "D4"]                 # D3's 0.90 hold threshold is validated; its 0.50 exit threshold is the tester's choice
+PARTLY_PREREG_IDS = {"D3": "0.90 hold pre-registered (detector validation); 0.50 exit threshold chosen by the tester, not pre-registered"}
 EXPLORATORY_IDS = ["D2_demote", "D2_switch", "D2_switch_keep", "D3_hold", "D3_k1", "D3_k2", "D4_k3", "D5", "D5_rev"]
 PLACEBO_OF = {"D1": "D1_placebo", "D3": "D3_placebo", "D4": "D4_placebo"}
 SKIP_RULES = ["D1", "D1_MR", "D1_CONT", "D1_placebo", "D2_demote", "D2_switch", "D2_switch_keep"]   # rules that remove nights -> random-filter null
@@ -282,6 +287,30 @@ def block_boot_ci(values: pd.Series, n_boot: int = N_BOOT, seed: int = SEED, q=(
         means[i] = bs[pick].sum() / bn[pick].sum()
     lo, hi = np.quantile(means, q)
     return [float(lo), float(hi)]
+
+
+def composition_effect(base_pnl: np.ndarray, hyp_pnl: np.ndarray, baseA: np.ndarray, hypA: np.ndarray, index: pd.DatetimeIndex,
+                       n_boot: int = N_BOOT, seed: int = SEED) -> dict:
+    """Difference of Grade-A averages (hyp over its A nights minus base over its A nights) with a weekly-block bootstrap
+    CI over the population's nights (the statistic the geometry and vetoes groups report as 'effect on A avg')."""
+    if len(index) == 0 or baseA.sum() == 0:
+        return {"effect_A_avg_composition": float("nan"), "effect_A_avg_composition_ci90": [float("nan"), float("nan")]}
+    mean_h = float(hyp_pnl[hypA].mean()) if hypA.sum() else 0.0
+    mean_b = float(base_pnl[baseA].mean())
+    iso = index.isocalendar()
+    keys = (iso["year"].astype(int) * 100 + iso["week"].astype(int)).values
+    uk = np.unique(keys)
+    blocks = [np.flatnonzero(keys == k) for k in uk]
+    rng = np.random.default_rng(seed)
+    nb = len(blocks)
+    draws = np.empty(n_boot)
+    for i in range(n_boot):
+        pick = rng.integers(0, nb, nb)
+        ii = np.concatenate([blocks[j] for j in pick])
+        h_, b_ = hyp_pnl[ii][hypA[ii]], base_pnl[ii][baseA[ii]]
+        draws[i] = (h_.mean() if len(h_) else 0.0) - (b_.mean() if len(b_) else 0.0)
+    return {"effect_A_avg_composition": mean_h - mean_b, "A_avg_hyp_composition": mean_h, "A_avg_base_composition": mean_b,
+            "effect_A_avg_composition_ci90": [float(np.quantile(draws, 0.05)), float(np.quantile(draws, 0.95))]}
 
 
 def months_in(split: str) -> float:
@@ -601,6 +630,10 @@ def evaluate(T: pd.DataFrame, R: pd.DataFrame, pop: pd.Series, pv: float, grade_
         out[split] = paired(base, hyp, split, pv, bt, ht, base_hi, hyp_hi)
         out[split]["A_n_before"] = int((T.loc[m, "grade"] == "A").sum())
         out[split]["A_n_after"] = int(((R.loc[m, "hyp_grade"] == "A") & ((R.loc[m, "traded"] == 1) | (R.loc[m, "reason"].str.startswith("open_past", na=False)))).sum())
+        # composition statistic (difference of A averages), the other groups' headline, with its own weekly-block CI
+        baseA = (T.loc[m, "grade"] == "A").values
+        hypA = ((R.loc[m, "hyp_grade"] == "A") & ((R.loc[m, "traded"] == 1) | (R.loc[m, "reason"].str.startswith("open_past", na=False)))).values
+        out[split].update(composition_effect(T.loc[m, "pnl_net_open"].values.astype(float), np.nan_to_num(hyp.values.astype(float)), baseA, hypA, T.index[m]))
         mix = R.loc[m & (R["applies"] == 1), "reason"].value_counts()
         out[split]["hyp_reason_mix"] = {str(k): int(v) for k, v in mix.items()}
         bmix = T.loc[m & (T["traded_open"] == 1), "outcome_open"].value_counts()
@@ -1057,7 +1090,10 @@ def main():
                                           "nights without detector values": "left unchanged by every detector rule (holiday eves, feed-gap nights, splices); listed per symbol",
                                           "D3 comparability": "every D3 variant, including the price-only comparator, fires only on nights with a k=1 and k=2 detector value"},
                           "registry": {k: {"rule": v[0], "kind": v[1], "parameters": v[2], "decision_time": v[3], "predicted_sign": v[4], "pre_registered": v[5]} for k, v in REGISTRY.items()},
-                          "pre_registered": PREREG_IDS, "exploratory": EXPLORATORY_IDS, "placebo_of": PLACEBO_OF}, []
+                          "pre_registered": PREREG_IDS, "partly_pre_registered": PARTLY_PREREG_IDS, "exploratory": EXPLORATORY_IDS, "placebo_of": PLACEBO_OF,
+                          "effect_statistics": {"effect": "paired per-night mean of (hypothesis - baseline) over the fixed population (vetoed nights booked 0): the group's headline",
+                                                "effect_A_avg_composition": "difference of Grade-A averages (hypothesis A nights vs baseline A nights), the statistic the "
+                                                                            "geometry and vetoes groups call 'effect on A avg'; added so that cross-group tables use one statistic"}}, []
     for sym in ("NQ", "ES"):
         S, N = run_symbol(sym)
         out[sym] = S

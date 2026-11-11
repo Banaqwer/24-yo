@@ -253,7 +253,7 @@
        "percentile": 96.0
       },
       "placebo_effect_A_avg": 0.16592825937574185,
-      "placebo_share_of_effect": 0.06670536465638585
+      "placebo_share_of_effect_draw0": 0.06670536465638585
      },
      "vault": {
       "split": "vault",
@@ -451,7 +451,7 @@
        "percentile": 95.7
       },
       "placebo_effect_A_avg": 11.112750973030002,
-      "placebo_share_of_effect": 0.8488283270640258
+      "placebo_share_of_effect_draw0": 0.8488283270640258
      },
      "full": {
       "split": "full",
@@ -653,7 +653,7 @@
        "percentile": 99.4
       },
       "placebo_effect_A_avg": 1.9745404879064345,
-      "placebo_share_of_effect": 0.38419540479853104
+      "placebo_share_of_effect_draw0": 0.38419540479853104
      }
     },
     "H2_placebo": {
@@ -2133,7 +2133,7 @@
        "percentile": 8.95
       },
       "placebo_effect_A_avg": -5.7511519488749885,
-      "placebo_share_of_effect": 0.650366646735717
+      "placebo_share_of_effect_draw0": 0.650366646735717
      },
      "vault": {
       "split": "vault",
@@ -2333,7 +2333,7 @@
        "percentile": 81.95
       },
       "placebo_effect_A_avg": 2.8734876618751013,
-      "placebo_share_of_effect": 0.32048721060786617
+      "placebo_share_of_effect_draw0": 0.32048721060786617
      },
      "full": {
       "split": "full",
@@ -2562,7 +2562,7 @@
        "percentile": 44.25
       },
       "placebo_effect_A_avg": -2.7426225062345693,
-      "placebo_share_of_effect": 1.3484945232808605
+      "placebo_share_of_effect_draw0": 1.3484945232808605
      }
     },
     "H11_placebo": {
@@ -7837,9 +7837,27 @@
    ],
    "verdicts": {
     "H2": {
-     "verdict": "not testable at this n",
-     "why": "only 5 affected vault nights (< 8)",
-     "predicted": "A avg +4..+6, A count -8%, ~8% of graded nights removed that win <= 40%"
+     "verdict": "dead (LAB_DESIGN 2.6 placebo)",
+     "why": "placebo distribution (300 draws) reproduces a median 104% of the discovery effect and 97% of the full effect (>= 50% in 66% / 76% of draws); mechanical verdict before the placebo rule: 'not testable at this n' (only 5 affected vault nights (< 8))",
+     "predicted": "A avg +4..+6, A count -8%, ~8% of graded nights removed that win <= 40%",
+     "mechanical_verdict": "not testable at this n",
+     "placebo_2_6": {
+      "discovery": {
+       "share_median": 1.0386929694532223,
+       "frac_share_ge_50pct": 0.66,
+       "dead": true
+      },
+      "vault": {
+       "share_median": 0.9926345146793067,
+       "frac_share_ge_50pct": 0.7633333333333333,
+       "dead": true
+      },
+      "full": {
+       "share_median": 0.968817293307024,
+       "frac_share_ge_50pct": 0.7633333333333333,
+       "dead": true
+      }
+     }
     },
     "H3": {
      "verdict": "supported on vault",
@@ -7849,7 +7867,25 @@
     "H11": {
      "verdict": "no effect",
      "why": "vault A-avg effect +9.0 CI [-4.8, 23.7], full -2.0 CI [-13.6, 9.8], discovery -8.8 CI [-21.9, 6.0]",
-     "predicted": "A scratch share 29% -> <= 20%, A avg +4..+8, n(A) -20%"
+     "predicted": "A scratch share 29% -> <= 20%, A avg +4..+8, n(A) -20%",
+     "mechanical_verdict": "no effect",
+     "placebo_2_6": {
+      "discovery": {
+       "share_median": 0.7368294401473618,
+       "frac_share_ge_50pct": 0.5966666666666667,
+       "dead": false
+      },
+      "vault": {
+       "share_median": 1.150770801213945,
+       "frac_share_ge_50pct": 0.7,
+       "dead": true
+      },
+      "full": {
+       "share_median": -0.041901817332589186,
+       "frac_share_ge_50pct": 0.45,
+       "dead": false
+      }
+     }
     },
     "COMBO": {
      "verdict": "supported on vault",
@@ -7908,6 +7944,142 @@
      "A_pnl_retained_frac": 2.9799396410693038,
      "passes": true
     }
+   },
+   "placebo_distribution": {
+    "H2": {
+     "n_draws": 300,
+     "rng": "numpy default_rng(0); draw 0 = the per-night placebo rule",
+     "death_rule": "LAB_DESIGN 2.6: placebo reproduces >= 50% of the claimed effect",
+     "discovery": {
+      "claimed_effect_A_avg": 2.4874799835136976,
+      "placebo_effect_A_avg_draw0": 0.16592825937574185,
+      "placebo_mean": 2.8670850526796072,
+      "placebo_median": 2.583727970531295,
+      "placebo_q10_q90": [
+       -1.480723751683164,
+       7.613847700999142
+      ],
+      "share_median": 1.0386929694532223,
+      "frac_share_ge_50pct": 0.66,
+      "frac_placebo_ge_claimed": 0.52,
+      "claimed_all_night_paired_mean": 1.9288156877341882,
+      "placebo_all_night_median": 2.107869047619058,
+      "share_median_all_night": 1.09283072562273,
+      "frac_share_ge_50pct_all_night": 0.7733333333333333,
+      "dead_2_6": true
+     },
+     "vault": {
+      "claimed_effect_A_avg": 13.091871016448517,
+      "placebo_effect_A_avg_draw0": 11.112750973030002,
+      "placebo_mean": 12.989369140071542,
+      "placebo_median": 12.995443032656455,
+      "placebo_q10_q90": [
+       1.2650753729018802,
+       25.201052106435732
+      ],
+      "share_median": 0.9926345146793067,
+      "frac_share_ge_50pct": 0.7633333333333333,
+      "frac_placebo_ge_claimed": 0.5,
+      "claimed_all_night_paired_mean": 3.677294553215385,
+      "placebo_all_night_median": 0.4861480226739066,
+      "share_median_all_night": 0.13220263311483282,
+      "frac_share_ge_50pct_all_night": 0.32666666666666666,
+      "dead_2_6": true
+     },
+     "full": {
+      "claimed_effect_A_avg": 5.139417242488539,
+      "placebo_effect_A_avg_draw0": 1.9745404879064345,
+      "placebo_mean": 4.977696538682249,
+      "placebo_median": 4.9791563020431955,
+      "placebo_q10_q90": [
+       0.7206729243900035,
+       9.519159388061855
+      ],
+      "share_median": 0.968817293307024,
+      "frac_share_ge_50pct": 0.7633333333333333,
+      "frac_placebo_ge_claimed": 0.4766666666666667,
+      "claimed_all_night_paired_mean": 2.442130584022246,
+      "placebo_all_night_median": 1.58341636277844,
+      "share_median_all_night": 0.6483749776273291,
+      "frac_share_ge_50pct_all_night": 0.6033333333333334,
+      "dead_2_6": true
+     },
+     "dead_2_6_any_split": true,
+     "dead_2_6_discovery_or_full": true
+    },
+    "H11": {
+     "n_draws": 300,
+     "rng": "numpy default_rng(0); draw 0 = the per-night placebo rule",
+     "death_rule": "LAB_DESIGN 2.6: placebo reproduces >= 50% of the claimed effect",
+     "discovery": {
+      "claimed_effect_A_avg": -8.842938022330697,
+      "placebo_effect_A_avg_draw0": -5.7511519488749885,
+      "placebo_mean": -6.465500565173507,
+      "placebo_median": -6.515737072251747,
+      "placebo_q10_q90": [
+       -15.901425479232504,
+       3.1604399246008477
+      ],
+      "share_median": 0.7368294401473618,
+      "frac_share_ge_50pct": 0.5966666666666667,
+      "frac_placebo_ge_claimed": 0.39666666666666667,
+      "claimed_all_night_paired_mean": -0.5559184771487448,
+      "placebo_all_night_median": 0.8813124004803194,
+      "share_median_all_night": -1.5853266921446658,
+      "frac_share_ge_50pct_all_night": 0.23666666666666666,
+      "dead_2_6": false
+     },
+     "vault": {
+      "claimed_effect_A_avg": 8.965997914316064,
+      "placebo_effect_A_avg_draw0": 2.8734876618751013,
+      "placebo_mean": 10.598358081546737,
+      "placebo_median": 10.317808603540056,
+      "placebo_q10_q90": [
+       -5.284271896399144,
+       27.103394173919636
+      ],
+      "share_median": 1.150770801213945,
+      "frac_share_ge_50pct": 0.7,
+      "frac_placebo_ge_claimed": 0.5333333333333333,
+      "claimed_all_night_paired_mean": -0.5824712527193018,
+      "placebo_all_night_median": -4.13761114089139,
+      "share_median_all_night": 7.103545662682416,
+      "frac_share_ge_50pct_all_night": 0.8633333333333333,
+      "dead_2_6": true
+     },
+     "full": {
+      "claimed_effect_A_avg": -2.0338403003386496,
+      "placebo_effect_A_avg_draw0": -2.7426225062345693,
+      "placebo_mean": -0.3197703043427054,
+      "placebo_median": 0.08522160474844842,
+      "placebo_q10_q90": [
+       -9.337458548440987,
+       7.744641599342274
+      ],
+      "share_median": -0.041901817332589186,
+      "frac_share_ge_50pct": 0.45,
+      "frac_placebo_ge_claimed": 0.4033333333333333,
+      "claimed_all_night_paired_mean": -0.5637137874079907,
+      "placebo_all_night_median": -0.6445510378589989,
+      "share_median_all_night": 1.1434012299445533,
+      "frac_share_ge_50pct_all_night": 0.5866666666666667,
+      "dead_2_6": false
+     },
+     "dead_2_6_any_split": true,
+     "dead_2_6_discovery_or_full": false
+    }
+   },
+   "H3_floor_convention": {
+    "floor_applied_to": "raw ratio win_rate_on_resolution >= 0.80",
+    "registered_as": "conf >= 80 (LAB_DESIGN 8 #4; conf = round(100 x ratio))",
+    "wide_fade_candidates": 882,
+    "candidates_with_ratio_in_[0.795,0.80)": 2,
+    "of_which_chosen_by_the_baseline": 0,
+    "dates": [
+     "2025-06-25",
+     "2025-10-14"
+    ],
+    "note": "these candidates fail the raw-ratio floor but would pass a rounded-confidence floor; none is the baseline's chosen candidate, so no night's call changes under either convention"
    }
   },
   "ES": {
@@ -8114,7 +8286,7 @@
        "percentile": 98.6
       },
       "placebo_effect_A_avg": 1.5058413808254927,
-      "placebo_share_of_effect": 0.8224628541995418
+      "placebo_share_of_effect_draw0": 0.8224628541995418
      },
      "vault": {
       "split": "vault",
@@ -8312,7 +8484,7 @@
        "percentile": 95.7
       },
       "placebo_effect_A_avg": -1.288949283738944,
-      "placebo_share_of_effect": 3.324414580480194
+      "placebo_share_of_effect_draw0": 3.324414580480194
      },
      "full": {
       "split": "full",
@@ -8514,7 +8686,7 @@
        "percentile": 99.45
       },
       "placebo_effect_A_avg": 0.9531304208879762,
-      "placebo_share_of_effect": 0.6633963079519192
+      "placebo_share_of_effect_draw0": 0.6633963079519192
      }
     },
     "H2_placebo": {
@@ -9963,7 +10135,7 @@
        "percentile": 7.199999999999999
       },
       "placebo_effect_A_avg": -2.315210191402605,
-      "placebo_share_of_effect": 0.48883283115898846
+      "placebo_share_of_effect_draw0": 0.48883283115898846
      },
      "vault": {
       "split": "vault",
@@ -10171,7 +10343,7 @@
        "percentile": 90.85
       },
       "placebo_effect_A_avg": 1.677350070701762,
-      "placebo_share_of_effect": -1.1658037725694659
+      "placebo_share_of_effect_draw0": -1.1658037725694659
      },
      "full": {
       "split": "full",
@@ -10402,7 +10574,7 @@
        "percentile": 33.15
       },
       "placebo_effect_A_avg": -1.4722515311930229,
-      "placebo_share_of_effect": 0.31165639256392896
+      "placebo_share_of_effect_draw0": 0.31165639256392896
      }
     },
     "H11_placebo": {
@@ -15540,9 +15712,27 @@
    ],
    "verdicts": {
     "H2": {
-     "verdict": "discovery only",
-     "why": "discovery A-avg effect +1.8 CI [0.2, 4.1] excludes zero; vault effect -0.4 CI [-2.1, 2.6] does not (random-filter pct vault nan, full 97)",
-     "predicted": "A avg +4..+6, A count -8%, ~8% of graded nights removed that win <= 40%"
+     "verdict": "dead (LAB_DESIGN 2.6 placebo)",
+     "why": "placebo distribution (300 draws) reproduces a median 77% of the discovery effect and 64% of the full effect (>= 50% in 79% / 60% of draws); mechanical verdict before the placebo rule: 'discovery only' (discovery A-avg effect +1.8 CI [0.2, 4.1] excludes zero; vault effect -0.4 CI [-2.1, 2.6] does not (random-filter pct vault nan, full 97))",
+     "predicted": "A avg +4..+6, A count -8%, ~8% of graded nights removed that win <= 40%",
+     "mechanical_verdict": "discovery only",
+     "placebo_2_6": {
+      "discovery": {
+       "share_median": 0.7704229643216777,
+       "frac_share_ge_50pct": 0.7866666666666666,
+       "dead": true
+      },
+      "vault": {
+       "share_median": 3.0847401362506583,
+       "frac_share_ge_50pct": 0.7233333333333334,
+       "dead": false
+      },
+      "full": {
+       "share_median": 0.63801389022564,
+       "frac_share_ge_50pct": 0.6,
+       "dead": true
+      }
+     }
     },
     "H3": {
      "verdict": "no effect",
@@ -15552,7 +15742,25 @@
     "H11": {
      "verdict": "harmful",
      "why": "full-window A-avg effect -4.7 with 90% CI [-8.0, -1.7] excluding zero against the prediction",
-     "predicted": "A scratch share 29% -> <= 20%, A avg +4..+8, n(A) -20%"
+     "predicted": "A scratch share 29% -> <= 20%, A avg +4..+8, n(A) -20%",
+     "mechanical_verdict": "harmful",
+     "placebo_2_6": {
+      "discovery": {
+       "share_median": 0.1812165510591494,
+       "frac_share_ge_50pct": 0.16,
+       "dead": false
+      },
+      "vault": {
+       "share_median": -1.6711505303890701,
+       "frac_share_ge_50pct": 0.22333333333333333,
+       "dead": false
+      },
+      "full": {
+       "share_median": 0.03342892655111805,
+       "frac_share_ge_50pct": 0.043333333333333335,
+       "dead": false
+      }
+     }
     },
     "COMBO": {
      "verdict": "harmful",
@@ -15611,6 +15819,145 @@
      "A_pnl_retained_frac": 0.13127866419421566,
      "passes": false
     }
+   },
+   "placebo_distribution": {
+    "H2": {
+     "n_draws": 300,
+     "rng": "numpy default_rng(0); draw 0 = the per-night placebo rule",
+     "death_rule": "LAB_DESIGN 2.6: placebo reproduces >= 50% of the claimed effect",
+     "discovery": {
+      "claimed_effect_A_avg": 1.8308928763610193,
+      "placebo_effect_A_avg_draw0": 1.5058413808254927,
+      "placebo_mean": 1.409081681075474,
+      "placebo_median": 1.4105619171614994,
+      "placebo_q10_q90": [
+       0.45688501122423175,
+       2.3406847681230403
+      ],
+      "share_median": 0.7704229643216777,
+      "frac_share_ge_50pct": 0.7866666666666666,
+      "frac_placebo_ge_claimed": 0.27666666666666667,
+      "claimed_all_night_paired_mean": 0.9894502217672105,
+      "placebo_all_night_median": 0.6999411146246168,
+      "share_median_all_night": 0.7074040706913836,
+      "frac_share_ge_50pct_all_night": 0.7633333333333333,
+      "dead_2_6": true
+     },
+     "vault": {
+      "claimed_effect_A_avg": -0.3877221846237848,
+      "placebo_effect_A_avg_draw0": -1.288949283738944,
+      "placebo_mean": -0.9731440312782909,
+      "placebo_median": -1.1960221846237769,
+      "placebo_q10_q90": [
+       -3.178865167333382,
+       1.1961348326666177
+      ],
+      "share_median": 3.0847401362506583,
+      "frac_share_ge_50pct": 0.7233333333333334,
+      "frac_placebo_ge_claimed": 0.6966666666666667,
+      "claimed_all_night_paired_mean": 1.0928745145183711,
+      "placebo_all_night_median": 0.6608669698569452,
+      "share_median_all_night": 0.6047052622031255,
+      "frac_share_ge_50pct_all_night": 0.5933333333333334,
+      "dead_2_6": false
+     },
+     "full": {
+      "claimed_effect_A_avg": 1.4367436319182167,
+      "placebo_effect_A_avg_draw0": 0.9531304208879762,
+      "placebo_mean": 0.9264259702042481,
+      "placebo_median": 0.9166623938570566,
+      "placebo_q10_q90": [
+       0.08673967251726465,
+       1.8126280911936934
+      ],
+      "share_median": 0.63801389022564,
+      "frac_share_ge_50pct": 0.6,
+      "frac_placebo_ge_claimed": 0.23666666666666666,
+      "claimed_all_night_paired_mean": 1.0175621939579622,
+      "placebo_all_night_median": 0.6965200778467789,
+      "share_median_all_night": 0.6844987775514326,
+      "frac_share_ge_50pct_all_night": 0.7533333333333333,
+      "dead_2_6": true
+     },
+     "dead_2_6_any_split": true,
+     "dead_2_6_discovery_or_full": true
+    },
+    "H11": {
+     "n_draws": 300,
+     "rng": "numpy default_rng(0); draw 0 = the per-night placebo rule",
+     "death_rule": "LAB_DESIGN 2.6: placebo reproduces >= 50% of the claimed effect",
+     "discovery": {
+      "claimed_effect_A_avg": -4.736200279169882,
+      "placebo_effect_A_avg_draw0": -2.315210191402605,
+      "placebo_mean": -0.8802856767118029,
+      "placebo_median": -0.8582778797165467,
+      "placebo_q10_q90": [
+       -2.6958612454944286,
+       0.9668112213734099
+      ],
+      "share_median": 0.1812165510591494,
+      "frac_share_ge_50pct": 0.16,
+      "frac_placebo_ge_claimed": 0.0033333333333333335,
+      "claimed_all_night_paired_mean": -0.2930142609175583,
+      "placebo_all_night_median": 0.4466074968859154,
+      "share_median_all_night": -1.5241834833819632,
+      "frac_share_ge_50pct_all_night": 0.006666666666666667,
+      "dead_2_6": false
+     },
+     "vault": {
+      "claimed_effect_A_avg": -1.4387927970114842,
+      "placebo_effect_A_avg_draw0": 1.677350070701762,
+      "placebo_mean": 2.2820940412822024,
+      "placebo_median": 2.4044393458457156,
+      "placebo_q10_q90": [
+       -3.3894612216319504,
+       7.323668314099708
+      ],
+      "share_median": -1.6711505303890701,
+      "frac_share_ge_50pct": 0.22333333333333333,
+      "frac_placebo_ge_claimed": 0.16,
+      "claimed_all_night_paired_mean": 1.1834426769897775,
+      "placebo_all_night_median": 1.177517427443715,
+      "share_median_all_night": 0.9949932095053948,
+      "frac_share_ge_50pct_all_night": 0.8433333333333334,
+      "dead_2_6": false
+     },
+     "full": {
+      "claimed_effect_A_avg": -4.723957429787117,
+      "placebo_effect_A_avg_draw0": -1.4722515311930229,
+      "placebo_mean": -0.09803110215836093,
+      "placebo_median": -0.15791682595096196,
+      "placebo_q10_q90": [
+       -1.8517367515328913,
+       1.794938140537976
+      ],
+      "share_median": 0.03342892655111805,
+      "frac_share_ge_50pct": 0.043333333333333335,
+      "frac_placebo_ge_claimed": 0.0,
+      "claimed_all_night_paired_mean": 0.10830457119819407,
+      "placebo_all_night_median": 0.6477842086740402,
+      "share_median_all_night": 5.9811345126755056,
+      "frac_share_ge_50pct_all_night": 0.9966666666666667,
+      "dead_2_6": false
+     },
+     "dead_2_6_any_split": false,
+     "dead_2_6_discovery_or_full": false
+    }
+   },
+   "H3_floor_convention": {
+    "floor_applied_to": "raw ratio win_rate_on_resolution >= 0.80",
+    "registered_as": "conf >= 80 (LAB_DESIGN 8 #4; conf = round(100 x ratio))",
+    "wide_fade_candidates": 817,
+    "candidates_with_ratio_in_[0.795,0.80)": 5,
+    "of_which_chosen_by_the_baseline": 1,
+    "dates": [
+     "2025-05-19",
+     "2025-06-24",
+     "2026-04-20",
+     "2026-06-16",
+     "2026-06-29"
+    ],
+    "note": "these candidates fail the raw-ratio floor but would pass a rounded-confidence floor; none is the baseline's chosen candidate, so no night's call changes under either convention"
    }
   }
  },

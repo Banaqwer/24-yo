@@ -53,7 +53,8 @@ agent (see "Agents" below).
 | `asia_extremes.py` | Builds the Asia high/low research tables: one row per night (when and where the high and the low printed, vs the 17:00 close, the RTH range and the prior Asia range; whether Europe took them out) and one row per (night, hourly bar) with everything known at that bar's close plus the "extreme already in" labels. Also the live row builders for a night that has not finished. |
 | `research/extremes/` | The Asia high/low detectors (`detector_preasia.py`, `detector_intrasession.py`), their tables, out-of-sample prediction files, the regression test `test_live.py`, the signal-level validation `signal_backtest.py` with its outputs in `validation/`, and `scripts/` (the lens, refuter, verifier and critic scripts behind the report). |
 | `data/` | Hourly NQ/ES/BTC, 15-minute NQ/ES (60 days), daily cross-asset closes (3 years). Snapshot; refreshed by `--refresh`. |
-| `research/` | Agent outputs: `event_calendar.csv` (826 verified events 2024-06 → 2027-01), four quarterly `catalogue_*.csv` (why each big Asia night moved, tagged, with sources), four `narrative_*.md` (regime narratives, testable repeating patterns, live context), `backtest_report.md`, `asia_extremes_report.md` (what characterises the Asia high and low, and the detector's out-of-sample record), `asia_extremes_validation.md` (the detectors' flags measured as trading signals: hit rate after each flag, first firing per night, failures, stability, trade translation), `LAB_DESIGN.md`. |
+| `research/` | Agent outputs: `event_calendar.csv` (826 verified events 2024-06 → 2027-01), four quarterly `catalogue_*.csv` (why each big Asia night moved, tagged, with sources), four `narrative_*.md` (regime narratives, testable repeating patterns, live context), `backtest_report.md`, `asia_extremes_report.md` (what characterises the Asia high and low, and the detector's out-of-sample record), `asia_extremes_validation.md` (the detectors' flags measured as trading signals: hit rate after each flag, first firing per night, failures, stability, trade translation), `LAB_DESIGN.md`, `grade_a_improvement.md` (what Grade A honestly is once the backtest's shortcuts are removed, and which improvements survive a discovery/vault test). |
+| `research/lab/grade_a/` | The honest Grade A re-simulation (`honest_baseline.py`: causal calibration, walk-forward regressors, own-pair bar resolution, 18:00 fills, costs) and the hypothesis tests behind `research/grade_a_improvement.md` (`h_geometry.py`, `h_timing_exits.py`, `h_vetoes_gates.py`, `h_detector_bridge.py`, `grade_a_prime.py`), each with its per-night CSV and results JSON. `research/lab/forensics.py` and `forensics_v0.md` are the loss forensics that sized the backlog. |
 | `reports/` | Daily reports and agent briefs. |
 
 ## Method
@@ -99,6 +100,17 @@ calling direction every day.
 
 Only Grade A (NQ) and Grade A/B (ES) had positive expectancy out of sample. Treat Grade C as
 no-trade and Grade B on NQ as information only until more nights accumulate.
+
+**These Grade A figures are superseded.** The table above (and `backtest.py`) grades each night
+with an isotonic calibrator fitted on the whole out-of-sample record, uses range regressors fitted
+on the full sample, fills at the 17:00 close and charges no costs. `research/grade_a_improvement.md`
+re-simulates the same engine with those shortcuts removed (monthly causal calibrator, walk-forward
+regressors, each candidate's own target/stop walked on the raw bars, fill at the 18:00 open, costs).
+The honest NQ Grade A is 84 nights at +6.7 pts/night (56% win, 90% CI −8.7 to +21.9, about $7k per
+contract per year with a CI that includes a loss); the calibration leak alone accounts for the
+difference. ES Grade A is not tradeable after costs. The only changes that hold up are two free
+vetoes (after-hours print nights and pre-holiday nights), which are paper-traded as "Grade A prime";
+the report ranks everything else tested and records what failed.
 
 ## Asia high / low detector (research layer, out of sample)
 
@@ -190,12 +202,20 @@ The system is built to be run with agents, not just scripts:
   report. The scripts are kept in `research/extremes/scripts/`. A second pass (builder,
   statistical and definition refuters, a desk review, a fix stage and re-verification) measured
   the detectors' flags as trading signals: `research/asia_extremes_validation.md`.
-- **Research lab (design, not yet implemented)**: `research/LAB_DESIGN.md` — the looped,
-  multi-agent process for diagnosing why graded nights lose and refining Grade A on sealed and
-  forward data, with a measurable stopping rule. Its forensic basis is `research/lab/forensics_v0.md`
-  (every losing graded NQ night classified by cause, Grade-A anatomy and fragility). The forensics
-  and the critic in that document also record two data defects to fix before any further research:
-  contract splices in the hourly files and the overlap between the `stopped` and target-first labels.
+- **Research lab**: `research/LAB_DESIGN.md` — the looped, multi-agent process for diagnosing why
+  graded nights lose and refining Grade A on sealed and forward data, with a measurable stopping
+  rule. Its forensic basis is `research/lab/forensics_v0.md` (every losing graded NQ night
+  classified by cause, Grade-A anatomy and fragility). The forensics and the critic in that
+  document also record two data defects to fix before any further research: contract splices in
+  the hourly files and the overlap between the `stopped` and target-first labels.
+- **Grade A improvement pass (done, outputs in `research/lab/grade_a/` and
+  `research/grade_a_improvement.md`)**: the lab's first iteration. A builder removed the
+  backtest's integrity defects one at a time (the honest baseline), four hypothesis groups
+  (candidate geometry, entry timing and exits, vetoes and cross-asset gates, the detector bridge)
+  tested the pre-registered improvements on a discovery/vault split with block-bootstrap intervals,
+  random-filter nulls and placebos, a writer drafted the desk note, three refuters (statistical,
+  leakage and definition, desk review) attacked it, a fix stage applied or rejected each finding
+  with a recomputation, and two re-verifiers reproduced every number from the per-night files.
 
 ## Caveats
 

@@ -518,7 +518,7 @@ def describe_columns(cols: list[str], table: str) -> dict:
         "post_in_dir": _col_entry("post_ret signed with the RTH move", "fraction", K17),
         "megacap_earnings_tonight": _col_entry("mega-cap earnings after the close (calendar)", "0/1", K17),
         "sunday_open": _col_entry("D is a Friday: the night is the Sunday 18:00 reopen", "0/1", K17),
-        "pre_holiday": _col_entry("US holiday next trading day (calendar_features)", "0/1", K17),
+        "pre_holiday": _col_entry("next CALENDAR day is a US holiday (calendar_features; a Friday before a Monday holiday is not flagged)", "0/1", K17),
         "holiday_tomorrow": _col_entry("holiday flag from research/event_calendar.csv for D+1", "0/1", K17),
         "expected_asia_bars_proxy": _col_entry("knowable proxy for the session length: 6 if pre_holiday or holiday_tomorrow else 9", "count", K17),
         "asia_n_bars": _col_entry("actual Asia bars of the night (sessions table)", "count", EXPOST),
@@ -938,7 +938,7 @@ def main(syms):
         "candidates_{SYM}.csv: one row per night per candidate (kind x stop variant x target) with geometry, causal probabilities, guard flags, the v0 probabilities, and the full resolution block (outcome/exit/P&L/MTM path/MFE/MAE/Europe follow-through/20:00 variant/costs) so a night can be re-called without touching the bars.",
         "baseline_summary.json: the integrity ladder (step0 = v0 ... step5 = honest baseline, step5s = high costs) for Grade A and all graded per split (discovery / vault / full), A-membership overlap with v0, paired per-night step effects with weekly-block bootstrap 90% CIs, self-checks (replica match, resolution disagreements with reasons), calibration/regressor diagnostics, and the column dictionaries with units and knowability.",
         "Resolution rules: own (target, stop) pair walked bar by bar; stop priority inside a bar; a bar opening beyond the stop fills at its Open; targets fill at level; scratch = last Asia close minus the fill (one reference); k is the positional Asia bar index (0 = first bar, normally 18:00; 2025-07-25 starts at 20:00).",
-        "Knowability: columns marked 17:xx / 18:00 are usable as rule inputs at the decision; 'close of bar k' columns only for a checkpoint at bar k; 'ex post' columns (outcomes, asia_n_bars, move_18_20_in_dir at 20:00) are never rule inputs; v0_p_* and v0_guard_ok are leaky by construction.",
+        "Knowability: columns marked 17:xx / 18:00 are usable as rule inputs at the decision; 'close of bar k' columns only for a checkpoint at bar k; 'ex post' columns (outcomes, asia_n_bars) are never rule inputs; move_18_20_in_dir is a 20:00 input (close of bar k=1), usable only by a checkpoint at or after 20:00; v0_p_* and v0_guard_ok are leaky by construction.",
         "Costs: NQ 1.5 pts round trip (4.0 on Sunday reopens, |post_ret| > 0.3% or mega-cap earnings nights), ES 0.75 / 2.0; sensitivity 4.0 / 2.0 everywhere; dollars = NQ 20 / ES 50 per point; per-year = total x 12 / 19.2 on the full window.",
         "Protocol: size any rule on discovery (2025-04-01..2026-05-31) with its pre-registered parameter, score the vault (2026-06-01..2026-11-06) once; NQ is primary, ES is a same-sign replication arm.",
     ]

@@ -16,11 +16,16 @@ pnl_net_open_hicost).  Outcome columns are used only (a) as P&L and (b) for H1, 
 
 Hypotheses (LAB_DESIGN section 8, pre-registered single parameters):
   H2  target cap: a candidate with target_dist > 1.0 x med20_pts fails the guard ('target beyond expected range').
-      Placebo: the same cap with a random other night's med20_pts (default_rng(0)).
+      Placebo: the same cap with a random other night's med20_pts (default_rng(0)); reported both as one per-night
+      draw (H2_placebo) and as a distribution over 300 derangements with the LAB_DESIGN 2.6 death rule (a placebo
+      that reproduces >= 50% of the claimed effect kills the hypothesis) applied to the median draw.
   H3  dead-weight candidates: wide CONTINUATION removed from the candidate set; a wide fade with
-      win_rate_on_resolution < 0.80 fails the guard.
+      win_rate_on_resolution < 0.80 fails the guard.  Convention: the floor is applied to the raw ratio
+      p_win/(p_win+p_loss); LAB_DESIGN 8 #4 words it as 'conf >= 80' (the rounded confidence); the two differ on
+      candidates with ratio in [0.795, 0.80), none of which is a chosen candidate (results: H3_floor_convention).
   H11 scratch cap: a candidate with p_scratch > 0.30 fails the guard ('scratch too likely').
-      Placebo: the cap applied to the p_scratch of a random other candidate of the same night (default_rng(0)).
+      Placebo: the cap applied to the p_scratch of a random other candidate of the same night (default_rng(0)); single
+      draw and 300-draw distribution as for H2.
   H1  winner's-curse calibration: confidence = walk-forward isotonic second stage of 'won on resolution' (target
       before stop under the open fill) against the raw ratio p_win/(p_win+p_loss) of the chosen candidate, fitted on
       the graded nights strictly before each month (min 40 resolved graded nights, raw ratio before that); re-graded
@@ -393,36 +398,35 @@ def confidence_bands(base: pd.DataFrame, split: str, splice: pd.Series) -> dict:
 
 
 # --------------------------------------------------------------------------------------------------
-# rules
+# placebo draws (LAB_DESIGN 2.6: a hypothesis whose placebo reproduces >= 50% of the claimed effect is dead)
 # --------------------------------------------------------------------------------------------------
-def rule_masks(t: pd.DataFrame, c: pd.DataFrame) -> dict:
-    """Each rule = (ok_extra over candidate rows, drop over candidate rows).  Built only from 17:xx-knowable columns."""
-    rules = {}
-    rules["H2"] = (~(c["tfrac"] > H2_CAP), None)
-    # H2 placebo: the cap with a random OTHER night's med20_pts (derangement over the nights of the trades table)
-    rng = np.random.default_rng(SEED)
-    nights = t.index.values
-    n_n = len(nights)
-    perm = rng.permutation(n_n)
-    while True:                                   # derangement: every night gets ANOTHER night's med20
-        fixed = np.flatnonzero(perm == np.arange(n_n))
+N_PLACEBO_DRAWS = 300        # derangements / re-draws per placebo distribution (draw 0 = the per-night placebo rule)
+PLACEBO_DEATH_SHARE = 0.50   # LAB_DESIGN 2.6
+
+
+def derangement(rng: np.random.Generator, n: int) -> np.ndarray:
+    """A permutation without fixed points: every night receives ANOTHER night's value."""
+    perm = rng.permutation(n)
+    while True:
+        fixed = np.flatnonzero(perm == np.arange(n))
         if len(fixed) == 0:
             break
         for i in fixed:
-            j = int(rng.integers(0, n_n))
+            j = int(rng.integers(0, n))
             perm[i], perm[j] = perm[j], perm[i]
-    assert not (perm == np.arange(n_n)).any(), "placebo permutation has a fixed point"
+    assert not (perm == np.arange(n)).any(), "placebo permutation has a fixed point"
+    return perm
+
+
+def h2_placebo_mask(t: pd.DataFrame, c: pd.DataFrame, perm: np.ndarray) -> pd.Series:
+    """The H2 cap evaluated against a deranged night's med20_pts (candidate-row ok mask)."""
     med_placebo = pd.Series(t["med20_pts"].values[perm], index=t.index)
     tfrac_pl = c["target_dist"] / c["date"].map(med_placebo)
-    rules["H2_placebo"] = (~(tfrac_pl > H2_CAP), None)
-    # H3: drop wide continuation; wide fade needs win_rate_on_resolution >= 0.80
-    drop3 = (c["kind"] == "CONTINUATION") & (c["variant"] == "wide")
-    ok3 = ~((c["kind"] == "MEAN REVERSION") & (c["variant"] == "wide") & (c["win_rate_on_resolution"] < H3_WIDE_FADE_CONF))
-    rules["H3"] = (ok3, drop3)
-    # H11: scratch cap
-    rules["H11"] = (~(c["scratch"] > H11_SCRATCH_CAP), None)
-    # H11 placebo: the cap on the p_scratch of a random other candidate of the same night
-    rng = np.random.default_rng(SEED)
+    return ~(tfrac_pl > H2_CAP)
+
+
+def h11_placebo_mask(c: pd.DataFrame, rng: np.random.Generator) -> pd.Series:
+    """The H11 cap evaluated on the p_scratch of a random OTHER candidate of the same night (candidate-row ok mask)."""
     other_scratch = np.empty(len(c))
     for _, g in c.groupby("date", sort=True):
         pos = g.index.values
@@ -434,7 +438,67 @@ def rule_masks(t: pd.DataFrame, c: pd.DataFrame) -> dict:
                 j = rng.integers(0, len(pos) - 1)
                 j = j if j < i else j + 1
                 other_scratch[p] = sc[j]
-    rules["H11_placebo"] = (~(pd.Series(other_scratch, index=c.index) > H11_SCRATCH_CAP), None)
+    return ~(pd.Series(other_scratch, index=c.index) > H11_SCRATCH_CAP)
+
+
+def placebo_distribution(t: pd.DataFrame, c: pd.DataFrame, base: pd.DataFrame, splice: pd.Series, which: str,
+                         claimed: dict, n_draws: int = N_PLACEBO_DRAWS, seed: int = SEED) -> dict:
+    """Distribution of the placebo effect over n_draws independent placebo draws (one generator, default_rng(seed);
+    draw 0 reproduces the per-night placebo rule).  Statistic per draw and split: the difference of A averages
+    (the group's headline 'effect on A avg') and the graded-book all-night paired mean.  Reports the share of the claimed
+    effect reproduced by the median draw, the fraction of draws reproducing >= 50% of it and the fraction exceeding it."""
+    rng = np.random.default_rng(seed)
+    masks = {sp: split_mask(base.index, sp, splice) for sp in SPLITS}
+    baseA = {sp: _mean(base["pnl"].values[masks[sp] & (base["grade"] == "A").values]) for sp in SPLITS}
+    eff_A = {sp: np.empty(n_draws) for sp in SPLITS}
+    eff_all = {sp: np.empty(n_draws) for sp in SPLITS}
+    for i in range(n_draws):
+        ok = h2_placebo_mask(t, c, derangement(rng, len(t))) if which == "H2" else h11_placebo_mask(c, rng)
+        hyp = recall(t, c, ok, None)
+        for sp in SPLITS:
+            m = masks[sp]
+            h = hyp[m]
+            eff_A[sp][i] = _mean(h["pnl"].values[(h["grade"] == "A").values]) - baseA[sp]
+            eff_all[sp][i] = _mean(h["pnl"].values - base["pnl"].values[m])
+    out = {"n_draws": n_draws, "rng": f"numpy default_rng({seed}); draw 0 = the per-night placebo rule", "death_rule": f"LAB_DESIGN 2.6: placebo reproduces >= {PLACEBO_DEATH_SHARE:.0%} of the claimed effect"}
+    for sp in SPLITS:
+        e = claimed[sp]["effect_A_avg"]
+        ea = claimed[sp]["paired_all_nights"]["mean"]
+        pa, pall = eff_A[sp], eff_all[sp]
+        share = pa / e if e not in (0.0,) and not np.isnan(e) else np.full(n_draws, np.nan)
+        share_all = pall / ea if ea not in (0.0,) and not np.isnan(ea) else np.full(n_draws, np.nan)
+        out[sp] = {"claimed_effect_A_avg": e, "placebo_effect_A_avg_draw0": float(pa[0]), "placebo_mean": float(pa.mean()), "placebo_median": float(np.median(pa)),
+                   "placebo_q10_q90": [float(np.quantile(pa, 0.10)), float(np.quantile(pa, 0.90))],
+                   "share_median": float(np.nanmedian(share)), "frac_share_ge_50pct": float(np.nanmean(share >= PLACEBO_DEATH_SHARE)),
+                   "frac_placebo_ge_claimed": float(np.nanmean(pa >= e)) if e > 0 else float(np.nanmean(pa <= e)),
+                   "claimed_all_night_paired_mean": ea, "placebo_all_night_median": float(np.median(pall)),
+                   "share_median_all_night": float(np.nanmedian(share_all)), "frac_share_ge_50pct_all_night": float(np.nanmean(share_all >= PLACEBO_DEATH_SHARE)),
+                   "dead_2_6": bool(e > 0 and np.nanmedian(share) >= PLACEBO_DEATH_SHARE)}
+    out["dead_2_6_any_split"] = bool(any(out[sp]["dead_2_6"] for sp in SPLITS))
+    out["dead_2_6_discovery_or_full"] = bool(out["discovery"]["dead_2_6"] or out["full"]["dead_2_6"])
+    return out
+
+
+# --------------------------------------------------------------------------------------------------
+# rules
+# --------------------------------------------------------------------------------------------------
+def rule_masks(t: pd.DataFrame, c: pd.DataFrame) -> dict:
+    """Each rule = (ok_extra over candidate rows, drop over candidate rows).  Built only from 17:xx-knowable columns."""
+    rules = {}
+    rules["H2"] = (~(c["tfrac"] > H2_CAP), None)
+    # H2 placebo: the cap with a random OTHER night's med20_pts (derangement over the nights of the trades table).
+    # This single draw (draw 0 of the placebo distribution below) is kept as the per-night rule H2_placebo.
+    rng = np.random.default_rng(SEED)
+    rules["H2_placebo"] = (h2_placebo_mask(t, c, derangement(rng, len(t))), None)
+    # H3: drop wide continuation; wide fade needs win_rate_on_resolution >= 0.80
+    drop3 = (c["kind"] == "CONTINUATION") & (c["variant"] == "wide")
+    ok3 = ~((c["kind"] == "MEAN REVERSION") & (c["variant"] == "wide") & (c["win_rate_on_resolution"] < H3_WIDE_FADE_CONF))
+    rules["H3"] = (ok3, drop3)
+    # H11: scratch cap
+    rules["H11"] = (~(c["scratch"] > H11_SCRATCH_CAP), None)
+    # H11 placebo: the cap on the p_scratch of a random other candidate of the same night (draw 0 of its distribution)
+    rng = np.random.default_rng(SEED)
+    rules["H11_placebo"] = (h11_placebo_mask(c, rng), None)
     # COMBO = H2 + H3 + H11 (the pre-registered joint rule of the group); H2H3 = the two rules that are not 'no effect' / 'harmful'
     rules["COMBO"] = (rules["H2"][0] & ok3 & rules["H11"][0], drop3)
     rules["H2H3"] = (rules["H2"][0] & ok3, drop3)
@@ -600,12 +664,37 @@ def run_symbol(sym: str) -> tuple[dict, pd.DataFrame]:
     results["verdicts"]["H1"] = {"verdict": v, "why": why, "predicted": PREDICTED["H1"]}
     v, why = verdict_pnl(results["rules"]["COMBO_H1"])
     results["verdicts"]["COMBO_H1"] = {"verdict": v, "why": why, "predicted": PREDICTED["COMBO_H1"]}
-    # placebo share of the claimed effect (A avg, full window)
+    # placebo share of the claimed effect (A avg): the single per-night draw (draw 0) ...
     for name, pl in (("H2", "H2_placebo"), ("H11", "H11_placebo")):
         for sp in SPLITS:
             e, ep = results["rules"][name][sp]["effect_A_avg"], results["rules"][pl][sp]["effect_A_avg"]
             results["rules"][name][sp]["placebo_effect_A_avg"] = ep
-            results["rules"][name][sp]["placebo_share_of_effect"] = float(ep / e) if e not in (0.0,) and not np.isnan(e) else float("nan")
+            results["rules"][name][sp]["placebo_share_of_effect_draw0"] = float(ep / e) if e not in (0.0,) and not np.isnan(e) else float("nan")
+    # ... and the placebo DISTRIBUTION (N_PLACEBO_DRAWS draws) with the LAB_DESIGN 2.6 death rule applied to its median
+    results["placebo_distribution"] = {}
+    for name in ("H2", "H11"):
+        pdist = placebo_distribution(t, c, base, splice, name, results["rules"][name])
+        results["placebo_distribution"][name] = pdist
+        assert abs(pdist["full"]["placebo_effect_A_avg_draw0"] - results["rules"][f"{name}_placebo"]["full"]["effect_A_avg"]) < 1e-9, "draw 0 must equal the per-night placebo rule"
+        mech = results["verdicts"][name]["verdict"]
+        results["verdicts"][name]["mechanical_verdict"] = mech
+        results["verdicts"][name]["placebo_2_6"] = {sp: {"share_median": pdist[sp]["share_median"], "frac_share_ge_50pct": pdist[sp]["frac_share_ge_50pct"], "dead": pdist[sp]["dead_2_6"]} for sp in SPLITS}
+        if pdist["dead_2_6_discovery_or_full"]:
+            results["verdicts"][name]["verdict"] = "dead (LAB_DESIGN 2.6 placebo)"
+            results["verdicts"][name]["why"] = (f"placebo distribution ({pdist['n_draws']} draws) reproduces a median {pdist['discovery']['share_median']:.0%} of the discovery effect and "
+                                                f"{pdist['full']['share_median']:.0%} of the full effect (>= 50% in {pdist['discovery']['frac_share_ge_50pct']:.0%} / {pdist['full']['frac_share_ge_50pct']:.0%} of draws); "
+                                                f"mechanical verdict before the placebo rule: '{mech}' ({results['verdicts'][name]['why']})")
+        print(f"\n[{sym}] {name} placebo distribution: " + "; ".join(f"{sp}: claimed {pdist[sp]['claimed_effect_A_avg']:+.2f}, placebo median {pdist[sp]['placebo_median']:+.2f} "
+                                                                    f"(share {pdist[sp]['share_median']:.0%}, >=50% in {pdist[sp]['frac_share_ge_50pct']:.0%} of draws)" for sp in SPLITS)
+              + f" -> {results['verdicts'][name]['verdict']}")
+    # H3 convention: the wide-fade floor is applied to the raw ratio win_rate_on_resolution (= p_win/(p_win+p_loss)); the
+    # engine's confidence is that ratio x 100 rounded to an integer, and LAB_DESIGN 8 #4 registers 'conf >= 80'
+    wf = c[(c["kind"] == "MEAN REVERSION") & (c["variant"] == "wide")]
+    edge = wf[(wf["win_rate_on_resolution"] >= 0.795) & (wf["win_rate_on_resolution"] < H3_WIDE_FADE_CONF)]
+    results["H3_floor_convention"] = {"floor_applied_to": "raw ratio win_rate_on_resolution >= 0.80", "registered_as": "conf >= 80 (LAB_DESIGN 8 #4; conf = round(100 x ratio))",
+                                      "wide_fade_candidates": int(len(wf)), "candidates_with_ratio_in_[0.795,0.80)": int(len(edge)),
+                                      "of_which_chosen_by_the_baseline": int(edge["chosen"].sum()), "dates": [str(d.date()) for d in edge["date"]],
+                                      "note": "these candidates fail the raw-ratio floor but would pass a rounded-confidence floor; none is the baseline's chosen candidate, so no night's call changes under either convention"}
     # per-night table
     night = pd.DataFrame({"sym": sym, "date": t.index.strftime("%Y-%m-%d"), "split": t["split"].values, "splice": splice.values,
                           "sunday_open": t["sunday_open"].values, "med20_pts": t["med20_pts"].values,

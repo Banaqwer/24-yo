@@ -1895,7 +1895,7 @@
     "event": 4.0,
     "hi": 4.0
    },
-   "runtime_s": 33.37798190116882,
+   "runtime_s": 26.60761332511902,
    "point_value_usd": 20.0,
    "grade_counts_honest": {
     "NO EDGE": 128,
@@ -3816,7 +3816,7 @@
     "event": 2.0,
     "hi": 2.0
    },
-   "runtime_s": 32.10817193984985,
+   "runtime_s": 29.68906545639038,
    "point_value_usd": 50.0,
    "grade_counts_honest": {
     "NO EDGE": 129,
@@ -4586,7 +4586,7 @@
     "knowable_at": "17:xx ET (decision time)"
    },
    "pre_holiday": {
-    "desc": "US holiday next trading day (calendar_features)",
+    "desc": "next CALENDAR day is a US holiday (calendar_features; a Friday before a Monday holiday is not flagged)",
     "units": "0/1",
     "knowable_at": "17:xx ET (decision time)"
    },
@@ -5374,5 +5374,5 @@
    }
   }
  },
- "runtime_s": 65.82119083404541
+ "runtime_s": 56.56500601768494
 }

@@ -40,7 +40,8 @@ Bars are looked up by their ET hour, not by position, so holiday-eve (6-bar) and
 are handled; a rule whose bar is absent leaves the night unchanged.
 
 Knowability: rule inputs are target/stop/stop_dist/target_dist/rng_q50_pts/tokyo_open_bar (17:xx), the bar closes and
-highs/lows up to the decision bar, the 20:00 open and the 18:00-19:59 bars (H12).  Ex post inputs seen and NOT used as
+highs/lows up to the decision bar, the 20:00 open and the 18:00-19:59 bars (H12; the presence of the bars labelled 18
+and 19 is checked from the bars themselves, not from the builder's ex post bars_contiguous flag).  Ex post inputs seen and NOT used as
 rule inputs: outcome_open / resolved_k_open (used only to define the pre-registered H12 robustness subset and for
 descriptives), 'the trade later scratches' (the BE22 wording; the rule is applied to every open position that
 qualifies at 22:00 and the later-scratch subset is reported descriptively only), eur_outcome_open / eur_pnl_open (the
@@ -439,7 +440,10 @@ def apply_rule(T: pd.DataFrame, nights: dict, rid: str, cfg: dict) -> pd.DataFra
             mode, frac = cfg["cancel"]
             mv = float(r["move_18_20_in_dir"]) if pd.notna(r["move_18_20_in_dir"]) else np.nan
             thr = frac * float(r["rng_q50_pts"])
-            if np.isnan(mv) or int(r["k0_hour"]) != 18 or int(r["bars_contiguous"]) != 1:
+            # 20:00-knowable check: the bars labelled 18 and 19 are present at k=0 and k=1 (the ex post bars_contiguous
+            # flag of the builder is NOT read; the two checks coincide on every graded night of the record)
+            two_bars_ok = (nt.k_of_hour(18) == 0) and (nt.k_of_hour(19) == 1)
+            if np.isnan(mv) or not two_bars_ok:
                 cancel = True                     # the 18:00-19:59 bars are not both present: no two-stage decision
             elif mode == "adverse":
                 cancel = mv < -thr
@@ -511,6 +515,11 @@ def run_symbol(sym: str) -> tuple[dict, pd.DataFrame]:
     pv = PV[sym]
     T, cands, nights = load_symbol(sym)
     checks = self_check(sym, T, cands, nights)
+    # 20:00-knowable flag for H12: the bars labelled 18 and 19 sit at k=0 and k=1 (replaces the builder's ex post
+    # bars_contiguous, which is never read as a rule input; the two agree on every graded night of the record)
+    T["bars_18_19_present"] = [int(nights[d].k_of_hour(18) == 0 and nights[d].k_of_hour(19) == 1) for d in T.index]
+    checks["bars_18_19_present_vs_expost_bars_contiguous_disagreements_graded"] = int(
+        ((T["bars_18_19_present"] != ((T["k0_hour"] == 18) & (T["bars_contiguous"] == 1)).astype(int)) & T["grade"].isin(GRADES)).sum())
     isA = T["grade"] == "A"
     graded = T["grade"].isin(GRADES)
     kind_mask = {CONT: T["call"] == CONT, MR: T["call"] == MR, "ALL": pd.Series(True, index=T.index)}
@@ -552,7 +561,7 @@ def run_symbol(sym: str) -> tuple[dict, pd.DataFrame]:
     R12 = R_all["H12"]
     popMR = isA & kind_mask[MR]
     e20_net = pd.Series(np.where(T["traded_e20"] == 1, T["pnl_e20"] - T["cost_base"], 0.0), index=T.index)
-    eligible = (T["traded_e20"] == 1) & (T["pre_touched_target_e20"] == 0) & (T["pre_touched_stop_e20"] == 0) & (T["k0_hour"] == 18) & (T["bars_contiguous"] == 1)
+    eligible = (T["traded_e20"] == 1) & (T["pre_touched_target_e20"] == 0) & (T["pre_touched_stop_e20"] == 0) & (T["bars_18_19_present"] == 1)
     h12 = {"random_filter_null": random_filter_null(T, R12, popMR, e20_net, eligible), "fills": {}, "excluding_bar0_resolutions": {},
            "placebo_random_filter_null": random_filter_null(T, R_all["H12_placebo_flip"], popMR, e20_net, eligible)}
     for split in SPLITS:
