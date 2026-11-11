@@ -255,6 +255,24 @@ def t_earthdata():
          lambda r: (r.status_code in (401, 403) or "urs.earthdata.nasa.gov" in r.url, f"final host {r.url.split('/')[2]}"), [],
          headers={"Range": "bytes=0-1023"}, allow_redirects=True)
 
+def t_cdse():
+    cid, sec = env("CDSE_CLIENT_ID", "CDSE_CLIENT_SECRET")
+    if not (cid and sec): return record("Copernicus Data Space (OAuth client)", "CDSE_CLIENT_ID/SECRET", "SKIP", "not set (needs both the client ID, which starts with 'sh-', and the secret)")
+    def ok(r):
+        j = r.json(); return ("access_token" in j), ("access_token issued" if "access_token" in j else f"body: {r.text[:140]!r}")
+    r = http("Copernicus Data Space (token)", "CDSE_CLIENT_ID/SECRET", "POST", "https://identity.dataspace.copernicus.eu/auth/realms/CDSE/protocol/openid-connect/token", ok, [cid, sec],
+             data={"grant_type": "client_credentials", "client_id": cid, "client_secret": sec})
+    if r is not None and r.status_code == 200 and "access_token" in r.text:
+        tok = r.json()["access_token"]
+        # an 8x8 Process API request: a bogus token gets 401, a valid one gets a PNG (TESTED 2026-11-11)
+        ev = "//VERSION=3\nfunction setup(){return{input:['B04'],output:{bands:1}}}\nfunction evaluatePixel(s){return[s.B04]}"
+        body = {"input": {"bounds": {"bbox": [-95.4, 29.7, -95.3, 29.8]},
+                          "data": [{"type": "sentinel-2-l2a", "dataFilter": {"timeRange": {"from": "2025-06-01T00:00:00Z", "to": "2025-06-30T00:00:00Z"}}}]},
+                "output": {"width": 8, "height": 8, "responses": [{"identifier": "default", "format": {"type": "image/png"}}]}, "evalscript": ev}
+        http("Copernicus Data Space (Sentinel Hub Process API)", "CDSE_CLIENT_ID/SECRET", "POST", "https://sh.dataspace.copernicus.eu/api/v1/process",
+             lambda r2: (r2.status_code == 200 and "image" in r2.headers.get("content-type", ""), f"content-type {r2.headers.get('content-type')}; {len(r2.content)} bytes; note: OData/S3 downloads need a user token (password grant), not this client token"),
+             [cid, sec, tok], json=body, headers={"Authorization": f"Bearer {tok}"})
+
 def t_nass():
     k = env("NASS_API_KEY")
     if not k: return record("USDA NASS QuickStats", "NASS_API_KEY", "SKIP", "not set")
@@ -316,7 +334,7 @@ def t_fmp():
 
 TESTS = [t_tiingo, t_alphavantage, t_fred, t_eia, t_census, t_bls, t_sec,
          t_datagov, t_fmcsa, t_mars, t_socrata, t_laborcurrent, t_apininjas, t_czds, t_aisstream,
-         t_firms, t_earthdata, t_nass,
+         t_firms, t_earthdata, t_nass, t_cdse,
          t_ncei, t_airnow, t_openaq, t_openfda, t_fda_dashboard, t_dol, t_polygon, t_fmp]
 
 if __name__ == "__main__":
