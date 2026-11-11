@@ -1,7 +1,0 @@
-alpaca-py
-yfinance
-pandas
-numpy
-flask
-requests
-scipy
