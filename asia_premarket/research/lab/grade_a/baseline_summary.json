@@ -1,0 +1,5378 @@
+{
+ "generated_from": "research/lab/grade_a/honest_baseline.py",
+ "steps": {
+  "step0": "v0 as published (pooled calibrator, full-sample regressors, recorded-outcome resolution, 17:00 fill, no costs)",
+  "step1": "+ causal calibration (H0a); everything else as v0",
+  "step2": "+ walk-forward regressors and causal exp_rev shrink (H0b)",
+  "step3": "+ own-pair raw-bar resolution with one entry reference, stop priority, gap fills (H0c/H0j/H0k); 17:00 fill",
+  "step4": "+ fill at the 18:00 open; already_past / open_past_stop at the open (H0d); unfillable graded nights = 0",
+  "step5": "+ costs, base schedule (H0h) = THE HONEST BASELINE (pnl_net_open)",
+  "step5s": "costs at the sensitivity level everywhere (pnl_net_open_hicost)"
+ },
+ "splits": {
+  "discovery": [
+   "2025-04-01",
+   "2026-05-31"
+  ],
+  "vault": [
+   "2026-06-01",
+   "2026-11-06"
+  ],
+  "full": [
+   "2025-04-01",
+   "2026-11-06"
+  ]
+ },
+ "oos_months_full": 19.2,
+ "bootstrap": {
+  "blocks": "ISO week",
+  "draws": 2000,
+  "rng": "numpy default_rng(0)",
+  "ci": "90%"
+ },
+ "symbols": {
+  "NQ": {
+   "ladder": {
+    "discovery": [
+     {
+      "step": "step0",
+      "desc": "v0 as published (pooled calibrator, full-sample regressors, recorded-outcome resolution, 17:00 fill, no costs)",
+      "A_n": 53,
+      "A_win": 0.6981132075471698,
+      "A_avg": 27.030971860705453,
+      "A_total": 1432.641508617389,
+      "A_worst": -196.07500000000073,
+      "A_sd": 76.17764373470865,
+      "A_usd_per_contract_per_year": 24624.57934223536,
+      "A_avg_ci90": [
+       10.205332843818926,
+       42.488151732110644
+      ],
+      "graded_n": 137,
+      "all_graded_avg": -0.3022082537167846,
+      "all_graded_total": -41.40253075919949,
+      "graded_win": 0.5182481751824818,
+      "B_n": 55,
+      "B_avg": -18.840299032763475,
+      "C_n": 29,
+      "C_avg": -15.097503192227494,
+      "A_pts_per_sigma": 0.35484127016112194
+     },
+     {
+      "step": "step1",
+      "desc": "+ causal calibration (H0a); everything else as v0",
+      "A_n": 64,
+      "A_win": 0.578125,
+      "A_avg": -2.0359514207720264,
+      "A_total": -130.3008909294097,
+      "A_worst": -239.45038487616102,
+      "A_sd": 88.22918678455905,
+      "A_usd_per_contract_per_year": -2239.6423723278535,
+      "A_avg_ci90": [
+       -20.29794895082531,
+       14.683244232371107
+      ],
+      "graded_n": 135,
+      "all_graded_avg": -7.891606755962098,
+      "all_graded_total": -1065.3669120548832,
+      "graded_win": 0.5037037037037037,
+      "B_n": 38,
+      "B_avg": -6.36555372597965,
+      "C_n": 33,
+      "C_avg": -21.005302410249907,
+      "A_pts_per_sigma": -0.023075713320847898
+     },
+     {
+      "step": "step2",
+      "desc": "+ walk-forward regressors and causal exp_rev shrink (H0b)",
+      "A_n": 62,
+      "A_win": 0.5967741935483871,
+      "A_avg": 1.9063470281647708,
+      "A_total": 118.19351574621578,
+      "A_worst": -239.45038487616102,
+      "A_sd": 82.12657319439879,
+      "A_usd_per_contract_per_year": 2031.537958884956,
+      "A_avg_ci90": [
+       -15.26299721146462,
+       18.32027989766915
+      ],
+      "graded_n": 128,
+      "all_graded_avg": -6.9045513852457745,
+      "all_graded_total": -883.7825773114591,
+      "graded_win": 0.5078125,
+      "B_n": 35,
+      "B_avg": -12.372000379643643,
+      "C_n": 31,
+      "C_avg": -18.353421928069274,
+      "A_pts_per_sigma": 0.023212304544259103
+     },
+     {
+      "step": "step3",
+      "desc": "+ own-pair raw-bar resolution with one entry reference, stop priority, gap fills (H0c/H0j/H0k); 17:00 fill",
+      "A_n": 62,
+      "A_win": 0.5806451612903226,
+      "A_avg": 3.668257110757505,
+      "A_total": 227.4319408669653,
+      "A_worst": -218.25,
+      "A_sd": 80.2264395908469,
+      "A_usd_per_contract_per_year": 3909.1537130192505,
+      "A_avg_ci90": [
+       -12.728709002959553,
+       19.173876639463938
+      ],
+      "graded_n": 128,
+      "all_graded_avg": -8.898313603923214,
+      "all_graded_total": -1138.9841413021713,
+      "graded_win": 0.5078125,
+      "B_n": 35,
+      "B_avg": -24.526983068736236,
+      "C_n": 31,
+      "C_avg": -16.38618305688285,
+      "A_untraded": 1,
+      "graded_untraded": 1,
+      "A_pts_per_sigma": 0.04572379292245221
+     },
+     {
+      "step": "step4",
+      "desc": "+ fill at the 18:00 open; already_past / open_past_stop at the open (H0d); unfillable graded nights = 0",
+      "A_n": 62,
+      "A_win": 0.5645161290322581,
+      "A_avg": 5.333177502884287,
+      "A_total": 330.6570051788258,
+      "A_worst": -239.25,
+      "A_sd": 76.37806274402274,
+      "A_usd_per_contract_per_year": 5683.410406661935,
+      "A_avg_ci90": [
+       -12.285479439230558,
+       21.925178277570332
+      ],
+      "graded_n": 128,
+      "all_graded_avg": -6.806711538986804,
+      "all_graded_total": -871.2590769903109,
+      "graded_win": 0.484375,
+      "B_n": 35,
+      "B_avg": -13.719840211593379,
+      "C_n": 31,
+      "C_avg": -23.28134434720543,
+      "A_untraded": 3,
+      "graded_untraded": 4,
+      "A_pts_per_sigma": 0.06982603788679696
+     },
+     {
+      "step": "step5",
+      "desc": "+ costs, base schedule (H0h) = THE HONEST BASELINE (pnl_net_open)",
+      "A_n": 62,
+      "A_win": 0.5483870967741935,
+      "A_avg": 3.462209760948803,
+      "A_total": 214.65700517882578,
+      "A_worst": -243.25,
+      "A_sd": 76.49478845556841,
+      "A_usd_per_contract_per_year": 3689.575112544288,
+      "A_avg_ci90": [
+       -14.078929504361554,
+       20.106390867275532
+      ],
+      "graded_n": 128,
+      "all_graded_avg": -8.865305288986804,
+      "all_graded_total": -1134.7590769903109,
+      "graded_win": 0.4765625,
+      "B_n": 35,
+      "B_avg": -15.891268783021951,
+      "C_n": 31,
+      "C_avg": -25.587795960108657,
+      "A_untraded": 3,
+      "graded_untraded": 4,
+      "A_pts_per_sigma": 0.04526072731032924
+     },
+     {
+      "step": "step5s",
+      "desc": "costs at the sensitivity level everywhere (pnl_net_open_hicost)",
+      "A_n": 62,
+      "A_win": 0.532258064516129,
+      "A_avg": 1.526725889981061,
+      "A_total": 94.65700517882578,
+      "A_worst": -243.25,
+      "A_sd": 76.36922796086023,
+      "A_usd_per_contract_per_year": 1626.9868772501702,
+      "A_avg_ci90": [
+       -16.09130589672774,
+       18.157321357582212
+      ],
+      "graded_n": 128,
+      "all_graded_avg": -10.681711538986804,
+      "all_graded_total": -1367.2590769903109,
+      "graded_win": 0.4609375,
+      "B_n": 35,
+      "B_avg": -17.605554497307665,
+      "C_n": 31,
+      "C_avg": -27.28134434720543,
+      "A_untraded": 3,
+      "graded_untraded": 4,
+      "A_pts_per_sigma": 0.019991375201062905
+     }
+    ],
+    "vault": [
+     {
+      "step": "step0",
+      "desc": "v0 as published (pooled calibrator, full-sample regressors, recorded-outcome resolution, 17:00 fill, no costs)",
+      "A_n": 25,
+      "A_win": 0.68,
+      "A_avg": 9.175517916205436,
+      "A_total": 229.3879479051359,
+      "A_worst": -337.2013354419231,
+      "A_sd": 124.1253760974839,
+      "A_usd_per_contract_per_year": 10605.563034474797,
+      "A_avg_ci90": [
+       -31.18882479966695,
+       47.859745799767076
+      ],
+      "graded_n": 59,
+      "all_graded_avg": 6.083998233455216,
+      "all_graded_total": 358.9558957738578,
+      "graded_win": 0.6440677966101694,
+      "B_n": 24,
+      "B_avg": 10.396379910022985,
+      "C_n": 10,
+      "C_avg": -11.994516997182961,
+      "A_pts_per_sigma": 0.07392137051008242
+     },
+     {
+      "step": "step1",
+      "desc": "+ causal calibration (H0a); everything else as v0",
+      "A_n": 22,
+      "A_win": 0.6363636363636364,
+      "A_avg": 5.7432741250926105,
+      "A_total": 126.35203075203742,
+      "A_worst": -237.95288139507826,
+      "A_sd": 111.29422643784791,
+      "A_usd_per_contract_per_year": 5841.782181288819,
+      "A_avg_ci90": [
+       -43.720861587476335,
+       52.33475443513879
+      ],
+      "graded_n": 61,
+      "all_graded_avg": 3.2879949683108873,
+      "all_graded_total": 200.56769306696413,
+      "graded_win": 0.6229508196721312,
+      "B_n": 25,
+      "B_avg": -26.804203802710873,
+      "C_n": 14,
+      "C_avg": 53.16576838447846,
+      "A_pts_per_sigma": 0.051604421081986075
+     },
+     {
+      "step": "step2",
+      "desc": "+ walk-forward regressors and causal exp_rev shrink (H0b)",
+      "A_n": 22,
+      "A_win": 0.6818181818181818,
+      "A_avg": 18.991246006687017,
+      "A_total": 417.8074121471144,
+      "A_worst": -169.41312179974557,
+      "A_sd": 97.33038266934308,
+      "A_usd_per_contract_per_year": 19316.981935029562,
+      "A_avg_ci90": [
+       -14.715429535480189,
+       53.438300466786416
+      ],
+      "graded_n": 59,
+      "all_graded_avg": 25.438122225987442,
+      "all_graded_total": 1500.849211333259,
+      "graded_win": 0.6779661016949152,
+      "B_n": 23,
+      "B_avg": 14.727001817541135,
+      "C_n": 14,
+      "C_avg": 53.16576838447846,
+      "A_pts_per_sigma": 0.19512145627953892
+     },
+     {
+      "step": "step3",
+      "desc": "+ own-pair raw-bar resolution with one entry reference, stop priority, gap fills (H0c/H0j/H0k); 17:00 fill",
+      "A_n": 22,
+      "A_win": 0.6363636363636364,
+      "A_avg": 18.453937437213177,
+      "A_total": 405.9866236186899,
+      "A_worst": -169.41312179974557,
+      "A_sd": 97.71160432938605,
+      "A_usd_per_contract_per_year": 18770.457503383102,
+      "A_avg_ci90": [
+       -15.570450538665002,
+       53.101844071292746
+      ],
+      "graded_n": 59,
+      "all_graded_avg": 23.518789746447542,
+      "all_graded_total": 1387.608595040405,
+      "graded_win": 0.6610169491525424,
+      "B_n": 23,
+      "B_avg": 12.826070630787676,
+      "C_n": 14,
+      "C_avg": 49.04445335097132,
+      "A_untraded": 0,
+      "graded_untraded": 0,
+      "A_pts_per_sigma": 0.18886126743968823
+     },
+     {
+      "step": "step4",
+      "desc": "+ fill at the 18:00 open; already_past / open_past_stop at the open (H0d); unfillable graded nights = 0",
+      "A_n": 22,
+      "A_win": 0.6363636363636364,
+      "A_avg": 17.840301073576814,
+      "A_total": 392.4866236186899,
+      "A_worst": -168.66312179974557,
+      "A_sd": 96.81211092545759,
+      "A_usd_per_contract_per_year": 18146.296110978037,
+      "A_avg_ci90": [
+       -14.845937493969133,
+       50.97897191608837
+      ],
+      "graded_n": 59,
+      "all_graded_avg": 17.35967470545537,
+      "all_graded_total": 1024.2208076218667,
+      "graded_win": 0.5932203389830508,
+      "B_n": 23,
+      "B_avg": 11.243992916938188,
+      "C_n": 14,
+      "C_avg": 26.651596208114174,
+      "A_untraded": 2,
+      "graded_untraded": 7,
+      "A_pts_per_sigma": 0.18427757542972395
+     },
+     {
+      "step": "step5",
+      "desc": "+ costs, base schedule (H0h) = THE HONEST BASELINE (pnl_net_open)",
+      "A_n": 22,
+      "A_win": 0.5909090909090909,
+      "A_avg": 15.681210164485906,
+      "A_total": 344.9866236186899,
+      "A_worst": -172.66312179974557,
+      "A_sd": 96.77900421176952,
+      "A_usd_per_contract_per_year": 15950.17269325652,
+      "A_avg_ci90": [
+       -17.11875796267712,
+       49.08890923609511
+      ],
+      "graded_n": 59,
+      "all_graded_avg": 15.486793349523165,
+      "all_graded_total": 913.7208076218667,
+      "graded_win": 0.576271186440678,
+      "B_n": 23,
+      "B_avg": 9.396166829981667,
+      "C_n": 14,
+      "C_avg": 25.18731049382846,
+      "A_untraded": 2,
+      "graded_untraded": 7,
+      "A_pts_per_sigma": 0.1620311171023485
+     },
+     {
+      "step": "step5s",
+      "desc": "costs at the sensitivity level everywhere (pnl_net_open_hicost)",
+      "A_n": 22,
+      "A_win": 0.5909090909090909,
+      "A_avg": 14.203937437213177,
+      "A_total": 312.4866236186899,
+      "A_worst": -172.66312179974557,
+      "A_sd": 96.74904388616257,
+      "A_usd_per_contract_per_year": 14447.561933762849,
+      "A_avg_ci90": [
+       -18.45080830346715,
+       47.503673608021984
+      ],
+      "graded_n": 59,
+      "all_graded_avg": 13.834250976641808,
+      "all_graded_total": 816.2208076218667,
+      "graded_win": 0.576271186440678,
+      "B_n": 23,
+      "B_avg": 7.765732047372971,
+      "C_n": 14,
+      "C_avg": 23.223024779542747,
+      "A_untraded": 2,
+      "graded_untraded": 7,
+      "A_pts_per_sigma": 0.14681217370918825
+     }
+    ],
+    "full": [
+     {
+      "step": "step0",
+      "desc": "v0 as published (pooled calibrator, full-sample regressors, recorded-outcome resolution, 17:00 fill, no costs)",
+      "A_n": 78,
+      "A_win": 0.6923076923076923,
+      "A_avg": 21.308069955416986,
+      "A_total": 1662.029456522525,
+      "A_worst": -337.2013354419231,
+      "A_sd": 93.7629061907547,
+      "A_usd_per_contract_per_year": 20789.59791078261,
+      "A_avg_ci90": [
+       4.683137233387288,
+       37.699389356295484
+      ],
+      "graded_n": 196,
+      "all_graded_avg": 1.620170229666623,
+      "all_graded_total": 317.5533650146581,
+      "graded_win": 0.5561224489795918,
+      "B_n": 79,
+      "B_avg": -9.958269986853663,
+      "C_n": 39,
+      "C_avg": -14.301865706318637,
+      "A_pts_per_sigma": 0.22725479425805195
+     },
+     {
+      "step": "step1",
+      "desc": "+ causal calibration (H0a); everything else as v0",
+      "A_n": 86,
+      "A_win": 0.5930232558139535,
+      "A_avg": -0.04591697880665395,
+      "A_total": -3.9488601773722394,
+      "A_worst": -239.45038487616102,
+      "A_sd": 94.02889500582545,
+      "A_usd_per_contract_per_year": -49.3945609515483,
+      "A_avg_ci90": [
+       -17.7867271612565,
+       17.70063340186247
+      ],
+      "graded_n": 196,
+      "all_graded_avg": -4.4122409132036715,
+      "all_graded_total": -864.7992189879196,
+      "graded_win": 0.5408163265306123,
+      "B_n": 63,
+      "B_avg": -14.476129153253945,
+      "C_n": 47,
+      "C_avg": 1.0882080392436517,
+      "A_pts_per_sigma": -0.000488328388883111
+     },
+     {
+      "step": "step2",
+      "desc": "+ walk-forward regressors and causal exp_rev shrink (H0b)",
+      "A_n": 84,
+      "A_win": 0.6190476190476191,
+      "A_avg": 6.38096342730155,
+      "A_total": 536.0009278933302,
+      "A_worst": -239.45038487616102,
+      "A_sd": 86.08683522997967,
+      "A_usd_per_contract_per_year": 6704.6006477068095,
+      "A_avg_ci90": [
+       -9.111897198772752,
+       21.16858436942354
+      ],
+      "graded_n": 187,
+      "all_graded_avg": 3.2998215723090882,
+      "all_graded_total": 617.0666340217995,
+      "graded_win": 0.5614973262032086,
+      "B_n": 58,
+      "B_avg": -1.6258443359324377,
+      "C_n": 45,
+      "C_avg": 3.896992835834467,
+      "A_pts_per_sigma": 0.07412240687272222
+     },
+     {
+      "step": "step3",
+      "desc": "+ own-pair raw-bar resolution with one entry reference, stop priority, gap fills (H0c/H0j/H0k); 17:00 fill",
+      "A_n": 84,
+      "A_win": 0.5952380952380952,
+      "A_avg": 7.5406971962578,
+      "A_total": 633.4185644856552,
+      "A_worst": -218.25,
+      "A_sd": 84.78618047782737,
+      "A_usd_per_contract_per_year": 7923.155160218684,
+      "A_avg_ci90": [
+       -7.369567075558193,
+       22.024697027897872
+      ],
+      "graded_n": 187,
+      "all_graded_avg": 1.3295425333595379,
+      "all_graded_total": 248.62445373823357,
+      "graded_win": 0.5561497326203209,
+      "B_n": 58,
+      "B_avg": -9.714565222373306,
+      "C_n": 45,
+      "C_avg": 3.97001493667178,
+      "A_untraded": 1,
+      "graded_untraded": 1,
+      "A_pts_per_sigma": 0.08893780983835904
+     },
+     {
+      "step": "step4",
+      "desc": "+ fill at the 18:00 open; already_past / open_past_stop at the open (H0d); unfillable graded nights = 0",
+      "A_n": 84,
+      "A_win": 0.5833333333333334,
+      "A_avg": 8.608852723779949,
+      "A_total": 723.1436287975157,
+      "A_worst": -239.25,
+      "A_sd": 81.78833192730761,
+      "A_usd_per_contract_per_year": 9045.486658160706,
+      "A_avg_ci90": [
+       -6.636672386593455,
+       23.765129068185438
+      ],
+      "graded_n": 187,
+      "all_graded_avg": 0.817977169152705,
+      "all_graded_total": 152.96173063155584,
+      "graded_win": 0.5187165775401069,
+      "B_n": 58,
+      "B_avg": -3.8203891433825854,
+      "C_n": 45,
+      "C_avg": -7.746651729994887,
+      "A_untraded": 5,
+      "graded_untraded": 11,
+      "A_pts_per_sigma": 0.10525771245012533
+     },
+     {
+      "step": "step5",
+      "desc": "+ costs, base schedule (H0h) = THE HONEST BASELINE (pnl_net_open)",
+      "A_n": 84,
+      "A_win": 0.5595238095238095,
+      "A_avg": 6.662424152351377,
+      "A_total": 559.6436287975157,
+      "A_worst": -243.25,
+      "A_sd": 81.85004752238059,
+      "A_usd_per_contract_per_year": 7000.336829393583,
+      "A_avg_ci90": [
+       -8.680922794876013,
+       21.89886796626379
+      ],
+      "graded_n": 187,
+      "all_graded_avg": -1.182022830847295,
+      "all_graded_total": -221.03826936844416,
+      "graded_win": 0.5080213903743316,
+      "B_n": 58,
+      "B_avg": -5.8634925916584475,
+      "C_n": 45,
+      "C_avg": -9.791096174439332,
+      "A_untraded": 5,
+      "graded_untraded": 11,
+      "A_pts_per_sigma": 0.08139792650126004
+     },
+     {
+      "step": "step5s",
+      "desc": "costs at the sensitivity level everywhere (pnl_net_open_hicost)",
+      "A_n": 84,
+      "A_win": 0.5476190476190477,
+      "A_avg": 4.846947961875187,
+      "A_total": 407.1436287975157,
+      "A_worst": -243.25,
+      "A_sd": 81.76850786115912,
+      "A_usd_per_contract_per_year": 5092.781178708651,
+      "A_avg_ci90": [
+       -10.420607461941964,
+       20.013138425651253
+      ],
+      "graded_n": 187,
+      "all_graded_avg": -2.946728713200236,
+      "all_graded_total": -551.0382693684442,
+      "graded_win": 0.49732620320855614,
+      "B_n": 58,
+      "B_avg": -7.5445270744170685,
+      "C_n": 45,
+      "C_avg": -11.568873952217109,
+      "A_untraded": 5,
+      "graded_untraded": 11,
+      "A_pts_per_sigma": 0.05927646338007272
+     }
+    ]
+   },
+   "membership": {
+    "step0": {
+     "v0_A": 78,
+     "step_A": 78,
+     "both": 78,
+     "only_v0": 0,
+     "only_step": 0,
+     "jaccard": 1.0,
+     "v0_A_retained_frac": 1.0,
+     "dates_dropped": [],
+     "dates_added": []
+    },
+    "step1": {
+     "v0_A": 78,
+     "step_A": 86,
+     "both": 64,
+     "only_v0": 14,
+     "only_step": 22,
+     "jaccard": 0.64,
+     "v0_A_retained_frac": 0.8205128205128205,
+     "dates_dropped": [
+      "2025-05-02",
+      "2025-07-01",
+      "2025-08-26",
+      "2025-09-25",
+      "2026-01-13",
+      "2026-02-05",
+      "2026-03-26",
+      "2026-03-30",
+      "2026-04-09",
+      "2026-05-13",
+      "2026-06-10",
+      "2026-06-15",
+      "2026-09-03",
+      "2026-09-22"
+     ],
+     "dates_added": [
+      "2025-04-01",
+      "2025-04-23",
+      "2025-05-28",
+      "2025-08-11",
+      "2025-08-13",
+      "2025-08-20",
+      "2025-09-11",
+      "2025-09-12",
+      "2025-09-19",
+      "2025-09-23",
+      "2025-09-24",
+      "2025-09-29",
+      "2025-09-30",
+      "2025-10-13",
+      "2025-10-14",
+      "2025-11-03",
+      "2025-11-14",
+      "2025-11-17",
+      "2025-12-01",
+      "2026-02-25",
+      "2026-05-20",
+      "2026-06-17"
+     ]
+    },
+    "step2": {
+     "v0_A": 78,
+     "step_A": 84,
+     "both": 58,
+     "only_v0": 20,
+     "only_step": 26,
+     "jaccard": 0.5576923076923077,
+     "v0_A_retained_frac": 0.7435897435897436,
+     "dates_dropped": [
+      "2025-04-21",
+      "2025-04-22",
+      "2025-04-29",
+      "2025-05-02",
+      "2025-07-01",
+      "2025-08-26",
+      "2025-09-25",
+      "2025-11-05",
+      "2026-01-08",
+      "2026-01-13",
+      "2026-02-05",
+      "2026-03-26",
+      "2026-03-30",
+      "2026-04-09",
+      "2026-05-13",
+      "2026-06-10",
+      "2026-06-15",
+      "2026-06-16",
+      "2026-09-03",
+      "2026-09-22"
+     ],
+     "dates_added": [
+      "2025-04-01",
+      "2025-05-28",
+      "2025-07-31",
+      "2025-08-11",
+      "2025-08-13",
+      "2025-08-20",
+      "2025-09-11",
+      "2025-09-12",
+      "2025-09-19",
+      "2025-09-23",
+      "2025-09-24",
+      "2025-09-29",
+      "2025-09-30",
+      "2025-10-02",
+      "2025-10-09",
+      "2025-10-13",
+      "2025-10-14",
+      "2025-11-03",
+      "2025-11-14",
+      "2025-11-17",
+      "2025-12-01",
+      "2026-02-25",
+      "2026-03-09",
+      "2026-05-20",
+      "2026-06-17",
+      "2026-07-07"
+     ]
+    },
+    "step3": {
+     "v0_A": 78,
+     "step_A": 84,
+     "both": 58,
+     "only_v0": 20,
+     "only_step": 26,
+     "jaccard": 0.5576923076923077,
+     "v0_A_retained_frac": 0.7435897435897436,
+     "dates_dropped": [
+      "2025-04-21",
+      "2025-04-22",
+      "2025-04-29",
+      "2025-05-02",
+      "2025-07-01",
+      "2025-08-26",
+      "2025-09-25",
+      "2025-11-05",
+      "2026-01-08",
+      "2026-01-13",
+      "2026-02-05",
+      "2026-03-26",
+      "2026-03-30",
+      "2026-04-09",
+      "2026-05-13",
+      "2026-06-10",
+      "2026-06-15",
+      "2026-06-16",
+      "2026-09-03",
+      "2026-09-22"
+     ],
+     "dates_added": [
+      "2025-04-01",
+      "2025-05-28",
+      "2025-07-31",
+      "2025-08-11",
+      "2025-08-13",
+      "2025-08-20",
+      "2025-09-11",
+      "2025-09-12",
+      "2025-09-19",
+      "2025-09-23",
+      "2025-09-24",
+      "2025-09-29",
+      "2025-09-30",
+      "2025-10-02",
+      "2025-10-09",
+      "2025-10-13",
+      "2025-10-14",
+      "2025-11-03",
+      "2025-11-14",
+      "2025-11-17",
+      "2025-12-01",
+      "2026-02-25",
+      "2026-03-09",
+      "2026-05-20",
+      "2026-06-17",
+      "2026-07-07"
+     ]
+    },
+    "step4": {
+     "v0_A": 78,
+     "step_A": 84,
+     "both": 58,
+     "only_v0": 20,
+     "only_step": 26,
+     "jaccard": 0.5576923076923077,
+     "v0_A_retained_frac": 0.7435897435897436,
+     "dates_dropped": [
+      "2025-04-21",
+      "2025-04-22",
+      "2025-04-29",
+      "2025-05-02",
+      "2025-07-01",
+      "2025-08-26",
+      "2025-09-25",
+      "2025-11-05",
+      "2026-01-08",
+      "2026-01-13",
+      "2026-02-05",
+      "2026-03-26",
+      "2026-03-30",
+      "2026-04-09",
+      "2026-05-13",
+      "2026-06-10",
+      "2026-06-15",
+      "2026-06-16",
+      "2026-09-03",
+      "2026-09-22"
+     ],
+     "dates_added": [
+      "2025-04-01",
+      "2025-05-28",
+      "2025-07-31",
+      "2025-08-11",
+      "2025-08-13",
+      "2025-08-20",
+      "2025-09-11",
+      "2025-09-12",
+      "2025-09-19",
+      "2025-09-23",
+      "2025-09-24",
+      "2025-09-29",
+      "2025-09-30",
+      "2025-10-02",
+      "2025-10-09",
+      "2025-10-13",
+      "2025-10-14",
+      "2025-11-03",
+      "2025-11-14",
+      "2025-11-17",
+      "2025-12-01",
+      "2026-02-25",
+      "2026-03-09",
+      "2026-05-20",
+      "2026-06-17",
+      "2026-07-07"
+     ]
+    },
+    "step5": {
+     "v0_A": 78,
+     "step_A": 84,
+     "both": 58,
+     "only_v0": 20,
+     "only_step": 26,
+     "jaccard": 0.5576923076923077,
+     "v0_A_retained_frac": 0.7435897435897436,
+     "dates_dropped": [
+      "2025-04-21",
+      "2025-04-22",
+      "2025-04-29",
+      "2025-05-02",
+      "2025-07-01",
+      "2025-08-26",
+      "2025-09-25",
+      "2025-11-05",
+      "2026-01-08",
+      "2026-01-13",
+      "2026-02-05",
+      "2026-03-26",
+      "2026-03-30",
+      "2026-04-09",
+      "2026-05-13",
+      "2026-06-10",
+      "2026-06-15",
+      "2026-06-16",
+      "2026-09-03",
+      "2026-09-22"
+     ],
+     "dates_added": [
+      "2025-04-01",
+      "2025-05-28",
+      "2025-07-31",
+      "2025-08-11",
+      "2025-08-13",
+      "2025-08-20",
+      "2025-09-11",
+      "2025-09-12",
+      "2025-09-19",
+      "2025-09-23",
+      "2025-09-24",
+      "2025-09-29",
+      "2025-09-30",
+      "2025-10-02",
+      "2025-10-09",
+      "2025-10-13",
+      "2025-10-14",
+      "2025-11-03",
+      "2025-11-14",
+      "2025-11-17",
+      "2025-12-01",
+      "2026-02-25",
+      "2026-03-09",
+      "2026-05-20",
+      "2026-06-17",
+      "2026-07-07"
+     ]
+    },
+    "step5s": {
+     "v0_A": 78,
+     "step_A": 84,
+     "both": 58,
+     "only_v0": 20,
+     "only_step": 26,
+     "jaccard": 0.5576923076923077,
+     "v0_A_retained_frac": 0.7435897435897436,
+     "dates_dropped": [
+      "2025-04-21",
+      "2025-04-22",
+      "2025-04-29",
+      "2025-05-02",
+      "2025-07-01",
+      "2025-08-26",
+      "2025-09-25",
+      "2025-11-05",
+      "2026-01-08",
+      "2026-01-13",
+      "2026-02-05",
+      "2026-03-26",
+      "2026-03-30",
+      "2026-04-09",
+      "2026-05-13",
+      "2026-06-10",
+      "2026-06-15",
+      "2026-06-16",
+      "2026-09-03",
+      "2026-09-22"
+     ],
+     "dates_added": [
+      "2025-04-01",
+      "2025-05-28",
+      "2025-07-31",
+      "2025-08-11",
+      "2025-08-13",
+      "2025-08-20",
+      "2025-09-11",
+      "2025-09-12",
+      "2025-09-19",
+      "2025-09-23",
+      "2025-09-24",
+      "2025-09-29",
+      "2025-09-30",
+      "2025-10-02",
+      "2025-10-09",
+      "2025-10-13",
+      "2025-10-14",
+      "2025-11-03",
+      "2025-11-14",
+      "2025-11-17",
+      "2025-12-01",
+      "2026-02-25",
+      "2026-03-09",
+      "2026-05-20",
+      "2026-06-17",
+      "2026-07-07"
+     ]
+    }
+   },
+   "paired": {
+    "discovery": {
+     "step0->step1": {
+      "all_nights_mean": -4.432746239375255,
+      "all_nights_ci90": [
+       -9.273898298915261,
+       0.6918071464298077
+      ],
+      "n_affected": 53,
+      "A_either_mean": -11.672365813496308,
+      "A_either_ci90": [
+       -22.26728804231324,
+       -2.878273633810349
+      ],
+      "A_either_n": 74,
+      "usd_per_contract_per_year_all_nights": -17600.140718505812
+     },
+     "step1->step2": {
+      "all_nights_mean": 0.7860793711836539,
+      "all_nights_ci90": [
+       -1.145185420827838,
+       2.7089872434869218
+      ],
+      "n_affected": 15,
+      "A_either_mean": 3.6543295099356676,
+      "A_either_ci90": [
+       -1.822899513697303,
+       10.368418127040993
+      ],
+      "A_either_n": 68,
+      "usd_per_contract_per_year_all_nights": 3121.114271295795
+     },
+     "step2->step3": {
+      "all_nights_mean": -1.104768675284468,
+      "all_nights_ci90": [
+       -3.70616112772963,
+       0.816417487317593
+      ],
+      "n_affected": 48,
+      "A_either_mean": 1.7619100825927347,
+      "A_either_ci90": [
+       -2.1619875955999333,
+       6.679858762831639
+      ],
+      "A_either_n": 62,
+      "usd_per_contract_per_year_all_nights": -4386.464529299181
+     },
+     "step3->step4": {
+      "all_nights_mean": 1.1589829623890064,
+      "all_nights_ci90": [
+       -1.9539868056195497,
+       4.214630565591835
+      ],
+      "n_affected": 118,
+      "A_either_mean": 1.664920392126782,
+      "A_either_ci90": [
+       -6.470813309708487,
+       9.739915220496814
+      ],
+      "A_either_n": 62,
+      "usd_per_contract_per_year_all_nights": 4601.721399525037
+     },
+     "step4->step5": {
+      "all_nights_mean": -1.1406926406926408,
+      "all_nights_ci90": [
+       -1.3010112436583026,
+       -0.9826010678871091
+      ],
+      "n_affected": 124,
+      "A_either_mean": -1.8709677419354838,
+      "A_either_ci90": [
+       -2.0757575757575757,
+       -1.6551343813387425
+      ],
+      "A_either_n": 62,
+      "usd_per_contract_per_year_all_nights": -4529.1
+     },
+     "step5->step5s": {
+      "all_nights_mean": -1.0064935064935066,
+      "all_nights_ci90": [
+       -1.1514883637019664,
+       -0.8544303797468354
+      ],
+      "n_affected": 93,
+      "A_either_mean": -1.935483870967742,
+      "A_either_ci90": [
+       -2.1311475409836067,
+       -1.7410714285714286
+      ],
+      "A_either_n": 62,
+      "usd_per_contract_per_year_all_nights": -3996.264705882353
+     },
+     "step0->step5": {
+      "all_nights_mean": -4.7331452217797025,
+      "all_nights_ci90": [
+       -10.661555783230966,
+       1.4738728117500086
+      ],
+      "n_affected": 155,
+      "A_either_mean": -10.718376241951953,
+      "A_either_ci90": [
+       -23.495102537366957,
+       0.9145956982789942
+      ],
+      "A_either_n": 77,
+      "usd_per_contract_per_year_all_nights": -18792.869576984158
+     }
+    },
+    "vault": {
+     "step0->step1": {
+      "all_nights_mean": -1.6498771115301423,
+      "all_nights_ci90": [
+       -10.54508858779563,
+       8.22628507717432
+      ],
+      "n_affected": 13,
+      "A_either_mean": -7.880448466800142,
+      "A_either_ci90": [
+       -16.993384740808537,
+       -0.4246153789572418
+      ],
+      "A_either_n": 26,
+      "usd_per_contract_per_year_all_nights": -7322.948232745938
+     },
+     "step1->step2": {
+      "all_nights_mean": 13.544599148607238,
+      "all_nights_ci90": [
+       5.035438225409257,
+       23.914452403006774
+      ],
+      "n_affected": 7,
+      "A_either_mean": 12.671973104133782,
+      "A_either_ci90": [
+       -0.8378000000000612,
+       28.85265021268934
+      ],
+      "A_either_n": 23,
+      "usd_per_contract_per_year_all_nights": 60117.44614516002
+     },
+     "step2->step3": {
+      "all_nights_mean": -1.1795897530505635,
+      "all_nights_ci90": [
+       -2.844380235830473,
+       0.19472691220174762
+      ],
+      "n_affected": 13,
+      "A_either_mean": -0.5373085694738384,
+      "A_either_ci90": [
+       -1.7307914131455842,
+       0.23850213244987406
+      ],
+      "A_either_n": 22,
+      "usd_per_contract_per_year_all_nights": -5235.586721641135
+     },
+     "step3->step4": {
+      "all_nights_mean": -3.7852894522764395,
+      "all_nights_ci90": [
+       -10.827463164027003,
+       2.950362773112064
+      ],
+      "n_affected": 59,
+      "A_either_mean": -0.6136363636363636,
+      "A_either_ci90": [
+       -11.57712131837307,
+       10.947916666666666
+      ],
+      "A_either_n": 22,
+      "usd_per_contract_per_year_all_nights": -16800.93536134444
+     },
+     "step4->step5": {
+      "all_nights_mean": -1.1510416666666667,
+      "all_nights_ci90": [
+       -1.3917886043675867,
+       -0.9202021276595745
+      ],
+      "n_affected": 52,
+      "A_either_mean": -2.159090909090909,
+      "A_either_ci90": [
+       -2.6052631578947367,
+       -1.7380952380952381
+      ],
+      "A_either_n": 22,
+      "usd_per_contract_per_year_all_nights": -5108.876582278482
+     },
+     "step5->step5s": {
+      "all_nights_mean": -1.015625,
+      "all_nights_ci90": [
+       -1.25,
+       -0.781165994623656
+      ],
+      "n_affected": 39,
+      "A_either_mean": -1.4772727272727273,
+      "A_either_ci90": [
+       -1.7650122549019607,
+       -1.1363636363636365
+      ],
+      "A_either_n": 22,
+      "usd_per_contract_per_year_all_nights": -4507.8322784810125
+     },
+     "step0->step5": {
+      "all_nights_mean": 5.778801165083428,
+      "all_nights_ci90": [
+       -4.8832062017335085,
+       16.62605656874916
+      ],
+      "n_affected": 63,
+      "A_either_mean": 9.234321322724194,
+      "A_either_ci90": [
+       -10.332151533027826,
+       34.3925033696894
+      ],
+      "A_either_n": 27,
+      "usd_per_contract_per_year_all_nights": 25649.09924715004
+     }
+    },
+    "full": {
+     "step0->step1": {
+      "all_nights_mean": -3.6157571376225603,
+      "all_nights_ci90": [
+       -8.132854868511119,
+       0.6323936964757624
+      ],
+      "n_affected": 66,
+      "A_either_mean": -10.686467303355306,
+      "A_either_ci90": [
+       -18.682438299107687,
+       -3.7777696342074853
+      ],
+      "A_either_n": 100,
+      "usd_per_contract_per_year_all_nights": -14789.530181744567
+     },
+     "step1->step2": {
+      "all_nights_mean": 4.531699856298835,
+      "all_nights_ci90": [
+       1.4366786356325674,
+       8.001382779548745
+      ],
+      "n_affected": 22,
+      "A_either_mean": 5.9335141546231025,
+      "A_either_ci90": [
+       0.05285629883673249,
+       12.565012303761776
+      ],
+      "A_either_n": 91,
+      "usd_per_contract_per_year_all_nights": 18536.01037026712
+     },
+     "step2->step3": {
+      "all_nights_mean": -1.1267344962800192,
+      "all_nights_ci90": [
+       -3.0368359238332348,
+       0.3490632262499106
+      ],
+      "n_affected": 61,
+      "A_either_mean": 1.1597337689562512,
+      "A_either_ci90": [
+       -1.8700412812887839,
+       4.910536507957585
+      ],
+      "A_either_n": 84,
+      "usd_per_contract_per_year_all_nights": -4608.681724266185
+     },
+     "step3->step4": {
+      "all_nights_mean": -0.29254655384305117,
+      "all_nights_ci90": [
+       -3.3488423599626946,
+       2.7332408071198437
+      ],
+      "n_affected": 177,
+      "A_either_mean": 1.0681555275221486,
+      "A_either_ci90": [
+       -5.434655062393665,
+       8.113275162337626
+      ],
+      "A_either_n": 84,
+      "usd_per_contract_per_year_all_nights": -1196.6030689970562
+     },
+     "step4->step5": {
+      "all_nights_mean": -1.143730886850153,
+      "all_nights_ci90": [
+       -1.2812741873065014,
+       -1.0182234315563403
+      ],
+      "n_affected": 176,
+      "A_either_mean": -1.9464285714285714,
+      "A_either_ci90": [
+       -2.1299107142857143,
+       -1.75
+      ],
+      "A_either_n": 84,
+      "usd_per_contract_per_year_all_nights": -4678.20205479452
+     },
+     "step5->step5s": {
+      "all_nights_mean": -1.0091743119266054,
+      "all_nights_ci90": [
+       -1.1350019046473396,
+       -0.8878252278758509
+      ],
+      "n_affected": 132,
+      "A_either_mean": -1.8154761904761905,
+      "A_either_ci90": [
+       -1.9792343073593075,
+       -1.6291481578259734
+      ],
+      "A_either_n": 84,
+      "usd_per_contract_per_year_all_nights": -4127.825342465753
+     },
+     "step0->step5": {
+      "all_nights_mean": -1.6470692182969495,
+      "all_nights_ci90": [
+       -7.080347904816013,
+       3.907056659783275
+      ],
+      "n_affected": 218,
+      "A_either_mean": -5.538348989584106,
+      "A_either_ci90": [
+       -16.29139020466501,
+       5.63238171056483
+      ],
+      "A_either_n": 104,
+      "usd_per_contract_per_year_all_nights": -6737.006659535211
+     }
+    }
+   },
+   "self_checks": {
+    "replica_grade_agreement": 1.0,
+    "replica_max_abs_pnl_diff": 2.842170943040401e-14,
+    "v0_graded_nights": 196,
+    "v0_resolution_agree": 128,
+    "v0_resolution_disagree": 68,
+    "v0_resolution_disagreements": {
+     "2025-04-01": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 37.74518507180921,
+      "own_pair_pnl": 35.25,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-04-11": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -181.04999999999927,
+      "own_pair_pnl": -404.5,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-04-22": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -196.07500000000073,
+      "own_pair_pnl": -287.0,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-04-24": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -56.83110023189983,
+      "own_pair_pnl": -114.5,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-04-30": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -88.06433397196777,
+      "own_pair_pnl": -73.5,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-05-21": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 47.50112319697531,
+      "own_pair_pnl": 47.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-05-27": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 43.9938547486039,
+      "own_pair_pnl": 41.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-05-28": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -74.77707013333566,
+      "own_pair_pnl": -133.25,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-05-29": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 35.02251857050981,
+      "own_pair_pnl": 48.75,
+      "grade": "C",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-06-03": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -2.7499683008079394,
+      "own_pair_pnl": -3.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-06-17": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 73.05885740612831,
+      "own_pair_pnl": 55.5,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-06-24": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -7.9984829555593775,
+      "own_pair_pnl": -12.25,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-07-15": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -46.99795818626043,
+      "own_pair_pnl": -46.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-07-17": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -22.75415659089481,
+      "own_pair_pnl": -18.5,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-07-21": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 25.508194262943864,
+      "own_pair_pnl": 33.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-08-11": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -13.746800296170582,
+      "own_pair_pnl": -19.25,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-08-22": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -79.64102883230207,
+      "own_pair_pnl": -47.5,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-08-26": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -1.7502594899181043,
+      "own_pair_pnl": -5.25,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "wide"
+     },
+     "2025-08-28": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -43.502746154332655,
+      "own_pair_pnl": -45.0,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-09-02": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 36.496097425369115,
+      "own_pair_pnl": 34.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-09-19": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -31.77076207243563,
+      "own_pair_pnl": -48.0,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-09-22": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 17.750887677535765,
+      "own_pair_pnl": 16.5,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-09-23": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 42.240219710539776,
+      "own_pair_pnl": 48.0,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-09-24": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -18.751136547320737,
+      "own_pair_pnl": -20.25,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-09-29": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -5.498559498745394,
+      "own_pair_pnl": 1.0,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-10-08": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -14.251405242294497,
+      "own_pair_pnl": -16.75,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "wide"
+     },
+     "2025-10-22": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 92.10206998570703,
+      "own_pair_pnl": 64.25,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-10-27": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 45.00216325353304,
+      "own_pair_pnl": 46.25,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-11-06": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 21.496390444306577,
+      "own_pair_pnl": 25.75,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-11-10": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -70.2459033521552,
+      "own_pair_pnl": -68.75,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-11-24": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -51.99271015871458,
+      "own_pair_pnl": -48.5,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-12-01": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 52.725608976250705,
+      "own_pair_pnl": 41.0,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-12-05": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -66.4825603418983,
+      "own_pair_pnl": -73.25,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-12-08": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -21.744713277330543,
+      "own_pair_pnl": -15.5,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-12-12": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 106.78375718290891,
+      "own_pair_pnl": 39.5,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-12-23": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -32.74460842702635,
+      "own_pair_pnl": -28.5,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-01-08": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -52.22359572400519,
+      "own_pair_pnl": -39.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2026-01-13": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -37.99633215254309,
+      "own_pair_pnl": -35.5,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2026-01-15": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -103.94541319181383,
+      "own_pair_pnl": -117.5,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-01-21": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 58.9537789615955,
+      "own_pair_pnl": 79.0,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-02-09": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -14.49914245160323,
+      "own_pair_pnl": -13.0,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-02-17": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -60.98645743983284,
+      "own_pair_pnl": -66.5,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2026-02-27": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -68.66127302433233,
+      "own_pair_pnl": -219.25,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-03-19": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -103.68366300961048,
+      "own_pair_pnl": -88.0,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-03-26": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -81.24317914708104,
+      "own_pair_pnl": -83.25,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-03-30": {
+      "reason": "same_bar_both_touched(v0 books a continuation win)",
+      "v0_pnl": 133.125,
+      "own_pair_pnl": -171.63571619697177,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-04-08": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 1.2500624057649612,
+      "own_pair_pnl": 0.0,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-04-14": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -2.2503679901490936,
+      "own_pair_pnl": 2.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-04-16": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 3.250522014360169,
+      "own_pair_pnl": 7.5,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2026-04-30": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -35.20758276258362,
+      "own_pair_pnl": -2.0,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "wide"
+     },
+     "2026-05-06": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 74.87909176544784,
+      "own_pair_pnl": 25.25,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-05-28": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 20.239984502767758,
+      "own_pair_pnl": 35.25,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-06-03": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -30.174999999999272,
+      "own_pair_pnl": -42.0,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2026-06-10": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -337.2013354419231,
+      "own_pair_pnl": -320.0,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "wide"
+     },
+     "2026-06-16": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -237.95288139507826,
+      "own_pair_pnl": -244.0,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "wide"
+     },
+     "2026-07-10": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -100.70185079155635,
+      "own_pair_pnl": -138.0,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-07-24": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -133.5302040326933,
+      "own_pair_pnl": -312.25,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-08-04": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 192.76505133953054,
+      "own_pair_pnl": 151.5,
+      "grade": "C",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-08-13": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 38.00440240642968,
+      "own_pair_pnl": 41.5,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-08-27": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 13.001425823434253,
+      "own_pair_pnl": 9.75,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-09-14": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -136.25577555657347,
+      "own_pair_pnl": -137.5,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-09-21": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 0.7500609191473961,
+      "own_pair_pnl": -1.75,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-09-22": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 43.7425924582187,
+      "own_pair_pnl": 49.0,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-09-28": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -12.24849683415021,
+      "own_pair_pnl": -8.5,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2026-10-15": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 63.47731313769026,
+      "own_pair_pnl": 74.25,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-10-20": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 108.38669590643397,
+      "own_pair_pnl": 77.25,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-11-02": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 52.79255389879898,
+      "own_pair_pnl": 75.5,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-11-05": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -339.78701401075585,
+      "own_pair_pnl": -376.5,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "wide"
+     }
+    },
+    "night_bar_counts": {
+     "6": 6,
+     "7": 2,
+     "9": 323
+    },
+    "outcome_shares_post": {
+     "target": 0.3717948717948718,
+     "scratch": 0.3141025641025641,
+     "stop": 0.3141025641025641
+    },
+    "outcome_shares_open": {
+     "target": 0.3588850174216028,
+     "scratch": 0.34494773519163763,
+     "stop": 0.2961672473867596
+    },
+    "n_oos_nights": 331,
+    "n_splice_nights": 4,
+    "splice_dates": [
+     "2025-09-16",
+     "2025-09-17",
+     "2025-12-16",
+     "2025-12-17"
+    ]
+   },
+   "calibration_rows_prior_by_month": {
+    "2025-04": 0,
+    "2025-05": 18,
+    "2025-06": 34,
+    "2025-07": 48,
+    "2025-08": 63,
+    "2025-09": 80,
+    "2025-10": 96,
+    "2025-11": 116,
+    "2025-12": 134,
+    "2026-01": 149,
+    "2026-02": 166,
+    "2026-03": 182,
+    "2026-04": 202,
+    "2026-05": 219,
+    "2026-06": 235,
+    "2026-07": 254,
+    "2026-08": 274,
+    "2026-09": 292,
+    "2026-10": 307,
+    "2026-11": 327
+   },
+   "exp_rev_shrink_by_month": {
+    "2025-04": 0.0,
+    "2025-05": 0.0,
+    "2025-06": 0.0,
+    "2025-07": 0.0,
+    "2025-08": 0.0,
+    "2025-09": 0.0,
+    "2025-10": 0.0,
+    "2025-11": 0.0,
+    "2025-12": 0.0,
+    "2026-01": 0.0,
+    "2026-02": 0.0,
+    "2026-03": 0.0,
+    "2026-04": 0.0,
+    "2026-05": 0.0,
+    "2026-06": 0.0,
+    "2026-07": 0.0,
+    "2026-08": 0.0,
+    "2026-09": 0.0,
+    "2026-10": 0.0,
+    "2026-11": 0.0
+   },
+   "exp_rev_r2_prior_by_month": {
+    "2025-04": null,
+    "2025-05": null,
+    "2025-06": null,
+    "2025-07": null,
+    "2025-08": -0.0626560961791367,
+    "2025-09": -0.09557821757948526,
+    "2025-10": -0.09557998384114796,
+    "2025-11": -0.09188070777477786,
+    "2025-12": -0.07882494152940134,
+    "2026-01": -0.06755789959275238,
+    "2026-02": -0.08407176416557527,
+    "2026-03": -0.08582193190877518,
+    "2026-04": -0.0824098243439122,
+    "2026-05": -0.09811277471040936,
+    "2026-06": -0.09024881666572426,
+    "2026-07": -0.09427244437890492,
+    "2026-08": -0.08535503991597504,
+    "2026-09": -0.0826344715829288,
+    "2026-10": -0.07920951685808686,
+    "2026-11": -0.08487294060440509
+   },
+   "cost_schedule": {
+    "base": 1.5,
+    "event": 4.0,
+    "hi": 4.0
+   },
+   "runtime_s": 33.37798190116882,
+   "point_value_usd": 20.0,
+   "grade_counts_honest": {
+    "NO EDGE": 128,
+    "A": 84,
+    "B": 58,
+    "C": 45,
+    "-": 16
+   },
+   "grade_counts_v0": {
+    "NO EDGE": 119,
+    "B": 79,
+    "A": 78,
+    "C": 39,
+    "-": 16
+   },
+   "grade_transition_v0_to_honest": {
+    "-->-": 16,
+    "A->A": 58,
+    "A->B": 8,
+    "A->C": 3,
+    "A->NO EDGE": 9,
+    "B->A": 14,
+    "B->B": 30,
+    "B->C": 20,
+    "B->NO EDGE": 15,
+    "C->A": 3,
+    "C->B": 14,
+    "C->C": 14,
+    "C->NO EDGE": 8,
+    "NO EDGE->A": 9,
+    "NO EDGE->B": 6,
+    "NO EDGE->C": 8,
+    "NO EDGE->NO EDGE": 96
+   }
+  },
+  "ES": {
+   "ladder": {
+    "discovery": [
+     {
+      "step": "step0",
+      "desc": "v0 as published (pooled calibrator, full-sample regressors, recorded-outcome resolution, 17:00 fill, no costs)",
+      "A_n": 60,
+      "A_win": 0.5666666666666667,
+      "A_avg": 0.5795778517179745,
+      "A_total": 34.77467110307847,
+      "A_worst": -38.25,
+      "A_sd": 17.6513862480324,
+      "A_usd_per_contract_per_year": 1494.2880729881658,
+      "A_avg_ci90": [
+       -2.4055027370274167,
+       3.5322240941719283
+      ],
+      "graded_n": 134,
+      "all_graded_avg": 0.1176066066537121,
+      "all_graded_total": 15.759285291597422,
+      "graded_win": 0.5447761194029851,
+      "B_n": 44,
+      "B_avg": 3.095827857965928,
+      "C_n": 30,
+      "C_avg": -5.17439371873273,
+      "A_pts_per_sigma": 0.032834693183521495
+     },
+     {
+      "step": "step1",
+      "desc": "+ causal calibration (H0a); everything else as v0",
+      "A_n": 49,
+      "A_win": 0.5102040816326531,
+      "A_avg": -1.110897066708732,
+      "A_total": -54.43395626872786,
+      "A_worst": -38.25,
+      "A_sd": 17.600314575294533,
+      "A_usd_per_contract_per_year": -2339.059120841512,
+      "A_avg_ci90": [
+       -4.535042296098719,
+       1.9674667869604763
+      ],
+      "graded_n": 118,
+      "all_graded_avg": -0.06266407723124744,
+      "all_graded_total": -7.394361113287197,
+      "graded_win": 0.5169491525423728,
+      "B_n": 32,
+      "B_avg": 5.34834001365164,
+      "C_n": 37,
+      "C_avg": -3.3542509535516705,
+      "A_pts_per_sigma": -0.06311802337147383
+     },
+     {
+      "step": "step2",
+      "desc": "+ walk-forward regressors and causal exp_rev shrink (H0b)",
+      "A_n": 45,
+      "A_win": 0.4444444444444444,
+      "A_avg": -2.8875082856665713,
+      "A_total": -129.9378728549957,
+      "A_worst": -37.274999999999636,
+      "A_sd": 15.638172101594325,
+      "A_usd_per_contract_per_year": -5583.506830622021,
+      "A_avg_ci90": [
+       -5.747049165440979,
+       0.030090252960972175
+      ],
+      "graded_n": 113,
+      "all_graded_avg": -0.8653363567253373,
+      "all_graded_total": -97.78300830996311,
+      "graded_win": 0.48672566371681414,
+      "B_n": 30,
+      "B_avg": 4.742125941278501,
+      "C_n": 38,
+      "C_avg": -2.897602991929538,
+      "A_pts_per_sigma": -0.1846448719778565
+     },
+     {
+      "step": "step3",
+      "desc": "+ own-pair raw-bar resolution with one entry reference, stop priority, gap fills (H0c/H0j/H0k); 17:00 fill",
+      "A_n": 45,
+      "A_win": 0.4222222222222222,
+      "A_avg": -3.9553320650830455,
+      "A_total": -177.98994292873704,
+      "A_worst": -51.5,
+      "A_sd": 17.089317455693443,
+      "A_usd_per_contract_per_year": -7648.33254761426,
+      "A_avg_ci90": [
+       -7.271280309324601,
+       -0.7442918981601965
+      ],
+      "graded_n": 113,
+      "all_graded_avg": -1.3151584679957506,
+      "all_graded_total": -148.61290688351983,
+      "graded_win": 0.49557522123893805,
+      "B_n": 30,
+      "B_avg": 4.803687345863121,
+      "C_n": 38,
+      "C_avg": -3.0193048508072744,
+      "A_untraded": 0,
+      "graded_untraded": 0,
+      "A_pts_per_sigma": -0.2314505582413003
+     },
+     {
+      "step": "step4",
+      "desc": "+ fill at the 18:00 open; already_past / open_past_stop at the open (H0d); unfillable graded nights = 0",
+      "A_n": 45,
+      "A_win": 0.4444444444444444,
+      "A_avg": -1.033109842860823,
+      "A_total": -46.48994292873704,
+      "A_worst": -39.82466752325308,
+      "A_sd": 13.29050135377183,
+      "A_usd_per_contract_per_year": -1997.7001946730827,
+      "A_avg_ci90": [
+       -3.573133355652025,
+       1.5541599538388648
+      ],
+      "graded_n": 113,
+      "all_graded_avg": -0.32533545914618994,
+      "all_graded_total": -36.76290688351946,
+      "graded_win": 0.46017699115044247,
+      "B_n": 30,
+      "B_avg": 1.7986873458631332,
+      "C_n": 38,
+      "C_avg": -1.1640416929125375,
+      "A_untraded": 2,
+      "graded_untraded": 7,
+      "A_pts_per_sigma": -0.07773294741568403
+     },
+     {
+      "step": "step5",
+      "desc": "+ costs, base schedule (H0h) = THE HONEST BASELINE (pnl_net_open)",
+      "A_n": 45,
+      "A_win": 0.4,
+      "A_avg": -1.9997765095274898,
+      "A_total": -89.98994292873704,
+      "A_worst": -41.82466752325308,
+      "A_sd": 13.335414844851806,
+      "A_usd_per_contract_per_year": -3866.9207829083766,
+      "A_avg_ci90": [
+       -4.571532456025915,
+       0.6215219654222197
+      ],
+      "graded_n": 113,
+      "all_graded_avg": -1.239052273305482,
+      "all_graded_total": -140.01290688351946,
+      "graded_win": 0.4336283185840708,
+      "B_n": 30,
+      "B_avg": 0.9820206791964665,
+      "C_n": 38,
+      "C_avg": -2.091673271859906,
+      "A_untraded": 2,
+      "graded_untraded": 7,
+      "A_pts_per_sigma": -0.14995982748144593
+     },
+     {
+      "step": "step5s",
+      "desc": "costs at the sensitivity level everywhere (pnl_net_open_hicost)",
+      "A_n": 45,
+      "A_win": 0.4,
+      "A_avg": -2.944220953971934,
+      "A_total": -132.48994292873704,
+      "A_worst": -41.82466752325308,
+      "A_sd": 13.304097179500594,
+      "A_usd_per_contract_per_year": -5693.170782908377,
+      "A_avg_ci90": [
+       -5.5163220965505015,
+       -0.32983370747317176
+      ],
+      "graded_n": 113,
+      "all_graded_avg": -2.2014416538364556,
+      "all_graded_total": -248.76290688351946,
+      "graded_win": 0.4247787610619469,
+      "B_n": 30,
+      "B_avg": 0.06535401252979985,
+      "C_n": 38,
+      "C_avg": -3.111410113965169,
+      "A_untraded": 2,
+      "graded_untraded": 7,
+      "A_pts_per_sigma": -0.2213018226075866
+     }
+    ],
+    "vault": [
+     {
+      "step": "step0",
+      "desc": "v0 as published (pooled calibrator, full-sample regressors, recorded-outcome resolution, 17:00 fill, no costs)",
+      "A_n": 13,
+      "A_win": 0.8461538461538461,
+      "A_avg": 12.283063532379389,
+      "A_total": 159.67982592093205,
+      "A_worst": -13.24646454539414,
+      "A_sd": 14.841427641060465,
+      "A_usd_per_contract_per_year": 18456.663423297607,
+      "A_avg_ci90": [
+       6.550868500210875,
+       18.10699281358482
+      ],
+      "graded_n": 42,
+      "all_graded_avg": 7.4628020589864,
+      "all_graded_total": 313.43768647742877,
+      "graded_win": 0.7142857142857143,
+      "B_n": 18,
+      "B_avg": 4.7603468994088365,
+      "C_n": 11,
+      "C_avg": 6.1883287606488775,
+      "A_pts_per_sigma": 0.82762008005193
+     },
+     {
+      "step": "step1",
+      "desc": "+ causal calibration (H0a); everything else as v0",
+      "A_n": 14,
+      "A_win": 0.7857142857142857,
+      "A_avg": 8.104502083424514,
+      "A_total": 113.46302916794319,
+      "A_worst": -35.44694088817778,
+      "A_sd": 21.979442042953217,
+      "A_usd_per_contract_per_year": 13114.67449480736,
+      "A_avg_ci90": [
+       -2.722212036583803,
+       16.29980790937122
+      ],
+      "graded_n": 45,
+      "all_graded_avg": 2.033404232030488,
+      "all_graded_total": 91.50319044137197,
+      "graded_win": 0.6222222222222222,
+      "B_n": 16,
+      "B_avg": -3.369842674821978,
+      "C_n": 15,
+      "C_avg": 2.130509604705361,
+      "A_pts_per_sigma": 0.3687310199952451
+     },
+     {
+      "step": "step2",
+      "desc": "+ walk-forward regressors and causal exp_rev shrink (H0b)",
+      "A_n": 13,
+      "A_win": 0.7692307692307693,
+      "A_avg": 5.799079166764876,
+      "A_total": 75.38802916794339,
+      "A_worst": -35.44694088817778,
+      "A_sd": 21.04146882679137,
+      "A_usd_per_contract_per_year": 8713.758751136495,
+      "A_avg_ci90": [
+       -4.765043540026636,
+       14.1598362312326
+      ],
+      "graded_n": 45,
+      "all_graded_avg": 0.8872832925875674,
+      "all_graded_total": 39.92774816644054,
+      "graded_win": 0.6,
+      "B_n": 17,
+      "B_avg": -3.9657602983578397,
+      "C_n": 15,
+      "C_avg": 2.130509604705361,
+      "A_pts_per_sigma": 0.2756023932787957
+     },
+     {
+      "step": "step3",
+      "desc": "+ own-pair raw-bar resolution with one entry reference, stop priority, gap fills (H0c/H0j/H0k); 17:00 fill",
+      "A_n": 13,
+      "A_win": 0.7692307692307693,
+      "A_avg": 5.395042797011438,
+      "A_total": 70.1355563611487,
+      "A_worst": -35.44694088817778,
+      "A_sd": 21.193634722829596,
+      "A_usd_per_contract_per_year": 8106.649354718216,
+      "A_avg_ci90": [
+       -5.1209384447731985,
+       13.903704254248273
+      ],
+      "graded_n": 45,
+      "all_graded_avg": 0.493841735073147,
+      "all_graded_total": 22.222878078291615,
+      "graded_win": 0.6,
+      "B_n": 17,
+      "B_avg": -4.742570940370516,
+      "C_n": 15,
+      "C_avg": 2.180735180229446,
+      "A_untraded": 0,
+      "graded_untraded": 1,
+      "A_pts_per_sigma": 0.2545595820428077
+     },
+     {
+      "step": "step4",
+      "desc": "+ fill at the 18:00 open; already_past / open_past_stop at the open (H0d); unfillable graded nights = 0",
+      "A_n": 13,
+      "A_win": 0.7692307692307693,
+      "A_avg": 4.587350489319131,
+      "A_total": 59.6355563611487,
+      "A_worst": -36.94694088817778,
+      "A_sd": 21.124457919642087,
+      "A_usd_per_contract_per_year": 6893.002202819483,
+      "A_avg_ci90": [
+       -5.66533485245122,
+       12.986372524841164
+      ],
+      "graded_n": 45,
+      "all_graded_avg": -0.3033795346386089,
+      "all_graded_total": -13.6520790587374,
+      "graded_win": 0.5333333333333333,
+      "B_n": 17,
+      "B_avg": -4.882274301372223,
+      "C_n": 15,
+      "C_avg": 0.6474018468961125,
+      "A_untraded": 0,
+      "graded_untraded": 4,
+      "A_pts_per_sigma": 0.21715825829801244
+     },
+     {
+      "step": "step5",
+      "desc": "+ costs, base schedule (H0h) = THE HONEST BASELINE (pnl_net_open)",
+      "A_n": 13,
+      "A_win": 0.6923076923076923,
+      "A_avg": 3.6450427970114387,
+      "A_total": 47.3855563611487,
+      "A_worst": -37.69694088817778,
+      "A_sd": 21.143716860256973,
+      "A_usd_per_contract_per_year": 5477.080525604292,
+      "A_avg_ci90": [
+       -6.642968561289445,
+       12.118208908210033
+      ],
+      "graded_n": 45,
+      "all_graded_avg": -1.2367128679719421,
+      "all_graded_total": -55.6520790587374,
+      "graded_win": 0.5111111111111111,
+      "B_n": 17,
+      "B_avg": -5.6910978307839875,
+      "C_n": 15,
+      "C_avg": -0.41926481977055424,
+      "A_untraded": 0,
+      "graded_untraded": 4,
+      "A_pts_per_sigma": 0.17239366290715352
+     },
+     {
+      "step": "step5s",
+      "desc": "costs at the sensitivity level everywhere (pnl_net_open_hicost)",
+      "A_n": 13,
+      "A_win": 0.6923076923076923,
+      "A_avg": 2.587350489319131,
+      "A_total": 33.6355563611487,
+      "A_worst": -38.94694088817778,
+      "A_sd": 21.124457919642087,
+      "A_usd_per_contract_per_year": 3887.7806838321403,
+      "A_avg_ci90": [
+       -7.66533485245122,
+       10.986372524841164
+      ],
+      "graded_n": 45,
+      "all_graded_avg": -2.125601756860831,
+      "all_graded_total": -95.6520790587374,
+      "graded_win": 0.5111111111111111,
+      "B_n": 17,
+      "B_avg": -6.646980183725164,
+      "C_n": 15,
+      "C_avg": -1.085931486437221,
+      "A_untraded": 0,
+      "graded_untraded": 4,
+      "A_pts_per_sigma": 0.12248127261591613
+     }
+    ],
+    "full": [
+     {
+      "step": "step0",
+      "desc": "v0 as published (pooled calibrator, full-sample regressors, recorded-outcome resolution, 17:00 fill, no costs)",
+      "A_n": 73,
+      "A_win": 0.6164383561643836,
+      "A_avg": 2.663760233205623,
+      "A_total": 194.4544970240105,
+      "A_worst": -38.25,
+      "A_sd": 17.673529470774486,
+      "A_usd_per_contract_per_year": 6080.865157364711,
+      "A_avg_ci90": [
+       -0.11713688229957887,
+       5.806620594922387
+      ],
+      "graded_n": 176,
+      "all_graded_avg": 1.8704373395967395,
+      "all_graded_total": 329.19697176902616,
+      "graded_win": 0.5852272727272727,
+      "B_n": 62,
+      "B_avg": 3.5790753216106426,
+      "C_n": 41,
+      "C_avg": -2.1258584193864443,
+      "A_pts_per_sigma": 0.15072033221267445
+     },
+     {
+      "step": "step1",
+      "desc": "+ causal calibration (H0a); everything else as v0",
+      "A_n": 63,
+      "A_win": 0.5714285714285714,
+      "A_avg": 0.9369694110986561,
+      "A_total": 59.02907289921533,
+      "A_worst": -38.25,
+      "A_sd": 18.86880908805078,
+      "A_usd_per_contract_per_year": 1845.9219928457533,
+      "A_avg_ci90": [
+       -2.552807577896838,
+       4.580675412316777
+      ],
+      "graded_n": 163,
+      "all_graded_avg": 0.5160050879023609,
+      "all_graded_total": 84.10882932808482,
+      "graded_win": 0.5460122699386503,
+      "B_n": 48,
+      "B_avg": 2.4422791174937672,
+      "C_n": 52,
+      "C_avg": -1.77210848482368,
+      "A_pts_per_sigma": 0.04965705078292509
+     },
+     {
+      "step": "step2",
+      "desc": "+ walk-forward regressors and causal exp_rev shrink (H0b)",
+      "A_n": 58,
+      "A_win": 0.5172413793103449,
+      "A_avg": -0.9405145463284882,
+      "A_total": -54.54984368705232,
+      "A_worst": -37.274999999999636,
+      "A_sd": 17.18541844730942,
+      "A_usd_per_contract_per_year": -1705.8502060527278,
+      "A_avg_ci90": [
+       -4.235150144005863,
+       2.5188020395202946
+      ],
+      "graded_n": 158,
+      "all_graded_avg": -0.36617253255394033,
+      "all_graded_total": -57.85526014352257,
+      "graded_win": 0.5189873417721519,
+      "B_n": 47,
+      "B_avg": 1.592464960984505,
+      "C_n": 53,
+      "C_avg": -1.474552257032868,
+      "A_pts_per_sigma": -0.05472747429526436
+     },
+     {
+      "step": "step3",
+      "desc": "+ own-pair raw-bar resolution with one entry reference, stop priority, gap fills (H0c/H0j/H0k); 17:00 fill",
+      "A_n": 58,
+      "A_win": 0.5,
+      "A_avg": -1.8595583890963505,
+      "A_total": -107.85438656758834,
+      "A_worst": -51.5,
+      "A_sd": 18.31586594788346,
+      "A_usd_per_contract_per_year": -3372.758107346887,
+      "A_avg_ci90": [
+       -5.3335194752516815,
+       1.753798519823377
+      ],
+      "graded_n": 158,
+      "all_graded_avg": -0.7999368911723305,
+      "all_graded_total": -126.39002880522821,
+      "graded_win": 0.5253164556962026,
+      "B_n": 47,
+      "B_avg": 1.3507854125445715,
+      "C_n": 53,
+      "C_avg": -1.5475954080610328,
+      "A_untraded": 0,
+      "graded_untraded": 1,
+      "A_pts_per_sigma": -0.10152718928974455
+     },
+     {
+      "step": "step4",
+      "desc": "+ fill at the 18:00 open; already_past / open_past_stop at the open (H0d); unfillable graded nights = 0",
+      "A_n": 58,
+      "A_win": 0.5172413793103449,
+      "A_avg": 0.22664850745537352,
+      "A_total": 13.145613432411665,
+      "A_worst": -39.82466752325308,
+      "A_sd": 15.358624302047001,
+      "A_usd_per_contract_per_year": 411.081789913387,
+      "A_avg_ci90": [
+       -2.8712143440103093,
+       3.463935644366935
+      ],
+      "graded_n": 158,
+      "all_graded_avg": -0.3190821895079548,
+      "all_graded_total": -50.41498594225686,
+      "graded_win": 0.4810126582278481,
+      "B_n": 47,
+      "B_avg": -0.6178306967539104,
+      "C_n": 53,
+      "C_avg": -0.6513689929666931,
+      "A_untraded": 2,
+      "graded_untraded": 11,
+      "A_pts_per_sigma": 0.014757083902701217
+     },
+     {
+      "step": "step5",
+      "desc": "+ costs, base schedule (H0h) = THE HONEST BASELINE (pnl_net_open)",
+      "A_n": 58,
+      "A_win": 0.46551724137931033,
+      "A_avg": -0.7345583890963506,
+      "A_total": -42.604386567588335,
+      "A_worst": -41.82466752325308,
+      "A_sd": 15.395791528516146,
+      "A_usd_per_contract_per_year": -1332.298989196202,
+      "A_avg_ci90": [
+       -3.820496052289762,
+       2.538301946562764
+      ],
+      "graded_n": 158,
+      "all_graded_avg": -1.2383859869763092,
+      "all_graded_total": -195.66498594225686,
+      "graded_win": 0.45569620253164556,
+      "B_n": 47,
+      "B_avg": -1.431660483987953,
+      "C_n": 53,
+      "C_avg": -1.6183501250421648,
+      "A_untraded": 2,
+      "graded_untraded": 11,
+      "A_pts_per_sigma": -0.04771163520471154
+     },
+     {
+      "step": "step5s",
+      "desc": "costs at the sensitivity level everywhere (pnl_net_open_hicost)",
+      "A_n": 58,
+      "A_win": 0.46551724137931033,
+      "A_avg": -1.704385975303247,
+      "A_total": -98.85438656758834,
+      "A_worst": -41.82466752325308,
+      "A_sd": 15.361999912978956,
+      "A_usd_per_contract_per_year": -3091.3154703605856,
+      "A_avg_ci90": [
+       -4.805088041987236,
+       1.549556680909372
+      ],
+      "graded_n": 158,
+      "all_graded_avg": -2.1798416831788407,
+      "all_graded_total": -344.41498594225686,
+      "graded_win": 0.44936708860759494,
+      "B_n": 47,
+      "B_avg": -2.36251154781774,
+      "C_n": 53,
+      "C_avg": -2.5381614457968817,
+      "A_untraded": 2,
+      "graded_untraded": 11,
+      "A_pts_per_sigma": -0.11094818285106586
+     }
+    ]
+   },
+   "membership": {
+    "step0": {
+     "v0_A": 73,
+     "step_A": 73,
+     "both": 73,
+     "only_v0": 0,
+     "only_step": 0,
+     "jaccard": 1.0,
+     "v0_A_retained_frac": 1.0,
+     "dates_dropped": [],
+     "dates_added": []
+    },
+    "step1": {
+     "v0_A": 73,
+     "step_A": 63,
+     "both": 49,
+     "only_v0": 24,
+     "only_step": 14,
+     "jaccard": 0.5632183908045977,
+     "v0_A_retained_frac": 0.6712328767123288,
+     "dates_dropped": [
+      "2025-04-24",
+      "2025-04-29",
+      "2025-05-27",
+      "2025-06-26",
+      "2025-07-09",
+      "2025-07-28",
+      "2025-07-29",
+      "2025-08-15",
+      "2025-10-02",
+      "2025-10-09",
+      "2025-10-17",
+      "2025-11-05",
+      "2025-11-18",
+      "2026-01-22",
+      "2026-02-06",
+      "2026-03-31",
+      "2026-04-15",
+      "2026-04-20",
+      "2026-05-04",
+      "2026-05-06",
+      "2026-05-19",
+      "2026-05-28",
+      "2026-07-07",
+      "2026-07-21"
+     ],
+     "dates_added": [
+      "2025-05-28",
+      "2025-06-23",
+      "2025-07-02",
+      "2025-07-14",
+      "2025-07-17",
+      "2025-09-02",
+      "2025-09-04",
+      "2025-10-27",
+      "2025-12-19",
+      "2026-01-06",
+      "2026-03-26",
+      "2026-07-27",
+      "2026-08-04",
+      "2026-09-30"
+     ]
+    },
+    "step2": {
+     "v0_A": 73,
+     "step_A": 58,
+     "both": 43,
+     "only_v0": 30,
+     "only_step": 15,
+     "jaccard": 0.48863636363636365,
+     "v0_A_retained_frac": 0.589041095890411,
+     "dates_dropped": [
+      "2025-04-21",
+      "2025-04-22",
+      "2025-04-24",
+      "2025-04-25",
+      "2025-04-29",
+      "2025-05-02",
+      "2025-05-27",
+      "2025-06-25",
+      "2025-06-26",
+      "2025-07-09",
+      "2025-07-28",
+      "2025-07-29",
+      "2025-08-15",
+      "2025-10-09",
+      "2025-10-17",
+      "2025-11-05",
+      "2025-11-06",
+      "2025-11-18",
+      "2026-01-22",
+      "2026-02-06",
+      "2026-03-31",
+      "2026-04-15",
+      "2026-04-20",
+      "2026-05-04",
+      "2026-05-06",
+      "2026-05-19",
+      "2026-05-28",
+      "2026-06-05",
+      "2026-07-07",
+      "2026-07-21"
+     ],
+     "dates_added": [
+      "2025-05-28",
+      "2025-06-23",
+      "2025-07-02",
+      "2025-07-14",
+      "2025-07-17",
+      "2025-07-23",
+      "2025-10-27",
+      "2025-12-19",
+      "2026-01-06",
+      "2026-03-09",
+      "2026-03-26",
+      "2026-05-18",
+      "2026-07-27",
+      "2026-08-04",
+      "2026-09-30"
+     ]
+    },
+    "step3": {
+     "v0_A": 73,
+     "step_A": 58,
+     "both": 43,
+     "only_v0": 30,
+     "only_step": 15,
+     "jaccard": 0.48863636363636365,
+     "v0_A_retained_frac": 0.589041095890411,
+     "dates_dropped": [
+      "2025-04-21",
+      "2025-04-22",
+      "2025-04-24",
+      "2025-04-25",
+      "2025-04-29",
+      "2025-05-02",
+      "2025-05-27",
+      "2025-06-25",
+      "2025-06-26",
+      "2025-07-09",
+      "2025-07-28",
+      "2025-07-29",
+      "2025-08-15",
+      "2025-10-09",
+      "2025-10-17",
+      "2025-11-05",
+      "2025-11-06",
+      "2025-11-18",
+      "2026-01-22",
+      "2026-02-06",
+      "2026-03-31",
+      "2026-04-15",
+      "2026-04-20",
+      "2026-05-04",
+      "2026-05-06",
+      "2026-05-19",
+      "2026-05-28",
+      "2026-06-05",
+      "2026-07-07",
+      "2026-07-21"
+     ],
+     "dates_added": [
+      "2025-05-28",
+      "2025-06-23",
+      "2025-07-02",
+      "2025-07-14",
+      "2025-07-17",
+      "2025-07-23",
+      "2025-10-27",
+      "2025-12-19",
+      "2026-01-06",
+      "2026-03-09",
+      "2026-03-26",
+      "2026-05-18",
+      "2026-07-27",
+      "2026-08-04",
+      "2026-09-30"
+     ]
+    },
+    "step4": {
+     "v0_A": 73,
+     "step_A": 58,
+     "both": 43,
+     "only_v0": 30,
+     "only_step": 15,
+     "jaccard": 0.48863636363636365,
+     "v0_A_retained_frac": 0.589041095890411,
+     "dates_dropped": [
+      "2025-04-21",
+      "2025-04-22",
+      "2025-04-24",
+      "2025-04-25",
+      "2025-04-29",
+      "2025-05-02",
+      "2025-05-27",
+      "2025-06-25",
+      "2025-06-26",
+      "2025-07-09",
+      "2025-07-28",
+      "2025-07-29",
+      "2025-08-15",
+      "2025-10-09",
+      "2025-10-17",
+      "2025-11-05",
+      "2025-11-06",
+      "2025-11-18",
+      "2026-01-22",
+      "2026-02-06",
+      "2026-03-31",
+      "2026-04-15",
+      "2026-04-20",
+      "2026-05-04",
+      "2026-05-06",
+      "2026-05-19",
+      "2026-05-28",
+      "2026-06-05",
+      "2026-07-07",
+      "2026-07-21"
+     ],
+     "dates_added": [
+      "2025-05-28",
+      "2025-06-23",
+      "2025-07-02",
+      "2025-07-14",
+      "2025-07-17",
+      "2025-07-23",
+      "2025-10-27",
+      "2025-12-19",
+      "2026-01-06",
+      "2026-03-09",
+      "2026-03-26",
+      "2026-05-18",
+      "2026-07-27",
+      "2026-08-04",
+      "2026-09-30"
+     ]
+    },
+    "step5": {
+     "v0_A": 73,
+     "step_A": 58,
+     "both": 43,
+     "only_v0": 30,
+     "only_step": 15,
+     "jaccard": 0.48863636363636365,
+     "v0_A_retained_frac": 0.589041095890411,
+     "dates_dropped": [
+      "2025-04-21",
+      "2025-04-22",
+      "2025-04-24",
+      "2025-04-25",
+      "2025-04-29",
+      "2025-05-02",
+      "2025-05-27",
+      "2025-06-25",
+      "2025-06-26",
+      "2025-07-09",
+      "2025-07-28",
+      "2025-07-29",
+      "2025-08-15",
+      "2025-10-09",
+      "2025-10-17",
+      "2025-11-05",
+      "2025-11-06",
+      "2025-11-18",
+      "2026-01-22",
+      "2026-02-06",
+      "2026-03-31",
+      "2026-04-15",
+      "2026-04-20",
+      "2026-05-04",
+      "2026-05-06",
+      "2026-05-19",
+      "2026-05-28",
+      "2026-06-05",
+      "2026-07-07",
+      "2026-07-21"
+     ],
+     "dates_added": [
+      "2025-05-28",
+      "2025-06-23",
+      "2025-07-02",
+      "2025-07-14",
+      "2025-07-17",
+      "2025-07-23",
+      "2025-10-27",
+      "2025-12-19",
+      "2026-01-06",
+      "2026-03-09",
+      "2026-03-26",
+      "2026-05-18",
+      "2026-07-27",
+      "2026-08-04",
+      "2026-09-30"
+     ]
+    },
+    "step5s": {
+     "v0_A": 73,
+     "step_A": 58,
+     "both": 43,
+     "only_v0": 30,
+     "only_step": 15,
+     "jaccard": 0.48863636363636365,
+     "v0_A_retained_frac": 0.589041095890411,
+     "dates_dropped": [
+      "2025-04-21",
+      "2025-04-22",
+      "2025-04-24",
+      "2025-04-25",
+      "2025-04-29",
+      "2025-05-02",
+      "2025-05-27",
+      "2025-06-25",
+      "2025-06-26",
+      "2025-07-09",
+      "2025-07-28",
+      "2025-07-29",
+      "2025-08-15",
+      "2025-10-09",
+      "2025-10-17",
+      "2025-11-05",
+      "2025-11-06",
+      "2025-11-18",
+      "2026-01-22",
+      "2026-02-06",
+      "2026-03-31",
+      "2026-04-15",
+      "2026-04-20",
+      "2026-05-04",
+      "2026-05-06",
+      "2026-05-19",
+      "2026-05-28",
+      "2026-06-05",
+      "2026-07-07",
+      "2026-07-21"
+     ],
+     "dates_added": [
+      "2025-05-28",
+      "2025-06-23",
+      "2025-07-02",
+      "2025-07-14",
+      "2025-07-17",
+      "2025-07-23",
+      "2025-10-27",
+      "2025-12-19",
+      "2026-01-06",
+      "2026-03-09",
+      "2026-03-26",
+      "2026-05-18",
+      "2026-07-27",
+      "2026-08-04",
+      "2026-09-30"
+     ]
+    }
+   },
+   "paired": {
+    "discovery": {
+     "step0->step1": {
+      "all_nights_mean": -0.10669883135891524,
+      "all_nights_ci90": [
+       -1.2832124287748425,
+       1.0305913710228258
+      ],
+      "n_affected": 65,
+      "A_either_mean": -0.8135363267917934,
+      "A_either_ci90": [
+       -3.340484514486907,
+       1.4670248293275219
+      ],
+      "A_either_n": 71,
+      "usd_per_contract_per_year_all_nights": -994.9258058098945
+     },
+     "step1->step2": {
+      "all_nights_mean": -0.41653754468514237,
+      "all_nights_ci90": [
+       -0.7977176079922964,
+       -0.08303832330406713
+      ],
+      "n_affected": 15,
+      "A_either_mean": -1.8746329244939397,
+      "A_either_ci90": [
+       -3.647026733142824,
+       -0.4358640977660011
+      ],
+      "A_either_n": 53,
+      "usd_per_contract_per_year_all_nights": -3884.0533398336315
+     },
+     "step2->step3": {
+      "all_nights_mean": -0.23423916393344119,
+      "all_nights_ci90": [
+       -0.5434529037624052,
+       0.031145033572202028
+      ],
+      "n_affected": 43,
+      "A_either_mean": -1.0678237794164747,
+      "A_either_ci90": [
+       -2.452288477443468,
+       -0.04228421078813488
+      ],
+      "A_either_n": 45,
+      "usd_per_contract_per_year_all_nights": -2184.19064164607
+     },
+     "step3->step4": {
+      "all_nights_mean": 0.5154377880184349,
+      "all_nights_ci90": [
+       -0.16257810174691317,
+       1.1910713212611674
+      ],
+      "n_affected": 104,
+      "A_either_mean": 2.922222222222222,
+      "A_either_ci90": [
+       0.546313706086096,
+       5.78893308080808
+      ],
+      "A_either_n": 45,
+      "usd_per_contract_per_year_all_nights": 4806.260294117663
+     },
+     "step4->step5": {
+      "all_nights_mean": -0.47580645161290325,
+      "all_nights_ci90": [
+       -0.5488146997929607,
+       -0.40358351034537016
+      ],
+      "n_affected": 106,
+      "A_either_mean": -0.9666666666666667,
+      "A_either_ci90": [
+       -1.1097682926829269,
+       -0.8295315964523282
+      ],
+      "A_either_n": 45,
+      "usd_per_contract_per_year_all_nights": -4436.713235294118
+     },
+     "step5->step5s": {
+      "all_nights_mean": -0.5011520737327189,
+      "all_nights_ci90": [
+       -0.5825968608597285,
+       -0.4205580559024936
+      ],
+      "n_affected": 87,
+      "A_either_mean": -0.9444444444444444,
+      "A_either_ci90": [
+       -1.0833333333333333,
+       -0.8055555555555556
+      ],
+      "A_either_n": 45,
+      "usd_per_contract_per_year_all_nights": -4673.051470588235
+     },
+     "step0->step5": {
+      "all_nights_mean": -0.7178442035719671,
+      "all_nights_ci90": [
+       -1.9910766832718048,
+       0.4682311310279261
+      ],
+      "n_affected": 146,
+      "A_either_mean": -2.1994253745934356,
+      "A_either_ci90": [
+       -5.391407036855979,
+       0.6430882250467695
+      ],
+      "A_either_n": 72,
+      "usd_per_contract_per_year_all_nights": -6693.62272846605
+     }
+    },
+    "vault": {
+     "step0->step1": {
+      "all_nights_mean": -2.7399320498278614,
+      "all_nights_ci90": [
+       -4.4379211427061485,
+       -1.2526387514821744
+      ],
+      "n_affected": 11,
+      "A_either_mean": -2.215433805511111,
+      "A_either_ci90": [
+       -7.089388177635556,
+       0.0
+      ],
+      "A_either_n": 16,
+      "usd_per_contract_per_year_all_nights": -25652.397049737257
+     },
+     "step1->step2": {
+      "all_nights_mean": -0.6367338552460673,
+      "all_nights_ci90": [
+       -1.5229999999999928,
+       0.0
+      ],
+      "n_affected": 2,
+      "A_either_mean": -2.719642857142844,
+      "A_either_ci90": [
+       -7.614999999999964,
+       0.0
+      ],
+      "A_either_n": 14,
+      "usd_per_contract_per_year_all_nights": -5961.370345227442
+     },
+     "step2->step3": {
+      "all_nights_mean": -0.21857864306356678,
+      "all_nights_ci90": [
+       -0.44947703823931057,
+       -0.005656925180142233
+      ],
+      "n_affected": 15,
+      "A_either_mean": -0.40403636975343626,
+      "A_either_ci90": [
+       -0.6672010734703754,
+       -0.11345771930715448
+      ],
+      "A_either_n": 13,
+      "usd_per_contract_per_year_all_nights": -2046.4252530684778
+     },
+     "step3->step4": {
+      "all_nights_mean": -0.4429007053954199,
+      "all_nights_ci90": [
+       -1.3495239157357295,
+       0.4561832865168578
+      ],
+      "n_affected": 43,
+      "A_either_mean": -0.8076923076923077,
+      "A_either_ci90": [
+       -2.95849358974359,
+       0.8127083333333331
+      ],
+      "A_either_n": 13,
+      "usd_per_contract_per_year_all_nights": -4146.622814651851
+     },
+     "step4->step5": {
+      "all_nights_mean": -0.5185185185185185,
+      "all_nights_ci90": [
+       -0.6097682926829268,
+       -0.4240506329113924
+      ],
+      "n_affected": 41,
+      "A_either_mean": -0.9423076923076923,
+      "A_either_ci90": [
+       -1.168560606060606,
+       -0.75
+      ],
+      "A_either_n": 13,
+      "usd_per_contract_per_year_all_nights": -4854.5886075949375
+     },
+     "step5->step5s": {
+      "all_nights_mean": -0.49382716049382713,
+      "all_nights_ci90": [
+       -0.625,
+       -0.3639240506329114
+      ],
+      "n_affected": 32,
+      "A_either_mean": -1.0576923076923077,
+      "A_either_ci90": [
+       -1.25,
+       -0.8314393939393957
+      ],
+      "A_either_n": 13,
+      "usd_per_contract_per_year_all_nights": -4623.4177215189875
+     },
+     "step0->step5": {
+      "all_nights_mean": -4.556663772051434,
+      "all_nights_ci90": [
+       -6.3545428959617505,
+       -2.9248257550474
+      ],
+      "n_affected": 49,
+      "A_either_mean": -6.298079347486482,
+      "A_either_ci90": [
+       -11.854132023569255,
+       -1.6785684979693796
+      ],
+      "A_either_n": 16,
+      "usd_per_contract_per_year_all_nights": -42661.40407027997
+     }
+    },
+    "full": {
+     "step0->step1": {
+      "all_nights_mean": -0.8224434310098706,
+      "all_nights_ci90": [
+       -1.8118116620862812,
+       0.16909453677064862
+      ],
+      "n_affected": 76,
+      "A_either_mean": -1.071356552763162,
+      "A_either_ci90": [
+       -3.4012484007698616,
+       0.9177850888581746
+      ],
+      "A_either_n": 87,
+      "usd_per_contract_per_year_all_nights": -7664.250344739199
+     },
+     "step1->step2": {
+      "all_nights_mean": -0.4763895619852595,
+      "all_nights_ci90": [
+       -0.828051164752694,
+       -0.17710463598706072
+      ],
+      "n_affected": 17,
+      "A_either_mean": -2.0512021641519196,
+      "A_either_ci90": [
+       -3.62124099379217,
+       -0.618464885477938
+      ],
+      "A_either_n": 67,
+      "usd_per_contract_per_year_all_nights": -4439.4164109164885
+     },
+     "step2->step3": {
+      "all_nights_mean": -0.2299824451735089,
+      "all_nights_ci90": [
+       -0.4659239355387408,
+       -0.022248979588558003
+      ],
+      "n_affected": 58,
+      "A_either_mean": -0.9190438427678626,
+      "A_either_ci90": [
+       -1.9203620149908038,
+       -0.10144315025580855
+      ],
+      "A_either_n": 58,
+      "usd_per_contract_per_year_all_nights": -2143.178446377396
+     },
+     "step3->step4": {
+      "all_nights_mean": 0.2549498082650045,
+      "all_nights_ci90": [
+       -0.3032825260049337,
+       0.8238415660718785
+      ],
+      "n_affected": 147,
+      "A_either_mean": 2.086206896551724,
+      "A_either_ci90": [
+       0.24091301843317975,
+       4.345043103448276
+      ],
+      "A_either_n": 58,
+      "usd_per_contract_per_year_all_nights": 2375.846267611326
+     },
+     "step4->step5": {
+      "all_nights_mean": -0.4874161073825503,
+      "all_nights_ci90": [
+       -0.5453096400244052,
+       -0.43046143294969885
+      ],
+      "n_affected": 147,
+      "A_either_mean": -0.9612068965517241,
+      "A_either_ci90": [
+       -1.0778969784635164,
+       -0.8425783475783476
+      ],
+      "A_either_n": 58,
+      "usd_per_contract_per_year_all_nights": -4542.171446917808
+     },
+     "step5->step5s": {
+      "all_nights_mean": -0.49916107382550334,
+      "all_nights_ci90": [
+       -0.5662887475254695,
+       -0.4336648800934515
+      ],
+      "n_affected": 119,
+      "A_either_mean": -0.9698275862068966,
+      "A_either_ci90": [
+       -1.0833333333333333,
+       -0.8482142857142857
+      ],
+      "A_either_n": 58,
+      "usd_per_contract_per_year_all_nights": -4651.62136130137
+     },
+     "step0->step5": {
+      "all_nights_mean": -1.7612817372861846,
+      "all_nights_ci90": [
+       -2.8329719223817706,
+       -0.6742778449095642
+      ],
+      "n_affected": 195,
+      "A_either_mean": -2.9446351878467167,
+      "A_either_ci90": [
+       -5.592911870725818,
+       -0.5031240359162678
+      ],
+      "A_either_n": 88,
+      "usd_per_contract_per_year_all_nights": -16413.170381339565
+     }
+    }
+   },
+   "self_checks": {
+    "replica_grade_agreement": 1.0,
+    "replica_max_abs_pnl_diff": 7.105427357601002e-15,
+    "v0_graded_nights": 177,
+    "v0_resolution_agree": 106,
+    "v0_resolution_disagree": 71,
+    "v0_resolution_disagreements": {
+     "2025-04-11": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -39.17500000000018,
+      "own_pair_pnl": -56.75,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-04-14": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 6.500598333870185,
+      "own_pair_pnl": 6.0,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-04-22": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -38.25,
+      "own_pair_pnl": -65.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-04-24": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -18.469049556882283,
+      "own_pair_pnl": -27.75,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-04-30": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -22.256931464174304,
+      "own_pair_pnl": -20.5,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-05-13": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -11.99745848864811,
+      "own_pair_pnl": -13.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-05-15": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 5.998989048020221,
+      "own_pair_pnl": 5.0,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-05-21": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -10.501344315465635,
+      "own_pair_pnl": -9.75,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-05-27": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 14.7487585742543,
+      "own_pair_pnl": 14.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-05-28": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -17.9506207861823,
+      "own_pair_pnl": -20.75,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "wide"
+     },
+     "2025-06-03": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -0.5000209030098007,
+      "own_pair_pnl": -0.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-06-17": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 19.523652181187394,
+      "own_pair_pnl": 12.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-06-24": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -0.7498474307335529,
+      "own_pair_pnl": -2.0,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-06-26": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -13.49618797902325,
+      "own_pair_pnl": -15.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-07-15": {
+      "reason": "target_already_past_at_17:00_entry(degenerate candidate: the post-close moved through the tight stop level; v0 books it)",
+      "v0_pnl": 7.449999999999818,
+      "own_pair_pnl": 0.0,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-07-25": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -5.649999999999636,
+      "own_pair_pnl": -21.25,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-08-12": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 0.2500193259116039,
+      "own_pair_pnl": -0.25,
+      "grade": "A",
+      "call": "CONTINUATION",
+      "variant": "wide"
+     },
+     "2025-08-15": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -0.7505218803155861,
+      "own_pair_pnl": -5.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-08-22": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -18.971469274603148,
+      "own_pair_pnl": -9.25,
+      "grade": "C",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-08-26": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 2.5000963502521207,
+      "own_pair_pnl": 2.75,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-08-28": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 7.25027816144904,
+      "own_pair_pnl": 7.5,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-09-02": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 13.998371588089373,
+      "own_pair_pnl": 13.25,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-09-03": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 0.7500580495358276,
+      "own_pair_pnl": 1.25,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-09-19": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 5.755565068492987,
+      "own_pair_pnl": 12.25,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-09-22": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -3.750138899177689,
+      "own_pair_pnl": -3.5,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-09-23": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 7.498604443451412,
+      "own_pair_pnl": 8.75,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-09-24": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -5.749785359662661,
+      "own_pair_pnl": -5.5,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-09-29": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -2.250167710196841,
+      "own_pair_pnl": -2.75,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-10-07": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -2.2496674549214064,
+      "own_pair_pnl": -1.25,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-10-08": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 1.2500918746096206,
+      "own_pair_pnl": 1.75,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-10-20": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 12.001327531528766,
+      "own_pair_pnl": 12.75,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-11-06": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 4.001035043620194,
+      "own_pair_pnl": 2.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-11-10": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 11.500838528564406,
+      "own_pair_pnl": 12.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-11-13": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -16.749380799231123,
+      "own_pair_pnl": -16.5,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-11-21": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -1.7429038071637604,
+      "own_pair_pnl": -28.75,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-11-24": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -8.248466827727485,
+      "own_pair_pnl": -7.0,
+      "grade": "B",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2025-11-25": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -26.25193555522783,
+      "own_pair_pnl": -25.75,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-12-08": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -0.7499453750907957,
+      "own_pair_pnl": -0.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-12-11": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 8.763921029794904,
+      "own_pair_pnl": 19.75,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2025-12-19": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -6.725000000000364,
+      "own_pair_pnl": -9.5,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2025-12-23": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 5.99870680364983,
+      "own_pair_pnl": 4.5,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-01-20": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 13.746984208217858,
+      "own_pair_pnl": 15.25,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-01-21": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 9.993858381502598,
+      "own_pair_pnl": 14.25,
+      "grade": "C",
+      "call": "CONTINUATION",
+      "variant": "tight"
+     },
+     "2026-02-09": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 0.249964209019228,
+      "own_pair_pnl": -0.75,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-03-18": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -1.248314101603417,
+      "own_pair_pnl": 7.75,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-03-19": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 21.733709085461612,
+      "own_pair_pnl": 16.75,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2026-03-20": {
+      "reason": "stop_gap_fill_at_open(H0k)",
+      "v0_pnl": -37.274999999999636,
+      "own_pair_pnl": -51.5,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-03-26": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 18.498584761321826,
+      "own_pair_pnl": 19.0,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-04-02": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 9.502151755379362,
+      "own_pair_pnl": 11.0,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-04-09": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 1.5006014873137445,
+      "own_pair_pnl": 4.25,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-04-13": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -0.7502436735130508,
+      "own_pair_pnl": 1.5,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-04-14": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -1.2500446173622732,
+      "own_pair_pnl": -1.0,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-04-15": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -19.752798540507875,
+      "own_pair_pnl": -18.75,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-04-20": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -12.002097682061184,
+      "own_pair_pnl": -10.75,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-05-06": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -19.01608969582023,
+      "own_pair_pnl": -12.75,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-05-13": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -7.498495486458825,
+      "own_pair_pnl": -9.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-05-28": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -5.00016474464605,
+      "own_pair_pnl": -4.75,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-06-03": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 13.013362512019514,
+      "own_pair_pnl": 5.25,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-06-29": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -13.24646454539414,
+      "own_pair_pnl": -15.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-07-07": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -5.755144135188563,
+      "own_pair_pnl": -12.5,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-07-09": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 13.24825364921397,
+      "own_pair_pnl": 12.25,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-08-05": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 3.5009024398101123,
+      "own_pair_pnl": 1.5,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-08-06": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 4.498836231977917,
+      "own_pair_pnl": 6.5,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2026-08-13": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 3.7498801993483015,
+      "own_pair_pnl": 3.5,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-08-20": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 4.499266527578561,
+      "own_pair_pnl": 5.75,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-08-26": {
+      "reason": "stop_already_past_at_17:00_entry(degenerate candidate; v0 books an immediate stop)",
+      "v0_pnl": -1.050000000000182,
+      "own_pair_pnl": 0.0,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2026-09-08": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 5.248803710937841,
+      "own_pair_pnl": 7.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2026-10-05": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": -9.247933092859126,
+      "own_pair_pnl": -11.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-10-06": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 8.9988580853895,
+      "own_pair_pnl": 8.0,
+      "grade": "B",
+      "call": "MEAN REVERSION",
+      "variant": "wide"
+     },
+     "2026-10-20": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 19.24690951708211,
+      "own_pair_pnl": 18.0,
+      "grade": "C",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     },
+     "2026-10-26": {
+      "reason": "scratch_reference(asia_open->post_close)",
+      "v0_pnl": 6.74978126316473,
+      "own_pair_pnl": 6.5,
+      "grade": "A",
+      "call": "MEAN REVERSION",
+      "variant": "tight"
+     }
+    },
+    "night_bar_counts": {
+     "6": 5,
+     "7": 1,
+     "8": 1,
+     "9": 294
+    },
+    "outcome_shares_post": {
+     "stop": 0.3508771929824561,
+     "target": 0.3298245614035088,
+     "scratch": 0.3192982456140351
+    },
+    "outcome_shares_open": {
+     "scratch": 0.35658914728682173,
+     "stop": 0.32558139534883723,
+     "target": 0.3178294573643411
+    },
+    "n_oos_nights": 301,
+    "n_splice_nights": 3,
+    "splice_dates": [
+     "2025-09-16",
+     "2025-12-16",
+     "2025-12-17"
+    ]
+   },
+   "calibration_rows_prior_by_month": {
+    "2025-04": 0,
+    "2025-05": 18,
+    "2025-06": 33,
+    "2025-07": 48,
+    "2025-08": 64,
+    "2025-09": 81,
+    "2025-10": 96,
+    "2025-11": 115,
+    "2025-12": 131,
+    "2026-01": 142,
+    "2026-02": 158,
+    "2026-03": 174,
+    "2026-04": 190,
+    "2026-05": 206,
+    "2026-06": 220,
+    "2026-07": 237,
+    "2026-08": 253,
+    "2026-09": 268,
+    "2026-10": 283,
+    "2026-11": 297
+   },
+   "exp_rev_shrink_by_month": {
+    "2025-04": 0.0,
+    "2025-05": 0.0,
+    "2025-06": 0.0,
+    "2025-07": 0.0,
+    "2025-08": 0.0,
+    "2025-09": 0.0,
+    "2025-10": 0.0,
+    "2025-11": 0.0,
+    "2025-12": 0.0,
+    "2026-01": 0.0,
+    "2026-02": 0.0,
+    "2026-03": 0.0,
+    "2026-04": 0.0,
+    "2026-05": 0.0,
+    "2026-06": 0.0,
+    "2026-07": 0.0,
+    "2026-08": 0.0,
+    "2026-09": 0.0,
+    "2026-10": 0.0,
+    "2026-11": 0.0
+   },
+   "exp_rev_r2_prior_by_month": {
+    "2025-04": null,
+    "2025-05": null,
+    "2025-06": null,
+    "2025-07": null,
+    "2025-08": -0.027002394259791895,
+    "2025-09": -0.05269317856482325,
+    "2025-10": -0.05508863210816006,
+    "2025-11": -0.048459982461500184,
+    "2025-12": -0.05383905730226557,
+    "2026-01": -0.054086033048338145,
+    "2026-02": -0.05934926265959839,
+    "2026-03": -0.06466381855551306,
+    "2026-04": -0.0793781762386434,
+    "2026-05": -0.07899877782225762,
+    "2026-06": -0.07343791803639421,
+    "2026-07": -0.08700133850821667,
+    "2026-08": -0.08508708228463457,
+    "2026-09": -0.08371410040295557,
+    "2026-10": -0.08533731126950261,
+    "2026-11": -0.0926687666709971
+   },
+   "cost_schedule": {
+    "base": 0.75,
+    "event": 2.0,
+    "hi": 2.0
+   },
+   "runtime_s": 32.10817193984985,
+   "point_value_usd": 50.0,
+   "grade_counts_honest": {
+    "NO EDGE": 129,
+    "A": 58,
+    "C": 54,
+    "B": 47,
+    "-": 13
+   },
+   "grade_counts_v0": {
+    "NO EDGE": 111,
+    "A": 73,
+    "B": 63,
+    "C": 41,
+    "-": 13
+   },
+   "grade_transition_v0_to_honest": {
+    "-->-": 13,
+    "A->A": 43,
+    "A->B": 15,
+    "A->C": 5,
+    "A->NO EDGE": 10,
+    "B->A": 7,
+    "B->B": 21,
+    "B->C": 19,
+    "B->NO EDGE": 16,
+    "C->A": 4,
+    "C->B": 4,
+    "C->C": 20,
+    "C->NO EDGE": 13,
+    "NO EDGE->A": 4,
+    "NO EDGE->B": 7,
+    "NO EDGE->C": 10,
+    "NO EDGE->NO EDGE": 90
+   }
+  }
+ },
+ "columns": {
+  "trades_honest": {
+   "date": {
+    "desc": "RTH date D; the night is 18:00 D .. 02:59 D+1 ET (Sunday reopen after a Friday)",
+    "units": "date",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "grade": {
+    "desc": "honest grade (causal calibration + walk-forward regressors): A >= 72, B >= 63, C >= 56, NO EDGE, '-' = NO TRADE",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "call": {
+    "desc": "honest call kind (MEAN REVERSION / CONTINUATION / NO TRADE)",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "call_full": {
+    "desc": "the engine's full call string",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "confidence": {
+    "desc": "honest confidence = 100 x p_win/(p_win+p_loss) of the chosen candidate",
+    "units": "0-100",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "ev_pts": {
+    "desc": "engine EV of the candidate (p_win x min(target_dist, q80) - p_loss x stop_dist + scratch x exp_rev)",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "variant": {
+    "desc": "stop variant: tight (RTH extreme + 10% range) or wide (max(0.6 x med20 Asia range, 0.3 x RTH range))",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "best": {
+    "desc": "target_key of the chosen candidate",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "side": {
+    "desc": "LONG / SHORT of the chosen candidate",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "cand_id": {
+    "desc": "kind|variant|target_key",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "entry": {
+    "desc": "engine entry reference = 17:00 post_close (levels and distances are measured from it)",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "target": {
+    "desc": "target level",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "stop": {
+    "desc": "stop level",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "target_dist": {
+    "desc": "|target - entry|",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "stop_dist": {
+    "desc": "|stop - entry|",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "p_win": {
+    "desc": "causal calibrated P(target first) of the candidate (normalised with p_loss when their sum > 1)",
+    "units": "probability",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "p_loss": {
+    "desc": "causal calibrated P(stop first)",
+    "units": "probability",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "p_scratch": {
+    "desc": "1 - p_win - p_loss (floored at 0)",
+    "units": "probability",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "guard_failed": {
+    "desc": "guard reasons of the chosen candidate when no candidate passed (grade NO EDGE)",
+    "units": "text",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "rng_q50_pts": {
+    "desc": "walk-forward median expected Asia range",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "rng_q80_pts": {
+    "desc": "walk-forward P80 expected Asia range",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "exp_rev_pts": {
+    "desc": "exp_rev_bp x entry x shrink (the scratch valuation used in the EV)",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "exp_rev_shrink": {
+    "desc": "causal shrink = clip(R^2 of walk-forward exp_rev on the prior OOS rows, 0, 1); 0 under 60 rows",
+    "units": "fraction",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "pnl_v0rule": {
+    "desc": "P&L of the honest chosen candidate under v0's resolution rule (recorded outcome columns, 17:00 fill, mixed scratch reference)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "cal_rows_prior": {
+    "desc": "OOS rows the month's causal calibrator was fitted on (0 = p_raw used)",
+    "units": "count",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "rng_q50_bp": {
+    "desc": "walk-forward median expected Asia range",
+    "units": "bp of entry",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "rng_q80_bp": {
+    "desc": "walk-forward P80 expected Asia range",
+    "units": "bp of entry",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "exp_rev_bp": {
+    "desc": "walk-forward expected signed reversion return",
+    "units": "bp",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "exp_rev_r2_prior": {
+    "desc": "the unclipped prior-OOS R^2 behind exp_rev_shrink",
+    "units": "fraction",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "n_train_reg": {
+    "desc": "rows the month's regressors were fitted on",
+    "units": "count",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "v0_grade": {
+    "desc": "published grade (backtest.simulate replica)",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "v0_call": {
+    "desc": "published call kind",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "v0_confidence": {
+    "desc": "published confidence",
+    "units": "0-100",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "v0_ev_pts": {
+    "desc": "published EV",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "v0_variant": {
+    "desc": "published stop variant",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "v0_best": {
+    "desc": "published target_key",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "v0_cand_id": {
+    "desc": "published chosen candidate id",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "v0_pnl_pts": {
+    "desc": "published P&L (recorded-outcome rule, 17:00 fill, no costs)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "s1_grade": {
+    "desc": "grade with causal calibration only (full-sample regressors kept)",
+    "units": "label",
+    "knowable_at": "ladder step 1 (regressors still leaky)"
+   },
+   "s1_call": {
+    "desc": "step-1 call kind",
+    "units": "label",
+    "knowable_at": "ladder step 1"
+   },
+   "s1_confidence": {
+    "desc": "step-1 confidence",
+    "units": "0-100",
+    "knowable_at": "ladder step 1"
+   },
+   "s1_variant": {
+    "desc": "step-1 stop variant",
+    "units": "label",
+    "knowable_at": "ladder step 1"
+   },
+   "s1_best": {
+    "desc": "step-1 target_key",
+    "units": "label",
+    "knowable_at": "ladder step 1"
+   },
+   "s1_cand_id": {
+    "desc": "step-1 chosen candidate id",
+    "units": "label",
+    "knowable_at": "ladder step 1"
+   },
+   "s1_pnl_v0rule": {
+    "desc": "step-1 chosen candidate under v0's resolution rule",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "splice": {
+    "desc": "1 on asia_extremes.SPLICE_SESSIONS nights (contract splice; excluded from every statistic)",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "split": {
+    "desc": "discovery (2025-04-01..2026-05-31) or vault (2026-06-01..)",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "n_bars": {
+    "desc": "Asia bars in the night (9 normal; 6 on holiday eves; 7 on two data-gap nights)",
+    "units": "count",
+    "knowable_at": "ex post (after the night)"
+   },
+   "k0_hour": {
+    "desc": "ET hour of the first Asia bar (18 normally; 20 on 2025-07-25 NQ/ES, a data gap)",
+    "units": "hour",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "bars_contiguous": {
+    "desc": "1 when the Asia bars start at 18:00 and are consecutive hours",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "n_eur_bars": {
+    "desc": "Europe bars (03:00-08:59 of the Globex date) in the file (6 normal; 0 on holiday mornings)",
+    "units": "count",
+    "knowable_at": "ex post (after the night)"
+   },
+   "entry_post": {
+    "desc": "fill price under fill_ref=post_close (= entry, the 17:00 close)",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "already_past_post": {
+    "desc": "target already at/beyond the 17:00 entry (degenerate: the engine checks this only for fade targets, not for the continuation target); not traded, P&L 0",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "stop_past_post": {
+    "desc": "stop already at/beyond the 17:00 entry (post-close moved through the stop level); not traded, P&L 0",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "outcome_post": {
+    "desc": "17:00-close fill: target / stop / scratch (None when not traded)",
+    "units": "label",
+    "knowable_at": "ex post (after the night)"
+   },
+   "resolved_k_post": {
+    "desc": "17:00-close fill: positional Asia bar index of the exit (0 = first bar, normally 18:00); NaN for scratch",
+    "units": "k",
+    "knowable_at": "ex post (after the night)"
+   },
+   "exit_post": {
+    "desc": "17:00-close fill: exit price (stop level, bar Open on a gap through the stop, target level, or the last Asia close)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_post": {
+    "desc": "17:00-close fill: signed gross P&L of the candidate from its fill (0 when not traded)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mfe_post": {
+    "desc": "17:00-close fill: max favourable excursion over the bars held (conservative in the exit bar)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mae_post": {
+    "desc": "17:00-close fill: max adverse excursion over the bars held (<= 0)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "gapfill_post": {
+    "desc": "17:00-close fill: 1 when the stop was filled at a bar Open beyond the stop level (H0k)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "samebar_post": {
+    "desc": "17:00-close fill: 1 when the exit bar touched both the stop and the target (booked as stop)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_mtm_k0_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=0"
+   },
+   "pnl_mtm_k1_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=1"
+   },
+   "pnl_mtm_k2_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=2"
+   },
+   "pnl_mtm_k3_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=3"
+   },
+   "pnl_mtm_k4_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=4"
+   },
+   "pnl_mtm_k5_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=5"
+   },
+   "pnl_mtm_k6_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=6"
+   },
+   "pnl_mtm_k7_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=7"
+   },
+   "pnl_mtm_k8_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=8"
+   },
+   "traded_post": {
+    "desc": "1 when the candidate is tradeable at the 17:00 reference (not already_past_post, not stop_past_post)",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "entry_open": {
+    "desc": "fill price under fill_ref=asia_open (Open of the first Asia bar)",
+    "units": "index points",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "already_past_open": {
+    "desc": "target already beyond the 18:00 open (not tradeable; P&L 0)",
+    "units": "0/1",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "open_past_stop": {
+    "desc": "stop already beyond the 18:00 open (not traded; P&L 0)",
+    "units": "0/1",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "outcome_open": {
+    "desc": "18:00-open fill: target / stop / scratch (None when not traded)",
+    "units": "label",
+    "knowable_at": "ex post (after the night)"
+   },
+   "resolved_k_open": {
+    "desc": "18:00-open fill: positional Asia bar index of the exit (0 = first bar, normally 18:00); NaN for scratch",
+    "units": "k",
+    "knowable_at": "ex post (after the night)"
+   },
+   "exit_open": {
+    "desc": "18:00-open fill: exit price (stop level, bar Open on a gap through the stop, target level, or the last Asia close)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_open": {
+    "desc": "18:00-open fill: signed gross P&L of the candidate from its fill (0 when not traded)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mfe_open": {
+    "desc": "18:00-open fill: max favourable excursion over the bars held (conservative in the exit bar)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mae_open": {
+    "desc": "18:00-open fill: max adverse excursion over the bars held (<= 0)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "gapfill_open": {
+    "desc": "18:00-open fill: 1 when the stop was filled at a bar Open beyond the stop level (H0k)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "samebar_open": {
+    "desc": "18:00-open fill: 1 when the exit bar touched both the stop and the target (booked as stop)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_mtm_k0_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=0"
+   },
+   "pnl_mtm_k1_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=1"
+   },
+   "pnl_mtm_k2_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=2"
+   },
+   "pnl_mtm_k3_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=3"
+   },
+   "pnl_mtm_k4_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=4"
+   },
+   "pnl_mtm_k5_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=5"
+   },
+   "pnl_mtm_k6_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=6"
+   },
+   "pnl_mtm_k7_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=7"
+   },
+   "pnl_mtm_k8_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=8"
+   },
+   "traded_open": {
+    "desc": "1 when the candidate is fillable at the 18:00 open (not already_past_open, not open_past_stop)",
+    "units": "0/1",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "eur_outcome_post": {
+    "desc": "17:00-close fill: a scratch held into Europe (03:00-08:59) with the levels active: target / stop / neither",
+    "units": "label",
+    "knowable_at": "ex post (after the night)"
+   },
+   "eur_pnl_post": {
+    "desc": "17:00-close fill: P&L of that Europe hold (exit at the level, else the Europe close)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_at_eur_close_post": {
+    "desc": "17:00-close fill: mark-to-market P&L of the scratch at the last Europe bar close",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "eur_outcome_open": {
+    "desc": "18:00-open fill: a scratch held into Europe (03:00-08:59) with the levels active: target / stop / neither",
+    "units": "label",
+    "knowable_at": "ex post (after the night)"
+   },
+   "eur_pnl_open": {
+    "desc": "18:00-open fill: P&L of that Europe hold (exit at the level, else the Europe close)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_at_eur_close_open": {
+    "desc": "18:00-open fill: mark-to-market P&L of the scratch at the last Europe bar close",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "e20_k": {
+    "desc": "positional index of the hour-20 bar (2 normally)",
+    "units": "k",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "entry_e20": {
+    "desc": "fill price of the 20:00-open variant (Open of the hour-20 bar)",
+    "units": "index points",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "pre_touched_target_e20": {
+    "desc": "target touched in the bars before the 20:00 open",
+    "units": "0/1",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "pre_touched_stop_e20": {
+    "desc": "stop touched in the bars before the 20:00 open",
+    "units": "0/1",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "already_past_e20": {
+    "desc": "target already beyond the 20:00 open",
+    "units": "0/1",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "open_past_stop_e20": {
+    "desc": "stop already beyond the 20:00 open",
+    "units": "0/1",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "traded_e20": {
+    "desc": "1 when the candidate is fillable at the 20:00 open (same two checks at that open)",
+    "units": "0/1",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "outcome_e20": {
+    "desc": "20:00-open variant: target / stop / scratch (None when not traded)",
+    "units": "label",
+    "knowable_at": "ex post (after the night)"
+   },
+   "resolved_k_e20": {
+    "desc": "20:00-open variant: positional Asia bar index of the exit (0 = first bar, normally 18:00); NaN for scratch",
+    "units": "k",
+    "knowable_at": "ex post (after the night)"
+   },
+   "exit_e20": {
+    "desc": "20:00-open variant: exit price (stop level, bar Open on a gap through the stop, target level, or the last Asia close)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_e20": {
+    "desc": "20:00-open variant: signed gross P&L of the candidate from its fill (0 when not traded)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mfe_e20": {
+    "desc": "20:00-open variant: max favourable excursion over the bars held (conservative in the exit bar)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mae_e20": {
+    "desc": "20:00-open variant: max adverse excursion over the bars held (<= 0)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "gapfill_e20": {
+    "desc": "20:00-open variant: 1 when the stop was filled at a bar Open beyond the stop level (H0k)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "samebar_e20": {
+    "desc": "20:00-open variant: 1 when the exit bar touched both the stop and the target (booked as stop)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_mtm_k0_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=0"
+   },
+   "pnl_mtm_k1_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=1"
+   },
+   "pnl_mtm_k2_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=2"
+   },
+   "pnl_mtm_k3_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=3"
+   },
+   "pnl_mtm_k4_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=4"
+   },
+   "pnl_mtm_k5_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=5"
+   },
+   "pnl_mtm_k6_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=6"
+   },
+   "pnl_mtm_k7_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=7"
+   },
+   "pnl_mtm_k8_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=8"
+   },
+   "cost_base": {
+    "desc": "round-trip cost, base schedule: NQ 1.5 (ES 0.75) weeknight; 4.0 (2.0) on Sunday reopens, |post_ret| > 0.3% or mega-cap earnings",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "cost_hi": {
+    "desc": "round-trip cost, sensitivity: NQ 4.0 / ES 2.0 every night",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "event_night": {
+    "desc": "1 when the event cost applies (sunday_open, |post_ret| > 0.3%, megacap_earnings_tonight)",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "pnl_gross_post": {
+    "desc": "baseline reference: pnl_post when graded (NaN when not graded)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_net_post": {
+    "desc": "pnl_gross_post - cost_base",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_net_post_hicost": {
+    "desc": "pnl_gross_post - cost_hi",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_gross_open": {
+    "desc": "HONEST gross: pnl_open when graded; 0 when graded but unfillable at the open; NaN when not graded",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_net_open": {
+    "desc": "THE HONEST BASELINE: pnl_gross_open - cost_base (cost only when traded)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_net_open_hicost": {
+    "desc": "pnl_gross_open - cost_hi (sensitivity)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_gross_e20": {
+    "desc": "20:00-open variant gross when graded (0 when unfillable at 20:00; NaN when not graded)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_net_e20": {
+    "desc": "pnl_gross_e20 - cost_base when traded",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_net_e20_hicost": {
+    "desc": "pnl_gross_e20 - cost_hi when traded",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "v0_pnl_post_resolved": {
+    "desc": "own-pair raw-bar P&L (17:00 fill, no costs) of v0's chosen candidate (self-check column)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "v0_resolution_disagreement": {
+    "desc": "why v0_pnl_pts differs from v0_pnl_post_resolved ('' = agrees)",
+    "units": "text",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mag": {
+    "desc": "|rth_ret_z| = |RTH return| / 20d daily-return sd",
+    "units": "sigma",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "is_down": {
+    "desc": "1 when the RTH move was down",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "rth_ret": {
+    "desc": "RTH close / RTH open - 1",
+    "units": "fraction",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "stretch20_in_dir": {
+    "desc": "(close - SMA20)/ATR20 signed with the RTH move (>0 extends a stretch)",
+    "units": "ATR units",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "abs_streak": {
+    "desc": "consecutive RTH sessions in the same direction (incl. today)",
+    "units": "count",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "post_ret": {
+    "desc": "post_close / rth_close - 1 (16:00-17:00 reaction)",
+    "units": "fraction",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "post_in_dir": {
+    "desc": "post_ret signed with the RTH move",
+    "units": "fraction",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "megacap_earnings_tonight": {
+    "desc": "mega-cap earnings after the close (calendar)",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "sunday_open": {
+    "desc": "D is a Friday: the night is the Sunday 18:00 reopen",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "pre_holiday": {
+    "desc": "US holiday next trading day (calendar_features)",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "holiday_tomorrow": {
+    "desc": "holiday flag from research/event_calendar.csv for D+1",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "dow": {
+    "desc": "day of week of D (0 = Monday)",
+    "units": "0-6",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "vix": {
+    "desc": "VIX close on D",
+    "units": "index",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "vix_z20": {
+    "desc": "VIX z-score vs its 20d mean/sd",
+    "units": "sigma",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "rv_ratio": {
+    "desc": "5d / 20d realised vol",
+    "units": "ratio",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "rth_vol_rel": {
+    "desc": "RTH volume / 20d mean",
+    "units": "ratio",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "asia_rng_med20": {
+    "desc": "20-night rolling median of (asia_high - asia_low) / asia_open, prior nights only",
+    "units": "fraction of asia_open",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "kospi_ret": {
+    "desc": "KOSPI session-to-session change, prior session (features.py dchg: the row dated <= D, forward-filled)",
+    "units": "fraction",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "n225_ret": {
+    "desc": "Nikkei session-to-session change, prior session (features.py dchg)",
+    "units": "fraction",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "fomc_tomorrow": {
+    "desc": "FOMC decision on the next trading day",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "tier1_data_tomorrow": {
+    "desc": "CPI/NFP/PCE on the next trading day",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "med20_pts": {
+    "desc": "asia_rng_med20 x entry (post_close)",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "kospi_dd20": {
+    "desc": "KOSPI close (row dated <= D, the session that closed before 18:00 ET of D) / its 20-session rolling max - 1",
+    "units": "fraction",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "hsi_dd20": {
+    "desc": "HSI likewise (placebo for kospi_dd20)",
+    "units": "fraction",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "asia_n_bars": {
+    "desc": "actual Asia bars of the night (sessions table)",
+    "units": "count",
+    "knowable_at": "ex post (after the night)"
+   },
+   "expected_asia_bars_proxy": {
+    "desc": "knowable proxy for the session length: 6 if pre_holiday or holiday_tomorrow else 9",
+    "units": "count",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "is_dst": {
+    "desc": "the night's 18:00 bar is in EDT (UTC-4)",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "tokyo_open_bar": {
+    "desc": "positional k of the bar containing the Tokyo cash open 09:00 JST (19:00 ET EST -> 1, 20:00 ET EDT -> 2)",
+    "units": "k",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "move_18_20_in_dir": {
+    "desc": "(Close of bar k=1 - Open of bar k=0) x (+1 LONG / -1 SHORT of the chosen side)",
+    "units": "index points",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "pB_high_above_cal": {
+    "desc": "Detector B: P(Asia high > RTH high), calibrated, walk-forward (oos_preasia high_above_rth_high__full__p_cal)",
+    "units": "probability",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "pB_low_below_cal": {
+    "desc": "Detector B: P(Asia low < RTH low), calibrated (low_below_rth_low__full__p_cal)",
+    "units": "probability",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "pB_high_above_raw": {
+    "desc": "Detector B raw p (high_above_rth_high__full__p_raw)",
+    "units": "probability",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "pB_low_below_raw": {
+    "desc": "Detector B raw p (low_below_rth_low__full__p_raw)",
+    "units": "probability",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "pB_rng_q50_bp": {
+    "desc": "Detector B expected Asia range median (rng_bp__q50)",
+    "units": "bp of the 17:00 close",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "pA_high_k0": {
+    "desc": "Detector A at the close of bar k=0: P(the Asia high is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=0"
+   },
+   "pA_high_k1": {
+    "desc": "Detector A at the close of bar k=1: P(the Asia high is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=1"
+   },
+   "pA_high_k2": {
+    "desc": "Detector A at the close of bar k=2: P(the Asia high is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=2"
+   },
+   "pA_high_k3": {
+    "desc": "Detector A at the close of bar k=3: P(the Asia high is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=3"
+   },
+   "pA_low_k0": {
+    "desc": "Detector A at the close of bar k=0: P(the Asia low is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=0"
+   },
+   "pA_low_k1": {
+    "desc": "Detector A at the close of bar k=1: P(the Asia low is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=1"
+   },
+   "pA_low_k2": {
+    "desc": "Detector A at the close of bar k=2: P(the Asia low is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=2"
+   },
+   "pA_low_k3": {
+    "desc": "Detector A at the close of bar k=3: P(the Asia low is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=3"
+   },
+   "pA_ovn_high_k0": {
+    "desc": "Detector A at the close of bar k=0: P(the 18:00-08:59 overnight high is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=0"
+   },
+   "pA_ovn_high_k1": {
+    "desc": "Detector A at the close of bar k=1: P(the 18:00-08:59 overnight high is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=1"
+   },
+   "pA_ovn_high_k2": {
+    "desc": "Detector A at the close of bar k=2: P(the 18:00-08:59 overnight high is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=2"
+   },
+   "pA_ovn_high_k3": {
+    "desc": "Detector A at the close of bar k=3: P(the 18:00-08:59 overnight high is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=3"
+   },
+   "pA_ovn_low_k0": {
+    "desc": "Detector A at the close of bar k=0: P(the overnight low is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=0"
+   },
+   "pA_ovn_low_k1": {
+    "desc": "Detector A at the close of bar k=1: P(the overnight low is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=1"
+   },
+   "pA_ovn_low_k2": {
+    "desc": "Detector A at the close of bar k=2: P(the overnight low is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=2"
+   },
+   "pA_ovn_low_k3": {
+    "desc": "Detector A at the close of bar k=3: P(the overnight low is already in)",
+    "units": "probability",
+    "knowable_at": "close of bar k=3"
+   },
+   "other_grade": {
+    "desc": "the other symbol's honest grade for the same RTH date",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "other_call": {
+    "desc": "the other symbol's honest call kind",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "other_side": {
+    "desc": "the other symbol's honest side",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   }
+  },
+  "candidates": {
+   "date": {
+    "desc": "RTH date D; the night is 18:00 D .. 02:59 D+1 ET (Sunday reopen after a Friday)",
+    "units": "date",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "cand_id": {
+    "desc": "kind|variant|target_key",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "kind": {
+    "desc": "MEAN REVERSION or CONTINUATION",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "variant": {
+    "desc": "stop variant: tight (RTH extreme + 10% range) or wide (max(0.6 x med20 Asia range, 0.3 x RTH range))",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "target_key": {
+    "desc": "vwap / r382 / r500 for fades; stop_level for continuation",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "side": {
+    "desc": "LONG / SHORT of the candidate",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "entry": {
+    "desc": "engine entry reference = 17:00 post_close (levels and distances are measured from it)",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "target": {
+    "desc": "target level",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "stop": {
+    "desc": "stop level",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "target_dist": {
+    "desc": "|target - entry|",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "stop_dist": {
+    "desc": "|stop - entry|",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "p_win": {
+    "desc": "causal calibrated P(target first) of the candidate (normalised with p_loss when their sum > 1)",
+    "units": "probability",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "p_loss": {
+    "desc": "causal calibrated P(stop first)",
+    "units": "probability",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "scratch": {
+    "desc": "1 - p_win - p_loss (floored at 0)",
+    "units": "probability",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "ev_pts": {
+    "desc": "engine EV of the candidate (p_win x min(target_dist, q80) - p_loss x stop_dist + scratch x exp_rev)",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "win_rate_on_resolution": {
+    "desc": "p_win/(p_win+p_loss)",
+    "units": "probability",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "guard_ok": {
+    "desc": "passed the geometry guard (target >= 25% q50, stop <= q80, EV >= 3% q50, win rate >= 0.5)",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "guard_reasons": {
+    "desc": "guard failure reasons, ';'-joined",
+    "units": "text",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "chosen": {
+    "desc": "1 for the candidate the honest call selected",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "v0_p_win": {
+    "desc": "pooled-calibrator (leaky) P(target first) of the candidate",
+    "units": "probability",
+    "knowable_at": "LEAKY (pooled OOS)"
+   },
+   "v0_p_loss": {
+    "desc": "pooled-calibrator (leaky) P(stop first)",
+    "units": "probability",
+    "knowable_at": "LEAKY (pooled OOS)"
+   },
+   "v0_scratch": {
+    "desc": "pooled-calibrator scratch probability",
+    "units": "probability",
+    "knowable_at": "LEAKY (pooled OOS)"
+   },
+   "v0_ev_pts_cand": {
+    "desc": "v0 EV of the candidate (full-sample regressors)",
+    "units": "index points",
+    "knowable_at": "LEAKY (full-sample regressors)"
+   },
+   "v0_guard_ok": {
+    "desc": "v0 guard decision for the candidate",
+    "units": "0/1",
+    "knowable_at": "LEAKY (full-sample regressors)"
+   },
+   "v0_chosen": {
+    "desc": "1 for the candidate v0 selected",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "s1_chosen": {
+    "desc": "1 for the candidate step 1 (causal calibration, full-sample regressors) selected",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "n_bars": {
+    "desc": "Asia bars in the night (9 normal; 6 on holiday eves; 7 on two data-gap nights)",
+    "units": "count",
+    "knowable_at": "ex post (after the night)"
+   },
+   "k0_hour": {
+    "desc": "ET hour of the first Asia bar (18 normally; 20 on 2025-07-25 NQ/ES, a data gap)",
+    "units": "hour",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "bars_contiguous": {
+    "desc": "1 when the Asia bars start at 18:00 and are consecutive hours",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "entry_post": {
+    "desc": "fill price under fill_ref=post_close (= entry, the 17:00 close)",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "already_past_post": {
+    "desc": "target already at/beyond the 17:00 entry (degenerate: the engine checks this only for fade targets, not for the continuation target); not traded, P&L 0",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "stop_past_post": {
+    "desc": "stop already at/beyond the 17:00 entry (post-close moved through the stop level); not traded, P&L 0",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "outcome_post": {
+    "desc": "17:00-close fill: target / stop / scratch (None when not traded)",
+    "units": "label",
+    "knowable_at": "ex post (after the night)"
+   },
+   "resolved_k_post": {
+    "desc": "17:00-close fill: positional Asia bar index of the exit (0 = first bar, normally 18:00); NaN for scratch",
+    "units": "k",
+    "knowable_at": "ex post (after the night)"
+   },
+   "exit_post": {
+    "desc": "17:00-close fill: exit price (stop level, bar Open on a gap through the stop, target level, or the last Asia close)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_post": {
+    "desc": "17:00-close fill: signed gross P&L of the candidate from its fill (0 when not traded)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mfe_post": {
+    "desc": "17:00-close fill: max favourable excursion over the bars held (conservative in the exit bar)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mae_post": {
+    "desc": "17:00-close fill: max adverse excursion over the bars held (<= 0)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "gapfill_post": {
+    "desc": "17:00-close fill: 1 when the stop was filled at a bar Open beyond the stop level (H0k)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "samebar_post": {
+    "desc": "17:00-close fill: 1 when the exit bar touched both the stop and the target (booked as stop)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_mtm_k0_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=0"
+   },
+   "pnl_mtm_k1_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=1"
+   },
+   "pnl_mtm_k2_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=2"
+   },
+   "pnl_mtm_k3_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=3"
+   },
+   "pnl_mtm_k4_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=4"
+   },
+   "pnl_mtm_k5_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=5"
+   },
+   "pnl_mtm_k6_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=6"
+   },
+   "pnl_mtm_k7_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=7"
+   },
+   "pnl_mtm_k8_post": {
+    "desc": "17:00-close fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=8"
+   },
+   "traded_post": {
+    "desc": "1 when the candidate is tradeable at the 17:00 reference (not already_past_post, not stop_past_post)",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "entry_open": {
+    "desc": "fill price under fill_ref=asia_open (Open of the first Asia bar)",
+    "units": "index points",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "already_past_open": {
+    "desc": "target already beyond the 18:00 open (not tradeable; P&L 0)",
+    "units": "0/1",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "open_past_stop": {
+    "desc": "stop already beyond the 18:00 open (not traded; P&L 0)",
+    "units": "0/1",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "outcome_open": {
+    "desc": "18:00-open fill: target / stop / scratch (None when not traded)",
+    "units": "label",
+    "knowable_at": "ex post (after the night)"
+   },
+   "resolved_k_open": {
+    "desc": "18:00-open fill: positional Asia bar index of the exit (0 = first bar, normally 18:00); NaN for scratch",
+    "units": "k",
+    "knowable_at": "ex post (after the night)"
+   },
+   "exit_open": {
+    "desc": "18:00-open fill: exit price (stop level, bar Open on a gap through the stop, target level, or the last Asia close)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_open": {
+    "desc": "18:00-open fill: signed gross P&L of the candidate from its fill (0 when not traded)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mfe_open": {
+    "desc": "18:00-open fill: max favourable excursion over the bars held (conservative in the exit bar)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mae_open": {
+    "desc": "18:00-open fill: max adverse excursion over the bars held (<= 0)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "gapfill_open": {
+    "desc": "18:00-open fill: 1 when the stop was filled at a bar Open beyond the stop level (H0k)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "samebar_open": {
+    "desc": "18:00-open fill: 1 when the exit bar touched both the stop and the target (booked as stop)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_mtm_k0_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=0"
+   },
+   "pnl_mtm_k1_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=1"
+   },
+   "pnl_mtm_k2_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=2"
+   },
+   "pnl_mtm_k3_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=3"
+   },
+   "pnl_mtm_k4_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=4"
+   },
+   "pnl_mtm_k5_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=5"
+   },
+   "pnl_mtm_k6_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=6"
+   },
+   "pnl_mtm_k7_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=7"
+   },
+   "pnl_mtm_k8_open": {
+    "desc": "18:00-open fill: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=8"
+   },
+   "traded_open": {
+    "desc": "1 when the candidate is fillable at the 18:00 open (not already_past_open, not open_past_stop)",
+    "units": "0/1",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "eur_outcome_post": {
+    "desc": "17:00-close fill: a scratch held into Europe (03:00-08:59) with the levels active: target / stop / neither",
+    "units": "label",
+    "knowable_at": "ex post (after the night)"
+   },
+   "eur_pnl_post": {
+    "desc": "17:00-close fill: P&L of that Europe hold (exit at the level, else the Europe close)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_at_eur_close_post": {
+    "desc": "17:00-close fill: mark-to-market P&L of the scratch at the last Europe bar close",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "eur_outcome_open": {
+    "desc": "18:00-open fill: a scratch held into Europe (03:00-08:59) with the levels active: target / stop / neither",
+    "units": "label",
+    "knowable_at": "ex post (after the night)"
+   },
+   "eur_pnl_open": {
+    "desc": "18:00-open fill: P&L of that Europe hold (exit at the level, else the Europe close)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_at_eur_close_open": {
+    "desc": "18:00-open fill: mark-to-market P&L of the scratch at the last Europe bar close",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "e20_k": {
+    "desc": "positional index of the hour-20 bar (2 normally)",
+    "units": "k",
+    "knowable_at": "18:00 ET (first Asia print)"
+   },
+   "entry_e20": {
+    "desc": "fill price of the 20:00-open variant (Open of the hour-20 bar)",
+    "units": "index points",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "pre_touched_target_e20": {
+    "desc": "target touched in the bars before the 20:00 open",
+    "units": "0/1",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "pre_touched_stop_e20": {
+    "desc": "stop touched in the bars before the 20:00 open",
+    "units": "0/1",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "already_past_e20": {
+    "desc": "target already beyond the 20:00 open",
+    "units": "0/1",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "open_past_stop_e20": {
+    "desc": "stop already beyond the 20:00 open",
+    "units": "0/1",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "traded_e20": {
+    "desc": "1 when the candidate is fillable at the 20:00 open (same two checks at that open)",
+    "units": "0/1",
+    "knowable_at": "20:00 ET (close of bar k=1)"
+   },
+   "outcome_e20": {
+    "desc": "20:00-open variant: target / stop / scratch (None when not traded)",
+    "units": "label",
+    "knowable_at": "ex post (after the night)"
+   },
+   "resolved_k_e20": {
+    "desc": "20:00-open variant: positional Asia bar index of the exit (0 = first bar, normally 18:00); NaN for scratch",
+    "units": "k",
+    "knowable_at": "ex post (after the night)"
+   },
+   "exit_e20": {
+    "desc": "20:00-open variant: exit price (stop level, bar Open on a gap through the stop, target level, or the last Asia close)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_e20": {
+    "desc": "20:00-open variant: signed gross P&L of the candidate from its fill (0 when not traded)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mfe_e20": {
+    "desc": "20:00-open variant: max favourable excursion over the bars held (conservative in the exit bar)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "mae_e20": {
+    "desc": "20:00-open variant: max adverse excursion over the bars held (<= 0)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "gapfill_e20": {
+    "desc": "20:00-open variant: 1 when the stop was filled at a bar Open beyond the stop level (H0k)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "samebar_e20": {
+    "desc": "20:00-open variant: 1 when the exit bar touched both the stop and the target (booked as stop)",
+    "units": "0/1",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_mtm_k0_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=0"
+   },
+   "pnl_mtm_k1_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=1"
+   },
+   "pnl_mtm_k2_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=2"
+   },
+   "pnl_mtm_k3_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=3"
+   },
+   "pnl_mtm_k4_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=4"
+   },
+   "pnl_mtm_k5_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=5"
+   },
+   "pnl_mtm_k6_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=6"
+   },
+   "pnl_mtm_k7_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=7"
+   },
+   "pnl_mtm_k8_e20": {
+    "desc": "20:00-open variant: mark-to-market P&L at the close of positional bar k while open; NaN from the exit bar on or when the bar is missing",
+    "units": "index points",
+    "knowable_at": "close of bar k=8"
+   },
+   "event_night": {
+    "desc": "1 when the event cost applies (sunday_open, |post_ret| > 0.3%, megacap_earnings_tonight)",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "cost_base": {
+    "desc": "round-trip cost, base schedule: NQ 1.5 (ES 0.75) weeknight; 4.0 (2.0) on Sunday reopens, |post_ret| > 0.3% or mega-cap earnings",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "cost_hi": {
+    "desc": "round-trip cost, sensitivity: NQ 4.0 / ES 2.0 every night",
+    "units": "index points",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "pnl_net_post": {
+    "desc": "17:00-close fill: pnl_post - cost_base when the candidate is fillable, 0 otherwise (candidate level, NOT grade-gated; the night's grade is in `grade`)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_net_post_hicost": {
+    "desc": "17:00-close fill: pnl_post - cost_hi when fillable, 0 otherwise (candidate level, NOT grade-gated)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_net_open": {
+    "desc": "18:00-open fill: pnl_open - cost_base when the candidate is fillable, 0 otherwise (candidate level, NOT grade-gated; the night's grade is in `grade`)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_net_open_hicost": {
+    "desc": "18:00-open fill: pnl_open - cost_hi when fillable, 0 otherwise (candidate level, NOT grade-gated)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_net_e20": {
+    "desc": "20:00-open variant: pnl_e20 - cost_base when the candidate is fillable, 0 otherwise (candidate level, NOT grade-gated; the night's grade is in `grade`)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "pnl_net_e20_hicost": {
+    "desc": "20:00-open variant: pnl_e20 - cost_hi when fillable, 0 otherwise (candidate level, NOT grade-gated)",
+    "units": "index points",
+    "knowable_at": "ex post (after the night)"
+   },
+   "grade": {
+    "desc": "honest grade (causal calibration + walk-forward regressors): A >= 72, B >= 63, C >= 56, NO EDGE, '-' = NO TRADE",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "v0_grade": {
+    "desc": "published grade (backtest.simulate replica)",
+    "units": "label",
+    "knowable_at": "17:xx ET (decision time)"
+   },
+   "splice": {
+    "desc": "1 on asia_extremes.SPLICE_SESSIONS nights (contract splice; excluded from every statistic)",
+    "units": "0/1",
+    "knowable_at": "17:xx ET (decision time)"
+   }
+  }
+ },
+ "runtime_s": 65.82119083404541
+}
