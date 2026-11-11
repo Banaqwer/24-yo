@@ -17,6 +17,10 @@ top10 = [t["id"] for t in sorted(critic.get("top10", []), key=lambda t: t["rank"
 if not top10:
     top10 = [r["id"] for r in sorted([r for r in rows if not r.get("merged_into")], key=lambda r: -r["Wfinal"])[:10]]
 parked_reason = {p["id"]: p["reason"] for p in critic.get("parked", [])}
+# Documented corrections to the critic's one-liners (see docs/phase2_report.md, section 4).
+parked_reason["N55"] = ("First alternate. Tied at W 3.35 with ranks 8-10; the tie was left in Phase 1 id order (S rows before N rows), "
+                        "not broken on any criterion. S=3 and U=2 (25-40 names) beat S16 on the two tradability criteria; never verifier-tested. "
+                        "Re-open first if any top-10 row fails its Phase 3 gate.")
 
 def clean(s, n=None):
     s = str(s if s is not None else "").replace("\n", " ").replace("|", "/").strip()
@@ -52,7 +56,7 @@ with open(f"{root}/register/signal_register.csv", "w", newline="") as fh:
 old_md = open(f"{root}/register/signal_register.md").read()
 log_lines = [l for l in old_md.split("## Phase log", 1)[1].strip().splitlines() if l.startswith("- ")] if "## Phase log" in old_md else []
 n_top = len(top10); n_parked = sum(1 for rr in reg if rr["Status"] == "PARKED")
-log_lines.append(f"- Phase 2 (2026-11-11): all 59 IDEA rows scored on the seven weighted criteria by a three-scorer panel (lower median), six overlap groups merged, top 15 re-verified adversarially with live probes. {n_top} rows moved to SOURCING, {n_parked} to PARKED. See docs/phase2_report.md and docs/phase2_scores.md.")
+log_lines.append(f"- Phase 2 (2026-11-11): all 59 IDEA rows scored on the seven weighted criteria by a three-scorer panel (lower median), seven rows folded into six overlap groups, top 15 re-verified adversarially with live probes. {n_top} rows moved to SOURCING, {n_parked} to PARKED. See docs/phase2_report.md and docs/phase2_scores.md.")
 md = ["# Signal Register", "",
       "Living register for the Alt-Data Edge Research Pipeline. One row per signal, updated at the end of every phase. The CSV next to this file is the source of truth; this view truncates long cells.", "",
       "Status vocabulary: IDEA, PARKED, SOURCING, SPECIFIED, AWAITING DATA, TESTING, VALIDATED, PROMISING, INCONCLUSIVE, REJECTED (phase). Category: Physical, Regulatory, Digital, Second-order. Scores: Crowdedness 1 = heavily sold or published, 5 = nobody covers it. Signal/noise 1 = weak proxy, 5 = direct physical measure. Legal risk 1 = clearly public and licensed, 5 = stop. IDs: S = Seed Catalogue item, N = new idea from Phase 1, G = new idea from the Phase 1 gap round.", "",
@@ -68,6 +72,7 @@ merged = [r for r in rows if r.get("merged_into")]
 out = ["# Phase 2 scores", "",
        "Every IDEA row scored 1 to 5 on the seven criteria. Panel = lower median of three independent scorers (data engineer, quant PM, skeptic). Final = the adversarial verifier's adjusted scores for the top 15, otherwise the panel median. Weighted score = 0.20 A + 0.20 L + 0.20 S + 0.15 C + 0.10 U + 0.10 H + 0.05 G. Spread = largest disagreement among the three scorers on any criterion.", "",
        "A = data accessibility, L = lead time, S = signal-to-noise, C = crowdedness (inverse), U = universe coverage, H = history depth, G = legal cleanliness.", "",
+       "Ties in the weighted score are listed in Phase 1 id order (S, then N, then G), which is not a ranking rule. The four-way tie at 3.35 (S33, S04, S16, N55) is discussed in docs/phase2_report.md.", "",
        "## Ranking", "",
        "| Rank | ID | Signal | A | L | S | C | U | H | G | Final | Panel | Spread | Flags |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
 for r in ranked:

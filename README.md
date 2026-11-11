@@ -17,8 +17,12 @@ This is a research framework, not investment advice. Backtested edge is not live
 | `docs/phase1_report.md` | Phase 1: method, counts, strongest kept ideas, rejected ideas by reason, critic findings, red team, gate. |
 | `docs/phase1_tables.md` | Phase 1: every kept and rejected idea with scores and reasons, seed verdicts, the completeness critic's full text. |
 | `docs/phase1_signal_details.md` | Phase 1: the full write-up of every signal (mechanism, hypothesis, sources, vendors, literature, red team, changes made). |
+| `docs/phase2_report.md` | Phase 2: method, the top 10 with what carries each and what the verifier found against it, what verification changed, parked summary, dependencies, the critic's disputes, red team, gate. |
+| `docs/phase2_scores.md` | Phase 2: the full ranking with scores, merged rows, the critic's top-10 rationale and first build steps, the parked list with reasons, disputes and concerns. |
+| `docs/phase2_scoring_details.md` | Phase 2: every scorer's per-criterion justification and lead-time arithmetic, and every verifier probe, change and refutation. |
 | `data/probe/` | Phase 0 raw probe output (JSON) and the matrix as CSV. |
 | `data/phase1/` | Phase 1 raw workflow output (JSON): every idea, verdict and critic finding. |
+| `data/phase2/` | Phase 2 raw workflow output (JSON): every score, verifier verdict and the critic's text. |
 | `tools/` | Scripts used to condense and build the matrices and registers, and the multi-agent workflow scripts. |
 
 ## Standing rules (from the master prompt)
@@ -35,6 +39,7 @@ This is a research framework, not investment advice. Backtested edge is not live
 | Phase | Status | Register |
 |---|---|---|
 | 0 Setup | Done, approved | Empty register, 319 sources probed |
-| 1 Idea generation | Done, awaiting approval | 110 rows: 59 IDEA, 51 REJECTED |
-| 2 Triage and scoring | Next | Top 10 plus parked list |
-| 3 to 10 | Pending | |
+| 1 Idea generation | Done, approved | 110 rows: 59 IDEA, 51 REJECTED |
+| 2 Triage and scoring | Done, awaiting approval | 110 rows: 10 SOURCING, 49 PARKED, 51 REJECTED |
+| 3 Data sourcing plan | Next | Sourcing plan and kill test per SOURCING row |
+| 4 to 10 | Pending | |

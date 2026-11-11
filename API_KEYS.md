@@ -14,10 +14,31 @@ Status values: VERIFIED (a real request succeeded on the date shown; add the key
 
 | Item | What is needed |
 |---|---|
-| `SEC_USER_AGENT` | Set the variable to a string of the form `Your Name your@email`. SEC requires it on every automated request. No signup. |
+| `SEC_USER_AGENT` | Set the variable to a string of the form `Your Name your@email`. SEC requires it on every automated request. No signup. Blocks all ten Phase 2 top-10 rows (every one needs the EDGAR 8-K release-date harness). |
+| PJM Data Miner 2 | N15 is rank 2 in the Phase 2 top 10 and its hypothesis needs PJM West day-ahead prices. Create the free account at https://apiportal.pjm.com/ and set `PJM_API_KEY` to the key it gives you; the exact steps inside the portal are UNKNOWN from here. |
+| Collector host (decision, not a key) | G02 (FDA shortage snapshots), S04 (aisstream geofenced AIS) and the consensus snapshots lose history every day nothing is collecting. This research container is ephemeral and cannot host them. Options: your own machine, a small VPS, or a scheduled task on this platform. |
+| Consensus snapshots (decision, not a key) | Five top-10 rows compare against point-in-time consensus and no free source with history exists. Either start daily snapshots now (Alpha Vantage 25 calls a day, FMP) for forward history only, or accept that Phase 4 respecifies those rows against reported year-over-year or guidance-midpoint stand-ins. |
 | ICANN CZDS | Authentication was rejected (HTTP 401, same as a bogus login). CZDS signs in with the email address you registered, not a handle. After you change the password, set `CZDS_USERNAME` to that email and `CZDS_PASSWORD` to the new password in the environment, and I will retest. Also open https://czds.icann.org/ and request .com and .net access from Verisign; approval takes days to weeks. |
 | FDA Data Dashboard | The key is in hand, but the API also requires the email you registered with, sent as a header on every call. Set `FDA_DASHBOARD_USER` to that email in the environment if you want this tested; it is a LATER item, so skipping it costs nothing now. |
 | USPTO | Your MyUSPTO account exists but the key pages render only in a browser (both returned empty from here). Sign in at https://data.uspto.gov and look for an API key or API management entry in the account menu; for the trademark TSDR key use https://account.uspto.gov/api-manager/ while signed in. Steps beyond that are UNKNOWN from here. LATER item. |
+
+## Needed by the Phase 2 top 10
+
+What each SOURCING row needs before Phase 3 can source it. Everything here is free.
+
+| Row | Needs | Status |
+|---|---|---|
+| All ten | `SEC_USER_AGENT`; EDGAR 8-K Item 2.02 release-date harness | NEEDS YOU (the variable) |
+| N18 USDA broiler and egg prices | `USDA_MARS_API_KEY`, `NASS_API_KEY`; a consensus source (see open items) | Keys VERIFIED; consensus open |
+| N15 NRC reactor status | `PJM_API_KEY`; `EIA_API_KEY` | PJM TODO; EIA VERIFIED |
+| N50 Hail-swath index | `CENSUS_API_KEY`, `FRED_API_KEY`; NCEI bulk files while the SWDI service is down (keyless) | VERIFIED |
+| N03 NPDES effluent flow | Keyless ECHO and DMR zips; `BLS_API_KEY` for controls | VERIFIED |
+| N09 npm download share | Keyless npm API; Google Cloud only for an optional PyPI backfill | Nothing to create; Google Cloud optional |
+| N22 NHTSA recalls | Keyless flat files | Nothing to create |
+| G02 FDA shortages | `OPENFDA_API_KEY`; a daily snapshot collector on an always-on host | Key VERIFIED; host is a decision |
+| S33 Supplier-first disclosures | `SEC_USER_AGENT`; EDGAR full-text search (keyless, intermittent); the API Ninjas transcript leg is dropped (premium-only) | Nothing new to create |
+| S04 AIS terminal calls | `AISSTREAM_API_KEY` plus an always-on geofenced collector; `CENSUS_API_KEY` for trade data | Keys VERIFIED; host is a decision; aisstream has no terms page |
+| S16 Federal obligations | Keyless USAspending; `DATA_GOV_API_KEY` for SAM award notices as a cross-check | VERIFIED |
 
 ## Tier 1 — baseline data every backtest needs
 
@@ -38,7 +59,7 @@ Status values: VERIFIED (a real request succeeded on the date shown; add the key
 | CourtListener | S14 | RECAP federal dockets with nature-of-suit codes | https://www.courtlistener.com/sign-in/ then profile API token | 5,000 requests per hour | TODO | `COURTLISTENER_API_TOKEN` |
 | PACER (Case Locator) | S14 | Party-name search for the backtest | https://pacer.uscourts.gov/register-account | $0.10 per page, waived below $30 per quarter | TODO | `PACER_USERNAME`, `PACER_PASSWORD` |
 | api.data.gov | S07, N62 | One key for Regulations.gov, SAM.gov and EPA CAMPD | https://api.data.gov/signup/ | 1,000 requests per hour | VERIFIED 2026-11-11 on Regulations.gov. The EPA CAMPD gateway returned "route does not exist" for every path that day, an outage on EPA's side to recheck in Phase 3 | `DATA_GOV_API_KEY` |
-| PJM Data Miner 2 | N15 | PJM West day-ahead prices | https://apiportal.pjm.com/ | Generous | TODO | `PJM_API_KEY` |
+| PJM Data Miner 2 | N15 | PJM West day-ahead prices | https://apiportal.pjm.com/ | Generous | TODO, needed for Phase 3 (N15 is rank 2) | `PJM_API_KEY` |
 | FMCSA QCMobile | N56 | Per-carrier inspection counts and fleet sizes | https://mobile.fmcsa.dot.gov/QCDevsite/ | Generous | VERIFIED 2026-11-11 | `FMCSA_WEBKEY` |
 | USDA AMS Market News (MARS) | N18 | Machine-readable egg and chicken price reports (1,051 report slugs listed) | https://mymarketnews.ams.usda.gov/ | Free | VERIFIED 2026-11-11 (basic auth, key as username) | `USDA_MARS_API_KEY` |
 | Socrata app token | N01, N44, N51, N56, G01, G08 | Higher rate limits across Socrata portals; one token worked on data.texas.gov and data.austintexas.gov. Note for G08: data.iowa.gov no longer serves the liquor dataset at its old resource path; find the new id in Phase 3 | https://data.texas.gov/profile/edit/developer_settings | Free | VERIFIED 2026-11-11 | `SOCRATA_APP_TOKEN` |
